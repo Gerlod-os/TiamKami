@@ -1,0 +1,22 @@
+# Системные файлы macOS
+.DS_Store
+.AppleDouble
+._*
+# Системные файлы Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+# Настройки VS Code (локальные)
+.vscode/
+*.code-workspace
+# Локальные конфиги
+.env
+.env.local
+# Кэши
+.cache/
+*.log
+# Временные файлы
+*.tmp
+*.bak
+*.swp
+*~
