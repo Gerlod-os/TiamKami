@@ -1,7 +1,7 @@
 // js/games.js
 let allGames = [];
 let currentStatus = 'all';
-let selectedGenres = new Set();
+let currentGenre = 'all';
 let currentSearch = '';
 let currentSort = 'default';
 
@@ -73,7 +73,7 @@ function updateFiltersCount() {
     const countEl = document.getElementById('active-filters-count');
     let count = 0;
     if (currentStatus !== 'all') count++;
-    if (selectedGenres.size > 0 && !selectedGenres.has('all')) count++;
+    if (currentGenre !== 'all') count++;
     if (currentSearch) count++;
     if (currentSort !== 'default') count++;
     if (count > 0) {
@@ -99,13 +99,13 @@ function applyFilters() {
         });
     }
     if (currentStatus !== 'all') filtered = filtered.filter(g => g.status === currentStatus);
-    if (selectedGenres.size > 0 && !selectedGenres.has('all')) {
-        filtered = filtered.filter(g => {
-            if (!g.genre) return false;
-            const gameGenres = g.genre.split(',').map(x => x.trim());
-            return Array.from(selectedGenres).every(sel => gameGenres.includes(sel));
-        });
-    }
+// Жанр (одиночный выбор)
+if (currentGenre !== 'all') {
+    filtered = filtered.filter(game => {
+        if (!game.genre) return false;
+        return game.genre.split(',').map(g => g.trim()).includes(currentGenre);
+    });
+}
     if (currentSort !== 'default') {
         filtered.sort((a, b) => {
             if (currentSort === 'name-asc') return (a.name||'').localeCompare(b.name||'');
@@ -238,24 +238,19 @@ document.querySelectorAll('.status-tag').forEach(btn => {
     });
 });
 
+// Жанры (одиночный выбор)
 document.getElementById('genre-tags').addEventListener('click', (e) => {
     const btn = e.target.closest('.genre-tag');
     if (!btn) return;
-    const genre = btn.dataset.genre;
-    if (genre === 'all') {
-        selectedGenres.clear();
-        selectedGenres.add('all');
-    } else {
-        if (selectedGenres.has('all')) selectedGenres.clear();
-        selectedGenres.has(genre) ? selectedGenres.delete(genre) : selectedGenres.add(genre);
-    }
+    // Сбрасываем все
     document.querySelectorAll('.genre-tag').forEach(b => {
-        if (b.dataset.genre === 'all') {
-            selectedGenres.has('all') ? (b.classList.add('active', 'bg-purple-600', 'text-white'), b.classList.remove('bg-gray-800', 'text-gray-300')) : (b.classList.remove('active', 'bg-purple-600', 'text-white'), b.classList.add('bg-gray-800', 'text-gray-300'));
-        } else {
-            selectedGenres.has(b.dataset.genre) ? (b.classList.add('active', 'bg-purple-600', 'text-white'), b.classList.remove('bg-gray-800', 'text-gray-300')) : (b.classList.remove('active', 'bg-purple-600', 'text-white'), b.classList.add('bg-gray-800', 'text-gray-300'));
-        }
+        b.classList.remove('active', 'bg-purple-600', 'text-white');
+        b.classList.add('bg-gray-800', 'text-gray-300');
     });
+    // Активируем выбранный
+    btn.classList.remove('bg-gray-800', 'text-gray-300');
+    btn.classList.add('active', 'bg-purple-600', 'text-white');
+    currentGenre = btn.dataset.genre;
     applyFilters();
 });
 
