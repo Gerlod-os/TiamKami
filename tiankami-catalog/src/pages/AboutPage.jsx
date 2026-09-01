@@ -5,5 +5,5 @@ const AboutPage = () => {
       <p className="mt-4">Информация о стримере.</p>
     </div>
   )
-}
-export default AboutPage
+} 
+ export default AboutPage
