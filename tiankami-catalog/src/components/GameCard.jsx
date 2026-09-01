@@ -28,16 +28,16 @@ const GameCard = ({ game, onClick }) => {
         </h3>
         <p className="text-sm text-white/60 mt-1 truncate">{game.genre}</p>
         <div className="mt-auto flex items-center justify-between pt-3">
-          <div className="flex items-center gap-1">
-            <FaStar className="text-yellow-400" />
-            <span className="font-bold text-lg">{game.rating || '—'}</span>
-          </div>
-          <div className="flex items-center gap-1" title="Наиграно часов">
-            <FaClock className="text-white/50" />
-            <span className="text-sm text-white/70">{game.hours} ч</span>
-          </div>
-          <div title={game.status}>{statusIcon}</div>
-        </div>
+  <div className="flex items-center gap-1" title={`Оценка: ${game.rating}/10`}>
+    <FaStar className="text-yellow-400" />
+    <span className="font-bold text-lg">{game.rating || '—'}</span>
+  </div>
+  <div className="flex items-center gap-1" title={`Наиграно часов: ${game.hours}`}>
+    <FaClock className="text-white/50" />
+    <span className="text-sm text-white/70">{game.hours} ч</span>
+  </div>
+  <div title={game.status}>{statusIcon}</div>
+</div>
       </div>
     </div>
   )

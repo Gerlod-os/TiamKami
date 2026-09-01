@@ -33,14 +33,21 @@ const CollectionsPage = () => {
               key={idx}
               className="bg-white/5 rounded-2xl p-5 border border-white/10 hover:border-accent-purple/50 transition-colors"
             >
-              <h2 className="font-heading text-xl text-accent-pink mb-3">
+              <h2 className="font-heading text-xl text-accent-pink mb-1">
                 {collection.name}
               </h2>
+              {collection.description && (
+                <p className="text-sm text-white/60 mb-3">{collection.description}</p>
+              )}
               <ul className="space-y-2">
                 {collection.games.map((game, gameIdx) => (
-                  <li key={gameIdx} className="text-white/80 flex items-start gap-2">
-                    <span className="text-accent-purple mt-1">•</span>
-                    {game}
+                  <li key={gameIdx} className="flex items-start gap-2 text-white/80">
+                    {game.rank && (
+                      <span className="text-accent-purple font-mono text-sm mt-0.5">
+                        {game.rank}.
+                      </span>
+                    )}
+                    <span>{game.name}</span>
                   </li>
                 ))}
               </ul>

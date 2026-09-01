@@ -29,49 +29,88 @@ function normalizeGames(rawData) {
     }))
 }
 const COLLECTIONS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS7bwVMpAeDAHaW6UM5ShIJlgSkwYNub1Vl65GpRvUSYYivY-GP6d2lsXdfX5HpoA/pub?gid=1843357948&single=true&output=tsv'
+const COLLECTIONS_CACHE_KEY = 'tiankami_collections_v1'
+const COLLECTIONS_CACHE_TIME_KEY = 'tiankami_collections_time_v1'
+const COLLECTIONS_CACHE_DURATION = 4 * 60 * 60 * 1000 // 4 часа
 
 export async function fetchCollections() {
   try {
-    const response = await fetch(COLLECTIONS_URL)
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`)
+    // Проверяем кэш
+    const cached = localStorage.getItem(COLLECTIONS_CACHE_KEY)
+    const cachedTime = localStorage.getItem(COLLECTIONS_CACHE_TIME_KEY)
+    if (cached && cachedTime && (Date.now() - parseInt(cachedTime) < COLLECTIONS_CACHE_DURATION)) {
+      const parsed = JSON.parse(cached)
+      if (parsed.length > 0) return parsed
     }
+
+    const response = await fetch(COLLECTIONS_URL)
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`)
     const text = await response.text()
-    // Парсим без заголовков: первая строка — названия подборок, дальше — игры
     const result = Papa.parse(text, {
       delimiter: '\t',
       header: false,
       skipEmptyLines: false,
     })
 
-    const rows = result.data // массив массивов
-    if (rows.length === 0) return []
+    const rows = result.data
+    if (rows.length < 2) return []
 
-    // Первая строка — заголовки подборок
-    const headers = rows[0]
-    const collections = headers.map((name, colIndex) => ({
-      name: name.trim(),
-      games: [],
-    }))
+    const headerRow = rows[0]
+    const headerIndices = []
+    headerRow.forEach((cell, idx) => {
+      if (cell && cell.trim() !== '') {
+        headerIndices.push(idx)
+      }
+    })
 
-    // Со второй строки собираем игры по столбцам
-    for (let i = 1; i < rows.length; i++) {
-      const row = rows[i]
-      headers.forEach((_, colIndex) => {
-        const cell = (row[colIndex] || '').trim()
-        if (cell !== '') {
-          collections[colIndex].games.push(cell)
+    const collections = []
+
+    headerIndices.forEach((titleIdx, order) => {
+      const name = headerRow[titleIdx].trim()
+      if (!name) return
+
+      let gameIndex = titleIdx + 1
+      const secondRow = rows[1] || []
+      if (!secondRow[gameIndex] || secondRow[gameIndex].trim() === '') {
+        gameIndex = titleIdx + 2
+      }
+      const rankIndex = gameIndex + 1
+
+      const games = []
+      let description = ''
+      if (order === 0 && secondRow[titleIdx] && secondRow[titleIdx].trim() !== '') {
+        description = secondRow[titleIdx].trim()
+      }
+
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i] || []
+        const gameName = row[gameIndex] ? row[gameIndex].trim() : ''
+        if (gameName !== '') {
+          const rank = row[rankIndex] ? row[rankIndex].trim() : ''
+          games.push({ name: gameName, rank })
         }
-      })
-    }
+      }
 
-    // Оставляем только подборки с непустым названием
-    return collections.filter(c => c.name !== '')
+      collections.push({ name, description, games })
+    })
+
+    // Сохраняем в кэш
+    localStorage.setItem(COLLECTIONS_CACHE_KEY, JSON.stringify(collections))
+    localStorage.setItem(COLLECTIONS_CACHE_TIME_KEY, String(Date.now()))
+
+    return collections
   } catch (error) {
     console.error('Ошибка загрузки подборок:', error)
+    // Если есть кэш – вернём его
+    const cached = localStorage.getItem(COLLECTIONS_CACHE_KEY)
+    if (cached) {
+      const parsed = JSON.parse(cached)
+      if (parsed.length > 0) return parsed
+    }
     return []
   }
 }
+
 export async function fetchGames() {
   try {
     // Пробуем взять из кэша
