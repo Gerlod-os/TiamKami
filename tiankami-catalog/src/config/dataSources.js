@@ -1,0 +1,2 @@
+export const GAMES_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS7bwVMpAeDAHaW6UM5ShIJlgSkwYNub1Vl65GpRvUSYYivY-GP6d2lsXdfX5HpoA/pub?gid=195587646&single=true&output=tsv';
+export const COLLECTIONS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS7bwVMpAeDAHaW6UM5ShIJlgSkwYNub1Vl65GpRvUSYYivY-GP6d2lsXdfX5HpoA/pub?gid=1843357948&single=true&output=tsv';
