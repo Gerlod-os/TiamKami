@@ -1,322 +1,484 @@
-// js/games.js
 let allGames = [];
-let currentStatus = 'all';
-let currentGenre = 'all';
-let currentSearch = '';
-let currentSort = 'default';
+let currentStatus = "all";
+let currentGenre = "all";
+let currentSearch = "";
+let currentSort = "default";
 
-async function loadGames() {
-    try {
-        const response = await fetch('data/games.json');
-        if (!response.ok) throw new Error('Не удалось загрузить games.json');
-        const rawData = await response.json();
-        allGames = rawData.map((game, index) => ({ ...game, id: index }));
-        updateStats();
-        renderHallOfFame();
-        fillGenreTags();
-        applyFilters();
-    } catch (error) {
-        console.error(error);
-        document.getElementById('counter').textContent = 'Ошибка загрузки данных';
-        document.getElementById('games-grid').innerHTML = '<p class="text-red-400 col-span-full text-center py-10">Не удалось загрузить список игр</p>';
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  loadGamesData();
+});
+
+async function loadGamesData() {
+  try {
+    const response = await fetch("data/games.json");
+    allGames = await response.json();
+    // Назначаем ID, если их нет в JSON
+        allGames = allGames.map((game, index) => {
+      const originalSteamId = game.steam_id;
+      return { id: index + 1, ...game, steam_id: originalSteamId };
+    });
+
+
+    updateStats();
+    renderHallOfFame();
+    fillGenreTags();
+    applyFilters();
+  } catch (error) {
+    console.error("Ошибка загрузки базы рогаликов:", error);
+    document.getElementById("games-grid").innerHTML =
+      '<p class="text-red-400 col-span-full text-center py-10 font-mono text-lg">Ошибка загрузки данных. Проверьте консоль (F12).</p>';
+  }
 }
 
 function updateStats() {
-    const total = allGames.length;
-    const completed = allGames.filter(g => g.status === 'Пройдено').length;
-    const dropped = allGames.filter(g => g.status === 'Дропнуто').length;
-    const review = allGames.filter(g => g.status === 'Обзор').length;
-    const totalHours = allGames.reduce((sum, game) => sum + (parseInt(game.hours, 10) || 0), 0);
-    document.getElementById('stat-total').textContent = total;
-    document.getElementById('stat-completed').textContent = completed;
-    document.getElementById('stat-dropped').textContent = dropped;
-    document.getElementById('stat-review').textContent = review;
-    document.getElementById('stat-hours').textContent = totalHours;
+  if (!allGames.length) return;
+  document.getElementById("stat-total").textContent = allGames.length;
+  document.getElementById("stat-completed").textContent = allGames.filter(
+    (g) => g.status === "Пройдено",
+  ).length;
+  document.getElementById("stat-dropped").textContent = allGames.filter(
+    (g) => g.status === "Дропнуто",
+  ).length;
+  document.getElementById("stat-review").textContent = allGames.filter(
+    (g) => g.status === "Обзор",
+  ).length;
+
+  const totalHours = allGames.reduce(
+    (sum, g) => sum + (parseInt(g.hours) || 0),
+    0,
+  );
+  document.getElementById("stat-hours").textContent = totalHours;
 }
 
-function renderHallOfFame() {
-    const hallOfFame = allGames.filter(g => String(g.score) === '10');
-    if (hallOfFame.length === 0) return;
-    document.getElementById('hall-of-fame').classList.remove('hidden');
-    const grid = document.getElementById('hall-of-fame-grid');
-    grid.innerHTML = hallOfFame.map(game => {
-        const displayName = game.name === '[REDACTED]' ? 'Скрытая игра' : game.name;
-        return `
-            <div class="bg-gray-900 rounded-xl border border-yellow-900/30 p-4 hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/20 transition cursor-pointer group hover:-translate-y-1" onclick="openGame(${game.id})">
-                <div class="flex justify-between items-start mb-2">
-                    <h4 class="font-bold text-sm group-hover:text-yellow-400 transition line-clamp-2">${displayName}</h4>
-                    <span class="text-yellow-400 font-bold text-sm font-mono drop-shadow-[0_0_6px_rgba(250,204,21,0.5)]"><svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2zm0 3.65L18.35 12 12 18.35 5.65 12 12 5.65z"/></svg>10</span>
-                </div>
-                <div class="text-xs text-gray-500">${game.genre || '—'} <span class="font-mono text-gray-400">• ${game.hours || '?'} ч.</span></div>
-            </div>
-        `;
-    }).join('');
-}
-
+// Заполняем теги жанров из данных
 function fillGenreTags() {
-    const genres = new Set();
-    allGames.forEach(game => {
-        if (game.genre) game.genre.split(',').forEach(g => { if(g.trim()) genres.add(g.trim()); });
+  const genres = new Set();
+  allGames.forEach((game) => {
+    if (game.genre)
+      game.genre.split(",").forEach((g) => {
+        if (g.trim()) genres.add(g.trim());
+      });
+  });
+  const container = document.getElementById("genre-tags");
+  if (!container) return;
+  Array.from(genres)
+    .sort()
+    .forEach((genre) => {
+      const btn = document.createElement("button");
+      btn.dataset.genre = genre;
+      btn.className =
+        "genre-tag bg-gray-800 text-gray-300 hover:bg-gray-700 text-xs px-3 py-1.5 rounded-full transition";
+      btn.textContent = genre;
+      container.appendChild(btn);
     });
-    const container = document.getElementById('genre-tags');
-    Array.from(genres).sort().forEach(genre => {
-        const btn = document.createElement('button');
-        btn.dataset.genre = genre;
-        btn.className = 'genre-tag bg-gray-800 text-gray-300 hover:bg-gray-700 text-xs px-3 py-1.5 rounded-full transition';
-        btn.textContent = genre;
-        container.appendChild(btn);
+}
+
+// Комбинированная фильтрация: поиск -> статус -> жанр -> сортировка
+function applyFilters() {
+  let filtered = [...allGames];
+  if (currentSearch) {
+    const s = currentSearch.toLowerCase();
+    filtered = filtered.filter((g) => {
+      const name = (g.name || "").toLowerCase();
+      const genre = (g.genre || "").toLowerCase();
+      const features = (g.features || "").toLowerCase();
+      const setting = (g.setting || "").toLowerCase();
+      const genreMatch = genre
+        .split(",")
+        .some((gen) => gen.trim().includes(s) || s.includes(gen.trim()));
+      const featuresMatch = features
+        .split(",")
+        .some((feat) => feat.trim().includes(s) || s.includes(feat.trim()));
+      return (
+        name.includes(s) || genreMatch || featuresMatch || setting.includes(s)
+      );
     });
+  }
+  if (currentStatus !== "all")
+    filtered = filtered.filter((g) => g.status === currentStatus);
+  if (currentGenre !== "all") {
+    filtered = filtered.filter((g) => {
+      if (!g.genre) return false;
+      return g.genre
+        .split(",")
+        .map((x) => x.trim())
+        .includes(currentGenre);
+    });
+  }
+  if (currentSort !== "default") {
+    filtered.sort((a, b) => {
+      if (currentSort === "name-asc")
+        return (a.name || "").localeCompare(b.name || "");
+      if (currentSort === "name-desc")
+        return (b.name || "").localeCompare(a.name || "");
+      if (currentSort === "score-desc")
+        return (parseInt(b.score) || 0) - (parseInt(a.score) || 0);
+      if (currentSort === "hours-desc")
+        return (parseInt(b.hours) || 0) - (parseInt(a.hours) || 0);
+      if (currentSort === "date-new")
+        return (
+          new Date(b.played_date || "0000-01-01") -
+          new Date(a.played_date || "0000-01-01")
+        );
+      return 0;
+    });
+  }
+  renderGames(filtered);
+  updateFiltersCount();
 }
 
 function updateFiltersCount() {
-    const countEl = document.getElementById('active-filters-count');
-    let count = 0;
-    if (currentStatus !== 'all') count++;
-    if (currentGenre !== 'all') count++;
-    if (currentSort !== 'default') count++;
-    if (count > 0) {
-        countEl.textContent = count;
-        countEl.classList.remove('hidden');
-    } else {
-        countEl.classList.add('hidden');
-    }
-}
-
-function applyFilters() {
-    let filtered = [...allGames];
-    if (currentSearch) {
-        const s = currentSearch.toLowerCase();
-        filtered = filtered.filter(g => {
-            const name = (g.name || '').toLowerCase();
-            const genre = (g.genre || '').toLowerCase();
-            const features = (g.features || '').toLowerCase();
-            const setting = (g.setting || '').toLowerCase();
-            const genreMatch = genre.split(',').some(gen => gen.trim().includes(s) || s.includes(gen.trim()));
-            const featuresMatch = features.split(',').some(feat => feat.trim().includes(s) || s.includes(feat.trim()));
-            return name.includes(s) || genreMatch || featuresMatch || setting.includes(s);
-        });
-    }
-    if (currentStatus !== 'all') filtered = filtered.filter(g => g.status === currentStatus);
-// Жанр (одиночный выбор)
-if (currentGenre !== 'all') {
-    filtered = filtered.filter(game => {
-        if (!game.genre) return false;
-        return game.genre.split(',').map(g => g.trim()).includes(currentGenre);
-    });
-}
-    if (currentSort !== 'default') {
-        filtered.sort((a, b) => {
-            if (currentSort === 'name-asc') return (a.name||'').localeCompare(b.name||'');
-            if (currentSort === 'name-desc') return (b.name||'').localeCompare(a.name||'');
-            if (currentSort === 'score-desc') return (parseInt(b.score)||0) - (parseInt(a.score)||0);
-            if (currentSort === 'hours-desc') return (parseInt(b.hours)||0) - (parseInt(a.hours)||0);
-            if (currentSort === 'date-new') return new Date(b.played_date||'0000-01-01') - new Date(a.played_date||'0000-01-01');
-            return 0;
-        });
-    }
-    renderGames(filtered);
-    updateFiltersCount();
-}
-
-function renderGames(games) {
-    const grid = document.getElementById('games-grid');
-    document.getElementById('counter').textContent = `Найдено игр: ${games.length}`;
-    if (games.length === 0) {
-        grid.innerHTML = '<p class="text-gray-500 col-span-full text-center py-10">Ничего не найдено</p>';
-        return;
-    }
-    grid.innerHTML = games.map(game => {
-        const statusColor = {
-            'Пройдено': 'bg-green-900/50 text-green-400 border-green-800',
-            'Дропнуто': 'bg-red-900/50 text-red-400 border-red-800',
-            'Обзор': 'bg-blue-900/50 text-blue-400 border-blue-800',
-            'Жду релиз': 'bg-yellow-900/50 text-yellow-400 border-yellow-800',
-            'В процессе': 'bg-purple-900/50 text-purple-400 border-purple-800'
-        }[game.status] || 'bg-gray-800 text-gray-400 border-gray-700';
-        const displayName = game.name === '[REDACTED]' ? 'Скрытая игра' : (game.name || 'Без названия');
-        const topBorderColor = game.status === 'Пройдено' ? 'border-t-green-500' : game.status === 'Дропнуто' ? 'border-t-red-500' : game.status === 'Обзор' ? 'border-t-blue-500' : game.status === 'Жду релиз' ? 'border-t-yellow-500' : 'border-t-purple-500';
-        const isMI = game.mi === true || game.MI_Conducted === true;
-        const miBadge = isMI ? `<span class="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full font-bold border border-yellow-500/50">🏆 МИ</span>` : '';
-        const droppedIcon = game.status === 'Дропнуто' ? ' 💀' : '';
-        const scoreDisplay = game.score ? (game.score == 10 ? `<span class="text-xl font-mono font-bold text-yellow-400 drop-shadow-[0_0_6px_rgba(250,204,21,0.5)]"><svg class="w-5 h-5 inline mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2zm0 3.65L18.35 12 12 18.35 5.65 12 12 5.65z"/></svg>${game.score}</span><span class="text-gray-600 text-sm font-mono">/10</span>` : `<span class="text-xl font-mono font-bold text-purple-400"><svg class="w-5 h-5 inline mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2zm0 3.65L18.35 12 12 18.35 5.65 12 12 5.65z"/></svg>${game.score}</span><span class="text-gray-600 text-sm font-mono">/10</span>`) : '<span class="text-gray-600 text-sm font-mono">—</span>';
-        return `
-            <div class="game-card bg-gray-900 rounded-xl overflow-hidden border border-gray-800 ${topBorderColor} hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer group relative" onclick="openGame(${game.id})">
-                <div class="p-5">
-                    <div class="flex items-start justify-between gap-2 mb-2">
-                        <h3 class="text-lg font-bold group-hover:text-purple-400 transition-colors line-clamp-2">${displayName}${droppedIcon}</h3>
-                        ${miBadge}
-                    </div>
-                    <div class="text-sm text-gray-400 mb-3">${game.genre || '—'} ${game.hours ? '<span class="font-mono text-gray-300">• ' + game.hours + ' ч.</span>' : ''}</div>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        ${game.features ? game.features.split(',').slice(0, 3).map(f => `<span class="text-[10px] bg-gray-800/80 text-gray-300 px-2 py-1 rounded border border-gray-700/50">${f.trim()}</span>`).join('') : ''}
-                    </div>
-                    <div class="flex justify-between items-center pt-3 border-t border-gray-800">
-                        <div class="flex items-center gap-1">
-                            ${scoreDisplay}
-                        </div>
-                        <span class="text-[10px] px-2.5 py-1 rounded-full border font-medium uppercase tracking-wide ${statusColor}">${game.status || '—'}</span>
-                    </div>
-                </div>
-            </div>
-        `;
-    }).join('');
+  const countEl = document.getElementById("active-filters-count");
+  if (!countEl) return;
+  let count = 0;
+  if (currentStatus !== "all") count++;
+  if (currentGenre !== "all") count++;
+  if (currentSort !== "default") count++;
+  if (count > 0) {
+    countEl.textContent = count;
+    countEl.classList.remove("hidden");
+  } else {
+    countEl.classList.add("hidden");
+  }
 }
 
 function formatDate(dateStr) {
-    if (!dateStr) return '';
-    const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-    const parts = dateStr.split('-');
-    if (parts.length !== 3) return dateStr;
-    return `${parseInt(parts[2], 10)} ${months[parseInt(parts[1], 10) - 1]} ${parts[0]}`;
+  if (!dateStr) return "—";
+  const date = new Date(dateStr);
+  if (isNaN(date.getTime())) return dateStr;
+  return date.toLocaleDateString("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+function renderGames(games) {
+  const grid = document.getElementById("games-grid");
+  document.getElementById("counter").textContent =
+    `Найдено игр: ${games.length}`;
+  if (games.length === 0) {
+    grid.innerHTML =
+      '<p class="text-gray-500 col-span-full text-center py-10 font-mono text-lg">НИЧЕГО НЕ НАЙДЕНО</p>';
+    return;
+  }
+  grid.innerHTML = games
+    .map((game) => {
+      const statusColors = {
+        Пройдено: "bg-emerald-900/50 text-emerald-400 border-emerald-700",
+        Дропнуто: "bg-red-950/70 text-red-400 border-red-800",
+        Обзор: "bg-blue-900/50 text-blue-400 border-blue-800",
+        "Жду релиз": "bg-yellow-900/50 text-yellow-400 border-yellow-800",
+        "В процессе": "bg-purple-900/50 text-purple-400 border-purple-800",
+      };
+      const statusColor =
+        statusColors[game.status] ||
+        "bg-gray-800 text-gray-400 border-gray-700";
+      const displayName =
+        game.name === "[REDACTED]"
+          ? "СКРЫТАЯ ИГРА"
+          : game.name || "БЕЗ НАЗВАНИЯ";
+      const statusAttr =
+        game.status === "Дропнуто" ? 'data-status="Дропнуто"' : "";
+      const scoreAttr = String(game.score) === "10" ? 'data-score="10"' : "";
+      const miBadge =
+        game.mi || game.MI_Conducted
+          ? `<span class="mi-badge text-[10px] px-2 py-1 rounded font-bold tracking-wider">[ COMPETITION: МИ ]</span>`
+          : "";
+      const featuresHtml = game.features
+        ? game.features
+            .split(",")
+            .slice(0, 3)
+            .map(
+              (f) =>
+                `<span class="text-[10px] bg-gray-800/80 text-cyan-400 px-2 py-1 rounded border border-cyan-900/50 font-mono">${f.trim()}</span>`,
+            )
+            .join("")
+        : "";
+      const isGold = String(game.score) === "10";
+      const crystalColor = isGold ? "text-yellow-400" : "text-purple-500";
+      const scoreHtml = game.score
+        ? `<div class="flex items-center gap-1">
+<svg class="w-5 h-5 inline ${crystalColor}" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2zm0 3.65L18.35 12 12 18.35 5.65 12 12 5.65z"/></svg>
+<span class="${isGold ? "text-yellow-400" : "text-white"} font-black text-2xl">${game.score}</span>
+<span class="text-gray-600 text-sm font-bold">/10</span>
+</div>`
+        : '<span class="text-gray-600 text-sm font-mono">N/A</span>';
+      // Генерируем URL обложки Steam (используем надежный CDN Akamai)
+      const steamCoverUrl = game.steam_id
+        ? `https://cdn.akamai.steamstatic.com/steam/apps/${game.steam_id}/header.jpg`
+        : "";
+      return `
+        <div class="game-card bg-gray-900/80 border border-gray-800 hover:border-purple-600/50 hover:shadow-2xl hover:shadow-purple-900/20 cursor-pointer group ${statusAttr} ${scoreAttr}" 
+             onclick="openGame(${game.id})">
+          <!-- Блок обложки с защитой от ошибок -->
+          <div class="relative w-full h-36 overflow-hidden rounded-t-lg bg-gray-900 shrink-0">
+            <img 
+              src="${steamCoverUrl}" 
+              alt="${displayName}"
+              class="game-thumbnail w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 absolute inset-0"
+              onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            >
+            <div style="display:none;" class="game-thumbnail w-full h-full bg-gradient-to-br from-purple-900 via-purple-600 to-pink-600 absolute inset-0 items-center justify-center">
+              <span class="text-white/40 text-2xl font-black tracking-widest uppercase">NO COVER</span>
+            </div>
+          </div>
+          <div class="p-5 space-y-4">
+            <div class="flex justify-between items-start gap-2">
+              <h3 class="text-lg font-black group-hover:text-pink-400 transition-colors line-clamp-2 uppercase tracking-tight">${displayName}</h3>
+              ${miBadge}
+            </div>
+            <div class="text-sm text-gray-400 font-mono">
+              <span class="text-purple-400">${game.genre || "—"}</span>
+              ${game.hours ? `<span class="text-gray-600"> • </span><span class="text-cyan-400">${game.hours} ч.</span>` : ""}
+            </div>
+            <div class="flex flex-wrap gap-2">${featuresHtml}</div>
+            <div class="flex justify-between items-center pt-4 border-t border-gray-800">
+              ${scoreHtml}
+              <span class="text-[10px] px-3 py-1.5 rounded font-bold uppercase tracking-wider border ${statusColor}">${game.status || "—"}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
 }
 
 function openGame(id) {
-    const game = allGames.find(g => g.id === id);
-    if (!game) return;
-    const modal = document.getElementById('game-modal');
-    const content = document.getElementById('modal-content');
-    const displayName = game.name === '[REDACTED]' ? 'Скрытая игра' : (game.name || 'Без название');
-    const statusColor = {
-        'Пройдено': 'bg-green-900/50 text-green-400 border-green-800',
-        'Дропнуто': 'bg-red-900/50 text-red-400 border-red-800',
-        'Обзор': 'bg-blue-900/50 text-blue-400 border-blue-800',
-        'Жду релиз': 'bg-yellow-900/50 text-yellow-400 border-yellow-800',
-        'В процессе': 'bg-purple-900/50 text-purple-400 border-purple-800'
-    }[game.status] || 'bg-gray-800 text-gray-400 border-gray-700';
-    const isMI = game.mi === true || game.MI_Conducted === true;
-    const featuresHtml = game.features ? game.features.split(',').map(f => `<span class="text-xs bg-purple-500/20 text-purple-300 px-2.5 py-1 rounded border border-purple-500/30">${f.trim()}</span>`).join('') : '';
-    const scoreDisplay = game.score ? (game.score == 10 ? `<span class="text-yellow-400 font-bold text-xl flex items-center gap-1 font-mono drop-shadow-[0_0_6px_rgba(250,204,21,0.5)]"><svg class="w-5 h-5 inline mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2zm0 3.65L18.35 12 12 18.35 5.65 12 12 5.65z"/></svg>${game.score}</span><span class="text-gray-500 text-sm font-normal">/10</span>` : `<span class="text-purple-400 font-bold text-xl flex items-center gap-1 font-mono"><svg class="w-5 h-5 inline mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2zm0 3.65L18.35 12 12 18.35 5.65 12 12 5.65z"/></svg>${game.score}</span><span class="text-gray-500 text-sm font-normal">/10</span>`) : '';
-    
-    content.innerHTML = `
-        <!-- 1. ШАПКА -->
-        <div class="mb-6">
-            <h2 class="text-3xl font-bold text-white mb-3">${displayName}</h2>
-            <div class="flex flex-wrap items-center gap-3">
-                <span class="text-xs px-3 py-1.5 rounded border font-medium uppercase tracking-wide ${statusColor}">${game.status || '—'}</span>
-                ${scoreDisplay}
-                ${game.progress ? `<span class="text-gray-400 text-sm bg-gray-800 px-2 py-1 rounded font-mono">Прогресс: ${game.progress}%</span>` : ''}
-                ${isMI ? '<span class="text-sm bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full font-bold border border-yellow-500/50">🏆 Участник Мастер Игорей</span>' : ''}
+  const game = allGames.find((g) => g.id === id);
+  if (!game) return;
+
+  const modal = document.getElementById("game-modal");
+  const content = document.getElementById("modal-content");
+  const displayName =
+    game.name === "[REDACTED]" ? "СКРЫТАЯ ИГРА" : game.name || "БЕЗ НАЗВАНИЯ";
+
+  const statusColors = {
+    Пройдено: "bg-emerald-900/50 text-emerald-400 border-emerald-700",
+    Дропнуто: "bg-red-950/70 text-red-400 border-red-800",
+    Обзор: "bg-blue-900/50 text-blue-400 border-blue-800",
+    "Жду релиз": "bg-yellow-900/50 text-yellow-400 border-yellow-800",
+    "В процессе": "bg-purple-900/50 text-purple-400 border-purple-800",
+  };
+  const statusColor =
+    statusColors[game.status] || "bg-gray-800 text-gray-400 border-gray-700";
+
+  const featuresHtml = game.features
+    ? game.features
+        .split(",")
+        .map(
+          (f) =>
+            `<span class="text-xs bg-gray-800 text-cyan-400 px-3 py-1.5 rounded border border-cyan-900/50 font-mono">${f.trim()}</span>`,
+        )
+        .join("")
+    : "";
+
+  const youtubeButton = game.youtube
+    ? `<a href="${game.youtube}" target="_blank" rel="noopener" class="btn-youtube-analysis flex-1 inline-flex items-center justify-center gap-3 px-6 py-4 rounded-lg font-bold text-sm text-white">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+            СМОТРЕТЬ ОБЗОР / ЗАБЕГ
+        </a>`
+    : "";
+
+  const miButton =
+    game.mi || game.MI_Conducted
+      ? `<a href="${game.mi_link || "#"}" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 bg-cyan-900/50 hover:bg-cyan-800/50 border border-cyan-600 text-cyan-400 font-bold px-6 py-4 rounded-lg transition-all">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            ТУРНИР: МИ
+        </a>`
+      : "";
+
+  content.innerHTML = `
+        <div class="space-y-6">
+            <div class="border-b border-gray-800 pb-6">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">${displayName}</h2>
+                <div class="flex flex-wrap items-center gap-4">
+                    <span class="px-4 py-2 rounded font-bold uppercase tracking-wider border ${statusColor} text-sm">${game.status || "—"}</span>
+                    ${game.score ? `<div class="flex items-center gap-2 bg-yellow-900/30 px-4 py-2 rounded border border-yellow-700/50"><span class="text-yellow-400 font-black text-3xl">${game.score}</span><span class="text-gray-500 text-lg font-bold">/10</span></div>` : ""}
+                    ${game.progress ? `<span class="text-gray-400 font-mono bg-gray-800 px-3 py-2 rounded text-sm">ПРОГРЕСС: <span class="text-cyan-400 font-bold">${game.progress}%</span></span>` : ""}
+                </div>
             </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                ${game.genre ? `<div class="bg-gray-800/50 rounded-lg p-4 border border-gray-700"><div class="text-[10px] text-gray-500 uppercase tracking-wider mb-1 font-mono">ЖАНР</div><div class="text-white font-bold">${game.genre}</div></div>` : ""}
+                ${game.setting ? `<div class="bg-gray-800/50 rounded-lg p-4 border border-gray-700"><div class="text-[10px] text-gray-500 uppercase tracking-wider mb-1 font-mono">СЕТТИНГ</div><div class="text-white font-bold">${game.setting}</div></div>` : ""}
+                ${game.hours ? `<div class="bg-gray-800/50 rounded-lg p-4 border border-gray-700"><div class="text-[10px] text-gray-500 uppercase tracking-wider mb-1 font-mono">НАИГРАНО</div><div class="text-cyan-400 font-bold text-xl">${game.hours} ч.</div></div>` : ""}
+                ${game.difficulty ? `<div class="bg-gray-800/50 rounded-lg p-4 border border-gray-700"><div class="text-[10px] text-gray-500 uppercase tracking-wider mb-1 font-mono">СЛОЖНОСТЬ</div><div class="text-white font-bold">${game.difficulty}/10</div></div>` : ""}
+                ${game.release_date ? `<div class="bg-gray-800/50 rounded-lg p-4 border border-gray-700"><div class="text-[10px] text-gray-500 uppercase tracking-wider mb-1 font-mono">РЕЛИЗ</div><div class="text-white font-bold">${formatDate(game.release_date)}</div></div>` : ""}
+                ${game.played_date ? `<div class="bg-gray-800/50 rounded-lg p-4 border border-gray-700"><div class="text-[10px] text-gray-500 uppercase tracking-wider mb-1 font-mono">ДАТА ИГРЫ</div><div class="text-white font-bold">${formatDate(game.played_date)}</div></div>` : ""}
+            </div>
+
+            ${featuresHtml ? `<div><div class="text-[10px] text-gray-500 uppercase tracking-wider mb-3 font-mono">Особенности</div><div class="flex flex-wrap gap-2">${featuresHtml}</div></div>` : ""}
+            
+            ${
+              game.notes
+                ? `
+                <div>
+                    <div class="text-[10px] text-gray-500 uppercase tracking-wider mb-3 font-mono">Комментарии стримера</div>
+                    <div class="bg-gray-800/50 rounded-lg p-5 text-gray-100 text-base md:text-lg leading-relaxed border border-purple-500/30 font-mono whitespace-pre-line shadow-inner">
+                        ${game.notes}
+                    </div>
+                </div>
+            `
+                : ""
+            }
+            
+            ${
+              game.youtube || game.mi || game.MI_Conducted
+                ? `
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    ${youtubeButton}
+                    ${miButton}
+                </div>
+            `
+                : ""
+            }
         </div>
-        
-        <!-- 2. ТАБЛИЦА ПАРАМЕТРОВ -->
-        <div class="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden mb-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-700">
-                ${game.genre ? `<div class="p-3"><div class="text-gray-400 text-xs uppercase font-semibold mb-1">Жанр</div><div class="text-white text-sm">${game.genre}</div></div>` : ''}
-                ${game.setting ? `<div class="p-3"><div class="text-gray-400 text-xs uppercase font-semibold mb-1">Сеттинг</div><div class="text-white text-sm">${game.setting}</div></div>` : ''}
-                ${game.difficulty ? `<div class="p-3"><div class="text-gray-400 text-xs uppercase font-semibold mb-1">Сложность</div><div class="text-white text-sm font-mono">${game.difficulty}/10</div></div>` : ''}
-                ${game.hours ? `<div class="p-3"><div class="text-gray-400 text-xs uppercase font-semibold mb-1">Часы</div><div class="text-white text-sm font-mono">${game.hours} ч.</div></div>` : ''}
-                ${game.release_date ? `<div class="p-3"><div class="text-gray-400 text-xs uppercase font-semibold mb-1">Релиз</div><div class="text-white text-sm">${formatDate(game.release_date)}</div></div>` : ''}
-                ${game.played_date ? `<div class="p-3"><div class="text-gray-400 text-xs uppercase font-semibold mb-1">Прохождение</div><div class="text-white text-sm">${formatDate(game.played_date)}</div></div>` : ''}
-            </div>
-        </div>
-        
-        <!-- 3. ОСОБЕННОСТИ -->
-        ${featuresHtml ? `<div class="mb-6"><div class="text-xs text-gray-400 uppercase font-semibold mb-2">Особенности</div><div class="flex flex-wrap gap-2">${featuresHtml}</div></div>` : ''}
-        
-        <!-- 4. ЗАМЕТКИ ТИАНА -->
-        ${game.notes ? `
-            <div class="mb-6">
-                <h3 class="text-xl font-bold text-purple-400 mb-3">📝 Заметки Тиана</h3>
-                <div class="bg-gray-800/70 rounded-xl border border-purple-500/30 p-6 text-gray-100 text-lg leading-relaxed whitespace-pre-line">${game.notes}</div>
-            </div>
-        ` : ''}
-        
-        <!-- 5. КНОПКИ ВНИЗУ -->
-        ${(game.youtube || isMI) ? `
-            <div class="flex flex-col sm:flex-row gap-3">
-                ${game.youtube ? `<a href="${game.youtube}" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-4 py-3 rounded-lg transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>▶ Смотреть на YouTube</a>` : ''}
-                ${isMI ? `<a href="${game.mi_link || '#'}" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium px-4 py-3 rounded-lg transition">🏆 Выпуск Мастер Игорей</a>` : ''}
-            </div>
-        ` : ''}
     `;
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    document.body.style.overflow = 'hidden';
+
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+  document.body.style.overflow = "hidden";
+}
+
+function renderHallOfFame() {
+  const hallOfFame = allGames.filter((g) => String(g.score) === "10");
+  const block = document.getElementById("hall-of-fame");
+  if (!block) return;
+
+  if (hallOfFame.length === 0) {
+    block.classList.add("hidden");
+    return;
+  }
+
+  block.classList.remove("hidden");
+  const grid = document.getElementById("hall-of-fame-grid");
+
+  grid.innerHTML = hallOfFame
+    .map((game) => {
+      const displayName =
+        game.name === "[REDACTED]" ? "СКРЫТАЯ ИГРА" : game.name;
+      const miBadge =
+        game.mi || game.MI_Conducted
+          ? `<span class="mi-badge text-[9px] px-2 py-0.5 rounded font-bold whitespace-nowrap">[МИ]</span>`
+          : "";
+      return `
+        <div class="hall-of-fame-card bg-gradient-to-br from-yellow-900/20 to-gray-900 rounded-lg border-2 border-yellow-600/50 p-5 hover:border-yellow-400 transition-all duration-300 cursor-pointer group" onclick="openGame(${game.id})" data-score="10">
+          <div class="flex items-center justify-between w-full mb-3 gap-2">
+            <h4 class="font-black text-sm group-hover:text-yellow-300 transition line-clamp-2 uppercase tracking-tight">${displayName}</h4>
+            <div class="flex items-center gap-2 whitespace-nowrap">
+              ${miBadge}
+              <span class="text-yellow-400 font-black text-lg">💎 10</span>
+            </div>
+          </div>
+          <div class="text-xs text-gray-500 font-mono">
+            ${game.genre || "—"} • ${game.hours || "?"} ч.
+          </div>
+        </div>
+      `;
+    })
+    .join("");
 }
 
 function closeGame() {
-    const modal = document.getElementById('game-modal');
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-    document.body.style.overflow = '';
+  const modal = document.getElementById("game-modal");
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+  document.body.style.overflow = "";
 }
 
-// === Слушатели ===
-
-document.getElementById('toggle-filters').addEventListener('click', () => {
-    document.getElementById('filters-panel').classList.toggle('hidden');
+// Закрытие модалки по клику вне контента или по Esc
+document.getElementById("game-modal")?.addEventListener("click", (e) => {
+  if (e.target.id === "game-modal") closeGame();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeGame();
 });
 
-document.getElementById('search').addEventListener('input', (e) => {
-    currentSearch = e.target.value.toLowerCase().trim();
-    applyFilters();
+// Показать/скрыть панель фильтров
+document.getElementById("toggle-filters")?.addEventListener("click", () => {
+  document.getElementById("filters-panel").classList.toggle("hidden");
 });
 
-document.querySelectorAll('.status-tag').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.status-tag').forEach(b => { b.classList.remove('active', 'bg-purple-600', 'text-white'); b.classList.add('bg-gray-800', 'text-gray-300'); });
-        btn.classList.remove('bg-gray-800', 'text-gray-300');
-        btn.classList.add('active', 'bg-purple-600', 'text-white');
-        currentStatus = btn.dataset.status;
-        applyFilters();
+// Поиск
+document.getElementById("search")?.addEventListener("input", (e) => {
+  currentSearch = e.target.value.toLowerCase().trim();
+  applyFilters();
+});
+
+// Статус (одиночный выбор)
+document.querySelectorAll(".status-tag").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".status-tag").forEach((b) => {
+      b.classList.remove("active", "bg-purple-600", "text-white");
+      b.classList.add("bg-gray-800", "text-gray-300");
     });
+    btn.classList.remove("bg-gray-800", "text-gray-300");
+    btn.classList.add("active", "bg-purple-600", "text-white");
+    currentStatus = btn.dataset.status;
+    applyFilters();
+  });
 });
 
-// Жанры (одиночный выбор)
-document.getElementById('genre-tags').addEventListener('click', (e) => {
-    const btn = e.target.closest('.genre-tag');
-    if (!btn) return;
-    // Сбрасываем все
-    document.querySelectorAll('.genre-tag').forEach(b => {
-        b.classList.remove('active', 'bg-purple-600', 'text-white');
-        b.classList.add('bg-gray-800', 'text-gray-300');
+// Жанр (одиночный выбор)
+document.getElementById("genre-tags")?.addEventListener("click", (e) => {
+  const btn = e.target.closest(".genre-tag");
+  if (!btn) return;
+  document.querySelectorAll(".genre-tag").forEach((b) => {
+    b.classList.remove("active", "bg-purple-600", "text-white");
+    b.classList.add("bg-gray-800", "text-gray-300");
+  });
+  btn.classList.remove("bg-gray-800", "text-gray-300");
+  btn.classList.add("active", "bg-purple-600", "text-white");
+  currentGenre = btn.dataset.genre;
+  applyFilters();
+});
+
+// Сортировка
+document.getElementById("sort-filter")?.addEventListener("change", (e) => {
+  currentSort = e.target.value;
+  applyFilters();
+});
+
+// Случайная игра из отфильтрованного списка
+document.getElementById("random-game-btn")?.addEventListener("click", () => {
+  let filtered = [...allGames];
+  if (currentSearch) {
+    const s = currentSearch.toLowerCase();
+    filtered = filtered.filter((g) => {
+      const name = (g.name || "").toLowerCase();
+      const genre = (g.genre || "").toLowerCase();
+      const features = (g.features || "").toLowerCase();
+      const setting = (g.setting || "").toLowerCase();
+      const genreMatch = genre
+        .split(",")
+        .some((gen) => gen.trim().includes(s) || s.includes(gen.trim()));
+      const featuresMatch = features
+        .split(",")
+        .some((feat) => feat.trim().includes(s) || s.includes(feat.trim()));
+      return (
+        name.includes(s) || genreMatch || featuresMatch || setting.includes(s)
+      );
     });
-    // Активируем выбранный
-    btn.classList.remove('bg-gray-800', 'text-gray-300');
-    btn.classList.add('active', 'bg-purple-600', 'text-white');
-    currentGenre = btn.dataset.genre;
-    applyFilters();
+  }
+  if (currentStatus !== "all")
+    filtered = filtered.filter((g) => g.status === currentStatus);
+  if (currentGenre !== "all") {
+    filtered = filtered.filter((g) => {
+      if (!g.genre) return false;
+      return g.genre
+        .split(",")
+        .map((x) => x.trim())
+        .includes(currentGenre);
+    });
+  }
+  if (filtered.length === 0) {
+    alert("По текущим фильтрам игр не найдено!");
+    return;
+  }
+  const randomIndex = Math.floor(Math.random() * filtered.length);
+  openGame(filtered[randomIndex].id);
 });
-
-document.getElementById('sort-filter').addEventListener('change', (e) => {
-    currentSort = e.target.value;
-    applyFilters();
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeGame();
 });
-
-document.getElementById('game-modal').addEventListener('click', (e) => { if (e.target.id === 'game-modal') closeGame(); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeGame(); });
-
-// Открытие случайной игры из текущего отфильтрованного списка
-document.getElementById('random-game-btn').addEventListener('click', () => {
-    let filtered = [...allGames];
-    if (currentSearch) {
-        const s = currentSearch.toLowerCase();
-        filtered = filtered.filter(g => {
-            const name = (g.name || '').toLowerCase();
-            const genre = (g.genre || '').toLowerCase();
-            const features = (g.features || '').toLowerCase();
-            const setting = (g.setting || '').toLowerCase();
-            const genreMatch = genre.split(',').some(gen => gen.trim().includes(s) || s.includes(gen.trim()));
-            const featuresMatch = features.split(',').some(feat => feat.trim().includes(s) || s.includes(feat.trim()));
-            return name.includes(s) || genreMatch || featuresMatch || setting.includes(s);
-        });
-    }
-    if (currentStatus !== 'all') filtered = filtered.filter(g => g.status === currentStatus);
-    if (currentGenre !== 'all') {
-        filtered = filtered.filter(g => {
-            if (!g.genre) return false;
-            return g.genre.split(',').map(x => x.trim()).includes(currentGenre);
-        });
-    }
-    if (filtered.length === 0) {
-        alert('По текущим фильтрам игр не найдено!');
-        return;
-    }
-    const randomIndex = Math.floor(Math.random() * filtered.length);
-    const randomGame = filtered[randomIndex];
-    openGame(randomGame.id);
-});
-
-loadGames();
