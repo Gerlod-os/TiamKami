@@ -1,50 +1,8 @@
 import { useEffect, useState, useMemo } from 'react'
 import { fetchGames } from '../utils/loadData'
+import GameCard from '../components/GameCard'
 import GameModal from '../components/GameModal'
-import { FaStar, FaClock, FaCheckCircle, FaTimesCircle, FaHourglassHalf, FaSearch, FaFilter } from 'react-icons/fa'
-
-const statusIcons = {
-  'Пройдено': <FaCheckCircle className="text-green-400" />,
-  'Дропнуто': <FaTimesCircle className="text-red-400" />,
-  'Обзор': <FaStar className="text-yellow-400" />,
-  'Жду релиза': <FaHourglassHalf className="text-blue-400" />,
-}
-
-const GameCard = ({ game, onClick }) => {
-  const statusIcon = statusIcons[game.status] || null
-
-  return (
-    <div
-      onClick={onClick}
-      className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-accent-purple/50 hover:shadow-glow-purple hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer"
-    >
-      <div className="h-40 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 flex items-center justify-center">
-        {game.image ? (
-          <img src={game.image} alt={game.title} className="w-full h-full object-cover" />
-        ) : (
-          <span className="text-4xl">🎮</span>
-        )}
-      </div>
-      <div className="p-4 flex flex-col flex-grow">
-        <h3 className="font-heading text-lg text-white truncate" title={game.title}>
-          {game.title}
-        </h3>
-        <p className="text-sm text-white/60 mt-1 truncate">{game.genre}</p>
-        <div className="mt-auto flex items-center justify-between pt-3">
-          <div className="flex items-center gap-1">
-            <FaStar className="text-yellow-400" />
-            <span className="font-bold text-lg">{game.rating || '—'}</span>
-          </div>
-          <div className="flex items-center gap-1" title="Наиграно часов">
-            <FaClock className="text-white/50" />
-            <span className="text-sm text-white/70">{game.hours} ч</span>
-          </div>
-          <div title={game.status}>{statusIcon}</div>
-        </div>
-      </div>
-    </div>
-  )
-}
+import { FaSearch } from 'react-icons/fa'
 
 const CatalogPage = () => {
   const [games, setGames] = useState([])
@@ -68,6 +26,8 @@ const CatalogPage = () => {
   useEffect(() => {
     fetchGames()
       .then(data => {
+        console.log('Загружено игр:', data.length);
+        console.log('Первая игра:', data[0]);
         setGames(data)
         setLoading(false)
       })
@@ -97,7 +57,6 @@ const CatalogPage = () => {
   const filteredGames = useMemo(() => {
     let result = [...games]
 
-    // Поиск
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase()
       result = result.filter(game =>
@@ -106,7 +65,6 @@ const CatalogPage = () => {
       )
     }
 
-    // Фильтр по жанрам
     if (filters.genres.length > 0) {
       result = result.filter(game =>
         filters.genres.some(genre =>
@@ -115,12 +73,10 @@ const CatalogPage = () => {
       )
     }
 
-    // Фильтр по статусам
     if (filters.statuses.length > 0) {
       result = result.filter(game => filters.statuses.includes(game.status))
     }
 
-    // Оценка
     if (filters.minRating !== '') {
       result = result.filter(game => parseFloat(game.rating) >= parseFloat(filters.minRating))
     }
@@ -128,7 +84,6 @@ const CatalogPage = () => {
       result = result.filter(game => parseFloat(game.rating) <= parseFloat(filters.maxRating))
     }
 
-    // Сложность
     if (filters.minComplexity !== '') {
       result = result.filter(game => parseFloat(game.complexity) >= parseFloat(filters.minComplexity))
     }
@@ -136,7 +91,6 @@ const CatalogPage = () => {
       result = result.filter(game => parseFloat(game.complexity) <= parseFloat(filters.maxComplexity))
     }
 
-    // Часы
     if (filters.minHours !== '') {
       result = result.filter(game => parseFloat(game.hours) >= parseFloat(filters.minHours))
     }
@@ -144,7 +98,6 @@ const CatalogPage = () => {
       result = result.filter(game => parseFloat(game.hours) <= parseFloat(filters.maxHours))
     }
 
-    // Год выпуска
     if (filters.years.length > 0) {
       result = result.filter(game => {
         const match = game.releaseDate.match(/\d{4}/)
@@ -152,12 +105,10 @@ const CatalogPage = () => {
       })
     }
 
-    // Наличие МИ
     if (filters.hasMI) {
-      result = result.filter(game => game.hasMI.toLowerCase() === 'true' || game.hasMI === 'TRUE' || game.hasMI === 'true')
+      result = result.filter(game => game.hasMI.toLowerCase() === 'true')
     }
 
-    // Сортировка
     switch (sortBy) {
       case 'title':
         result.sort((a, b) => a.title.localeCompare(b.title, 'ru'))
@@ -180,19 +131,10 @@ const CatalogPage = () => {
 
   if (loading) return <div className="text-center py-20">Загрузка данных...</div>
 
-  const toggleArrayFilter = (array, value, setter) => {
-    if (array.includes(value)) {
-      setter(array.filter(v => v !== value))
-    } else {
-      setter([...array, value])
-    }
-  }
-
   return (
     <div>
       <h1 className="text-3xl mb-6">Каталог рогаликов</h1>
 
-      {/* Панель фильтров и поиска */}
       <div className="bg-white/5 rounded-2xl p-4 mb-6 space-y-4">
         <div className="flex flex-wrap gap-4 items-center">
           <div className="relative flex-grow max-w-xs">
@@ -219,7 +161,6 @@ const CatalogPage = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Жанры */}
           <div>
             <label className="block text-sm mb-1 text-white/70">Жанр</label>
             <select
@@ -239,7 +180,6 @@ const CatalogPage = () => {
             </select>
           </div>
 
-          {/* Статусы */}
           <div>
             <label className="block text-sm mb-1 text-white/70">Статус</label>
             <select
@@ -259,7 +199,6 @@ const CatalogPage = () => {
             </select>
           </div>
 
-          {/* Годы */}
           <div>
             <label className="block text-sm mb-1 text-white/70">Год выхода</label>
             <select
@@ -279,7 +218,6 @@ const CatalogPage = () => {
             </select>
           </div>
 
-          {/* Диапазоны */}
           <div className="space-y-2">
             <div>
               <label className="block text-sm mb-1 text-white/70">Оценка (мин-макс)</label>
@@ -367,7 +305,6 @@ const CatalogPage = () => {
 
       <p className="mb-4 text-white/70">Показано игр: {filteredGames.length}</p>
 
-      {/* Сетка карточек */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredGames.map((game, idx) => (
           <GameCard key={idx} game={game} onClick={() => setSelectedGame(game)} />
@@ -380,7 +317,6 @@ const CatalogPage = () => {
         </div>
       )}
 
-      {/* Модальное окно */}
       {selectedGame && (
         <GameModal game={selectedGame} onClose={() => setSelectedGame(null)} />
       )}
