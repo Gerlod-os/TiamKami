@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchGames } from "../utils/loadData";
 import { slugify } from "../utils/slugify";
+import { BRAND } from "../config/branding.js";
 import GameDetails from "../components/GameDetails";
 import { FaChevronRight } from "react-icons/fa";
 
@@ -56,11 +57,17 @@ const GamePage = () => {
     }
 
     return () => {
-      document.title = "Tiankami Catalog";
+      // Восстанавливаем дефолтные мета-теги (не удаляем — они нужны другим страницам)
+      document.title = BRAND.siteTitle;
       const metaDescription = document.querySelector(
         'meta[name="description"]',
       );
-      if (metaDescription) metaDescription.remove();
+      if (metaDescription) {
+        metaDescription.setAttribute(
+          "content",
+          `Каталог рогаликов ${BRAND.name}`,
+        );
+      }
       document
         .querySelectorAll('meta[property^="og:"]')
         .forEach((meta) => meta.remove());

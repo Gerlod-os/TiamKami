@@ -11,7 +11,7 @@ import localCollections from "../data/collections.json";
 import {
   normalizeGames,
   normalizeCollections,
-  extractUrlFromFormula,
+  extractHyperlinkParts,
   isUrl,
   isYouTubeUrl,
   extractSteamAppId,
@@ -27,11 +27,12 @@ function hashUrl(url) {
   return h.toString(36);
 }
 
-const CACHE_KEY = `tiankami_games_v3_${hashUrl(GAMES_URL)}`;
+const CACHE_KEY = `tiankami_games_v4_${hashUrl(GAMES_URL)}`;
 const CACHE_TIME_KEY = `${CACHE_KEY}_time`;
-const COLLECTIONS_CACHE_KEY = `tiankami_collections_v3_${hashUrl(COLLECTIONS_URL)}`;
+const COLLECTIONS_CACHE_KEY = `tiankami_collections_v4_${hashUrl(COLLECTIONS_URL)}`;
 const COLLECTIONS_CACHE_TIME_KEY = `${COLLECTIONS_CACHE_KEY}_time`;
-const LINKS_CACHE_KEY = `tiankami_links_v3_${hashUrl(GAMES_URL)}`;
+const LINKS_CACHE_KEY = `tiankami_links_v4_${hashUrl(GAMES_URL)}`;
+const NOEMBED_LIMIT = 20; // жёсткий лимит проверок авторства за сессию
 const CACHE_DURATION = 6 * 60 * 60 * 1000; // TTL кэша: 6 часов
 const REVALIDATE_INTERVAL = 15 * 60 * 1000; // сверка с таблицей не чаще раза в 15 минут
 
@@ -121,16 +122,26 @@ async function fetchHyperlinks() {
     const links = {}; // title -> { youtube, miVideo, steam }
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i] || [];
-      // Название — первая непустая ячейка строки (в master-таблице это колонка A)
-      const title = (row.find((c) => (c || "").trim()) || "").trim();
+      // Ячейки могут быть не строками (числа, bool) — приводим к строке
+      const title = (row.find((c) => String(c ?? "").trim()) || "")
+        .toString()
+        .trim();
       if (!title) continue;
 
       const entry = {};
       for (const cell of row) {
-        const url = extractUrlFromFormula(cell);
+        const { url, label } = extractHyperlinkParts(String(cell ?? ""));
         if (!isUrl(url)) continue;
-        if (isYouTubeUrl(url) && !entry.youtube) entry.youtube = url;
-        if (/steampowered\.com/i.test(url) && !entry.steam) entry.steam = url;
+        if (isYouTubeUrl(url)) {
+          // У игры бывает две YouTube-ссылки: плейлист прохождения и выпуск МИ.
+          // Различаем по подписи в таблице (колонки «гуляют», подпись надёжнее).
+          if (/ми|выпуск/i.test(label) ? !entry.miVideo : !entry.youtube) {
+            entry[/ми|выпуск/i.test(label) ? "miVideo" : "youtube"] = url;
+          }
+        }
+        if (/steampowered\.com/i.test(url)) {
+          if (!entry.steam) entry.steam = url;
+        }
       }
       if (Object.keys(entry).length > 0) links[title] = entry;
     }
@@ -180,21 +191,20 @@ export async function enrichGamesWithLinks(games) {
     }
   };
 
-  // Собираем уникальные YouTube-ссылки, которых нет в кэше
+  // Собираем уникальные YouTube-ссылки (плейлисты + МИ), которых нет в кэше
   const uniqueUrls = new Set();
   games.forEach((g) => {
     const l = links[g.title];
-    if (
-      l?.youtube &&
-      isYouTubeUrl(l.youtube) &&
-      authorCache[l.youtube] === undefined
-    ) {
-      uniqueUrls.add(l.youtube);
-    }
+    [l?.youtube, l?.miVideo].forEach((u) => {
+      if (u && isYouTubeUrl(u) && authorCache[u] === undefined) {
+        uniqueUrls.add(u);
+      }
+    });
   });
 
-  // Проверяем параллельно, не больше 8 одновременно
-  const urls = [...uniqueUrls];
+  // Жёсткий лимит проверок за сессию (правило PROJECT_BRIEF п.7):
+  // непроверенные ссылки в этот заход не показываем, попадут в следующий.
+  const urls = [...uniqueUrls].slice(0, NOEMBED_LIMIT);
   let idx = 0;
   const workers = Array.from({ length: Math.min(8, urls.length) }, async () => {
     while (idx < urls.length) {
@@ -208,14 +218,18 @@ export async function enrichGamesWithLinks(games) {
   // Применяем
   return games.map((g) => {
     const l = links[g.title];
-    if (!l) return g;
+    const appId = l ? extractSteamAppId(l.steam || "") : null;
+    const steamAppId = g.steamAppId || appId; // из sync-JSON или из таблицы
     const next = { ...g };
-    if (l.youtube && isYouTubeUrl(l.youtube) && authorCache[l.youtube]) {
+    if (steamAppId) {
+      next.image = steamHeaderUrl(steamAppId); // обложка строится из appid
+      next.steamUrl = `https://store.steampowered.com/app/${steamAppId}/`;
+    }
+    if (l?.youtube && isYouTubeUrl(l.youtube) && authorCache[l.youtube]) {
       next.youtube = l.youtube;
     }
-    if (l.steam) {
-      const appId = extractSteamAppId(l.steam);
-      if (appId) next.image = steamHeaderUrl(appId);
+    if (l?.miVideo && isYouTubeUrl(l.miVideo) && authorCache[l.miVideo]) {
+      next.miVideo = l.miVideo;
     }
     return next;
   });
@@ -328,10 +342,6 @@ export function clearCache() {
     localStorage.removeItem(LINKS_CACHE_KEY);
     localStorage.removeItem(`${LINKS_CACHE_KEY}_time`);
   } catch {}
-  memoryGames = null;
-  memoryCollections = null;
-  lastGamesCheck = 0;
-  lastCollectionsCheck = 0;
   memoryGames = null;
   memoryCollections = null;
   lastGamesCheck = 0;

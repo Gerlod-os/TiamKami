@@ -1,4 +1,5 @@
 import { FaStar, FaClock } from "react-icons/fa";
+import { isUrl } from "../utils/normalize.js";
 
 // Тематические иконки статусов в духе рогаликов
 const statusIcons = {
@@ -26,7 +27,7 @@ const GameCard = ({ game, onClick }) => {
       className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-accent-purple/50 hover:shadow-glow-purple hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer"
     >
       <div className="h-40 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 flex items-center justify-center">
-        {game.image ? (
+        {isUrl(game.image) ? (
           <img
             src={game.image}
             alt={game.title}

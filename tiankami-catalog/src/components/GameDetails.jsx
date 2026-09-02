@@ -21,7 +21,7 @@ const GameDetails = ({ game }) => {
     <div className="grid md:grid-cols-2 gap-6">
       <div>
         <div className="h-56 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 rounded-xl flex items-center justify-center mb-4">
-          {game.image ? (
+          {isUrl(game.image) ? (
             <img
               src={game.image}
               alt={game.title}
@@ -90,6 +90,17 @@ const GameDetails = ({ game }) => {
             className="flex items-center gap-2 text-accent-pink hover:text-white transition-colors mb-4"
           >
             <FaYoutube /> YouTube прохождение
+          </a>
+        )}
+
+        {isUrl(game.steamUrl) && (
+          <a
+            href={game.steamUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-accent-blue hover:text-white transition-colors mb-4"
+          >
+            🎮 Страница в Steam
           </a>
         )}
 

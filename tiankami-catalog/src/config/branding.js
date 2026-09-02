@@ -7,25 +7,28 @@
 
 export const BRAND = {
   // Название канала (отображается в шапке, футере, заголовке сайта)
-  name: 'Tiankami',
+  name: "Tiankami",
 
   // Название сайта для вкладки браузера и мета-тегов
-  siteTitle: 'Tiankami — Каталог рогаликов',
+  siteTitle: "Tiankami — Каталог рогаликов",
+
+  // Адрес сайта (для sitemap.xml при сборке; без слэша в конце)
+  siteUrl: "https://tiankami.vercel.app",
 
   // Twitch-логин (маленькими буквами, без @) — используется для статуса и аватарки
-  twitchLogin: 'tiankami',
+  twitchLogin: "tiankami",
 
   // Ссылки на соцсети
   links: {
-    twitch: 'https://twitch.tv/tiankami',
-    youtube: 'https://youtube.com/@tiankami',
-    discord: 'https://discord.gg/tiankami',
+    twitch: "https://twitch.tv/tiankami",
+    youtube: "https://youtube.com/@tiankami",
+    discord: "https://discord.gg/tiankami",
   },
 
   // YouTube-канал: ссылки на прохождения подтягиваются только с этого канала.
   // Имя автора, которое YouTube возвращает для этого канала (проверка без ключа).
-  youtubeChannelName: 'Tiankami',
+  youtubeChannelName: "Tiankami",
 
   // Текст в футере
-  footerText: 'Все права защищены.',
-}
+  footerText: "Все права защищены.",
+};

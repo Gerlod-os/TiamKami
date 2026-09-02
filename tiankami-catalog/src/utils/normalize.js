@@ -77,7 +77,10 @@ export function buildColIndex(headerRow, firstDataRow) {
 
   return {
     title: titleIdx,
-    image: titleIdx + 1, // колонка сразу после названия
+    // Картинка — колонка ПЕРЕД названием (заголовок «Название» объединён
+    // на две ячейки: картинка + название). URL достаётся из формулы
+    // =IMAGE(...) через Sheets API или из Steam appid (enrich/sync).
+    image: titleIdx > 0 ? titleIdx - 1 : -1,
     genre: idx["Жанр"] ?? -1,
     features: idx["Особенности"] ?? -1,
     setting: idx["Сеттинг"] ?? -1,
@@ -181,6 +184,11 @@ export function normalizeCollections(rows) {
     }
 
     if (games.length === 0) return;
+    // «ЗОЛОТОЙ СПИСОК» — без рангов намеренно (решение владельца):
+    // числа в таблице для него — позиции, а не рейтинги. Гасим всегда.
+    if (/золотой список/i.test(name)) {
+      games.forEach((g) => (g.rank = ""));
+    }
     collections.push({ name, description, games });
   });
 
@@ -196,14 +204,15 @@ export function isUrl(value) {
 }
 
 /**
- * Достаёт URL из формулы гиперссылки Google Sheets.
- * =HYPERLINK("https://...";"текст") → "https://..."
+ * Достаёт URL и подпись из формулы гиперссылки Google Sheets.
+ * =HYPERLINK("https://...";"текст") → { url: "https://...", label: "текст" }
  * Обычный текст возвращается как есть (потом отфильтруется isUrl).
  */
-export function extractUrlFromFormula(cell) {
+export function extractHyperlinkParts(cell) {
   const s = (cell || "").trim();
-  const m = s.match(/^=HYPERLINK\(\s*"([^"]+)"/i);
-  return m ? m[1] : s;
+  const m = s.match(/^=HYPERLINK\(\s*"([^"]+)"\s*[;,]\s*"([^"]*)"/i);
+  if (m) return { url: m[1], label: m[2] };
+  return { url: s, label: "" };
 }
 
 /**
