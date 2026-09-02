@@ -1,135 +1,167 @@
-import { useEffect, useState, useMemo } from 'react'
-import { fetchGames } from '../utils/loadData'
-import GameCard from '../components/GameCard'
-import GameModal from '../components/GameModal'
-import { FaSearch } from 'react-icons/fa'
+import { useEffect, useState, useMemo } from "react";
+import { fetchGames } from "../utils/loadData";
+import { slugify } from "../utils/slugify";
+import { parseRuDate } from "../utils/date";
+import GameCard from "../components/GameCard";
+import GameModal from "../components/GameModal";
+import { FaSearch } from "react-icons/fa";
 
 const CatalogPage = () => {
-  const [games, setGames] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [selectedGame, setSelectedGame] = useState(null)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [sortBy, setSortBy] = useState('title')
+  const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedGame, setSelectedGame] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState("title");
   const [filters, setFilters] = useState({
     genres: [],
     statuses: [],
-    minRating: '',
-    maxRating: '',
-    minComplexity: '',
-    maxComplexity: '',
-    minHours: '',
-    maxHours: '',
+    minRating: "",
+    maxRating: "",
+    minComplexity: "",
+    maxComplexity: "",
+    minHours: "",
+    maxHours: "",
     years: [],
     hasMI: false,
-  })
+  });
 
   useEffect(() => {
     fetchGames()
-      .then(data => {
-        console.log('Загружено игр:', data.length);
-        console.log('Первая игра:', data[0]);
-        setGames(data)
-        setLoading(false)
+      .then((data) => {
+        setGames(data);
+        setLoading(false);
       })
-      .catch(err => {
-        console.error(err)
-        setLoading(false)
-      })
-  }, [])
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
 
   const allGenres = useMemo(() => {
-    const genres = new Set()
-    games.forEach(game => game.genre.split(',').forEach(g => genres.add(g.trim())))
-    return [...genres].sort()
-  }, [games])
+    const genres = new Set();
+    games.forEach((game) =>
+      game.genre.split(",").forEach((g) => genres.add(g.trim())),
+    );
+    return [...genres].sort();
+  }, [games]);
 
   const allYears = useMemo(() => {
-    const years = new Set()
-    games.forEach(game => {
+    const years = new Set();
+    games.forEach((game) => {
       if (game.releaseDate) {
-        const match = game.releaseDate.match(/\d{4}/)
-        if (match) years.add(match[0])
+        const match = game.releaseDate.match(/\d{4}/);
+        if (match) years.add(match[0]);
       }
-    })
-    return [...years].sort()
-  }, [games])
+    });
+    return [...years].sort();
+  }, [games]);
 
   const filteredGames = useMemo(() => {
-    let result = [...games]
+    let result = [...games];
 
     if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase()
-      result = result.filter(game =>
-        game.title.toLowerCase().includes(q) ||
-        game.notes.toLowerCase().includes(q)
-      )
+      const q = searchQuery.toLowerCase();
+      result = result.filter(
+        (game) =>
+          game.title.toLowerCase().includes(q) ||
+          game.notes.toLowerCase().includes(q),
+      );
     }
 
     if (filters.genres.length > 0) {
-      result = result.filter(game =>
-        filters.genres.some(genre =>
-          game.genre.split(',').map(g => g.trim()).includes(genre)
-        )
-      )
+      result = result.filter((game) =>
+        filters.genres.some((genre) =>
+          game.genre
+            .split(",")
+            .map((g) => g.trim())
+            .includes(genre),
+        ),
+      );
     }
 
     if (filters.statuses.length > 0) {
-      result = result.filter(game => filters.statuses.includes(game.status))
+      result = result.filter((game) => filters.statuses.includes(game.status));
     }
 
-    if (filters.minRating !== '') {
-      result = result.filter(game => parseFloat(game.rating) >= parseFloat(filters.minRating))
+    if (filters.minRating !== "") {
+      result = result.filter(
+        (game) => parseFloat(game.rating) >= parseFloat(filters.minRating),
+      );
     }
-    if (filters.maxRating !== '') {
-      result = result.filter(game => parseFloat(game.rating) <= parseFloat(filters.maxRating))
-    }
-
-    if (filters.minComplexity !== '') {
-      result = result.filter(game => parseFloat(game.complexity) >= parseFloat(filters.minComplexity))
-    }
-    if (filters.maxComplexity !== '') {
-      result = result.filter(game => parseFloat(game.complexity) <= parseFloat(filters.maxComplexity))
+    if (filters.maxRating !== "") {
+      result = result.filter(
+        (game) => parseFloat(game.rating) <= parseFloat(filters.maxRating),
+      );
     }
 
-    if (filters.minHours !== '') {
-      result = result.filter(game => parseFloat(game.hours) >= parseFloat(filters.minHours))
+    if (filters.minComplexity !== "") {
+      result = result.filter(
+        (game) =>
+          parseFloat(game.complexity) >= parseFloat(filters.minComplexity),
+      );
     }
-    if (filters.maxHours !== '') {
-      result = result.filter(game => parseFloat(game.hours) <= parseFloat(filters.maxHours))
+    if (filters.maxComplexity !== "") {
+      result = result.filter(
+        (game) =>
+          parseFloat(game.complexity) <= parseFloat(filters.maxComplexity),
+      );
+    }
+
+    if (filters.minHours !== "") {
+      result = result.filter(
+        (game) => parseFloat(game.hours) >= parseFloat(filters.minHours),
+      );
+    }
+    if (filters.maxHours !== "") {
+      result = result.filter(
+        (game) => parseFloat(game.hours) <= parseFloat(filters.maxHours),
+      );
     }
 
     if (filters.years.length > 0) {
-      result = result.filter(game => {
-        const match = game.releaseDate.match(/\d{4}/)
-        return match && filters.years.includes(match[0])
-      })
+      result = result.filter((game) => {
+        const match = game.releaseDate.match(/\d{4}/);
+        return match && filters.years.includes(match[0]);
+      });
     }
 
     if (filters.hasMI) {
-      result = result.filter(game => game.hasMI.toLowerCase() === 'true')
+      result = result.filter((game) => game.hasMI.toLowerCase() === "true");
     }
 
     switch (sortBy) {
-      case 'title':
-        result.sort((a, b) => a.title.localeCompare(b.title, 'ru'))
-        break
-      case 'rating':
-        result.sort((a, b) => (parseFloat(b.rating) || 0) - (parseFloat(a.rating) || 0))
-        break
-      case 'hours':
-        result.sort((a, b) => (parseFloat(b.hours) || 0) - (parseFloat(a.hours) || 0))
-        break
-      case 'releaseDate':
-        result.sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate))
-        break
+      case "title":
+        result.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        break;
+      case "rating":
+        result.sort(
+          (a, b) => (parseFloat(b.rating) || 0) - (parseFloat(a.rating) || 0),
+        );
+        break;
+      case "hours":
+        result.sort(
+          (a, b) => (parseFloat(b.hours) || 0) - (parseFloat(a.hours) || 0),
+        );
+        break;
+      case "releaseDate":
+        result.sort((a, b) => {
+          const da = parseRuDate(b.releaseDate);
+          const db = parseRuDate(a.releaseDate);
+          if (!da && !db) return 0;
+          if (!da) return 1;
+          if (!db) return -1;
+          return da - db;
+        });
+        break;
       default:
-        break
+        break;
     }
 
-    return result
-  }, [games, searchQuery, filters, sortBy])
+    return result;
+  }, [games, searchQuery, filters, sortBy]);
 
-  if (loading) return <div className="text-center py-20">Загрузка данных...</div>
+  if (loading)
+    return <div className="text-center py-20">Загрузка данных...</div>;
 
   return (
     <div>
@@ -143,14 +175,14 @@ const CatalogPage = () => {
               type="text"
               placeholder="Поиск по названию или примечаниям..."
               value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-black/20 border border-white/10 rounded-xl py-2 pl-9 pr-3 text-sm focus:outline-none focus:border-accent-purple"
             />
           </div>
 
           <select
             value={sortBy}
-            onChange={e => setSortBy(e.target.value)}
+            onChange={(e) => setSortBy(e.target.value)}
             className="bg-black/20 border border-white/10 rounded-xl py-2 px-3 text-sm focus:outline-none focus:border-accent-purple"
           >
             <option value="title">Сортировка: по названию</option>
@@ -166,13 +198,16 @@ const CatalogPage = () => {
             <select
               multiple
               value={filters.genres}
-              onChange={e => {
-                const selected = Array.from(e.target.selectedOptions, option => option.value)
-                setFilters(prev => ({ ...prev, genres: selected }))
+              onChange={(e) => {
+                const selected = Array.from(
+                  e.target.selectedOptions,
+                  (option) => option.value,
+                );
+                setFilters((prev) => ({ ...prev, genres: selected }));
               }}
               className="w-full bg-black/20 border border-white/10 rounded-xl py-2 px-3 text-sm h-24"
             >
-              {allGenres.map(genre => (
+              {allGenres.map((genre) => (
                 <option key={genre} value={genre} className="bg-bg-dark">
                   {genre}
                 </option>
@@ -185,13 +220,16 @@ const CatalogPage = () => {
             <select
               multiple
               value={filters.statuses}
-              onChange={e => {
-                const selected = Array.from(e.target.selectedOptions, option => option.value)
-                setFilters(prev => ({ ...prev, statuses: selected }))
+              onChange={(e) => {
+                const selected = Array.from(
+                  e.target.selectedOptions,
+                  (option) => option.value,
+                );
+                setFilters((prev) => ({ ...prev, statuses: selected }));
               }}
               className="w-full bg-black/20 border border-white/10 rounded-xl py-2 px-3 text-sm h-24"
             >
-              {['Пройдено', 'Дропнуто', 'Обзор', 'Жду релиза'].map(status => (
+              {["Пройдено", "Дропнуто", "Обзор", "Жду релиза"].map((status) => (
                 <option key={status} value={status} className="bg-bg-dark">
                   {status}
                 </option>
@@ -200,17 +238,22 @@ const CatalogPage = () => {
           </div>
 
           <div>
-            <label className="block text-sm mb-1 text-white/70">Год выхода</label>
+            <label className="block text-sm mb-1 text-white/70">
+              Год выхода
+            </label>
             <select
               multiple
               value={filters.years}
-              onChange={e => {
-                const selected = Array.from(e.target.selectedOptions, option => option.value)
-                setFilters(prev => ({ ...prev, years: selected }))
+              onChange={(e) => {
+                const selected = Array.from(
+                  e.target.selectedOptions,
+                  (option) => option.value,
+                );
+                setFilters((prev) => ({ ...prev, years: selected }));
               }}
               className="w-full bg-black/20 border border-white/10 rounded-xl py-2 px-3 text-sm h-24"
             >
-              {allYears.map(year => (
+              {allYears.map((year) => (
                 <option key={year} value={year} className="bg-bg-dark">
                   {year}
                 </option>
@@ -220,7 +263,9 @@ const CatalogPage = () => {
 
           <div className="space-y-2">
             <div>
-              <label className="block text-sm mb-1 text-white/70">Оценка (мин-макс)</label>
+              <label className="block text-sm mb-1 text-white/70">
+                Оценка (мин-макс)
+              </label>
               <div className="flex gap-2">
                 <input
                   type="number"
@@ -228,7 +273,12 @@ const CatalogPage = () => {
                   max="10"
                   placeholder="мин"
                   value={filters.minRating}
-                  onChange={e => setFilters(prev => ({ ...prev, minRating: e.target.value }))}
+                  onChange={(e) =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      minRating: e.target.value,
+                    }))
+                  }
                   className="w-full bg-black/20 border border-white/10 rounded-xl py-2 px-3 text-sm"
                 />
                 <input
@@ -237,13 +287,20 @@ const CatalogPage = () => {
                   max="10"
                   placeholder="макс"
                   value={filters.maxRating}
-                  onChange={e => setFilters(prev => ({ ...prev, maxRating: e.target.value }))}
+                  onChange={(e) =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      maxRating: e.target.value,
+                    }))
+                  }
                   className="w-full bg-black/20 border border-white/10 rounded-xl py-2 px-3 text-sm"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm mb-1 text-white/70">Сложность (мин-макс)</label>
+              <label className="block text-sm mb-1 text-white/70">
+                Сложность (мин-макс)
+              </label>
               <div className="flex gap-2">
                 <input
                   type="number"
@@ -251,7 +308,12 @@ const CatalogPage = () => {
                   max="10"
                   placeholder="мин"
                   value={filters.minComplexity}
-                  onChange={e => setFilters(prev => ({ ...prev, minComplexity: e.target.value }))}
+                  onChange={(e) =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      minComplexity: e.target.value,
+                    }))
+                  }
                   className="w-full bg-black/20 border border-white/10 rounded-xl py-2 px-3 text-sm"
                 />
                 <input
@@ -260,20 +322,32 @@ const CatalogPage = () => {
                   max="10"
                   placeholder="макс"
                   value={filters.maxComplexity}
-                  onChange={e => setFilters(prev => ({ ...prev, maxComplexity: e.target.value }))}
+                  onChange={(e) =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      maxComplexity: e.target.value,
+                    }))
+                  }
                   className="w-full bg-black/20 border border-white/10 rounded-xl py-2 px-3 text-sm"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm mb-1 text-white/70">Часы (мин-макс)</label>
+              <label className="block text-sm mb-1 text-white/70">
+                Часы (мин-макс)
+              </label>
               <div className="flex gap-2">
                 <input
                   type="number"
                   min="0"
                   placeholder="мин"
                   value={filters.minHours}
-                  onChange={e => setFilters(prev => ({ ...prev, minHours: e.target.value }))}
+                  onChange={(e) =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      minHours: e.target.value,
+                    }))
+                  }
                   className="w-full bg-black/20 border border-white/10 rounded-xl py-2 px-3 text-sm"
                 />
                 <input
@@ -281,7 +355,12 @@ const CatalogPage = () => {
                   min="0"
                   placeholder="макс"
                   value={filters.maxHours}
-                  onChange={e => setFilters(prev => ({ ...prev, maxHours: e.target.value }))}
+                  onChange={(e) =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      maxHours: e.target.value,
+                    }))
+                  }
                   className="w-full bg-black/20 border border-white/10 rounded-xl py-2 px-3 text-sm"
                 />
               </div>
@@ -294,7 +373,9 @@ const CatalogPage = () => {
             type="checkbox"
             id="hasMI"
             checked={filters.hasMI}
-            onChange={e => setFilters(prev => ({ ...prev, hasMI: e.target.checked }))}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, hasMI: e.target.checked }))
+            }
             className="accent-accent-pink"
           />
           <label htmlFor="hasMI" className="text-sm text-white/70">
@@ -306,8 +387,12 @@ const CatalogPage = () => {
       <p className="mb-4 text-white/70">Показано игр: {filteredGames.length}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredGames.map((game, idx) => (
-          <GameCard key={idx} game={game} onClick={() => setSelectedGame(game)} />
+        {filteredGames.map((game) => (
+          <GameCard
+            key={slugify(game.title)}
+            game={game}
+            onClick={() => setSelectedGame(game)}
+          />
         ))}
       </div>
 
@@ -321,7 +406,7 @@ const CatalogPage = () => {
         <GameModal game={selectedGame} onClose={() => setSelectedGame(null)} />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default CatalogPage
+export default CatalogPage;

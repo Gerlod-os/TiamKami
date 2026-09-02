@@ -1,78 +1,114 @@
-import { useEffect, useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
-import { fetchGames } from '../utils/loadData'
-import { slugify } from '../utils/slugify'
-import GameCard from '../components/GameCard'
-import { FaTwitch, FaYoutube, FaDiscord, FaStar, FaClock, FaCalendarAlt, FaGamepad } from 'react-icons/fa'
+import { useEffect, useState, useMemo } from "react";
+import { Link } from "react-router-dom";
+import { fetchGames, fetchCollections } from "../utils/loadData";
+import { slugify } from "../utils/slugify";
+import { parseRuDate } from "../utils/date";
+import GameCard from "../components/GameCard";
+import {
+  FaStar,
+  FaClock,
+  FaCalendarAlt,
+  FaGamepad,
+  FaList,
+} from "react-icons/fa";
 
 const SectionTitle = ({ icon, children }) => (
   <h2 className="text-2xl font-heading flex items-center gap-2 mb-4">
     {icon}
     {children}
   </h2>
-)
+);
 
 const HomePage = () => {
-  const [games, setGames] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [games, setGames] = useState([]);
+  const [collections, setCollections] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchGames()
-      .then(data => {
-        setGames(data)
-        setLoading(false)
+    Promise.all([fetchGames(), fetchCollections()])
+      .then(([gamesData, collectionsData]) => {
+        setGames(gamesData);
+        setCollections(collectionsData);
+        setLoading(false);
       })
-      .catch(err => {
-        console.error(err)
-        setLoading(false)
-      })
-  }, [])
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
 
   const topRated = useMemo(() => {
     return [...games]
-      .filter(g => g.rating)
+      .filter((g) => g.rating)
       .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
-      .slice(0, 5)
-  }, [games])
+      .slice(0, 5);
+  }, [games]);
 
   const freshReleases = useMemo(() => {
     return [...games]
-      .filter(g => g.releaseDate)
-      .sort((a, b) => new Date(b.releaseDate.split('.').reverse().join('-')) - new Date(a.releaseDate.split('.').reverse().join('-')))
-      .slice(0, 5)
-  }, [games])
+      .filter((g) => g.releaseDate)
+      .sort(
+        (a, b) =>
+          (parseRuDate(b.releaseDate) || 0) - (parseRuDate(a.releaseDate) || 0),
+      )
+      .slice(0, 5);
+  }, [games]);
 
   const lastPlayed = useMemo(() => {
     return [...games]
-      .filter(g => g.playedDate)
-      .sort((a, b) => new Date(b.playedDate.split('.').reverse().join('-')) - new Date(a.playedDate.split('.').reverse().join('-')))
-      .slice(0, 5)
-  }, [games])
+      .filter((g) => g.playedDate)
+      .sort(
+        (a, b) =>
+          (parseRuDate(b.playedDate) || 0) - (parseRuDate(a.playedDate) || 0),
+      )
+      .slice(0, 5);
+  }, [games]);
 
   const topByHours = useMemo(() => {
     return [...games]
-      .filter(g => parseFloat(g.hours) > 0)
+      .filter((g) => parseFloat(g.hours) > 0)
       .sort((a, b) => parseFloat(b.hours) - parseFloat(a.hours))
-      .slice(0, 5)
-  }, [games])
+      .slice(0, 5);
+  }, [games]);
 
-  if (loading) return <div className="text-center py-20">Загрузка данных...</div>
+  if (loading)
+    return <div className="text-center py-20">Загрузка данных...</div>;
 
   return (
     <div className="space-y-12">
-      {/* Виджет Twitch (заглушка) */}
-      <section className="bg-white/5 rounded-2xl p-6 border border-accent-purple/30 flex items-center gap-4">
-        <div className="w-12 h-12 rounded-full bg-accent-purple/30 flex items-center justify-center">
-          <FaTwitch className="text-accent-purple text-2xl" />
-        </div>
-        <div>
-          <p className="text-white/70 text-sm">Twitch</p>
-          <p className="font-heading">Канал сейчас оффлайн</p>
-        </div>
-        <span className="ml-auto text-xs text-white/40">
-          Подключите Client ID для живого статуса
-        </span>
-      </section>
+      {/* Подборки от Тиана */}
+      {collections.length > 0 && (
+        <section className="bg-white/5 rounded-2xl p-6 border border-accent-purple/30">
+          <h2 className="text-2xl font-heading mb-4 flex items-center gap-2">
+            <FaList className="text-accent-pink" />
+            Подборки от Тиана
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {collections.slice(0, 3).map((col, idx) => (
+              <div key={idx} className="bg-black/20 rounded-xl p-4">
+                <h3 className="font-heading text-lg text-accent-pink mb-2">
+                  {col.name}
+                </h3>
+                {col.description && (
+                  <p className="text-sm text-white/60 mb-2">
+                    {col.description}
+                  </p>
+                )}
+                <ul className="text-sm text-white/80 space-y-1">
+                  {col.games.slice(0, 5).map((g, i) => (
+                    <li key={i}>{g.name}</li>
+                  ))}
+                </ul>
+                {col.games.length > 5 && (
+                  <p className="text-xs text-white/40 mt-2">
+                    и ещё {col.games.length - 5}...
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Топ-5 по оценкам */}
       <section>
@@ -80,7 +116,7 @@ const HomePage = () => {
           Топ-5 по оценкам
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {topRated.map(game => (
+          {topRated.map((game) => (
             <Link to={`/catalog/${slugify(game.title)}`} key={game.title}>
               <GameCard game={game} />
             </Link>
@@ -94,7 +130,7 @@ const HomePage = () => {
           Свежие релизы
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {freshReleases.map(game => (
+          {freshReleases.map((game) => (
             <Link to={`/catalog/${slugify(game.title)}`} key={game.title}>
               <GameCard game={game} />
             </Link>
@@ -108,7 +144,7 @@ const HomePage = () => {
           Последние сыгранные
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {lastPlayed.map(game => (
+          {lastPlayed.map((game) => (
             <Link to={`/catalog/${slugify(game.title)}`} key={game.title}>
               <GameCard game={game} />
             </Link>
@@ -122,21 +158,15 @@ const HomePage = () => {
           Топ по часам
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {topByHours.map(game => (
+          {topByHours.map((game) => (
             <Link to={`/catalog/${slugify(game.title)}`} key={game.title}>
               <GameCard game={game} />
             </Link>
           ))}
         </div>
       </section>
-
-      {/* Подборки от Тиана (заглушка) */}
-      <section className="bg-white/5 rounded-2xl p-6 border border-accent-purple/30">
-        <h2 className="text-2xl font-heading mb-4">Подборки от Тиана</h2>
-        <p className="text-white/60">Здесь скоро появятся тематические подборки.</p>
-      </section>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

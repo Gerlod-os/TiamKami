@@ -1,23 +1,26 @@
-import { useEffect, useState } from 'react'
-import { fetchCollections } from '../utils/loadData'
+import { useEffect, useState } from "react";
+import { fetchCollections } from "../utils/loadData";
+import { slugify } from "../utils/slugify";
+import { Link } from "react-router-dom";
 
 const CollectionsPage = () => {
-  const [collections, setCollections] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [collections, setCollections] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchCollections()
-      .then(data => {
-        setCollections(data)
-        setLoading(false)
+      .then((data) => {
+        setCollections(data);
+        setLoading(false);
       })
-      .catch(err => {
-        console.error(err)
-        setLoading(false)
-      })
-  }, [])
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
 
-  if (loading) return <div className="text-center py-20">Загрузка подборок...</div>
+  if (loading)
+    return <div className="text-center py-20">Загрузка подборок...</div>;
 
   return (
     <div>
@@ -37,17 +40,27 @@ const CollectionsPage = () => {
                 {collection.name}
               </h2>
               {collection.description && (
-                <p className="text-sm text-white/60 mb-3">{collection.description}</p>
+                <p className="text-sm text-white/60 mb-3">
+                  {collection.description}
+                </p>
               )}
               <ul className="space-y-2">
                 {collection.games.map((game, gameIdx) => (
-                  <li key={gameIdx} className="flex items-start gap-2 text-white/80">
+                  <li
+                    key={gameIdx}
+                    className="flex items-start gap-2 text-white/80"
+                  >
                     {game.rank && (
                       <span className="text-accent-purple font-mono text-sm mt-0.5">
                         {game.rank}.
                       </span>
                     )}
-                    <span>{game.name}</span>
+                    <Link
+                      to={`/catalog/${slugify(game.name)}`}
+                      className="hover:text-accent-pink transition-colors"
+                    >
+                      {game.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -56,7 +69,7 @@ const CollectionsPage = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default CollectionsPage
+export default CollectionsPage;
