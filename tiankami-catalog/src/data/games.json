@@ -1,7 +1,7 @@
 [
   {
     "title": "[REDACTED]",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "По вселенной, Можно найти свой прошлый труп, Гонки к финишу, Хейдеслайк",
     "setting": "Sci-Fi",
@@ -19,7 +19,7 @@
   },
   {
     "title": "20 Minutes Till Dawn",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Пиксельарт, Аниме",
     "setting": "Темное фэнтези",
@@ -37,7 +37,7 @@
   },
   {
     "title": "33 Immortals",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, 33 игрока",
     "setting": "Библейское фэнтези",
@@ -55,7 +55,7 @@
   },
   {
     "title": "60 Parsecs!",
-    "image": "",
+    "image": "Выживач",
     "genre": "Выживач",
     "features": "Текстовый, Разные концовки, Сюжет",
     "setting": "Космос",
@@ -73,7 +73,7 @@
   },
   {
     "title": "60 Seconds!",
-    "image": "",
+    "image": "Выживач",
     "genre": "Выживач",
     "features": "Текстовый, Разные концовки, Сюжет",
     "setting": "Постапокалипсис",
@@ -91,7 +91,7 @@
   },
   {
     "title": "9 Kings",
-    "image": "",
+    "image": "Автобатлер, Карточный, Tower Defense",
     "genre": "Автобатлер, Карточный, Tower Defense",
     "features": "Пиксельарт, Декбилдер, Сочетание Рас",
     "setting": "Фэнтези",
@@ -109,7 +109,7 @@
   },
   {
     "title": "Агапика - Героическое агентство",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Сюжет",
     "setting": "Греческая мифология",
@@ -127,7 +127,7 @@
   },
   {
     "title": "Бессмертный Сказки Древней Руси",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Отечественный",
     "setting": "Славянская мифология",
@@ -145,7 +145,7 @@
   },
   {
     "title": "A Long Way Down",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Dungeon Crawler",
     "setting": "Фэнтези",
@@ -163,7 +163,7 @@
   },
   {
     "title": "Abandon Ship",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "RogueLIKE, Сюжет, Корабли",
     "setting": "Лавкрафт, Пираты",
@@ -181,7 +181,7 @@
   },
   {
     "title": "Absolum",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Битемап",
     "setting": "Фэнтези",
@@ -199,7 +199,7 @@
   },
   {
     "title": "Abyssus",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "От 1 лица, Кооп, Поиск группы",
     "setting": "Ацтеки, Подводный мир",
@@ -217,7 +217,7 @@
   },
   {
     "title": "Achilles Survivor",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Графика, Точки интереса, Строительство",
     "setting": "Греческая мифология",
@@ -235,7 +235,7 @@
   },
   {
     "title": "Across the Obelisk",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Кооп, Декбилдер",
     "setting": "Фэнтези",
@@ -253,7 +253,7 @@
   },
   {
     "title": "Aethermancer",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Коллекция",
     "setting": "Фэнтези",
@@ -271,7 +271,7 @@
   },
   {
     "title": "Afterblast",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Пушки, От 1 лица",
     "setting": "Фэнтези",
@@ -289,7 +289,7 @@
   },
   {
     "title": "Against the Moon",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "3 линии",
     "setting": "Космос",
@@ -307,7 +307,7 @@
   },
   {
     "title": "Against the Storm",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Градострой, Туман войны",
     "setting": "Фэнтези",
@@ -325,7 +325,7 @@
   },
   {
     "title": "Alder's Blood",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "RPG",
     "setting": "Темное фэнтези, Лавкрафт, Вестерн",
@@ -343,7 +343,7 @@
   },
   {
     "title": "Alina of the Arena",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Клетки, Декблидер",
     "setting": "Фэнтези",
@@ -361,7 +361,7 @@
   },
   {
     "title": "Ammo and Oxygen",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Нехватка кислорода, Отечественный",
     "setting": "Sci-Fi",
@@ -379,7 +379,7 @@
   },
   {
     "title": "Apocalypse Express",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Поезд, Кооп",
     "setting": "Постапокалипсис",
@@ -397,7 +397,7 @@
   },
   {
     "title": "Arcane Trigger",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Слоты",
     "setting": "Фэнтези",
@@ -408,14 +408,14 @@
     "rating": "5",
     "releaseDate": "13.11.2025",
     "playedDate": "15.01.2026",
-    "notes": " Геймплей строится на наполнении инвентаря пулями, которые потом рандомно шаффлятся между слотами и синнергируют между собой.",
+    "notes": "Геймплей строится на наполнении инвентаря пулями, которые потом рандомно шаффлятся между слотами и синнергируют между собой.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Archons",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Кооп, Два персонажа (twin stiсk)",
     "setting": "Фэнтези",
@@ -433,7 +433,7 @@
   },
   {
     "title": "Arms of God",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Пушки, Бротатолайк, Точки интереса",
     "setting": "Технофэнтези",
@@ -451,7 +451,7 @@
   },
   {
     "title": "Artifact Seeker: Resurrection",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Нейросети",
     "setting": "Фэнтези",
@@ -462,14 +462,14 @@
     "rating": "1",
     "releaseDate": "26.07.2024",
     "playedDate": "16.02.2025",
-    "notes": "Игра состоит из ассетов корейских браузрок/мобилок и с похожим геймплеем, где весь экран забит миллионами урона. ",
+    "notes": "Игра состоит из ассетов корейских браузрок/мобилок и с похожим геймплеем, где весь экран забит миллионами урона.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "As Far As the Eye",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Туман войны",
     "setting": "Фэнтези",
@@ -487,25 +487,25 @@
   },
   {
     "title": "As We Descend",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Город с ивентами, Отряды войск, Дополнительная мана",
     "setting": "Sci-Fi, Фэнтези",
     "complexity": "7",
     "hours": "8",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "110",
     "rating": "6",
     "releaseDate": "28.05.2025",
     "playedDate": "28.05.2025",
-    "notes": "Карты в этой игре есть у войск, а также есть карты для выполнения ивентов в городе со своими статами для проверки в ивентах. Есть ограниченная мана для крутых абилок. ",
+    "notes": "Карты в этой игре есть у войск, а также есть карты для выполнения ивентов в городе со своими статами для проверки в ивентах. Есть ограниченная мана для крутых абилок.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Ascend to ZERO",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Остановка времени, Экстракшн, Рейтинги",
     "setting": "Sci-Fi",
@@ -523,7 +523,7 @@
   },
   {
     "title": "Asgard's Fall - Viking Survivors",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Инвентарь, Пиксельарт, Экстракшн",
     "setting": "Скандинавская мифология",
@@ -541,7 +541,7 @@
   },
   {
     "title": "Astral Ascent",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Кооп, Пиксельарт",
     "setting": "Фэнтези",
@@ -559,7 +559,7 @@
   },
   {
     "title": "Astrea: Six-Sided Oracles",
-    "image": "",
+    "image": "Дайсы",
     "genre": "Дайсы",
     "features": "Декбилдер, Ход за врага",
     "setting": "Фэнтези",
@@ -577,7 +577,7 @@
   },
   {
     "title": "Atomic Picnic",
-    "image": "",
+    "image": "Вампирлайк, Шутер",
     "genre": "Вампирлайк, Шутер",
     "features": "От 3 Лица, Кооп",
     "setting": "Sci-Fi",
@@ -595,7 +595,7 @@
   },
   {
     "title": "Backpack Battles",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Непрямое PVP, Рюкзаки",
     "setting": "Фэнтези",
@@ -613,7 +613,7 @@
   },
   {
     "title": "Backpack Hero",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Рюкзаки, Фурри",
     "setting": "Фэнтези",
@@ -631,7 +631,7 @@
   },
   {
     "title": "Backpack Monsters Neoduel",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Рюкзаки, Непрямое PVP",
     "setting": "Sci-Fi",
@@ -649,7 +649,7 @@
   },
   {
     "title": "Bad North: Jotunn Edition",
-    "image": "",
+    "image": "Tower Defense, Стратегия",
     "genre": "Tower Defense, Стратегия",
     "features": "RogueLIKE",
     "setting": "Реальный мир",
@@ -667,7 +667,7 @@
   },
   {
     "title": "Balatro",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Покер, Декбилдер, Квота",
     "setting": "Азартные игры",
@@ -685,7 +685,7 @@
   },
   {
     "title": "BALL x PIT",
-    "image": "",
+    "image": "Аркада, Вампирлайк",
     "genre": "Аркада, Вампирлайк",
     "features": "Арканоид, Строительство, Пиксельарт",
     "setting": "Фэнтези",
@@ -703,7 +703,7 @@
   },
   {
     "title": "Ballionaire",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Пачинко, Квота",
     "setting": "Азартные игры",
@@ -721,7 +721,7 @@
   },
   {
     "title": "Banners of Ruin",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Фурри",
     "setting": "Фэнтези",
@@ -739,7 +739,7 @@
   },
   {
     "title": "Battle Grid",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Трэйты",
     "setting": "Sci-Fi",
@@ -757,7 +757,7 @@
   },
   {
     "title": "Battle Shapers",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "От 1 Лица",
     "setting": "Sci-Fi",
@@ -775,7 +775,7 @@
   },
   {
     "title": "Battle Waves: Card Tactics",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "3 линии",
     "setting": "Фэнтези",
@@ -786,14 +786,14 @@
     "rating": "2",
     "releaseDate": "02.12.2024",
     "playedDate": "07.03.2025",
-    "notes": "Автобаттлер по трём линиям, который задумывался как мультиплеер, но не выстрелил. ",
+    "notes": "Автобаттлер по трём линиям, который задумывался как мультиплеер, но не выстрелил.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Battlestar Galactica: Scattered Hopes",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Ресурс менеджмент, Сюжет, По вселенной",
     "setting": "Космос",
@@ -811,7 +811,7 @@
   },
   {
     "title": "Bella Wants Blood",
-    "image": "",
+    "image": "Tower Defense",
     "genre": "Tower Defense",
     "features": "Мясо, Лабиринты",
     "setting": "Ужасы",
@@ -829,7 +829,7 @@
   },
   {
     "title": "Below",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Инвентарь",
     "setting": "Фэнтези",
@@ -847,7 +847,7 @@
   },
   {
     "title": "Bendy: Lone Wolf",
-    "image": "",
+    "image": "Выживач",
     "genre": "Выживач",
     "features": "Стелс, По вселенной",
     "setting": "Мультипликация",
@@ -865,7 +865,7 @@
   },
   {
     "title": "Beneath Oresa",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Графика, От 3 лица, Декблидер",
     "setting": "Фэнтези",
@@ -883,7 +883,7 @@
   },
   {
     "title": "Bingle Bingle",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Декбилдер, Рулетка",
     "setting": "Азартные игры",
@@ -901,7 +901,7 @@
   },
   {
     "title": "Black Book (Черная Книга)",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Сюжет, Отечественный",
     "setting": "Славянская мифология",
@@ -919,7 +919,7 @@
   },
   {
     "title": "Black Jacket",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Блэк Джек",
     "setting": "Азартные игры",
@@ -937,7 +937,7 @@
   },
   {
     "title": "Blade Assault",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Пиксельарт",
     "setting": "Sci-Fi",
@@ -955,7 +955,7 @@
   },
   {
     "title": "Blazblue Entropy Effect",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "По Вселенной, Аниме, Персонажи, Сюжет, Комбо приемы",
     "setting": "Sci-Fi",
@@ -973,13 +973,13 @@
   },
   {
     "title": "Blightstone",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Стресс, Толкания",
     "setting": "Темное фэнтези",
     "complexity": "9",
     "hours": "7",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "100",
     "rating": "8",
     "releaseDate": "20.01.2026",
@@ -991,7 +991,7 @@
   },
   {
     "title": "Block Tower TD",
-    "image": "",
+    "image": "Tower Defense",
     "genre": "Tower Defense",
     "features": "Туман войны",
     "setting": "Фэнтези",
@@ -1002,14 +1002,14 @@
     "rating": "5",
     "releaseDate": "09.06.2023",
     "playedDate": "09.01.2025",
-    "notes": "ТД, где башни и ресурсодобыча ставятся на блоки, которые тоже надо вначале нарандомить. ",
+    "notes": "ТД, где башни и ресурсодобыча ставятся на блоки, которые тоже надо вначале нарандомить.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Blue Prince",
-    "image": "",
+    "image": "Аркада, Стратегия",
     "genre": "Аркада, Стратегия",
     "features": "Головоломка",
     "setting": "Реальный мир",
@@ -1020,14 +1020,14 @@
     "rating": "10",
     "releaseDate": "10.04.2025",
     "playedDate": "18.05.2025",
-    "notes": "Сюжетная головоломка, где нужно на рандоме (рогаликовость) выбирать комнаты и собрать из них пазл, который приведёт к финалу. ",
+    "notes": "Сюжетная головоломка, где нужно на рандоме (рогаликовость) выбирать комнаты и собрать из них пазл, который приведёт к финалу.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Book of Demons",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Dungeon Crawler",
     "setting": "Фэнтези, Страницы книги",
@@ -1045,7 +1045,7 @@
   },
   {
     "title": "Bounty of One",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Прогрессия сложности, Кооп",
     "setting": "Вестерн",
@@ -1063,7 +1063,7 @@
   },
   {
     "title": "BPM: Bullets Per Minute",
-    "image": "",
+    "image": "Шутер, Ритм",
     "genre": "Шутер, Ритм",
     "features": "От 1 Лица, Ритмичный, Музыка",
     "setting": "Sci-Fi",
@@ -1081,7 +1081,7 @@
   },
   {
     "title": "Breachway",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Разноцветная мана, Декбилдер",
     "setting": "Космос",
@@ -1099,7 +1099,7 @@
   },
   {
     "title": "Brew",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "От 3 лица, Расходники",
     "setting": "Фэнтези",
@@ -1110,14 +1110,14 @@
     "rating": "3",
     "releaseDate": "06.11.2025",
     "playedDate": "10.11.2025",
-    "notes": "Рогалик, где надо создавать зелья расходники, чтобы наносить урон. Вариативности почти нет, урона нет и враги губки. ",
+    "notes": "Рогалик, где надо создавать зелья расходники, чтобы наносить урон. Вариативности почти нет, урона нет и враги губки.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Brotato",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Кооп, Пушки, Статы",
     "setting": "Космос",
@@ -1135,7 +1135,7 @@
   },
   {
     "title": "Calculate It",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Декбилдер",
     "setting": "Реальный мир",
@@ -1153,7 +1153,7 @@
   },
   {
     "title": "Call of Sentinels",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Отечественный, Рейтинги",
     "setting": "Фэнтези",
@@ -1171,7 +1171,7 @@
   },
   {
     "title": "Card-En-Ciel",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Музыка, Аниме, Декбилдер, Сюжет, Клетки",
     "setting": "Sci-Fi",
@@ -1189,7 +1189,7 @@
   },
   {
     "title": "Cardaclysm",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Сюжет, Декбилдер",
     "setting": "Фэнтези",
@@ -1207,7 +1207,7 @@
   },
   {
     "title": "Cartapli: Fold Quest",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Бесплатный, Оригами",
     "setting": "Фэнтези",
@@ -1218,14 +1218,14 @@
     "rating": "5",
     "releaseDate": "05.02.2026",
     "playedDate": "05.02.2026",
-    "notes": "Рогалик на час. Всего один персонаж на две локации, зато интересная механика со складыванием бумаги. Игра бесплатная. ",
+    "notes": "Рогалик на час. Всего один персонаж на две локации, зато интересная механика со складыванием бумаги. Игра бесплатная.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "CHANGE: A Homeless Survival Experience",
-    "image": "",
+    "image": "Симулятор, Выживач",
     "genre": "Симулятор, Выживач",
     "features": "Менеджмент ресурсов",
     "setting": "Реальная жизнь",
@@ -1243,7 +1243,7 @@
   },
   {
     "title": "Chaos Zero Nightmare",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Аниме, Гача",
     "setting": "Sci-Fi, Фэнтези",
@@ -1261,7 +1261,7 @@
   },
   {
     "title": "Cheat Death",
-    "image": "",
+    "image": "Дайсы",
     "genre": "Дайсы",
     "features": "Покер, Сюжет, Расходники, Отечественный",
     "setting": "Азартные игры",
@@ -1279,7 +1279,7 @@
   },
   {
     "title": "Children of Morta",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Сюжет",
     "setting": "Фэнтези",
@@ -1297,7 +1297,7 @@
   },
   {
     "title": "Chrono Ark",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Аниме, Визуальная новелла, Декбилдер, Сюжет",
     "setting": "Sci-Fi, Фэнтези",
@@ -1315,25 +1315,25 @@
   },
   {
     "title": "Cinderia",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Хейдеслайк, Проклятия",
     "setting": "Тёмное фэнтези",
     "complexity": "7",
     "hours": "7",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "200",
     "rating": "8",
     "releaseDate": "30.03.2026",
     "playedDate": "31.03.2026",
-    "notes": "Изометричный экшн с хорошим билдостроением через выбор в забеге: абилок, реликов, пассивок и их прокачки. ",
+    "notes": "Изометричный экшн с хорошим билдостроением через выбор в забеге: абилок, реликов, пассивок и их прокачки.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Claymores of the Lost Kingdom",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "RPG, Карты в колоде зависят от статов, Декбилдер",
     "setting": "Фэнтези",
@@ -1351,7 +1351,7 @@
   },
   {
     "title": "Clover Pit",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Мясо, Слоты, Квота",
     "setting": "Азартные игры",
@@ -1369,7 +1369,7 @@
   },
   {
     "title": "Cobalt Core",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Движение корабля влево-вправо, Сюжет, Декбилдер",
     "setting": "Космос",
@@ -1387,7 +1387,7 @@
   },
   {
     "title": "Codename: Ocean Keeper",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Купол",
     "setting": "Подводный мир",
@@ -1405,7 +1405,7 @@
   },
   {
     "title": "Coin Crypt",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Деньги это карты",
     "setting": "Фэнтези",
@@ -1423,7 +1423,7 @@
   },
   {
     "title": "ColdRidge",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Туман войны, Квота",
     "setting": "Вестерн",
@@ -1441,7 +1441,7 @@
   },
   {
     "title": "Combo Card Clashers",
-    "image": "",
+    "image": "Карточный, Автобатлер",
     "genre": "Карточный, Автобатлер",
     "features": "Декбилдер, Комбо",
     "setting": "Фэнтези",
@@ -1459,7 +1459,7 @@
   },
   {
     "title": "Combolands",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Квота",
     "setting": "Фэнтези",
@@ -1477,7 +1477,7 @@
   },
   {
     "title": "Commander Quest",
-    "image": "",
+    "image": "Карточный, Автобатлер",
     "genre": "Карточный, Автобатлер",
     "features": "Декбилдер, Отряды войск",
     "setting": "Фэнтези",
@@ -1495,7 +1495,7 @@
   },
   {
     "title": "Crab Champions",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Кооп, Пушки",
     "setting": "Морской мир",
@@ -1513,7 +1513,7 @@
   },
   {
     "title": "Crimsonland",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Мясо, Пушки",
     "setting": "Космос",
@@ -1531,7 +1531,7 @@
   },
   {
     "title": "Crowntrick",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Клетки",
     "setting": "Фэнтези",
@@ -1549,7 +1549,7 @@
   },
   {
     "title": "Crypt of the NecroDancer",
-    "image": "",
+    "image": "Ритм",
     "genre": "Ритм",
     "features": "Кооп, Пиксельарт, RogueLIKE",
     "setting": "Фэнтези",
@@ -1567,7 +1567,7 @@
   },
   {
     "title": "Cryptical Path",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Создание пути, Проклятия",
     "setting": "Фэнтези",
@@ -1585,7 +1585,7 @@
   },
   {
     "title": "Cuisineer",
-    "image": "",
+    "image": "Экшен, Симулятор",
     "genre": "Экшен, Симулятор",
     "features": "Магазин, Аниме, Фурри",
     "setting": "Фэнтези",
@@ -1603,7 +1603,7 @@
   },
   {
     "title": "Cult of the Lamb",
-    "image": "",
+    "image": "Экшен, Симулятор",
     "genre": "Экшен, Симулятор",
     "features": "Кооп, Ферма",
     "setting": "Культ",
@@ -1621,7 +1621,7 @@
   },
   {
     "title": "Cultist Simulator",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Ресурс менеджмент, Сюжет",
     "setting": "Культ",
@@ -1639,7 +1639,7 @@
   },
   {
     "title": "Cultivation Story: Reincarnation",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Культиваторы, Пиксельарт",
     "setting": "Азиатская мифология",
@@ -1657,7 +1657,7 @@
   },
   {
     "title": "Curse of the Dead Gods",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Проклятия",
     "setting": "Темное фэнтези, Ацтеки",
@@ -1675,13 +1675,13 @@
   },
   {
     "title": "Cursemark",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Сюжет, Пиксельарт",
     "setting": "Тёмное фэнтези",
     "complexity": "7",
     "hours": "3",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "20",
     "rating": "6",
     "releaseDate": "08.06.2026",
@@ -1693,7 +1693,7 @@
   },
   {
     "title": "Dandy Ace",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Аниме",
     "setting": "Цирк",
@@ -1711,7 +1711,7 @@
   },
   {
     "title": "Dark Quest 3",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "RPG, Декбилдер, От 1 лица",
     "setting": "Фэнтези",
@@ -1729,7 +1729,7 @@
   },
   {
     "title": "Darkest Dungeon",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Dungeon Crawler, Стресс",
     "setting": "Темное фэнтези",
@@ -1747,7 +1747,7 @@
   },
   {
     "title": "Darkest Dungeon 2",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Система отношений, Долгие забеги, Стресс",
     "setting": "Темное фэнтези",
@@ -1765,7 +1765,7 @@
   },
   {
     "title": "Darksburg",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Способности",
     "setting": "Фэнтези",
@@ -1783,7 +1783,7 @@
   },
   {
     "title": "Dead Cells",
-    "image": "",
+    "image": "Платформер, Метройд",
     "genre": "Платформер, Метройд",
     "features": "Метроидвания, Спидраны",
     "setting": "Фэнтези",
@@ -1801,7 +1801,7 @@
   },
   {
     "title": "Dead Weight",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Толкания, Пиксельарт, Сюжет, Отечественный",
     "setting": "Стимпанк",
@@ -1812,14 +1812,14 @@
     "rating": "5",
     "releaseDate": "16.07.2026",
     "playedDate": "17.07.2026",
-    "notes": "Пошаговая тактика, где управляешь 1м героем + двумя наёмниками. Быстрые и однообразные битвы на островах, чтобы дойти до босса. ",
+    "notes": "Пошаговая тактика, где управляешь 1м героем + двумя наёмниками. Быстрые и однообразные битвы на островах, чтобы дойти до босса.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Deadlink",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Пушки, От 1 лица",
     "setting": "Sci-Fi",
@@ -1837,7 +1837,7 @@
   },
   {
     "title": "Deadlock Station",
-    "image": "",
+    "image": "Стратегия, Автобатлер",
     "genre": "Стратегия, Автобатлер",
     "features": "Сюжет",
     "setting": "Sci-Fi",
@@ -1855,7 +1855,7 @@
   },
   {
     "title": "Deadzone: Rogue",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "От 1 лица, Пушки, Кооп, Поиск группы, Трэйты",
     "setting": "Sci-Fi",
@@ -1873,7 +1873,7 @@
   },
   {
     "title": "Death by Scrolling",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Сайд скроллер",
     "setting": "Фэнтези",
@@ -1891,13 +1891,13 @@
   },
   {
     "title": "Death Must Die",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Пиксельарт, Экстракшн",
     "setting": "Темное фэнтези",
     "complexity": "6",
     "hours": "24",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "70",
     "rating": "9",
     "releaseDate": "15.11.2023",
@@ -1909,7 +1909,7 @@
   },
   {
     "title": "Death Road to Canada",
-    "image": "",
+    "image": "Экшен, Выживач",
     "genre": "Экшен, Выживач",
     "features": "RPG, RogueLIKE, Пиксельарт",
     "setting": "Зомбиапокалипсис",
@@ -1927,7 +1927,7 @@
   },
   {
     "title": "Death Skid Marks",
-    "image": "",
+    "image": "Экшен, Гонки",
     "genre": "Экшен, Гонки",
     "features": "RogueLIKE, Машины, Пушки, Бесплатная, Мясо",
     "setting": "Реальный мир",
@@ -1945,7 +1945,7 @@
   },
   {
     "title": "Deck of Ashes",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Отечественный",
     "setting": "Фэнтези",
@@ -1963,7 +1963,7 @@
   },
   {
     "title": "Deck of Haunts",
-    "image": "",
+    "image": "Карточный, Стратегия",
     "genre": "Карточный, Стратегия",
     "features": "Декбилдер, Антагонист, Дом с привидениями",
     "setting": "Нечисть",
@@ -1981,7 +1981,7 @@
   },
   {
     "title": "Decktamer",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Приручение врагов, Комбинации существ",
     "setting": "Тёмное фэнтези",
@@ -1999,13 +1999,13 @@
   },
   {
     "title": "Deep Rock Galactic: Rogue Core",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Копание, Задания, Кооп",
     "setting": "Sci-Fi",
     "complexity": "8",
     "hours": "6",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "40",
     "rating": "7",
     "releaseDate": "20.05.2026",
@@ -2017,7 +2017,7 @@
   },
   {
     "title": "Deep Rock Galactic: Survivor",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Копание, Задания",
     "setting": "Космос",
@@ -2035,7 +2035,7 @@
   },
   {
     "title": "Deep Sky Derelicts",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Dungeon Crawler, Комикс",
     "setting": "Космос",
@@ -2053,7 +2053,7 @@
   },
   {
     "title": "Deepest Chamber: Resurrection",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Dungeon Crawler, Декбилдер",
     "setting": "Фэнтези",
@@ -2071,7 +2071,7 @@
   },
   {
     "title": "Defenders of the Omniverse",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Отечественный",
     "setting": "Космос",
@@ -2089,7 +2089,7 @@
   },
   {
     "title": "Demonic Mahjong",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Маджонг",
     "setting": "Азартные игры",
@@ -2107,7 +2107,7 @@
   },
   {
     "title": "Desktop Dungeons",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Dungeon Crawler",
     "setting": "Фэнтези",
@@ -2125,7 +2125,7 @@
   },
   {
     "title": "Despot's Game: Dystopian Battle Simulator",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Непрямое PVP, Сезоны, Рейтинги, Отечественный, Трэйты",
     "setting": "Космос",
@@ -2143,7 +2143,7 @@
   },
   {
     "title": "Despotism 3K",
-    "image": "",
+    "image": "Стратегия, Симулятор",
     "genre": "Стратегия, Симулятор",
     "features": "По вселенной, Отечественный",
     "setting": "Sci-Fi",
@@ -2161,7 +2161,7 @@
   },
   {
     "title": "Devil Slayer - Raksasi (Дьяволоборец Ракшаси)",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Anime, Стамина",
     "setting": "Темное Фэнтези, Азиатская мифология",
@@ -2179,7 +2179,7 @@
   },
   {
     "title": "Dice & Fold",
-    "image": "",
+    "image": "Дайсы",
     "genre": "Дайсы",
     "features": "Кубики, Персонажи, Напарники",
     "setting": "Фэнтези",
@@ -2197,7 +2197,7 @@
   },
   {
     "title": "Dice a Million",
-    "image": "",
+    "image": "Дайсы",
     "genre": "Дайсы",
     "features": "Декбилдер, Квота",
     "setting": "Азартные игры",
@@ -2215,7 +2215,7 @@
   },
   {
     "title": "Dicefolk",
-    "image": "",
+    "image": "Дайсы",
     "genre": "Дайсы",
     "features": "Ход за врага",
     "setting": "Фэнтези",
@@ -2233,7 +2233,7 @@
   },
   {
     "title": "DICEOMANCER",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Кубы, Декбилдер, Изменение цифр на экране, От 1 лица, Разноцветная мана",
     "setting": "Фэнтези",
@@ -2251,7 +2251,7 @@
   },
   {
     "title": "Dicey Dungeons",
-    "image": "",
+    "image": "Дайсы",
     "genre": "Дайсы",
     "features": "Кубики, Сюжет, Декбилдер",
     "setting": "Мултяшная",
@@ -2269,7 +2269,7 @@
   },
   {
     "title": "Die in the Dungeon",
-    "image": "",
+    "image": "Дайсы",
     "genre": "Дайсы",
     "features": "Доска для кубов, Декбилдер",
     "setting": "Фэнтези",
@@ -2287,7 +2287,7 @@
   },
   {
     "title": "Dimensionals",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Способности, Персонажи, Комикс",
     "setting": "Супергерои",
@@ -2305,7 +2305,7 @@
   },
   {
     "title": "Dome Keeper",
-    "image": "",
+    "image": "Tower Defense",
     "genre": "Tower Defense",
     "features": "Копание, Купол, Испытания, Рейтинги",
     "setting": "Космос",
@@ -2323,7 +2323,7 @@
   },
   {
     "title": "dotAGE",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Ресурс менеджмент",
     "setting": "Реальный мир",
@@ -2341,7 +2341,7 @@
   },
   {
     "title": "Down with the Ship",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Непрямое PVP, Рюкзаки",
     "setting": "Sci-Fi",
@@ -2359,7 +2359,7 @@
   },
   {
     "title": "Dragon is Dead",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Пиксельарт, Сюжет, Трэйты, Экстракшн",
     "setting": "Тёмное фэнтези",
@@ -2377,7 +2377,7 @@
   },
   {
     "title": "DreamEcho",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Экстракшн, Аниме",
     "setting": "Фэнтези",
@@ -2395,7 +2395,7 @@
   },
   {
     "title": "Dreamscaper",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Отношения",
     "setting": "Кошмары",
@@ -2413,7 +2413,7 @@
   },
   {
     "title": "Drill Core",
-    "image": "",
+    "image": "Tower Defense, Стратегия",
     "genre": "Tower Defense, Стратегия",
     "features": "Копание, Шахты, Пиксельарт, Отечественный",
     "setting": "Космос",
@@ -2431,7 +2431,7 @@
   },
   {
     "title": "Drop Duchy",
-    "image": "",
+    "image": "Карточный, Аркада",
     "genre": "Карточный, Аркада",
     "features": "Декблидер, Тетрис, Ход за врага",
     "setting": "Фэнтези",
@@ -2449,7 +2449,7 @@
   },
   {
     "title": "Dungeon 100",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Непрямое PVP, Кооп",
     "setting": "Фэнтези",
@@ -2467,7 +2467,7 @@
   },
   {
     "title": "Dungeon Clawler",
-    "image": "",
+    "image": "Карточный, Аркада",
     "genre": "Карточный, Аркада",
     "features": "Автомат клешня",
     "setting": "Азартные игры, Фэнтези",
@@ -2485,7 +2485,7 @@
   },
   {
     "title": "Dungeons and Degenerate Gamblers",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Очко (Блэкджэк)",
     "setting": "Аззартные игры",
@@ -2496,14 +2496,14 @@
     "rating": "6",
     "releaseDate": "08.08.2024",
     "playedDate": "08.08.2024",
-    "notes": "Игра про 21 декбилдер. Как балатро, только про блэкджэк. Сыграл только в демке, а потом не возвращался. ",
+    "notes": "Игра про 21 декбилдер. Как балатро, только про блэкджэк. Сыграл только в демке, а потом не возвращался.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Dungeontop",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Клетки",
     "setting": "Фэнтези",
@@ -2521,7 +2521,7 @@
   },
   {
     "title": "Dungreed",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Пиксельарт, Дэш по направлению курсора, Сеты, Еда",
     "setting": "Фэнтези",
@@ -2539,7 +2539,7 @@
   },
   {
     "title": "Dunjungle",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Пиксельарт",
     "setting": "Фэнтези",
@@ -2557,7 +2557,7 @@
   },
   {
     "title": "Dwarves: Glory, Death and Loot",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Трэйты, Боевые построения",
     "setting": "Фэнтези",
@@ -2575,13 +2575,13 @@
   },
   {
     "title": "Echoes of Mystralia",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Хейдеслайк, Создание магии",
     "setting": "Фэнтези",
     "complexity": "8",
     "hours": "5",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "100",
     "rating": "8",
     "releaseDate": "11.08.2026",
@@ -2593,7 +2593,7 @@
   },
   {
     "title": "Ember Knights",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Пиксельарт, Кооп",
     "setting": "Фэнтези",
@@ -2611,13 +2611,13 @@
   },
   {
     "title": "Emberward",
-    "image": "",
+    "image": "Tower Defense",
     "genre": "Tower Defense",
     "features": "Тетрис",
     "setting": "Фэнтези",
     "complexity": "4",
     "hours": "2",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "10",
     "rating": "9",
     "releaseDate": "25.06.2024",
@@ -2629,7 +2629,7 @@
   },
   {
     "title": "Enter the Chronosphere",
-    "image": "",
+    "image": "Пошаговый, Bullet Hell",
     "genre": "Пошаговый, Bullet Hell",
     "features": "Остановка времени, Пушки",
     "setting": "Sci-Fi",
@@ -2647,7 +2647,7 @@
   },
   {
     "title": "Enter the Gungeon",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "Пиксельарт, Пушки, RogueLIKE, Кооп",
     "setting": "Sci-Fi",
@@ -2665,7 +2665,7 @@
   },
   {
     "title": "Epic Auto Towers",
-    "image": "",
+    "image": "Tower Defense",
     "genre": "Tower Defense",
     "features": "Отечественный, RogueLIKE",
     "setting": "Фэнтези",
@@ -2683,7 +2683,7 @@
   },
   {
     "title": "Evercore Heroes: Ascension",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп",
     "setting": "Фэнтези",
@@ -2701,7 +2701,7 @@
   },
   {
     "title": "Everything is Crab",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Мутации",
     "setting": "Реальный мир",
@@ -2719,7 +2719,7 @@
   },
   {
     "title": "Eyes in the Dark",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Туман войны, Черно-белый",
     "setting": "Кошмары",
@@ -2737,7 +2737,7 @@
   },
   {
     "title": "Fantasy Madness Bloodbath",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Мясо, Сюжет, Экстракшн",
     "setting": "Фэнтези",
@@ -2755,7 +2755,7 @@
   },
   {
     "title": "Few Nights More",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Защита поместья, Антагонист",
     "setting": "Нечисть",
@@ -2773,7 +2773,7 @@
   },
   {
     "title": "Fight in Tight Spaces",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Черно-белый, Толкания",
     "setting": "Реальный мир",
@@ -2791,7 +2791,7 @@
   },
   {
     "title": "Fogpiercer",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Толкания, Поезд, Декбилдер",
     "setting": "Постапокалипсис",
@@ -2809,7 +2809,7 @@
   },
   {
     "title": "For the King",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Кооп, RPG",
     "setting": "Фэнтези",
@@ -2827,7 +2827,7 @@
   },
   {
     "title": "For the King 2",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Кооп, RPG",
     "setting": "Фэнтези",
@@ -2845,7 +2845,7 @@
   },
   {
     "title": "Forestrike",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Предвидение будущего, Кунг-фу, RogueLIKE",
     "setting": "Китай",
@@ -2856,14 +2856,14 @@
     "rating": "8",
     "releaseDate": "17.11.2025",
     "playedDate": "14.01.2026",
-    "notes": "2Д экшн рогалик, где перед битвой можно спланировать свои действия при помощи предвидения. Разные школы (колоды),пассивки, реликвии. ",
+    "notes": "2Д экшн рогалик, где перед битвой можно спланировать свои действия при помощи предвидения. Разные школы (колоды),пассивки, реликвии.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Frostbound",
-    "image": "",
+    "image": "Карточный, Автобатлер",
     "genre": "Карточный, Автобатлер",
     "features": "Декбилдер, Нейросети, Аниме",
     "setting": "Фэнтези",
@@ -2881,7 +2881,7 @@
   },
   {
     "title": "Frostrain 2",
-    "image": "",
+    "image": "Выживач, Карточный",
     "genre": "Выживач, Карточный",
     "features": "Поезд, Трэйты, Сюжет, Квота",
     "setting": "Постапокалипсис",
@@ -2899,7 +2899,7 @@
   },
   {
     "title": "FTL: Faster Than Light",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Пиксельарт, RogueLIKE",
     "setting": "Космос",
@@ -2917,7 +2917,7 @@
   },
   {
     "title": "Gambonanza",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Шахматы, Расходники",
     "setting": "Азартные игры",
@@ -2935,7 +2935,7 @@
   },
   {
     "title": "Gatekeeper",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Прогрессия сложности",
     "setting": "Космос",
@@ -2953,7 +2953,7 @@
   },
   {
     "title": "Goblin Stone",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Dungeon Crawler",
     "setting": "Фэнтези",
@@ -2971,7 +2971,7 @@
   },
   {
     "title": "Godbreakers",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Поглощение сил",
     "setting": "Sci-fi",
@@ -2989,7 +2989,7 @@
   },
   {
     "title": "Godslayer Arena",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Трэйты, Проклятия",
     "setting": "Фэнтези",
@@ -3000,14 +3000,14 @@
     "rating": "6",
     "releaseDate": "16.06.2025",
     "playedDate": "19.06.2025",
-    "notes": "Автобаттлер где надо собирать спеллы с сетовыми бонусами. Можно как в хс улучшать спеллы копиями по 3 шт. А также на каждую локу выбирается проклятие и у перса есть шмотки. ",
+    "notes": "Автобаттлер где надо собирать спеллы с сетовыми бонусами. Можно как в хс улучшать спеллы копиями по 3 шт. А также на каждую локу выбирается проклятие и у перса есть шмотки.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Gordian Quest",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Сюжет, Экстракшн",
     "setting": "Фэнтези",
@@ -3025,7 +3025,7 @@
   },
   {
     "title": "Graveyard Gunslingers",
-    "image": "",
+    "image": "Вампирлайк, Выживач",
     "genre": "Вампирлайк, Выживач",
     "features": "Сбор ресурсов",
     "setting": "Вестерн, Зомби",
@@ -3043,7 +3043,7 @@
   },
   {
     "title": "Griftlands",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер,Сюжет, Переговоры, Опыт карт",
     "setting": "Sci-Fi",
@@ -3061,7 +3061,7 @@
   },
   {
     "title": "Guild of Dungeoneering",
-    "image": "",
+    "image": "Карточный, Стратегия",
     "genre": "Карточный, Стратегия",
     "features": "Черно-белый, Создание пути, RogueLIKE",
     "setting": "Фэнтези",
@@ -3079,13 +3079,13 @@
   },
   {
     "title": "Guildrun",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Рейтинги, Персонажи",
     "setting": "Фэнтези",
     "complexity": "4",
     "hours": "3",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "100",
     "rating": "8",
     "releaseDate": "16.07.2026",
@@ -3097,7 +3097,7 @@
   },
   {
     "title": "Gunfire Reborn",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Кооп, Пушки",
     "setting": "Фэнтези",
@@ -3115,7 +3115,7 @@
   },
   {
     "title": "Gunforged",
-    "image": "",
+    "image": "Bullet Hell, Вампирлайк",
     "genre": "Bullet Hell, Вампирлайк",
     "features": "Пушки",
     "setting": "Sci-Fi",
@@ -3133,7 +3133,7 @@
   },
   {
     "title": "Gvalt / Гвалт",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Отечественный, Квота, Эрудит",
     "setting": "Настольные игры",
@@ -3144,14 +3144,14 @@
     "rating": "7",
     "releaseDate": "27.11.2025",
     "playedDate": "11.12.2025",
-    "notes": "Балатролайк, где надо собирать слова как в игре scrabble/эрудит. На русском именно руские слова. ",
+    "notes": "Балатролайк, где надо собирать слова как в игре scrabble/эрудит. На русском именно руские слова.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Hades",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Сюжет",
     "setting": "Древнегреческая мифология",
@@ -3169,7 +3169,7 @@
   },
   {
     "title": "Hades 2",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Сюжет",
     "setting": "Древнегреческая мифология",
@@ -3187,7 +3187,7 @@
   },
   {
     "title": "Halls of Torment",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Пиксельарт, Экстракшн",
     "setting": "Фэнтези",
@@ -3205,7 +3205,7 @@
   },
   {
     "title": "Hand of Fate",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Декблидер, События",
     "setting": "Фэнтези",
@@ -3223,7 +3223,7 @@
   },
   {
     "title": "Hand of Fate 2",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Декблидер, Сюжет",
     "setting": "Фэнтези",
@@ -3241,7 +3241,7 @@
   },
   {
     "title": "Hand of Fate: Hordes",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Задания, По вселенной",
     "setting": "Фэнтези",
@@ -3259,7 +3259,7 @@
   },
   {
     "title": "Handmancers",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Камень Ножницы Бумага",
     "setting": "Фэнтези",
@@ -3277,7 +3277,7 @@
   },
   {
     "title": "Haste",
-    "image": "",
+    "image": "Платформер, Аркада",
     "genre": "Платформер, Аркада",
     "features": "Паркур, Раннер",
     "setting": "Фэнтези",
@@ -3295,7 +3295,7 @@
   },
   {
     "title": "Have a Nice Death",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Сюжет, Антагонист",
     "setting": "Загробный мир",
@@ -3313,13 +3313,13 @@
   },
   {
     "title": "He is Coming",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Инвентарь, RogueLIKE, Туман войны, Подготовка к боссу, Непрямое PVP",
     "setting": "Фэнтези",
     "complexity": "9",
     "hours": "29",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "180",
     "rating": "9",
     "releaseDate": "17.07.2025",
@@ -3331,7 +3331,7 @@
   },
   {
     "title": "Hell Clock",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "ARPG, Дьяблоид, Инвентарь",
     "setting": "Тёмное фэнтези",
@@ -3349,7 +3349,7 @@
   },
   {
     "title": "Hellcard",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Кооп, Декбилдер",
     "setting": "Фэнтези, Страницы книги",
@@ -3367,7 +3367,7 @@
   },
   {
     "title": "Heretic's Fork",
-    "image": "",
+    "image": "Tower Defense, Карточный",
     "genre": "Tower Defense, Карточный",
     "features": "Декбилдер, Отечественный, Антагонист",
     "setting": "Религиозное фэнтэзи",
@@ -3385,13 +3385,13 @@
   },
   {
     "title": "Heretical",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Soulslike",
     "setting": "Темное фэнтези",
     "complexity": "7",
     "hours": "1",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "15",
     "rating": "7",
     "releaseDate": "30.10.2024",
@@ -3403,7 +3403,7 @@
   },
   {
     "title": "Heroes of Eternal Quest",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Круговая, Строительство",
     "setting": "Фэнтези",
@@ -3421,7 +3421,7 @@
   },
   {
     "title": "Heroes of Hammerwatch",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Пиксельарт",
     "setting": "Фэнтези",
@@ -3439,7 +3439,7 @@
   },
   {
     "title": "Heroes of Hammerwatch II",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Пиксельарт, Экстракшн",
     "setting": "Фэнтези",
@@ -3457,7 +3457,7 @@
   },
   {
     "title": "Holocure",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Бесплатная, Аниме, Витуберы",
     "setting": "Sci-Fi",
@@ -3475,7 +3475,7 @@
   },
   {
     "title": "Home Behind 2",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Dungeon Crawler, Сюжет",
     "setting": "Реальный мир",
@@ -3493,7 +3493,7 @@
   },
   {
     "title": "How Many Dudes?",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Челы",
     "setting": "Sci-Fi",
@@ -3511,13 +3511,13 @@
   },
   {
     "title": "Hull Rupture",
-    "image": "",
+    "image": "Tower Defense",
     "genre": "Tower Defense",
     "features": "Пиксельарт",
     "setting": "Sci-Fi",
     "complexity": "5",
     "hours": "3",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "10",
     "rating": "8",
     "releaseDate": "26.04.2026",
@@ -3529,7 +3529,7 @@
   },
   {
     "title": "Hyper Light Breaker",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Открытый мир, По вселенной, От 3 лица",
     "setting": "Sci-Fi",
@@ -3547,7 +3547,7 @@
   },
   {
     "title": "I Am Legion: Stand Survivors",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Трэйты, Комбинации существ",
     "setting": "Фэнтези",
@@ -3565,7 +3565,7 @@
   },
   {
     "title": "Indie's Lies",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Мобильная",
     "setting": "Фэнтези",
@@ -3583,7 +3583,7 @@
   },
   {
     "title": "Inkbound",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Кооп, Персонажи, Способности, Рейтинги, Трэйты",
     "setting": "Фэнтези, Страницы книги",
@@ -3601,7 +3601,7 @@
   },
   {
     "title": "Inkulinati",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Мясо, Страницы книги",
     "setting": "Страдающее средневековье",
@@ -3619,7 +3619,7 @@
   },
   {
     "title": "Inscryption",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Сюжет,Страницы книги, Хоррор",
     "setting": "Темное фэнтези",
@@ -3637,7 +3637,7 @@
   },
   {
     "title": "Insurmountable",
-    "image": "",
+    "image": "Выживач",
     "genre": "Выживач",
     "features": "Горы, Сюжет",
     "setting": "Реальный мир",
@@ -3655,7 +3655,7 @@
   },
   {
     "title": "Into the Breach",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Шахматы, Толкания",
     "setting": "Космос, Меха",
@@ -3673,7 +3673,7 @@
   },
   {
     "title": "Invisible Inc.",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Клетки, RogueLIKE",
     "setting": "Реальный мир, Шпионы",
@@ -3691,7 +3691,7 @@
   },
   {
     "title": "Iratus: Lord of the Dead",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Dungeon Crawler, Отечественный, Антагонист",
     "setting": "Фэнтези",
@@ -3709,7 +3709,7 @@
   },
   {
     "title": "Iris and the Giant",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер",
     "setting": "Фэнтези, Кошмары",
@@ -3727,7 +3727,7 @@
   },
   {
     "title": "Jotunnslayer: Hordes of Hel",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Точки интереса, Графика",
     "setting": "Скандинавская мифология",
@@ -3745,7 +3745,7 @@
   },
   {
     "title": "Just King",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Пиксельарт, Приспешники, Трэйты",
     "setting": "Фэнтези",
@@ -3763,7 +3763,7 @@
   },
   {
     "title": "Karate Survivor",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Кунг-фу",
     "setting": "Реальный мир",
@@ -3781,7 +3781,7 @@
   },
   {
     "title": "KIBORG",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Парирования, От 3 лица, Битемап, Отечественный, Комбо приемы",
     "setting": "Sci-fi",
@@ -3799,7 +3799,7 @@
   },
   {
     "title": "Kill Knight (Рыцарь Бездны)",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "RogueLIKE, Рейтинги",
     "setting": "Темное фэнтези",
@@ -3817,7 +3817,7 @@
   },
   {
     "title": "Kingdom Loop",
-    "image": "",
+    "image": "Стратегия, Пошаговый",
     "genre": "Стратегия, Пошаговый",
     "features": "Круговая, Отечественный, Строительство",
     "setting": "Фэнтези",
@@ -3835,7 +3835,7 @@
   },
   {
     "title": "Kingdom's Deck",
-    "image": "",
+    "image": "Стратегия, Tower Defense",
     "genre": "Стратегия, Tower Defense",
     "features": "Отряды войск",
     "setting": "Фэнтези",
@@ -3846,14 +3846,14 @@
     "rating": "4",
     "releaseDate": "28.04.2025",
     "playedDate": "03.06.2025",
-    "notes": "Однообразные юниты и здания для защиты базы с разных сторон. Всего 3 сложности и 7 карт. ",
+    "notes": "Однообразные юниты и здания для защиты базы с разных сторон. Всего 3 сложности и 7 карт.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Knock on the Coffin Lid",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "День сурка, Сюжет, Отечественный",
     "setting": "Фэнтези",
@@ -3871,7 +3871,7 @@
   },
   {
     "title": "Konfronto",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Рюкзаки",
     "setting": "Космос",
@@ -3889,7 +3889,7 @@
   },
   {
     "title": "Last Mage",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Рюкзаки, Экстракшн",
     "setting": "Фэнтези",
@@ -3907,7 +3907,7 @@
   },
   {
     "title": "Legend of Keepers",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Dungeon Crawler, Антагонист",
     "setting": "Фэнтези",
@@ -3925,7 +3925,7 @@
   },
   {
     "title": "Lobotomy Corporation",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Аниме, По вселенной, Мясо, SCP",
     "setting": "Sci-Fi",
@@ -3943,7 +3943,7 @@
   },
   {
     "title": "Lone Ruin",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Пиксельарт, Рейтинги",
     "setting": "Фэнтези",
@@ -3961,7 +3961,7 @@
   },
   {
     "title": "Lone Soul",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Гринд, Комбинации ударов, Очки стиля",
     "setting": "Фэнтези",
@@ -3972,14 +3972,14 @@
     "rating": "2",
     "releaseDate": "20.10.2025",
     "playedDate": "22.12.2025",
-    "notes": "Игра дропает первое прохождение на первом боссе, чтобы показать свою \"вариативность\" в выборе оружия с разными абилками и количество гринда. Инстадроп. ",
+    "notes": "Игра дропает первое прохождение на первом боссе, чтобы показать свою \"вариативность\" в выборе оружия с разными абилками и количество гринда. Инстадроп.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "LONESTAR",
-    "image": "",
+    "image": "Карточный, Пошаговый",
     "genre": "Карточный, Пошаговый",
     "features": "Энергия, Декбилдер",
     "setting": "Космос",
@@ -3997,7 +3997,7 @@
   },
   {
     "title": "Loop Hero",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Пиксельарт, Отечественный, Сюжет, Круговая, Строительство",
     "setting": "Фэнтези",
@@ -4015,7 +4015,7 @@
   },
   {
     "title": "Loot River",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Пиксельарт, Соулслайк",
     "setting": "Фэнтези",
@@ -4033,7 +4033,7 @@
   },
   {
     "title": "Lootbound",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Рюкзаки, Пиксельарт, Отечественный",
     "setting": "Фэнтези",
@@ -4051,7 +4051,7 @@
   },
   {
     "title": "Lost Castle",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Битемап",
     "setting": "Фэнтези",
@@ -4069,7 +4069,7 @@
   },
   {
     "title": "Lost Castle 2",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Битемап",
     "setting": "Фэнтези",
@@ -4087,7 +4087,7 @@
   },
   {
     "title": "Lost in Random: The Eternal Die",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Инвентарь, По вселенной, Три в ряд",
     "setting": "Фэнтези",
@@ -4105,7 +4105,7 @@
   },
   {
     "title": "Lost Potato",
-    "image": "",
+    "image": "Экшен, Аркада",
     "genre": "Экшен, Аркада",
     "features": "RogueLIKE",
     "setting": "Космос",
@@ -4123,7 +4123,7 @@
   },
   {
     "title": "Luck & Loot",
-    "image": "",
+    "image": "Дайсы",
     "genre": "Дайсы",
     "features": "Пиксельарт, Разворот кубика",
     "setting": "Фэнтези",
@@ -4141,7 +4141,7 @@
   },
   {
     "title": "Lucky Hero",
-    "image": "",
+    "image": "Аркада, Карточный",
     "genre": "Аркада, Карточный",
     "features": "Слоты",
     "setting": "Азартные игры, Фэнтези",
@@ -4159,7 +4159,7 @@
   },
   {
     "title": "Lucky Hunter",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Декбилдер, Соединение юнитов",
     "setting": "Фэнтези",
@@ -4177,7 +4177,7 @@
   },
   {
     "title": "Lucky Tower Ultimate",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Юмор, Симулятор случайных смертей, RogueLIKE",
     "setting": "Фэнтези",
@@ -4195,7 +4195,7 @@
   },
   {
     "title": "Lumencraft",
-    "image": "",
+    "image": "Tower Defense, Стратегия",
     "genre": "Tower Defense, Стратегия",
     "features": "Шахты, Копание",
     "setting": "Sci-Fi",
@@ -4206,14 +4206,14 @@
     "rating": "5",
     "releaseDate": "28.02.2023",
     "playedDate": "16.07.2025",
-    "notes": "В игре несколько режимов. Я попробовал кампанию и было медленно и скучно (в демке). Может в релизе ускорили контент, или можно сразу врываться в сессионные забеги. ",
+    "notes": "В игре несколько режимов. Я попробовал кампанию и было медленно и скучно (в демке). Может в релизе ускорили контент, или можно сразу врываться в сессионные забеги.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Madshot",
-    "image": "",
+    "image": "Платформер, Экшен",
     "genre": "Платформер, Экшен",
     "features": "Акробатика",
     "setting": "Лавкрафт",
@@ -4231,7 +4231,7 @@
   },
   {
     "title": "Magic Ocean",
-    "image": "",
+    "image": "Автобатлер, Пошаговый",
     "genre": "Автобатлер, Пошаговый",
     "features": "PVP, Отечественный",
     "setting": "Реальный мир, Пираты",
@@ -4249,7 +4249,7 @@
   },
   {
     "title": "Magicraft",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "Попаданец, Создание магии, Мясо",
     "setting": "Фэнтези",
@@ -4267,7 +4267,7 @@
   },
   {
     "title": "Mask Around",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Валюта усиляет персонажа, RogueLIKE",
     "setting": "Sci-Fi",
@@ -4285,7 +4285,7 @@
   },
   {
     "title": "Master of Piece",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Декбилдер",
     "setting": "Тёмное фэнтези",
@@ -4303,7 +4303,7 @@
   },
   {
     "title": "Megabonk",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "От 3 лица, Прыжки, Рейтинги",
     "setting": "Фэнтези",
@@ -4314,14 +4314,14 @@
     "rating": "6",
     "releaseDate": "18.09.2025",
     "playedDate": "03.10.2025",
-    "notes": "Вполне базовый вампирлайк, перенесённый в 3D с прыжками и перекатами. ",
+    "notes": "Вполне базовый вампирлайк, перенесённый в 3D с прыжками и перекатами.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Megaloot",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Инвентарь",
     "setting": "Фэнтези",
@@ -4339,7 +4339,7 @@
   },
   {
     "title": "Menace from the Deep",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Опыт карт, Рассудок, Колода пути",
     "setting": "Лавкрафт",
@@ -4357,7 +4357,7 @@
   },
   {
     "title": "Metavoidal",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Пиксельарт",
     "setting": "Фэнтези",
@@ -4375,7 +4375,7 @@
   },
   {
     "title": "Mewgenics",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Мясо, Коты, Мутации, Скрещивание, Толкания, Экстракшн",
     "setting": "Библейское фэнтэзи",
@@ -4393,7 +4393,7 @@
   },
   {
     "title": "MINOS",
-    "image": "",
+    "image": "Аркада, Стратегия",
     "genre": "Аркада, Стратегия",
     "features": "Декбилдер, Ловушки",
     "setting": "Древнегреческая мифология",
@@ -4411,7 +4411,7 @@
   },
   {
     "title": "Monster Slayers",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер",
     "setting": "Фэнтези",
@@ -4429,7 +4429,7 @@
   },
   {
     "title": "Monster Train",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Антагонист, Декбилдер, Сочетание Рас, 3 этажа, Рейтинги, Поезд",
     "setting": "Фэнтези",
@@ -4447,7 +4447,7 @@
   },
   {
     "title": "Monster Train 2",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Антагонист, Декбилдер, Сочетание Рас, 3 этажа, Рейтинги, Поезд",
     "setting": "Фэнтези",
@@ -4465,7 +4465,7 @@
   },
   {
     "title": "Monsters are Coming: Rock & Road",
-    "image": "",
+    "image": "Вампирлайк, Tower Defense",
     "genre": "Вампирлайк, Tower Defense",
     "features": "Строительство, Движущийся замок",
     "setting": "Фэнтези",
@@ -4483,7 +4483,7 @@
   },
   {
     "title": "Moon Hunters",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Пиксельарт, Сюжет",
     "setting": "Фэнтези",
@@ -4501,7 +4501,7 @@
   },
   {
     "title": "Moonlighter",
-    "image": "",
+    "image": "Экшен, Симулятор",
     "genre": "Экшен, Симулятор",
     "features": "Рюкзак, Пиксельарт, Магазин",
     "setting": "Фэнтези",
@@ -4519,13 +4519,13 @@
   },
   {
     "title": "Moonlighter 2: The Endless Vault",
-    "image": "",
+    "image": "Экшен, Симулятор",
     "genre": "Экшен, Симулятор",
     "features": "Рюкзак, Магазин, Хейдеслайк",
     "setting": "Фэнтези",
     "complexity": "5",
     "hours": "13",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "100",
     "rating": "8",
     "releaseDate": "19.11.2025",
@@ -4537,7 +4537,7 @@
   },
   {
     "title": "Moonsigil Atlas",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Рюкзаки",
     "setting": "Фэнтези",
@@ -4555,7 +4555,7 @@
   },
   {
     "title": "MOTHERGUNSHIP",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Пушки, пушкиии, ПУШКИ",
     "setting": "Sci-Fi",
@@ -4573,7 +4573,7 @@
   },
   {
     "title": "Neon Abyss",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Пиксельарт, Пушки",
     "setting": "Sci-Fi",
@@ -4591,7 +4591,7 @@
   },
   {
     "title": "Neon Abyss 2",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Пушки, Пиксельарт, Кооп",
     "setting": "Sci-Fi",
@@ -4602,14 +4602,14 @@
     "rating": "7",
     "releaseDate": "17.07.2025",
     "playedDate": "18.07.2025",
-    "notes": "Продолжение с квалити оф лайф фичами и более интересными механиками веры кроме Ареса и Афины. Из минусов ОЧЕНЬ ПЛОХИЕ возвышения и непонятный переход к супербоссам. ",
+    "notes": "Продолжение с квалити оф лайф фичами и более интересными механиками веры кроме Ареса и Афины. Из минусов ОЧЕНЬ ПЛОХИЕ возвышения и непонятный переход к супербоссам.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Neoverse",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Аниме, Графика",
     "setting": "Sci-Fi",
@@ -4627,7 +4627,7 @@
   },
   {
     "title": "NET.CRAWL",
-    "image": "",
+    "image": "Аркада, Карточный",
     "genre": "Аркада, Карточный",
     "features": "Квота, Декбилдер",
     "setting": "Sci-Fi",
@@ -4645,7 +4645,7 @@
   },
   {
     "title": "Netherworld Covenant",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Хейдеслайк, Парирования",
     "setting": "Тёмное фэнтези",
@@ -4663,7 +4663,7 @@
   },
   {
     "title": "Neurodeck: Psychological Deckbuilder",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Психология",
     "setting": "Реальный мир, Кошмары",
@@ -4681,7 +4681,7 @@
   },
   {
     "title": "Never Grave: The Witch and the Curse",
-    "image": "",
+    "image": "Платформер, Метройд",
     "genre": "Платформер, Метройд",
     "features": "Метроидвания, Ферма, Поглощение сил",
     "setting": "Фэнтези",
@@ -4699,7 +4699,7 @@
   },
   {
     "title": "Nigate Tale",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Аниме, Фурри, Попаданец",
     "setting": "Фэнтези",
@@ -4717,7 +4717,7 @@
   },
   {
     "title": "Nightfall Comes",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Экстракшн",
     "setting": "Темное фэнтези",
@@ -4735,7 +4735,7 @@
   },
   {
     "title": "Nightmare: The Lunatic",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Три оружия, Пиксельарт",
     "setting": "Фэнтези, Мир снов",
@@ -4753,7 +4753,7 @@
   },
   {
     "title": "Nimrods: Guncraft Survivor",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Бротатолайк, Пушки",
     "setting": "Космос",
@@ -4771,7 +4771,7 @@
   },
   {
     "title": "Nitro Kid",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Толкания, Кунг-фу",
     "setting": "Sci-Fi",
@@ -4789,7 +4789,7 @@
   },
   {
     "title": "Noita",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Симулятор случайных смертей, Создание магии, Пиксельарт",
     "setting": "Фэнтези",
@@ -4807,7 +4807,7 @@
   },
   {
     "title": "None Shall Intrude",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Антагонист",
     "setting": "Фэнтези",
@@ -4825,7 +4825,7 @@
   },
   {
     "title": "Noobs Are Coming",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Бротатолайк, Пушки, Кооп",
     "setting": "Фэнтези",
@@ -4836,14 +4836,14 @@
     "rating": "6",
     "releaseDate": "15.07.2025",
     "playedDate": "04.07.2025",
-    "notes": "Более простая версия бротаты с интересными своими механиками, пушками и идеями на разные усиления. ",
+    "notes": "Более простая версия бротаты с интересными своими механиками, пушками и идеями на разные усиления.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Nordhold",
-    "image": "",
+    "image": "Tower Defense",
     "genre": "Tower Defense",
     "features": "Туман войны, Рейтинги",
     "setting": "Фэнтези",
@@ -4861,7 +4861,7 @@
   },
   {
     "title": "Nordic Ashes",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Дерево выбора скиллов",
     "setting": "Скандинавская мифология",
@@ -4879,7 +4879,7 @@
   },
   {
     "title": "Nova Drift",
-    "image": "",
+    "image": "Вампирлайк, Bullet Hell",
     "genre": "Вампирлайк, Bullet Hell",
     "features": "Комбинации улучшений",
     "setting": "Космос",
@@ -4897,9 +4897,9 @@
   },
   {
     "title": "Nubby's Number Factory",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
-    "features": "Пинбол ",
+    "features": "Пинбол",
     "setting": "Sci-Fi",
     "complexity": "8",
     "hours": "1",
@@ -4915,7 +4915,7 @@
   },
   {
     "title": "Nuclear Throne",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "RogueLIKE, Пиксельарт, Пушки, Кооп",
     "setting": "Постапокалипсис",
@@ -4926,14 +4926,14 @@
     "rating": "8",
     "releaseDate": "05.12.2015",
     "playedDate": "25.11.2024",
-    "notes": "Быстрый буллет хелл с секретиками, разными персонажами и пушками. ",
+    "notes": "Быстрый буллет хелл с секретиками, разными персонажами и пушками.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Numeral Strike",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Отечественный, Пиксельарт, Комбо",
     "setting": "Фэнтези",
@@ -4944,14 +4944,14 @@
     "rating": "7",
     "releaseDate": "23.04.2026",
     "playedDate": "24.04.2026",
-    "notes": "Игра, где надо собирать ближние друг к другу одинаковые цифры или комбо равное десяти, чтобы набирать атаку и защиту для битвы с врагов. ",
+    "notes": "Игра, где надо собирать ближние друг к другу одинаковые цифры или комбо равное десяти, чтобы набирать атаку и защиту для битвы с врагов.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Nunholy",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Хейдеслайк",
     "setting": "Тёмное фэнтези",
@@ -4969,7 +4969,7 @@
   },
   {
     "title": "Oaken Tower",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Непрямое PVP, Рюкзаки",
     "setting": "Фэнтези",
@@ -4987,7 +4987,7 @@
   },
   {
     "title": "Oblivion Override",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Трэйты, робобубы",
     "setting": "Sci-Fi",
@@ -5005,7 +5005,7 @@
   },
   {
     "title": "Odinfall",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "Пушки, Пиксельарт",
     "setting": "Постапокалипсис",
@@ -5023,7 +5023,7 @@
   },
   {
     "title": "One Boss One Fight",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Фазы босса",
     "setting": "Фэнтези",
@@ -5041,7 +5041,7 @@
   },
   {
     "title": "One Step From Eden",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "Пиксельарт, Кооп, Декбилдер, Аниме, Разные концовки",
     "setting": "Sci-Fi",
@@ -5059,7 +5059,7 @@
   },
   {
     "title": "Orbital Bullet",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Круговая",
     "setting": "Sci-Fi",
@@ -5077,7 +5077,7 @@
   },
   {
     "title": "ORX",
-    "image": "",
+    "image": "Стратегия, Tower Defense, Карточный",
     "genre": "Стратегия, Tower Defense, Карточный",
     "features": "Каркассон, Декбилдер, Отечественный",
     "setting": "Фэнтези",
@@ -5095,7 +5095,7 @@
   },
   {
     "title": "Othercide",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Черно-белая",
     "setting": "Фэнтези, Sci-Fi",
@@ -5113,7 +5113,7 @@
   },
   {
     "title": "Outcast Tales",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Сюжет, Отечественный",
     "setting": "Постапокалипсис",
@@ -5131,7 +5131,7 @@
   },
   {
     "title": "Overlooting",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Инвентарь, Трэйты, Пиксельарт",
     "setting": "Фэнтези",
@@ -5149,13 +5149,13 @@
   },
   {
     "title": "Ovis Loop",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Пиксельарт",
     "setting": "Sci-Fi",
     "complexity": "7",
     "hours": "4",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "100",
     "rating": "7",
     "releaseDate": "14.08.2025",
@@ -5167,7 +5167,7 @@
   },
   {
     "title": "Pairs & Perils",
-    "image": "",
+    "image": "Карточный, Аркада",
     "genre": "Карточный, Аркада",
     "features": "Декбилдер, Найди пару",
     "setting": "Фэнтези",
@@ -5185,7 +5185,7 @@
   },
   {
     "title": "Pass the Fear",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "Пушки, Кооп",
     "setting": "Фэнтези",
@@ -5203,7 +5203,7 @@
   },
   {
     "title": "Pathogenic",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "Пушки, Мутации, Антагонист",
     "setting": "Микромир",
@@ -5214,14 +5214,14 @@
     "rating": "8",
     "releaseDate": "16.07.2026",
     "playedDate": "17.07.2026",
-    "notes": " Игра про микроб, мутирующий и убивающий организм учёного. Интереснрое билдостроение по соединениям внутренних и внешних клеток.",
+    "notes": "Игра про микроб, мутирующий и убивающий организм учёного. Интереснрое билдостроение по соединениям внутренних и внешних клеток.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Peglin",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Декбилдер, Пинбол",
     "setting": "Фэнтези, Азартные игры",
@@ -5239,7 +5239,7 @@
   },
   {
     "title": "PERISH",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Кооп, Сюжет",
     "setting": "Фэнтези",
@@ -5257,7 +5257,7 @@
   },
   {
     "title": "Plinbo: Plinko Roguelike",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Пачинка, Квота",
     "setting": "Азартные игры",
@@ -5275,7 +5275,7 @@
   },
   {
     "title": "Poker Quest",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Покер, Декбилдер",
     "setting": "Фэнтези, Азартные игры",
@@ -5293,7 +5293,7 @@
   },
   {
     "title": "Rabbit & Steel",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "Кооп",
     "setting": "Фэнтези",
@@ -5311,7 +5311,7 @@
   },
   {
     "title": "RACCOIN: Coin Pusher Roguelike",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Квота",
     "setting": "Азартные игры",
@@ -5329,7 +5329,7 @@
   },
   {
     "title": "Rack and Slay",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Бильярд",
     "setting": "Азартные игры",
@@ -5347,7 +5347,7 @@
   },
   {
     "title": "RAD",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Мутации",
     "setting": "Постапокалипсис",
@@ -5365,7 +5365,7 @@
   },
   {
     "title": "Ragnar",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Экстракшн, Хейдеслайк, Пушки",
     "setting": "Скандинавская мифология",
@@ -5383,7 +5383,7 @@
   },
   {
     "title": "Ratropolis",
-    "image": "",
+    "image": "Tower Defense",
     "genre": "Tower Defense",
     "features": "Декбилдер",
     "setting": "Фэнтези",
@@ -5401,7 +5401,7 @@
   },
   {
     "title": "Ravenbound",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Соулслайк, От 3 лица, Открытый мир",
     "setting": "Фэнтези",
@@ -5419,7 +5419,7 @@
   },
   {
     "title": "Ravenswatch",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Способности, Поиск группы",
     "setting": "Тёмное фэнтези, Сказки",
@@ -5437,7 +5437,7 @@
   },
   {
     "title": "Realm of Ink",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Питомцы, Хейдеслайк",
     "setting": "Азиатская мифология",
@@ -5455,7 +5455,7 @@
   },
   {
     "title": "Reignbreaker",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Хейдеслайк",
     "setting": "Киберпанк",
@@ -5473,7 +5473,7 @@
   },
   {
     "title": "Relic Arena",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "PVP, Юмор",
     "setting": "Реальный мир",
@@ -5491,7 +5491,7 @@
   },
   {
     "title": "Replicat",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Найди пару, Декбилдер, Квота, Мемы, Коты",
     "setting": "Реальный мир",
@@ -5509,7 +5509,7 @@
   },
   {
     "title": "Returnal",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "AAA, Метроидвания, Пушки, Кооп",
     "setting": "Sci-Fi",
@@ -5527,7 +5527,7 @@
   },
   {
     "title": "Reus 2",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Туман войны, Терраформинг",
     "setting": "Симулятор бога",
@@ -5538,14 +5538,14 @@
     "rating": "8",
     "releaseDate": "28.05.2024",
     "playedDate": "02.02.2025",
-    "notes": "Стратегия, где нужно осваивать землю, выполняя задания поселений по заработку ресурсов. ",
+    "notes": "Стратегия, где нужно осваивать землю, выполняя задания поселений по заработку ресурсов.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Right and Down",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Декбилдер",
     "setting": "Фэнтези",
@@ -5563,7 +5563,7 @@
   },
   {
     "title": "Ring of Pain",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Мясо, Круговая, Декбилдер",
     "setting": "Темное фэнтези",
@@ -5581,7 +5581,7 @@
   },
   {
     "title": "Risk of Rain",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Пиксельарт, RogueLIKE, Кооп, Прогрессия сложности",
     "setting": "Космос",
@@ -5592,14 +5592,14 @@
     "rating": "4",
     "releaseDate": "08.11.2013",
     "playedDate": "20.11.2023",
-    "notes": "Игра очень устаревшая в плане геймплея, однако недавно вышел ремастер. ",
+    "notes": "Игра очень устаревшая в плане геймплея, однако недавно вышел ремастер.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Risk of Rain 2",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Кооп, RogueLIKE От 3 Лица, Прогрессия Сложности",
     "setting": "Космос",
@@ -5617,7 +5617,7 @@
   },
   {
     "title": "Roach Post",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Квота, Рюкзаки, Трэйты",
     "setting": "Реальный мир",
@@ -5628,14 +5628,14 @@
     "rating": "6",
     "releaseDate": "17.02.2026",
     "playedDate": "03.03.2026",
-    "notes": "В игре надо сочетать цвета почтовых марок на ограниченном поле, чтобы набирать очки как в Балатро. ",
+    "notes": "В игре надо сочетать цвета почтовых марок на ограниченном поле, чтобы набирать очки как в Балатро.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Roboquest",
-    "image": "",
+    "image": "Шутер, Метройд",
     "genre": "Шутер, Метройд",
     "features": "Кооп, Метроидвания, Пушки, Поиск группы",
     "setting": "Sci-Fi",
@@ -5653,7 +5653,7 @@
   },
   {
     "title": "Rogue Command",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "RTS",
     "setting": "Sci-Fi",
@@ -5671,7 +5671,7 @@
   },
   {
     "title": "Rogue Legacy",
-    "image": "",
+    "image": "Платформер, Метройд",
     "genre": "Платформер, Метройд",
     "features": "Метроидвания, Негативные Перки",
     "setting": "Фэнтези",
@@ -5689,7 +5689,7 @@
   },
   {
     "title": "Rogue Legacy 2",
-    "image": "",
+    "image": "Платформер, Метройд",
     "genre": "Платформер, Метройд",
     "features": "Метроидвания, Бесконечные Возвышения",
     "setting": "Фэнтези",
@@ -5707,7 +5707,7 @@
   },
   {
     "title": "Rogue Loops",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Проклятия, Круговая",
     "setting": "Тёмное фэнтези",
@@ -5725,7 +5725,7 @@
   },
   {
     "title": "Rogue Lords",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Сюжет, Антагонист, Способности",
     "setting": "Фэнтези, Нечисть",
@@ -5743,7 +5743,7 @@
   },
   {
     "title": "Rogue Spirit",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "От 3 лица, Вселение во врагов",
     "setting": "Фэнтези",
@@ -5761,7 +5761,7 @@
   },
   {
     "title": "Rogue Waters",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Выбор пути, Сюжет, Толкания",
     "setting": "Пираты",
@@ -5779,7 +5779,7 @@
   },
   {
     "title": "Rogue: Genesia",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Выбор пути, Модификаторы",
     "setting": "Фэнтези",
@@ -5797,7 +5797,7 @@
   },
   {
     "title": "Roguebook",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Туман войны, Сочетание Рас, Страницы книги",
     "setting": "Фэнтези",
@@ -5815,7 +5815,7 @@
   },
   {
     "title": "Roots of Yggdrasil",
-    "image": "",
+    "image": "Карточный, Стратегия",
     "genre": "Карточный, Стратегия",
     "features": "Градострой, Туман войны, Мета через постройки",
     "setting": "Скандинавская мифология",
@@ -5833,7 +5833,7 @@
   },
   {
     "title": "Rotwood",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Битемап",
     "setting": "Sci-Fi Фэнтези",
@@ -5851,7 +5851,7 @@
   },
   {
     "title": "Roundguard",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Пинбол",
     "setting": "Фэнтези",
@@ -5869,7 +5869,7 @@
   },
   {
     "title": "Rune Coliseum",
-    "image": "",
+    "image": "Карточный, Пошаговый",
     "genre": "Карточный, Пошаговый",
     "features": "Гладиаторы, Декбилдер",
     "setting": "Фэнтези",
@@ -5887,7 +5887,7 @@
   },
   {
     "title": "Rune Dice",
-    "image": "",
+    "image": "Дайсы",
     "genre": "Дайсы",
     "features": "Пиксельарт",
     "setting": "Фэнтези",
@@ -5905,7 +5905,7 @@
   },
   {
     "title": "Rungore",
-    "image": "",
+    "image": "Карточный, Экшен",
     "genre": "Карточный, Экшен",
     "features": "В реальном времени, Отечественный",
     "setting": "Фэнтези",
@@ -5923,7 +5923,7 @@
   },
   {
     "title": "Sandwalkers",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Гексы, Менеджмент ресурсов, Долгие забеги, Пиксельарт, Сюжет",
     "setting": "Фэнтези",
@@ -5941,7 +5941,7 @@
   },
   {
     "title": "SAROS",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "ААА, Метроидвания, Пушки, Сюжет",
     "setting": "Sci-Fi",
@@ -5959,7 +5959,7 @@
   },
   {
     "title": "Scarlet Tower",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Трэйты",
     "setting": "Тёмное фэнтези",
@@ -5977,7 +5977,7 @@
   },
   {
     "title": "SENTRY",
-    "image": "",
+    "image": "Шутер, Tower Defense",
     "genre": "Шутер, Tower Defense",
     "features": "Кооп",
     "setting": "Sci-Fi",
@@ -5995,7 +5995,7 @@
   },
   {
     "title": "Sephiria",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Инвентарь, Кооп, Трэйты, Пиксельарт, Сюжет",
     "setting": "Фэнтези",
@@ -6006,14 +6006,14 @@
     "rating": "8",
     "releaseDate": "31.07.2026",
     "playedDate": "02.08.2026",
-    "notes": "Игра от разрабов Dungreed. Сет бонусы и ограниченный инвентарь разнообразных реликвий под усилениями. Много билдостроя, сюжетно открывает новых боссов с забегами. ",
+    "notes": "Игра от разрабов Dungreed. Сет бонусы и ограниченный инвентарь разнообразных реликвий под усилениями. Много билдостроя, сюжетно открывает новых боссов с забегами.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Shadow of the Depth",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Комбо атаки с задержкой",
     "setting": "Фэнтези",
@@ -6024,14 +6024,14 @@
     "rating": "2",
     "releaseDate": "23.04.2024",
     "playedDate": "17.12.2024",
-    "notes": "Однообразные локации и монстры, очень лёгкая игра после пары пассивок. Играть просто скучно. ",
+    "notes": "Однообразные локации и монстры, очень лёгкая игра после пары пассивок. Играть просто скучно.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Shadowveil: Legend of Five Rings",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Гексы, Сюжет, По вселенной",
     "setting": "Тёмное фэнтези",
@@ -6049,7 +6049,7 @@
   },
   {
     "title": "Shape Hero Factory",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Конвееры",
     "setting": "Фэнтези",
@@ -6067,7 +6067,7 @@
   },
   {
     "title": "Shape of Dreams",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Создание магии",
     "setting": "Фэнтези",
@@ -6085,7 +6085,7 @@
   },
   {
     "title": "Shattered Pixel Dungeon",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "RogueLIKE, Пиксельарт",
     "setting": "Фэнтези",
@@ -6103,7 +6103,7 @@
   },
   {
     "title": "Shogun Curse",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, активные реликвии",
     "setting": "Азиатская мифология",
@@ -6121,7 +6121,7 @@
   },
   {
     "title": "Shogun Showdown",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Декбилдер",
     "setting": "Азиатская мифология",
@@ -6132,14 +6132,14 @@
     "rating": "6",
     "releaseDate": "05.09.2024",
     "playedDate": "29.06.2023",
-    "notes": "Рогалик, в котором можно бить врагов только слева и справа. ",
+    "notes": "Рогалик, в котором можно бить врагов только слева и справа.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Shotgun King: The Final Checkmate",
-    "image": "",
+    "image": "Пошаговый, Аркада, Стратегия",
     "genre": "Пошаговый, Аркада, Стратегия",
     "features": "Шахматы",
     "setting": "Спорт",
@@ -6157,7 +6157,7 @@
   },
   {
     "title": "Shoulders of Giants",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Кооп, От 3 Лица",
     "setting": "Sci-Fi",
@@ -6175,7 +6175,7 @@
   },
   {
     "title": "Sin Slayers: Reign of The 8th",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Пиксельарт, Грешные действия влияют на сложность",
     "setting": "Фэнтези",
@@ -6193,7 +6193,7 @@
   },
   {
     "title": "Skill Legends Royale",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "PVP, трэйты, Бесплатная",
     "setting": "Фэнтези",
@@ -6211,7 +6211,7 @@
   },
   {
     "title": "Skul: The Hero Slayer",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Пиксельарт, Уникальные Возвышения, Антагонист, Трэйты, Сюжет",
     "setting": "Фэнтези",
@@ -6229,7 +6229,7 @@
   },
   {
     "title": "Slasher's Keep",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Dungeon Crawler, Инвентарь",
     "setting": "Фэнтези",
@@ -6247,7 +6247,7 @@
   },
   {
     "title": "Slay the Spire",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Мобильная",
     "setting": "Фэнтези",
@@ -6265,13 +6265,13 @@
   },
   {
     "title": "Slay the Spire II",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Кооп",
     "setting": "Фэнтези",
     "complexity": "8",
     "hours": "113",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "200",
     "rating": "9",
     "releaseDate": "05.03.2026",
@@ -6283,7 +6283,7 @@
   },
   {
     "title": "Slice & Dice",
-    "image": "",
+    "image": "Дайсы",
     "genre": "Дайсы",
     "features": "Декбилдер, Способности, Мобильная, Разворот кубика",
     "setting": "Фэнтези",
@@ -6301,7 +6301,7 @@
   },
   {
     "title": "Slime 3K: Rise Against Despot",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Мясо",
     "setting": "Космос",
@@ -6319,7 +6319,7 @@
   },
   {
     "title": "Slots & Daggers",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Слоты, Скиллчеки",
     "setting": "Азартные игры, Фэнтези",
@@ -6337,7 +6337,7 @@
   },
   {
     "title": "Sol Cesto",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Артхаус, Управление вероятностью",
     "setting": "Тёмное фэнтези",
@@ -6355,7 +6355,7 @@
   },
   {
     "title": "Soulstone Survivors",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Бесконечный режим, Дерево Прогрессии",
     "setting": "Фэнтези",
@@ -6373,7 +6373,7 @@
   },
   {
     "title": "Space Gladiators: Escaping Tartarus",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Мясо",
     "setting": "Космос",
@@ -6391,7 +6391,7 @@
   },
   {
     "title": "Space Robinson",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "Пиксельарт, Отечественный, Сюжет",
     "setting": "Sci-Fi",
@@ -6409,7 +6409,7 @@
   },
   {
     "title": "Spell Disk",
-    "image": "",
+    "image": "Экшен, Вампирлайк",
     "genre": "Экшен, Вампирлайк",
     "features": "Создание магии, Пиксельарт",
     "setting": "Фэнтези",
@@ -6427,7 +6427,7 @@
   },
   {
     "title": "SpellRogue",
-    "image": "",
+    "image": "Дайсы",
     "genre": "Дайсы",
     "features": "Декбилдер",
     "setting": "Фэнтези",
@@ -6445,7 +6445,7 @@
   },
   {
     "title": "Spelunky",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "RogueLIKE, Симулятор случайных смертей",
     "setting": "Космос, Ацтеки",
@@ -6463,7 +6463,7 @@
   },
   {
     "title": "Spelunky 2",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "RogueLIKE, Симулятор случайных смертей",
     "setting": "Космос, Ацтеки",
@@ -6481,7 +6481,7 @@
   },
   {
     "title": "Spin Hero",
-    "image": "",
+    "image": "Аркада, Автобатлер",
     "genre": "Аркада, Автобатлер",
     "features": "Декблидер, Однорукий бандит",
     "setting": "Азартные игры, Фэнтези",
@@ -6499,7 +6499,7 @@
   },
   {
     "title": "Spirit Hunters: Infinite Horde",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Дерево прокачки",
     "setting": "Фэнтези",
@@ -6517,7 +6517,7 @@
   },
   {
     "title": "Spirits of the Silicium Forest",
-    "image": "",
+    "image": "Пошаговый, Карточный",
     "genre": "Пошаговый, Карточный",
     "features": "Отечественный, Декбилдер, Шкала времени",
     "setting": "Ацтеки, Sci-fi",
@@ -6535,7 +6535,7 @@
   },
   {
     "title": "Star Renegades",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "JRPG, Пиксельарт",
     "setting": "Космос",
@@ -6553,7 +6553,7 @@
   },
   {
     "title": "StarVaders",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Клетки, Перегрев",
     "setting": "Sci-fi",
@@ -6571,7 +6571,7 @@
   },
   {
     "title": "SteamWorld Quest: Hand of Gilgamech",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Сюжет, По вселенной",
     "setting": "Стимпанк",
@@ -6589,7 +6589,7 @@
   },
   {
     "title": "Steredenn: Binary Stars",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "RogueLIKE, Пиксельарт, Шутемап",
     "setting": "Космос",
@@ -6607,7 +6607,7 @@
   },
   {
     "title": "Stray Path",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Пасьянс",
     "setting": "Фэнтези",
@@ -6625,7 +6625,7 @@
   },
   {
     "title": "Streets of Rogue 2",
-    "image": "",
+    "image": "Симулятор",
     "genre": "Симулятор",
     "features": "Песочница, Пиксельарт",
     "setting": "Реальный мир",
@@ -6643,7 +6643,7 @@
   },
   {
     "title": "Sulfur",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Инвентарь, Экстракшн",
     "setting": "Фэнтези",
@@ -6661,7 +6661,7 @@
   },
   {
     "title": "Sultan's Game",
-    "image": "",
+    "image": "Карточный, Стратегия",
     "genre": "Карточный, Стратегия",
     "features": "Ресурс менеджмент, Сюжет",
     "setting": "1001 ночь",
@@ -6679,7 +6679,7 @@
   },
   {
     "title": "Super Auto Pets",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Непрямое PVP",
     "setting": "Реальный мир, Фэнтези",
@@ -6697,7 +6697,7 @@
   },
   {
     "title": "Super Fantasy Kingdom",
-    "image": "",
+    "image": "Стратегия, Автобатлер",
     "genre": "Стратегия, Автобатлер",
     "features": "Строительство, Менеджмент ресурсов, Пиксельарт, Рейтинги",
     "setting": "Фэнтези",
@@ -6708,14 +6708,14 @@
     "rating": "9",
     "releaseDate": "24.10.2025",
     "playedDate": "26.10.2025",
-    "notes": "Стратегия, где нужно правильно распределить ресурсы на экономику и воинов, а также мета качается прям на карте игры. ",
+    "notes": "Стратегия, где нужно правильно распределить ресурсы на экономику и воинов, а также мета качается прям на карте игры.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Sworn",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Проклятия, Кооп",
     "setting": "Тёмное фэнтези",
@@ -6733,7 +6733,7 @@
   },
   {
     "title": "Tabletop Tavern",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Total War",
     "setting": "Фэнтези",
@@ -6751,7 +6751,7 @@
   },
   {
     "title": "Tainted Grail: Conquest",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Мрачный, По настолке, Туман войны",
     "setting": "Темное фэнтэзи",
@@ -6769,7 +6769,7 @@
   },
   {
     "title": "Talented",
-    "image": "",
+    "image": "Tower Defense, Автобатлер",
     "genre": "Tower Defense, Автобатлер",
     "features": "Дерево выбора скиллов, Пиксельарт",
     "setting": "Фэнтези",
@@ -6787,7 +6787,7 @@
   },
   {
     "title": "Tales & Tactics",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Клетки",
     "setting": "Фэнтези",
@@ -6805,7 +6805,7 @@
   },
   {
     "title": "Talespinner",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер",
     "setting": "Азиатская мифология",
@@ -6823,7 +6823,7 @@
   },
   {
     "title": "Tangledeep",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Пиксельарт, Аниме, RogueLIKE",
     "setting": "Фэнтези",
@@ -6841,7 +6841,7 @@
   },
   {
     "title": "Tape to Tape",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Хоккей",
     "setting": "Реальный мир, Спорт",
@@ -6859,13 +6859,13 @@
   },
   {
     "title": "Tears of Metal",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Мусоу, Парирования, Кооп, Комбо приемы",
     "setting": "Фэнтези",
     "complexity": "8",
     "hours": "2",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "66",
     "rating": "6",
     "releaseDate": "22.07.2026",
@@ -6877,7 +6877,7 @@
   },
   {
     "title": "Teenage Mutant Ninja Turtles: Splintered Fate",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Мобильная",
     "setting": "Sci-Fi",
@@ -6895,7 +6895,7 @@
   },
   {
     "title": "Temtem: Swarm",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Кооп, По вселенной, Покемоны (темтемы)",
     "setting": "Sci-Fi",
@@ -6913,7 +6913,7 @@
   },
   {
     "title": "Terraformers",
-    "image": "",
+    "image": "Стратегия, Пошаговый",
     "genre": "Стратегия, Пошаговый",
     "features": "Градострой, Туман войны",
     "setting": "Космос",
@@ -6931,7 +6931,7 @@
   },
   {
     "title": "TerraTech Legion",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Машины",
     "setting": "Sci-Fi",
@@ -6949,7 +6949,7 @@
   },
   {
     "title": "The Baazar",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Рюкзаки",
     "setting": "Фэнтези, Sci-Fi",
@@ -6967,7 +6967,7 @@
   },
   {
     "title": "The Binding of Isaac",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "Мясо, RogueLIKE",
     "setting": "Библейское фэнтэзи",
@@ -6985,7 +6985,7 @@
   },
   {
     "title": "The King is Watching",
-    "image": "",
+    "image": "Стратегия, Автобатлер",
     "genre": "Стратегия, Автобатлер",
     "features": "Работа ограниченных клеток, Пиксельарт, Мемы, Отечественный",
     "setting": "Фэнтези",
@@ -7003,7 +7003,7 @@
   },
   {
     "title": "The Last Flame",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Трэйты",
     "setting": "Фэнтези",
@@ -7021,7 +7021,7 @@
   },
   {
     "title": "The Last Spell",
-    "image": "",
+    "image": "Пошаговый, Стратегия, Выживач",
     "genre": "Пошаговый, Стратегия, Выживач",
     "features": "Пиксельарт, Долгие забеги",
     "setting": "Фэнтези, Зомби, Постапокалипсис",
@@ -7032,14 +7032,14 @@
     "rating": "9",
     "releaseDate": "09.03.2023",
     "playedDate": "22.03.2023",
-    "notes": "Долгие забеги (и плюс и минус игры) с пошаговой зачисткой карты от орд зомби. ",
+    "notes": "Долгие забеги (и плюс и минус игры) с пошаговой зачисткой карты от орд зомби.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "The Last Stand: Aftermath",
-    "image": "",
+    "image": "Экшен, Выживач",
     "genre": "Экшен, Выживач",
     "features": "Нет",
     "setting": "Реальный мир, Зомби, Постапокалипсис",
@@ -7057,7 +7057,7 @@
   },
   {
     "title": "The Legend of Bum-Bo",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Три в ряд, По вселенной, Мясо",
     "setting": "Религиозное фэнтэзи",
@@ -7075,7 +7075,7 @@
   },
   {
     "title": "The Rogue Prince of Persia",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "По вселенной, Бег по стенам",
     "setting": "Фэнтези",
@@ -7086,14 +7086,14 @@
     "rating": "5",
     "releaseDate": "20.08.2025",
     "playedDate": "22.08.2025",
-    "notes": "Уже не фиолетовый принц от разрабов Dead Cells. Всё, чем выделяется игра - это механика бега по бэкграундным стенам и дэш по головам врагов. ",
+    "notes": "Уже не фиолетовый принц от разрабов Dead Cells. Всё, чем выделяется игра - это механика бега по бэкграундным стенам и дэш по головам врагов.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "The Spell Brigade",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Кооп, Френдлифаер, Поиск группы",
     "setting": "Фэнтези",
@@ -7111,7 +7111,7 @@
   },
   {
     "title": "The Unliving",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Антагонист, Управление зомби",
     "setting": "Фэнтези, Зомби",
@@ -7129,7 +7129,7 @@
   },
   {
     "title": "Time Wasters",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Точки интереса",
     "setting": "Космос",
@@ -7147,13 +7147,13 @@
   },
   {
     "title": "Tiny Rogues",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "Пиксельарт, Пушки",
     "setting": "Фэнтези",
     "complexity": "8",
     "hours": "13",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "100",
     "rating": "8",
     "releaseDate": "23.09.2022",
@@ -7165,7 +7165,7 @@
   },
   {
     "title": "Toads of the Bayou",
-    "image": "",
+    "image": "Карточный, Пошаговый",
     "genre": "Карточный, Пошаговый",
     "features": "Толкания",
     "setting": "Фэнтези",
@@ -7183,7 +7183,7 @@
   },
   {
     "title": "Tower Dominion",
-    "image": "",
+    "image": "Tower Defense",
     "genre": "Tower Defense",
     "features": "Туман войны",
     "setting": "Sci-Fi",
@@ -7201,7 +7201,7 @@
   },
   {
     "title": "Trials of Fire",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "RPG, Туман войны, Сюжет",
     "setting": "Фэнтези",
@@ -7212,14 +7212,14 @@
     "rating": "7",
     "releaseDate": "09.04.2021",
     "playedDate": "27.04.2021",
-    "notes": "РПГ-рогалик с рандомной генерацией карты и броском кубика на ивенты от характеристик персонажей. ",
+    "notes": "РПГ-рогалик с рандомной генерацией карты и броском кубика на ивенты от характеристик персонажей.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Trigon: Space Story",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "Графика",
     "setting": "Космос",
@@ -7237,7 +7237,7 @@
   },
   {
     "title": "Trinity Fusion",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Мультивселенная",
     "setting": "Sci-Fi",
@@ -7255,7 +7255,7 @@
   },
   {
     "title": "Turnbound - Доска Забвения",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Непрямое PVP, Рюкзаки",
     "setting": "Фэнтези",
@@ -7273,7 +7273,7 @@
   },
   {
     "title": "Uncle Chop's Rocket Shop",
-    "image": "",
+    "image": "Симулятор",
     "genre": "Симулятор",
     "features": "Автомастерская, Инструкции, Разные концовки, Квота",
     "setting": "Sci-Fi",
@@ -7291,7 +7291,7 @@
   },
   {
     "title": "Underboard",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Трэйты",
     "setting": "Фэнтези",
@@ -7309,7 +7309,7 @@
   },
   {
     "title": "UnderMine",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Пиксельарт",
     "setting": "Фэнтези",
@@ -7327,13 +7327,13 @@
   },
   {
     "title": "Undermine 2",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Пиксельарт, Кооп",
     "setting": "Фэнтези",
     "complexity": "5",
     "hours": "7",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "100",
     "rating": "7",
     "releaseDate": "22.07.2025",
@@ -7345,7 +7345,7 @@
   },
   {
     "title": "Union of Gnomes",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Сюжет, Юмор",
     "setting": "Сказки",
@@ -7356,14 +7356,14 @@
     "rating": "7",
     "releaseDate": "18.07.2024",
     "playedDate": "31.01.2025",
-    "notes": "Гномы против Белоснежки. В игре есть сюжетные главы и сайдовые миссии. ",
+    "notes": "Гномы против Белоснежки. В игре есть сюжетные главы и сайдовые миссии.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Vagante",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "RogueLIKE, Симулятор случайных смертей, Кооп, Пиксельарт",
     "setting": "Тёмное фэнтези",
@@ -7381,7 +7381,7 @@
   },
   {
     "title": "Vampire Crawlers: The Turbo Wildcard From Vampire Survivors",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Комбо",
     "setting": "Фэнтези",
@@ -7399,7 +7399,7 @@
   },
   {
     "title": "Vampire Hunters",
-    "image": "",
+    "image": "Вампирлайк, Экшен",
     "genre": "Вампирлайк, Экшен",
     "features": "От 1 Лица, Пушки",
     "setting": "Фэнтези",
@@ -7410,14 +7410,14 @@
     "rating": "6",
     "releaseDate": "30.10.2024",
     "playedDate": "07.11.2024",
-    "notes": "Мясной автошутер от первого лица. Немного укачивает. ",
+    "notes": "Мясной автошутер от первого лица. Немного укачивает.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Vampire Survivors",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Пиксельарт, Кооп",
     "setting": "Фэнтези, Нечисть",
@@ -7435,7 +7435,7 @@
   },
   {
     "title": "Vilde",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Пушки, От 1 лица, Отечественный",
     "setting": "Скандинавская мифология",
@@ -7453,7 +7453,7 @@
   },
   {
     "title": "Void Bastards",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Инвентарь, Комикс",
     "setting": "Космос",
@@ -7471,7 +7471,7 @@
   },
   {
     "title": "Void War",
-    "image": "",
+    "image": "Стратегия",
     "genre": "Стратегия",
     "features": "По вселенной, RogueLIKE",
     "setting": "Sci-Fi, Фэнтези",
@@ -7489,13 +7489,13 @@
   },
   {
     "title": "VOID/BREAKER",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "От 1 лица, Инвентарь, Разрушение окружения",
     "setting": "Sci-Fi",
     "complexity": "7",
     "hours": "4",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "100",
     "rating": "7",
     "releaseDate": "19.08.2025",
@@ -7507,7 +7507,7 @@
   },
   {
     "title": "Voidigo",
-    "image": "",
+    "image": "Bullet Hell",
     "genre": "Bullet Hell",
     "features": "Пушки",
     "setting": "Sci-Fi, Фэнтези",
@@ -7525,7 +7525,7 @@
   },
   {
     "title": "Wall World",
-    "image": "",
+    "image": "Tower Defense",
     "genre": "Tower Defense",
     "features": "Купол, Копание, Отечественный",
     "setting": "Sci-Fi, Космос",
@@ -7543,7 +7543,7 @@
   },
   {
     "title": "Wall World 2",
-    "image": "",
+    "image": "Tower Defense",
     "genre": "Tower Defense",
     "features": "Купол, Копание, Отечественный",
     "setting": "Sci-fi, Космос",
@@ -7561,7 +7561,7 @@
   },
   {
     "title": "Warden's Will",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "От 3 Лица, Кооп",
     "setting": "Sci-Fi",
@@ -7579,7 +7579,7 @@
   },
   {
     "title": "Wedding Witch",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Аниме",
     "setting": "Фэнтези",
@@ -7597,7 +7597,7 @@
   },
   {
     "title": "West of Dead",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Комикс, Пушки",
     "setting": "Вестерн",
@@ -7615,7 +7615,7 @@
   },
   {
     "title": "Whisker Squadron: Survivor",
-    "image": "",
+    "image": "Шутер, Аркада, Bullet Hell",
     "genre": "Шутер, Аркада, Bullet Hell",
     "features": "Шутемап, Кошкодевки, От 3 Лица",
     "setting": "Sci-Fi",
@@ -7626,14 +7626,14 @@
     "rating": "5",
     "releaseDate": "21.02.2025",
     "playedDate": "02.06.2025",
-    "notes": "Шутемап со сбором опыта с врагов как в вампирлайках, но от 3 лица. Довольно сложный и медленно качается мета. ",
+    "notes": "Шутемап со сбором опыта с врагов как в вампирлайках, но от 3 лица. Довольно сложный и медленно качается мета.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "White Knuckle",
-    "image": "",
+    "image": "Платформер",
     "genre": "Платформер",
     "features": "Паркур, Рейтинги",
     "setting": "Реальный мир",
@@ -7644,14 +7644,14 @@
     "rating": "5",
     "releaseDate": "17.04.2025",
     "playedDate": "27.05.2025",
-    "notes": "Игра по типу Beton Brutal но с процедурной генерацией каждой комнаты и какими-то аугментами (усилениями перса) начиная с 700 метров. ",
+    "notes": "Игра по типу Beton Brutal но с процедурной генерацией каждой комнаты и какими-то аугментами (усилениями перса) начиная с 700 метров.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
     "miVideo": ""
   },
   {
     "title": "Wild Woods",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, Защита повозки",
     "setting": "Фэнтези",
@@ -7669,7 +7669,7 @@
   },
   {
     "title": "Wildfrost",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Сочетание рас, 2 линии",
     "setting": "Фэнтези",
@@ -7687,13 +7687,13 @@
   },
   {
     "title": "Windblown",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп",
     "setting": "Sci-Fi",
     "complexity": "9",
     "hours": "3",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "30",
     "rating": "8",
     "releaseDate": "24.10.2024",
@@ -7705,13 +7705,13 @@
   },
   {
     "title": "Winnie's Hole",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Декбилдер, Тетрис, Мясо, Мутации",
     "setting": "Фэнтези",
     "complexity": "6",
     "hours": "6",
-    "status": "Жду релиз",
+    "status": "Жду релиза",
     "progress": "100",
     "rating": "7",
     "releaseDate": "26.01.2026",
@@ -7723,7 +7723,7 @@
   },
   {
     "title": "Wizard of Legend",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Пиксельарт, RogueLIKE",
     "setting": "Фэнтези",
@@ -7741,7 +7741,7 @@
   },
   {
     "title": "Wizard of Legend 2",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Кооп, RogueLIKE",
     "setting": "Фэнтези",
@@ -7759,7 +7759,7 @@
   },
   {
     "title": "World of Horror",
-    "image": "",
+    "image": "Пошаговый",
     "genre": "Пошаговый",
     "features": "Текстовый, Сюжет, Аниме",
     "setting": "Лавкрафт",
@@ -7777,7 +7777,7 @@
   },
   {
     "title": "Worship",
-    "image": "",
+    "image": "Симулятор",
     "genre": "Симулятор",
     "features": "Рисование заклинаний, Головоломки, Черно-белая",
     "setting": "Культ",
@@ -7795,7 +7795,7 @@
   },
   {
     "title": "Wretch: Divine Ascent",
-    "image": "",
+    "image": "Автобатлер",
     "genre": "Автобатлер",
     "features": "Непрямое PVP, Рюкзаки",
     "setting": "Тёмное фэнтези",
@@ -7813,7 +7813,7 @@
   },
   {
     "title": "Yet Another Zombie Survivors",
-    "image": "",
+    "image": "Вампирлайк",
     "genre": "Вампирлайк",
     "features": "Три персонажа",
     "setting": "Зомбиапокалипсис",
@@ -7831,7 +7831,7 @@
   },
   {
     "title": "Yi Xian: The Cultivation Card Game",
-    "image": "",
+    "image": "Автобатлер, Карточный",
     "genre": "Автобатлер, Карточный",
     "features": "Культиваторы, PVP",
     "setting": "Азиатская мифология",
@@ -7849,7 +7849,7 @@
   },
   {
     "title": "Zet Zillions",
-    "image": "",
+    "image": "Карточный",
     "genre": "Карточный",
     "features": "Юмор, Слияние карт",
     "setting": "Космос",
@@ -7867,7 +7867,7 @@
   },
   {
     "title": "Ziggurat 2",
-    "image": "",
+    "image": "Шутер",
     "genre": "Шутер",
     "features": "Пушки",
     "setting": "Фэнтези",
@@ -7885,7 +7885,7 @@
   },
   {
     "title": "Zombie Rollerz: Pinball Heroes",
-    "image": "",
+    "image": "Аркада",
     "genre": "Аркада",
     "features": "Пинбол",
     "setting": "Фэнтези",
@@ -7903,7 +7903,7 @@
   },
   {
     "title": "暖雪 Warm Snow",
-    "image": "",
+    "image": "Экшен",
     "genre": "Экшен",
     "features": "Хейдеслайк, Особые слоты реликвий",
     "setting": "Азиатская мифология",

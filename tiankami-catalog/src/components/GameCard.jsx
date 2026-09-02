@@ -1,16 +1,12 @@
-import {
-  FaStar,
-  FaClock,
-  FaCheckCircle,
-  FaTimesCircle,
-  FaHourglassHalf,
-} from "react-icons/fa";
+import { FaStar, FaClock } from "react-icons/fa";
 
+// Тематические иконки статусов в духе рогаликов
 const statusIcons = {
-  Пройдено: <FaCheckCircle className="text-green-400" />,
-  Дропнуто: <FaTimesCircle className="text-red-400" />,
-  Обзор: <FaStar className="text-yellow-400" />,
-  "Жду релиза": <FaHourglassHalf className="text-blue-400" />,
+  Пройдено: <span aria-hidden="true">👑</span>,
+  Дропнуто: <span aria-hidden="true">💀</span>,
+  Обзор: <span aria-hidden="true">🔍</span>,
+  "Жду релиза": <span aria-hidden="true">⏳</span>,
+  "В процессе": <span aria-hidden="true">⚔️</span>,
 };
 
 const GameCard = ({ game, onClick }) => {
@@ -55,19 +51,19 @@ const GameCard = ({ game, onClick }) => {
         <div className="mt-auto flex items-center justify-between pt-3">
           <div
             className="flex items-center gap-1"
-            title={`Оценка: ${game.rating || "—"}/10`}
+            data-tip={`Оценка: ${game.rating || "—"}/10`}
           >
             <FaStar className="text-yellow-400" />
             <span className="font-bold text-lg">{game.rating || "—"}</span>
           </div>
           <div
             className="flex items-center gap-1"
-            title={`Наиграно часов: ${game.hours || "—"}`}
+            data-tip={`Наиграно часов: ${game.hours || "—"}`}
           >
             <FaClock className="text-white/50" />
             <span className="text-sm text-white/70">{game.hours || "—"} ч</span>
           </div>
-          <div title={game.status}>{statusIcon}</div>
+          <div data-tip={game.status || "Статус неизвестен"}>{statusIcon}</div>
         </div>
       </div>
     </div>

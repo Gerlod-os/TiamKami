@@ -3,21 +3,20 @@ import {
   FaClock,
   FaCalendarAlt,
   FaYoutube,
-  FaCheckCircle,
-  FaTimesCircle,
-  FaHourglassHalf,
   FaGamepad,
 } from "react-icons/fa";
 import { isUrl } from "../utils/normalize.js";
 
-const GameDetails = ({ game }) => {
-  const statusIcons = {
-    Пройдено: <FaCheckCircle className="text-green-400" />,
-    Дропнуто: <FaTimesCircle className="text-red-400" />,
-    Обзор: <FaStar className="text-yellow-400" />,
-    "Жду релиза": <FaHourglassHalf className="text-blue-400" />,
-  };
+// Тематические иконки статусов (единый справочник с GameCard)
+const statusIcons = {
+  Пройдено: <span aria-hidden="true">👑</span>,
+  Дропнуто: <span aria-hidden="true">💀</span>,
+  Обзор: <span aria-hidden="true">🔍</span>,
+  "Жду релиза": <span aria-hidden="true">⏳</span>,
+  "В процессе": <span aria-hidden="true">⚔️</span>,
+};
 
+const GameDetails = ({ game }) => {
   return (
     <div className="grid md:grid-cols-2 gap-6">
       <div>

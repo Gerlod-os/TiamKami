@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import FxPanel from "./FxPanel";
+import { MASCOTS } from "../config/mascots.js";
 import {
   FaTwitch,
   FaYoutube,
@@ -42,9 +44,12 @@ const Layout = () => {
       <header className="bg-bg-dark/80 backdrop-blur-md sticky top-0 z-50 border-b border-accent-purple/30">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl" aria-hidden="true">
-              🎮
-            </span>
+            <img
+              src={MASCOTS.gamepad.src}
+              alt={MASCOTS.gamepad.alt}
+              className="w-9 h-9"
+              aria-hidden="true"
+            />
             <span className="font-heading text-xl text-accent-pink">
               Tiankami
             </span>
@@ -131,8 +136,14 @@ const Layout = () => {
       </main>
 
       <footer className="bg-bg-dark/60 border-t border-accent-purple/20 py-6 text-center text-white/50">
-        <p>© 2025 Tiankami. Все права защищены.</p>
+        <img
+          src={MASCOTS.hero.src}
+          alt={MASCOTS.hero.alt}
+          className="w-16 h-16 mx-auto mb-2 opacity-80 hover:opacity-100 transition-opacity"
+        />
+        <p>© {new Date().getFullYear()} Tiankami. Все права защищены.</p>
       </footer>
+      <FxPanel />
     </div>
   );
 };

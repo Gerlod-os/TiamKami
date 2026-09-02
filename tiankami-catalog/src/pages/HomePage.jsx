@@ -4,6 +4,7 @@ import { fetchGames, fetchCollections } from "../utils/loadData";
 import { slugify } from "../utils/slugify";
 import { parseRuDate } from "../utils/date";
 import GameCard from "../components/GameCard";
+import TwitchWidget from "../components/TwitchWidget";
 import {
   FaStar,
   FaClock,
@@ -76,6 +77,9 @@ const HomePage = () => {
 
   return (
     <div className="space-y-12">
+      {/* Twitch: статус и аватарка */}
+      <TwitchWidget />
+
       {/* Подборки от Тиана */}
       {collections.length > 0 && (
         <section className="bg-white/5 rounded-2xl p-6 border border-accent-purple/30">

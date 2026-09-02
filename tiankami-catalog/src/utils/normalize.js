@@ -3,6 +3,21 @@
  * и в scripts/sync-data.js (build-time), чтобы исключить рассинхрон.
  */
 
+// Единый справочник статусов. Владелец таблицы пишет «Жду релиз»,
+// сайт приводит к «Жду релиза» — сверка посимвольно не ломается.
+const STATUS_ALIASES = {
+  "жду релиз": "Жду релиза",
+  "жду релиза": "Жду релиза",
+  пройдено: "Пройдено",
+  дропнуто: "Дропнуто",
+  обзор: "Обзор",
+};
+
+export function normalizeStatus(raw) {
+  const s = (raw || "").trim();
+  return STATUS_ALIASES[s.toLowerCase()] || s;
+}
+
 /**
  * Нормализует одну строку из TSV (без заголовка) в объект игры.
  * @param {string[]} row — массив значений строки
@@ -23,7 +38,7 @@ export function normalizeGameRow(row, colIndex) {
     setting: (row[colIndex.setting] || "").trim(),
     complexity: (row[colIndex.complexity] || "").trim(),
     hours: (row[colIndex.hours] || "").trim(),
-    status: (row[colIndex.status] || "").trim(),
+    status: normalizeStatus(row[colIndex.status]),
     progress: (row[colIndex.progress] || "").trim(),
     rating: (row[colIndex.rating] || "").trim(),
     releaseDate: (row[colIndex.releaseDate] || "").trim(),
@@ -36,22 +51,24 @@ export function normalizeGameRow(row, colIndex) {
 }
 
 /**
- * Вычисляет индексы колонок из строки заголовков TSV.
+ * Вычисляет индексы колонок из строки заголовков.
  * @param {string[]} headerRow
- * @returns {object}
+ * @param {string[]} [firstDataRow] — первая строка данных (уточняет поиск колонки названия)
  */
-export function buildColIndex(headerRow) {
+export function buildColIndex(headerRow, firstDataRow) {
   const idx = {};
   headerRow.forEach((cell, i) => {
     const key = (cell || "").trim();
     if (key) idx[key] = i;
   });
 
-  // Название: первая колонка, где в заголовке пусто, а в первой строке данных — нет
+  // Название: колонка с пустым заголовком, в которой есть данные
   let titleIdx = -1;
-  // Fallback: колонка с пустым заголовком
   for (let i = 0; i < headerRow.length; i++) {
-    if (!headerRow[i] || !headerRow[i].trim()) {
+    const headerEmpty = !headerRow[i] || !headerRow[i].trim();
+    const dataExists =
+      firstDataRow && firstDataRow[i] && firstDataRow[i].trim() !== "";
+    if (headerEmpty && dataExists) {
       titleIdx = i;
       break;
     }
@@ -87,7 +104,7 @@ export function normalizeGames(rows) {
   if (!rows || rows.length < 2) return [];
 
   const headerRow = rows[0];
-  const colIndex = buildColIndex(headerRow);
+  const colIndex = buildColIndex(headerRow, rows[1]);
 
   const games = [];
   for (let i = 1; i < rows.length; i++) {
@@ -101,51 +118,69 @@ export function normalizeGames(rows) {
 }
 
 /**
- * Нормализует массив строк TSV с подборками.
- * @param {string[][]} rows
- * @returns {object[]}
+ * Нормализует массив строк (CSV/TSV) с подборками.
+ *
+ * В листе колонки «гуляют» от строки к строке (ручной ввод, объединённые
+ * ячейки), поэтому колоночная статистика ненадёжна. Алгоритм построчный:
+ * для каждой подборки сканируем своё окно колонок, игра = текстовая ячейка,
+ * ранг = ближайшее число правее в той же строке.
  */
 export function normalizeCollections(rows) {
   if (!rows || rows.length < 2) return [];
 
   const headerRow = rows[0];
-  const headerIndices = [];
+  const isNumeric = (s) => /^\d+([.,]\d+)?$/.test((s || "").trim());
+
+  // Индексы заголовков подборок
+  const titleIndices = [];
   headerRow.forEach((cell, idx) => {
-    if (cell && cell.trim() !== "") headerIndices.push(idx);
+    if (cell && cell.trim() !== "") titleIndices.push(idx);
   });
 
   const collections = [];
-  headerIndices.forEach((titleIdx, order) => {
+  titleIndices.forEach((titleIdx) => {
     const name = headerRow[titleIdx].trim();
     if (!name) return;
 
-    let gameIndex = titleIdx + 1;
-    const secondRow = rows[1] || [];
-    if (!secondRow[gameIndex] || secondRow[gameIndex].trim() === "") {
-      gameIndex = titleIdx + 2;
-    }
-    const rankIndex = gameIndex + 1;
+    // Окно подборки: от колонки заголовка до +5 (следующий блок начинается
+    // на +4, но его игры — на +6, поэтому +5 не задевает чужие игры)
+    const minCol = titleIdx;
+    const maxCol = titleIdx + 5;
+
+    // Описание: текст в первой строке данных в колонке заголовка
+    let description = "";
+    const underTitle = ((rows[1] || [])[titleIdx] || "").trim();
+    if (underTitle && !isNumeric(underTitle)) description = underTitle;
 
     const games = [];
-    let description = "";
-    // Описание берётся из ячейки под названием (только для первой подборки)
-    if (
-      order === 0 &&
-      secondRow[titleIdx] &&
-      secondRow[titleIdx].trim() !== ""
-    ) {
-      description = secondRow[titleIdx].trim();
-    }
-
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i] || [];
-      const gameName = (row[gameIndex] || "").trim();
-      if (gameName !== "") {
-        const rank = (row[rankIndex] || "").trim();
-        games.push({ name: gameName, rank });
+      // Игра: первая текстовая ячейка в окне (в первой строке данных
+      // колонку заголовка пропускаем — там описание)
+      let gameCol = -1;
+      for (let c = minCol; c <= maxCol; c++) {
+        const v = (row[c] || "").trim();
+        if (!v || isNumeric(v)) continue;
+        if (i === 1 && c === titleIdx) continue; // это описание
+        gameCol = c;
+        break;
       }
+      if (gameCol === -1) continue;
+
+      // Ранг: ближайшее число правее игры (в той же строке, до +4 колонок)
+      let rank = "";
+      for (let c = gameCol + 1; c <= gameCol + 4; c++) {
+        const v = (row[c] || "").trim();
+        if (v && isNumeric(v)) {
+          rank = v;
+          break;
+        }
+      }
+
+      games.push({ name: (row[gameCol] || "").trim(), rank });
     }
 
+    if (games.length === 0) return;
     collections.push({ name, description, games });
   });
 
@@ -158,4 +193,38 @@ export function normalizeCollections(rows) {
 export function isUrl(value) {
   const s = (value || "").trim();
   return /^https?:\/\//i.test(s);
+}
+
+/**
+ * Достаёт URL из формулы гиперссылки Google Sheets.
+ * =HYPERLINK("https://...";"текст") → "https://..."
+ * Обычный текст возвращается как есть (потом отфильтруется isUrl).
+ */
+export function extractUrlFromFormula(cell) {
+  const s = (cell || "").trim();
+  const m = s.match(/^=HYPERLINK\(\s*"([^"]+)"/i);
+  return m ? m[1] : s;
+}
+
+/**
+ * Проверяет, что ссылка ведёт на YouTube.
+ */
+export function isYouTubeUrl(url) {
+  return /^https?:\/\/(www\.)?(youtube\.com|youtu\.be)\//i.test(url || "");
+}
+
+/**
+ * Извлекает appid из ссылки на Steam.
+ * https://store.steampowered.com/app/632360/Risk_of_Rain_2/ → "632360"
+ */
+export function extractSteamAppId(url) {
+  const m = (url || "").match(/store\.steampowered\.com\/app\/(\d+)/i);
+  return m ? m[1] : null;
+}
+
+/**
+ * CDN-обложка Steam по appid (бесплатно, без ключей).
+ */
+export function steamHeaderUrl(appId) {
+  return `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/header.jpg`;
 }

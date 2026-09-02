@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Маскот "Геймпад-рогалик": геймпад с рожицей, в стилистике сайта -->
+  <g>
+    <!-- Корпус геймпада -->
+    <path d="M50 70 Q100 55 150 70 Q175 78 178 110 Q181 140 160 145 Q142 149 130 130 L70 130 Q58 149 40 145 Q19 140 22 110 Q25 78 50 70 Z"
+          fill="#2a2a3e" stroke="#C9A0DC" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Рожица: глаза -->
+    <circle cx="82" cy="100" r="7" fill="#FFB6C1"/>
+    <circle cx="118" cy="100" r="7" fill="#FFB6C1"/>
+    <circle cx="84" cy="102" r="2.5" fill="#121212"/>
+    <circle cx="120" cy="102" r="2.5" fill="#121212"/>
+    <!-- Улыбка -->
+    <path d="M88 118 Q100 128 112 118" fill="none" stroke="#FFB6C1" stroke-width="4" stroke-linecap="round"/>
+    <!-- Румянец -->
+    <ellipse cx="72" cy="112" rx="6" ry="3" fill="#FFB6C1" opacity="0.5"/>
+    <ellipse cx="128" cy="112" rx="6" ry="3" fill="#FFB6C1" opacity="0.5"/>
+    <!-- Кнопки справа -->
+    <circle cx="152" cy="92" r="6" fill="#FFB6C1"/>
+    <circle cx="164" cy="104" r="6" fill="#A0C4FF"/>
+    <!-- Крестовина слева -->
+    <rect x="34" y="96" width="18" height="6" rx="3" fill="#C9A0DC"/>
+    <rect x="40" y="90" width="6" height="18" rx="3" fill="#C9A0DC"/>
+  </g>
+</svg>

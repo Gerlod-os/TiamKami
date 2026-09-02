@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Маскот "Герой в капюшоне": оригинальный персонаж в эстетике «уютного хардкора» -->
+  <g>
+    <!-- Капюшон -->
+    <path d="M100 30 Q145 35 150 90 Q152 120 140 135 L60 135 Q48 120 50 90 Q55 35 100 30 Z"
+          fill="#3d3d55" stroke="#C9A0DC" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Тень лица под капюшоном -->
+    <ellipse cx="100" cy="100" rx="32" ry="30" fill="#121212"/>
+    <!-- Глаза (простые точки, добрые) -->
+    <circle cx="88" cy="98" r="5" fill="#FFB6C1"/>
+    <circle cx="112" cy="98" r="5" fill="#FFB6C1"/>
+    <!-- Маленькая улыбка -->
+    <path d="M93 112 Q100 118 107 112" fill="none" stroke="#FFB6C1" stroke-width="3" stroke-linecap="round"/>
+    <!-- Румянец -->
+    <ellipse cx="80" cy="108" rx="5" ry="2.5" fill="#FFB6C1" opacity="0.4"/>
+    <ellipse cx="120" cy="108" rx="5" ry="2.5" fill="#FFB6C1" opacity="0.4"/>
+    <!-- Плечи/плащ -->
+    <path d="M55 135 Q45 165 40 180 L160 180 Q155 165 145 135 Z"
+          fill="#2a2a3e" stroke="#C9A0DC" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Геймпад в руках -->
+    <rect x="72" y="150" width="56" height="22" rx="11" fill="#4a4a66" stroke="#FFB6C1" stroke-width="3"/>
+    <circle cx="88" cy="161" r="3.5" fill="#A0C4FF"/>
+    <circle cx="112" cy="161" r="3.5" fill="#FFB6C1"/>
+    <!-- Звёздочка скилла -->
+    <path d="M150 60 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 z" fill="#FFB6C1"/>
+  </g>
+</svg>
