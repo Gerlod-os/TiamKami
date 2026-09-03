@@ -10,19 +10,21 @@ import {
   FaTimes,
 } from "react-icons/fa";
 
+import { BRAND } from "../config/branding.js";
+
 const socialLinks = [
   {
-    href: "https://twitch.tv/tiankami",
+    href: BRAND.links.twitch,
     icon: <FaTwitch size={20} />,
     label: "Twitch",
   },
   {
-    href: "https://youtube.com/@tiankami",
+    href: BRAND.links.youtube,
     icon: <FaYoutube size={20} />,
     label: "YouTube",
   },
   {
-    href: "https://discord.gg/tiankami",
+    href: BRAND.links.discord,
     icon: <FaDiscord size={20} />,
     label: "Discord",
   },
@@ -98,7 +100,15 @@ const Layout = () => {
 
         {/* Мобильное меню */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-white/10 bg-bg-dark/95">
+          <div
+            className="md:hidden border-t border-white/10 bg-bg-dark/95"
+            onClick={(e) => {
+              // Закрываем при клике на фон (не на ссылки)
+              if (e.target === e.currentTarget) {
+                setMobileMenuOpen(false);
+              }
+            }}
+          >
             <nav className="flex flex-col px-4 py-3 gap-3">
               {navItems.map((item) => (
                 <NavLink

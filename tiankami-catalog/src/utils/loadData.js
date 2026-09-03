@@ -18,6 +18,22 @@ import {
   steamHeaderUrl,
 } from "./normalize.js";
 
+/* ─────────── Обогащение игр из локального JSON ─────────── */
+
+/**
+ * Добавляет обложки и Steam-ссылки из steamAppId, уже записанных в games.json.
+ */
+function enrichFromLocalJson(games) {
+  return games.map((g) => {
+    if (!g.steamAppId) return g;
+    return {
+      ...g,
+      image: steamHeaderUrl(g.steamAppId),
+      steamUrl: `https://store.steampowered.com/app/${g.steamAppId}/`,
+    };
+  });
+}
+
 /* ─────────── Кэш (ключ привязан к URL: смена таблицы сбрасывает кэш сама) ─────────── */
 
 function hashUrl(url) {
@@ -246,8 +262,8 @@ export async function enrichGamesWithLinks(games) {
  */
 export async function fetchGames({ onUpdate } = {}) {
   if (!memoryGames) {
-    memoryGames =
-      tryLoadCache(CACHE_KEY, CACHE_TIME_KEY, isValidGamesCache) || localGames;
+    const cached = tryLoadCache(CACHE_KEY, CACHE_TIME_KEY, isValidGamesCache);
+    memoryGames = cached || enrichFromLocalJson(localGames);
   }
   revalidateGames(onUpdate);
   return memoryGames;

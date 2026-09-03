@@ -13,9 +13,10 @@
     "releaseDate": "28.10.2024",
     "playedDate": "11.11.2024",
     "notes": "Хейдесллайк по вселенной игры Калисто Протокол. Гораздо лучше чем орагинал",
-    "youtube": "сылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlnSiZ_4PBTuBCuf6XtWgk2",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/weNMMqOxiiw",
+    "steamAppId": "2229940"
   },
   {
     "title": "20 Minutes Till Dawn",
@@ -31,9 +32,10 @@
     "releaseDate": "08.06.2023",
     "playedDate": "10.07.2022",
     "notes": "Проходил в раннем доступе и было мало контента. Это был один из первых вампирлайков после вампиров.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlHuYTD7TJ19ZDtK-72zHt1",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1966900"
   },
   {
     "title": "33 Immortals",
@@ -49,7 +51,7 @@
     "releaseDate": "10.06.2026",
     "playedDate": "18.06.2026",
     "notes": "Интересная задумка на целых 33 игрока на одной карте. Играется бодро, орешь на тиммейтов, иногда вылетает и нет в стиме.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Un6WjuNlFTM-1uqODDQHvKq",
     "hasMI": "FALSE",
     "miVideo": ""
   },
@@ -67,9 +69,10 @@
     "releaseDate": "18.09.2018",
     "playedDate": "01.10.2018",
     "notes": "Текстовый сюжетный рогалик про ресурс менеджмент томатного супа в космосе.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmrpS6Ny1MpsK8UH276vxE5",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "646270"
   },
   {
     "title": "60 Seconds!",
@@ -87,7 +90,8 @@
     "notes": "Текстовый сюжетный рогалик про ресурс менеджмент томатного супа в бомбоубежище.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "368360"
   },
   {
     "title": "9 Kings",
@@ -103,9 +107,10 @@
     "releaseDate": "23.05.2025",
     "playedDate": "27.05.2025",
     "notes": "Простой в понимании и интересный в освоении автобаттлер защита базы при помощи юнитов, башен и разнообразных усилений.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Un_PA9Y_1uv39xhSrctNrb1",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2784470"
   },
   {
     "title": "Агапика - Героическое агентство",
@@ -121,9 +126,10 @@
     "releaseDate": "04.06.2026",
     "playedDate": "04.06.2026",
     "notes": "Вампирлайк от нашего зрителя с упором на сюжетные диалоги и небольшие вставочки (встречи) в забегах.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/ghRQJUPPtio",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3431630"
   },
   {
     "title": "Бессмертный Сказки Древней Руси",
@@ -139,9 +145,10 @@
     "releaseDate": "18.06.2024",
     "playedDate": "22.06.2024",
     "notes": "Играл в первые дни раннего доступа. Был один персонаж и геймплей почти не отличался от базового Шпиля.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/TNKFDJ4mlPs",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2727210"
   },
   {
     "title": "A Long Way Down",
@@ -157,9 +164,10 @@
     "releaseDate": "27.08.2020",
     "playedDate": "16.01.2020",
     "notes": "Один из первых \"шпилевиков\". Играли в раннем доступе и больше не возвращались.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=BA_uLDoUJlY&ab_channel=TianKami",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "856990"
   },
   {
     "title": "Abandon Ship",
@@ -175,9 +183,10 @@
     "releaseDate": "22.10.2019",
     "playedDate": "16.07.2025",
     "notes": "Игра сюжетная с разными режимами. Поиграл в кампанию, за 6 часов сюжета понравилось и разнообразие и общие механики. Рогаликовые режимы не тестил.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkcLT1vTk-AkhGxOcbG5mmo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "551860"
   },
   {
     "title": "Absolum",
@@ -193,9 +202,10 @@
     "releaseDate": "09.10.2025",
     "playedDate": "30.12.2025",
     "notes": "Битемап рогалик от создателей Streets of Rage. Качественное исполнение битемап состовляющей + рогаликовая сборка билда.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://studio.youtube.com/playlist/PL5RpA6jmZ9UkQFrtMOSeyzY5jrwIYuyqd/edit",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/_99TZanJYUM",
+    "steamAppId": "1904480"
   },
   {
     "title": "Abyssus",
@@ -211,9 +221,10 @@
     "releaseDate": "12.08.2025",
     "playedDate": "16.08.2025",
     "notes": "Хорошая графика и неплохие пушки с абилками, но слабое билдостроение и одни и те же боссы на пути к финалу. Есть возвышения.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://studio.youtube.com/playlist/PL5RpA6jmZ9UnRXmLSzZUxaWKxUV0A5rE8/edit",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1721110"
   },
   {
     "title": "Achilles Survivor",
@@ -229,9 +240,10 @@
     "releaseDate": "29.01.2025",
     "playedDate": "11.02.2025",
     "notes": "Поиграли в ранний доступ. Очень однообразно, легко и скучно. Из прикольного - строительство защитных турелей на точках.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/Ci5iI11LR80",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2922410"
   },
   {
     "title": "Across the Obelisk",
@@ -247,9 +259,10 @@
     "releaseDate": "08.04.2021",
     "playedDate": "15.09.2024",
     "notes": "Играл на сабдей. Интересная задумка с коопом на несколько человек за разных персонажей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=E8ogaoPtXXU",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1385380"
   },
   {
     "title": "Aethermancer",
@@ -265,9 +278,10 @@
     "releaseDate": "23.09.2025",
     "playedDate": "15.01.2026",
     "notes": "Пошаговая тактика, где игрок управляет тремя покемонами, которых можно прокачивать и менять прямо внутри забега.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/FPzv1MvocCo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2288470"
   },
   {
     "title": "Afterblast",
@@ -283,9 +297,10 @@
     "releaseDate": "26.11.2025",
     "playedDate": "16.12.2025",
     "notes": "Шутер, где изначально у перса есть крюк-кошка! Вертикальные и неплохие боссы, но на раннем доступе очень однообразный и без билдостроя.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/pz67MKQNRI0",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1338490"
   },
   {
     "title": "Against the Moon",
@@ -301,7 +316,7 @@
     "releaseDate": "24.09.2020",
     "playedDate": "24.09.2020",
     "notes": "Не вышедший в релиз в стиме с линиями. Доступен в GoG. Ранние попытки копировать шпиль.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnRrxBjIS6iNDvlcW8YyCIg",
     "hasMI": "FALSE",
     "miVideo": ""
   },
@@ -319,9 +334,10 @@
     "releaseDate": "08.12.2023",
     "playedDate": "16.11.2025",
     "notes": "Уникальнейший градостроительный рогалик с тонной реиграбельности! Каждый забег сильно отличается от предыдущего. Легенда",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=F3JymP7_5WA&list=PL5RpA6jmZ9Ul8lXJ8uetVCUNMHrHfM1eV",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1336490"
   },
   {
     "title": "Alder's Blood",
@@ -337,9 +353,10 @@
     "releaseDate": "10.04.2020",
     "playedDate": "10.04.2020",
     "notes": "Пошаговый мрачный рогалик в вестерн стилистике. Дропнул потому что было скучно.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/0tkIHBjZh8A",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "820020"
   },
   {
     "title": "Alina of the Arena",
@@ -355,9 +372,10 @@
     "releaseDate": "13.10.2022",
     "playedDate": "19.10.2022",
     "notes": "Тактический карточный рогалик, с позиционкой и толканием врагов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkOLNGJwQm0eXTPh30zWY6j",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1668690"
   },
   {
     "title": "Ammo and Oxygen",
@@ -373,9 +391,10 @@
     "releaseDate": "07.11.2024",
     "playedDate": "24.12.2024",
     "notes": "Топдаун с элементами хоррор выживания. Монстры кусают больно, патронов и кислорода не хватает.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/YXZ5fHEYW2A",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2549650"
   },
   {
     "title": "Apocalypse Express",
@@ -391,9 +410,10 @@
     "releaseDate": "10.06.2026",
     "playedDate": "18.06.2026",
     "notes": "Игрок едет на поезде, закидывает уголь, отбивается от врагов и фармит лут и улучшения. 5 локаций с боссами. Хорошая игра на пару вечеров.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uk1KASol--kynEQbYhfvc-P",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3223160"
   },
   {
     "title": "Arcane Trigger",
@@ -409,9 +429,10 @@
     "releaseDate": "13.11.2025",
     "playedDate": "15.01.2026",
     "notes": "Геймплей строится на наполнении инвентаря пулями, которые потом рандомно шаффлятся между слотами и синнергируют между собой.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=Tzv9_VEGGjM",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2981070"
   },
   {
     "title": "Archons",
@@ -427,9 +448,10 @@
     "releaseDate": "06.12.2024",
     "playedDate": "10.12.2024",
     "notes": "Два персонажа и все способности играют между или вокруг них. Крутая камера, геймплей и боссы!",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um0KeRRbHUAAQs-IcfsvjIJ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2779570"
   },
   {
     "title": "Arms of God",
@@ -445,9 +467,10 @@
     "releaseDate": "08.06.2026",
     "playedDate": "08.06.2026",
     "notes": "Вампирлайк, где есть ограниченные слоты улучшения пушек + релики, на которых и строится билд. Пушки комбятся между собой. Красивая графика.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/YGnIqluCmeY",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3388630"
   },
   {
     "title": "Artifact Seeker: Resurrection",
@@ -463,9 +486,10 @@
     "releaseDate": "26.07.2024",
     "playedDate": "16.02.2025",
     "notes": "Игра состоит из ассетов корейских браузрок/мобилок и с похожим геймплеем, где весь экран забит миллионами урона.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/Ogpt9aCxKZA",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3054610"
   },
   {
     "title": "As Far As the Eye",
@@ -481,9 +505,10 @@
     "releaseDate": "10.09.2020",
     "playedDate": "03.09.2023",
     "notes": "Стратегия, где игрок ведёт каравн к оазису от наводнения.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmUl9IOyGJ72W4SEPHLZHiQ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1119700"
   },
   {
     "title": "As We Descend",
@@ -499,9 +524,10 @@
     "releaseDate": "28.05.2025",
     "playedDate": "28.05.2025",
     "notes": "Карты в этой игре есть у войск, а также есть карты для выполнения ивентов в городе со своими статами для проверки в ивентах. Есть ограниченная мана для крутых абилок.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Unp4tvloq__Dt8-l27GLkLq",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1769830"
   },
   {
     "title": "Ascend to ZERO",
@@ -517,9 +543,10 @@
     "releaseDate": "11.07.2026",
     "playedDate": "09.06.2026",
     "notes": "Вампирлайк, где почти всё тебя ваншотает и забирает драгоценное время. Но и игрок на перекаче может шотать врагов из заморозки.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlWO-vr9tsx5o0J3m6KTe9x",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2697940"
   },
   {
     "title": "Asgard's Fall - Viking Survivors",
@@ -535,9 +562,10 @@
     "releaseDate": "09.04.2025",
     "playedDate": "07.08.2025",
     "notes": "Вампирлайк про викингов. Из интересного - пассивные умения в забеге вставляются в ограниченные и усиляющие друг друга ноды.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=ISUm1JveUKs",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2780710"
   },
   {
     "title": "Astral Ascent",
@@ -553,9 +581,10 @@
     "releaseDate": "14.11.2023",
     "playedDate": "06.08.2024",
     "notes": "Хороший платформер-экшн-роглайт с большим количеством прогрессии и коопом для лёгкого входа в игру.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmvguQiD7XypSxvDIujoVo9",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/d8eT-5iv9sI?list=PL5RpA6jmZ9UlaLlygNWNKSfXDkFz1bYsm",
+    "steamAppId": "1280930"
   },
   {
     "title": "Astrea: Six-Sided Oracles",
@@ -571,9 +600,10 @@
     "releaseDate": "21.09.2023",
     "playedDate": "05.10.2023",
     "notes": "Кубический рогалик, где можно и нужно ходить за врага!",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=KkAv3zDzj1k&list=PL5RpA6jmZ9UnTXhc0w4g8J83mli7XuKpR",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1755830"
   },
   {
     "title": "Atomic Picnic",
@@ -589,9 +619,10 @@
     "releaseDate": "07.11.2024",
     "playedDate": "10.11.2024",
     "notes": "Странно и баговано. Думал, что будет как RoR 2, но оказался скорее вампирлайком от третьего лица.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/1rtBe49fknQ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1903560"
   },
   {
     "title": "Backpack Battles",
@@ -607,9 +638,10 @@
     "releaseDate": "13.06.2025",
     "playedDate": "31.03.2026",
     "notes": "ПВП автобаттлер со сбором рюкзаков и красивыми девочками!",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=TdwJJjWzRK4&list=PL5RpA6jmZ9UmAe_nhoRdo8wXnZNX_piDp",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/kfTMyIhimXc",
+    "steamAppId": "2427700"
   },
   {
     "title": "Backpack Hero",
@@ -625,9 +657,10 @@
     "releaseDate": "14.11.2023",
     "playedDate": "08.03.2024",
     "notes": "Много играли в раннем доступе, а в релиз уже не возвращались. Там добавился менеджмент города.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UluoWJNXDSXIntiFsLq1ZDG",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1970580"
   },
   {
     "title": "Backpack Monsters Neoduel",
@@ -643,9 +676,10 @@
     "releaseDate": "30.09.2024",
     "playedDate": "04.06.2024",
     "notes": "Чуть-чуть глянули демку. Качество хуже рюкзаков, просто другой сеттинг.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/uuW5xTMcIa4",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2693940"
   },
   {
     "title": "Bad North: Jotunn Edition",
@@ -661,9 +695,10 @@
     "releaseDate": "16.11.2018",
     "playedDate": "15.07.2025",
     "notes": "Игра про защиту островов тремя типами юнитов. Мало контента, проходится за пару раз. В целом забавно. Есть на мобилках.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/Atwsj1Jm8_c",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "688420"
   },
   {
     "title": "Balatro",
@@ -679,9 +714,10 @@
     "releaseDate": "20.02.2024",
     "playedDate": "06.03.2024",
     "notes": "Уникальный покерный колодостроительный рогалик. С разными колодами и сложными возвышениями.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=J1QDahKjNqY&list=PL5RpA6jmZ9Umy6R0grFlaoF09GipuWK8u",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2379780"
   },
   {
     "title": "BALL x PIT",
@@ -697,9 +733,10 @@
     "releaseDate": "15.10.2025",
     "playedDate": "26.10.2025",
     "notes": "Рогалик-арканоид, подозрительно напоминающий вампирлайк! Залипательно засчёт большой меты и сочетаний шаров/персонажей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmaR2CGT2GX3I9gbw3lDaO8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2062430"
   },
   {
     "title": "Ballionaire",
@@ -715,9 +752,10 @@
     "releaseDate": "10.12.2024",
     "playedDate": "25.12.2024",
     "notes": "Пачинко рогалик, где можно создавать интересные комбинации, по которым надо пропрыгать шариком и заработать побольше деняков.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Un_4wtYdXwTfaF_-ey7Ti14",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2667120"
   },
   {
     "title": "Banners of Ruin",
@@ -733,9 +771,10 @@
     "releaseDate": "29.07.2021",
     "playedDate": "31.07.2020",
     "notes": "Прошшли в раннем доступе с 1 трая. Долгие забеги, поэтому больше не играли. Один из ранних клонов шпиля.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/MqZTFWD_ECs",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1075740"
   },
   {
     "title": "Battle Grid",
@@ -751,9 +790,10 @@
     "releaseDate": "25.10.2023",
     "playedDate": "18.08.2025",
     "notes": "В этом вампирлайке надо собирать роботов на сетке и набирать сет бонусы за похожих роботов и пушки как в ТФТ.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/wBsxIRGgx3Q",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2281480"
   },
   {
     "title": "Battle Shapers",
@@ -771,7 +811,8 @@
     "notes": "Играли на безрыбье. Поговаривают, что после релиза стал неплохим шутан-рогаликом.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1421290"
   },
   {
     "title": "Battle Waves: Card Tactics",
@@ -787,9 +828,10 @@
     "releaseDate": "02.12.2024",
     "playedDate": "07.03.2025",
     "notes": "Автобаттлер по трём линиям, который задумывался как мультиплеер, но не выстрелил.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/-dLsi7eTJtI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1965620"
   },
   {
     "title": "Battlestar Galactica: Scattered Hopes",
@@ -805,9 +847,10 @@
     "releaseDate": "11.05.2026",
     "playedDate": "27.05.2026",
     "notes": "Игра по старому сериалу. Суть игры - добраться до финального корабля как в ФТЛ, решая по дороге разные задачи.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/VPTyK1Fj4RE",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2535950"
   },
   {
     "title": "Bella Wants Blood",
@@ -823,9 +866,10 @@
     "releaseDate": "24.07.2024",
     "playedDate": "21.02.2025",
     "notes": "Мерзко-притягательный тавер дефенс с довольно быстрыми забегами и контентом на 3 часика, чтобы пройти по разу всех боссов, но можно проходить всех всеми стартовыми башнями.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/mcRRe69Uk2Y",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3007660"
   },
   {
     "title": "Below",
@@ -841,9 +885,10 @@
     "releaseDate": "14.12.2018",
     "playedDate": "26.12.2018",
     "notes": "Плохо помню игру, но вроде была довольно сложной и мрачной.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlZveFTITpK5K2ergWS7u-7",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "250680"
   },
   {
     "title": "Bendy: Lone Wolf",
@@ -859,9 +904,10 @@
     "releaseDate": "15.08.2025",
     "playedDate": "16.08.2025",
     "notes": "В игре надо найти несколько предметов и сбежать с уровня, и так повторить много раз, чтобы двинуть сюжет. Стелс и скучный геймплей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/L3FQspjY7i4",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3232610"
   },
   {
     "title": "Beneath Oresa",
@@ -877,9 +923,10 @@
     "releaseDate": "27.09.2023",
     "playedDate": "22.11.2022",
     "notes": "Пенисорез. Декбилдер с крутым графонием и стильными ударами. Не возвращали после раннего доступа.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkRDkaUAJVsamhQFoRIJWGU",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1803400"
   },
   {
     "title": "Bingle Bingle",
@@ -895,9 +942,10 @@
     "releaseDate": "22.03.2024",
     "playedDate": "23.06.2026",
     "notes": "Игра про рулетку, вышедшая после Балатро. ЗАПРЕЩЕНО СТРИМИТЬ В РФ (ставится плашка азартные игры)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnpU_hCntFg5OfvaEHfjZ-5",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2789810"
   },
   {
     "title": "Black Book (Черная Книга)",
@@ -913,9 +961,10 @@
     "releaseDate": "10.08.2021",
     "playedDate": "20.09.2021",
     "notes": "Не совсем рогалик. Довольно быстро игра теряет свою колодостроительную механику и проходится одной декой.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlHblBStAqL-O5u0ndrBiYz",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1138660"
   },
   {
     "title": "Black Jacket",
@@ -931,9 +980,10 @@
     "releaseDate": "12.05.2026",
     "playedDate": "17.06.2026",
     "notes": "Интересный способ сделать рогалик из игры в очко. Помимо 4х базовых мастей добавлены ещё 4 со своими уникальными механиками. С сюжетом.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um4mLb5Hx4PvGgf_Bx4BbZK",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3100370"
   },
   {
     "title": "Blade Assault",
@@ -949,9 +999,10 @@
     "releaseDate": "18.01.2022",
     "playedDate": "09.06.2021",
     "notes": "Проходили игру в раннем, на релиз не вернулись. Вроде бы, было сложновато.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ul0B2WtNlVKdNg671e8eZEh",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1367300"
   },
   {
     "title": "Blazblue Entropy Effect",
@@ -967,9 +1018,10 @@
     "releaseDate": "14.02.2024",
     "playedDate": "05.02.2024",
     "notes": "Роглайт по БлазБлю! Сделан очень качественно и с сюжетом (но без перевода)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnYxY2a-0v8wizhsHwynQ_f",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2273430"
   },
   {
     "title": "Blightstone",
@@ -985,9 +1037,10 @@
     "releaseDate": "20.01.2026",
     "playedDate": "21.01.2026",
     "notes": "Тактика без клеток. Можно занимать выгодные позиции, перекрывать выстрелы и т.д. Есть выбор пути.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkyfAEoFbBduhdElmrnbiuh",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2832280"
   },
   {
     "title": "Block Tower TD",
@@ -1003,9 +1056,10 @@
     "releaseDate": "09.06.2023",
     "playedDate": "09.01.2025",
     "notes": "ТД, где башни и ресурсодобыча ставятся на блоки, которые тоже надо вначале нарандомить.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/1SjwstUu30o",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2427570"
   },
   {
     "title": "Blue Prince",
@@ -1021,9 +1075,10 @@
     "releaseDate": "10.04.2025",
     "playedDate": "18.05.2025",
     "notes": "Сюжетная головоломка, где нужно на рандоме (рогаликовость) выбирать комнаты и собрать из них пазл, который приведёт к финалу.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmwJTPdQqmMSJtjQGtXGUbO",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1569580"
   },
   {
     "title": "Book of Demons",
@@ -1039,9 +1094,10 @@
     "releaseDate": "13.12.2018",
     "playedDate": "04.01.2019",
     "notes": "Колодострой, где путешествуешь по подземельям до главного демона.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um4jrGNbtbUPdvFVKMi7zvF",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "449960"
   },
   {
     "title": "Bounty of One",
@@ -1057,9 +1113,10 @@
     "releaseDate": "08.09.2023",
     "playedDate": "22.12.2022",
     "notes": "Делали быстротест игры. Не особо зашло.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/pQ2Trxf1uP0",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1968730"
   },
   {
     "title": "BPM: Bullets Per Minute",
@@ -1075,9 +1132,10 @@
     "releaseDate": "15.09.2020",
     "playedDate": "14.09.2020",
     "notes": "Ритмичный шутер-рогалик! В глазах рябит, но круто! (не играть с плохой вестибюляркой)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um76mU8PcA1EMR2rFNDk4rc",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1286350"
   },
   {
     "title": "Breachway",
@@ -1093,9 +1151,10 @@
     "releaseDate": "26.09.2024",
     "playedDate": "01.10.2024",
     "notes": "Неплохая попытка в FTL с декбилдингом. Интересные решения с разной энергией для корабля.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Un75IVqPJKLEpt1a4-fe4V8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2118810"
   },
   {
     "title": "Brew",
@@ -1111,9 +1170,10 @@
     "releaseDate": "06.11.2025",
     "playedDate": "10.11.2025",
     "notes": "Рогалик, где надо создавать зелья расходники, чтобы наносить урон. Вариативности почти нет, урона нет и враги губки.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=I49OHUa4hXc",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1793330"
   },
   {
     "title": "Brotato",
@@ -1129,9 +1189,10 @@
     "releaseDate": "23.06.2023",
     "playedDate": "06.12.2024",
     "notes": "Лучший вампирлайк из существующих. Много уникальных персонажей, полностью меняющих геймплей. Сложность остаётся на всех 20 уровнях. Легенда",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Un9YDalmitXN2X4XDMTVl0E",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/zF63HLTCYr8?list=PL5RpA6jmZ9UlaLlygNWNKSfXDkFz1bYsm",
+    "steamAppId": "1942280"
   },
   {
     "title": "Calculate It",
@@ -1147,9 +1208,10 @@
     "releaseDate": "05.07.2024",
     "playedDate": "08.01.2025",
     "notes": "Замена кнопок на калькуляторе, с помощью которого надо вычислять 0-100",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/FatjvejXnxk",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3043740"
   },
   {
     "title": "Call of Sentinels",
@@ -1167,7 +1229,8 @@
     "notes": "Партнерский стрим по игре. Вампирлайк очень посредственный.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2558200"
   },
   {
     "title": "Card-En-Ciel",
@@ -1183,9 +1246,10 @@
     "releaseDate": "24.10.2024",
     "playedDate": "23.03.2025",
     "notes": "Анимешный рогалик с сюжетом со своими особыми механиками уклонения по клеткам и блока вражеских атак. + анимешные песенки",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/lolfTxp41sQ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2730540"
   },
   {
     "title": "Cardaclysm",
@@ -1201,9 +1265,10 @@
     "releaseDate": "26.02.2021",
     "playedDate": "26.02.2021",
     "notes": "Скорее сюжетная карточная игра чем рогалик. Не прошел, потому что надоело.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlUBO6LFZkXoGGC5oTZXykC",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1252710"
   },
   {
     "title": "Cartapli: Fold Quest",
@@ -1219,9 +1284,10 @@
     "releaseDate": "05.02.2026",
     "playedDate": "05.02.2026",
     "notes": "Рогалик на час. Всего один персонаж на две локации, зато интересная механика со складыванием бумаги. Игра бесплатная.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/lRIWGKoNG6E",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "4314560"
   },
   {
     "title": "CHANGE: A Homeless Survival Experience",
@@ -1237,9 +1303,10 @@
     "releaseDate": "01.05.2020",
     "playedDate": "23.03.2026",
     "notes": "Рогалик про выживание на улице. Забеги долгие, мета горизонтальная (анлоки), вариативности и реиграбельности показалось маловато.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/oA_oDDkZbHU",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "926140"
   },
   {
     "title": "Chaos Zero Nightmare",
@@ -1255,7 +1322,7 @@
     "releaseDate": "22.10.2025",
     "playedDate": "16.12.2025",
     "notes": "В этой гаче в рогаликовых забегах собирается колода + шмотки персам, которые потом сохраняются на разные другие активности. Бубы, жопки.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uk5D9ivZsfqTzoHuvHtfheJ",
     "hasMI": "FALSE",
     "miVideo": ""
   },
@@ -1275,7 +1342,8 @@
     "notes": "В игре надо прокидывают кубы в покерных комбинацих и обыгрывать всегда одного противника - Смерть, но с разными модификаторами битвы. + 3 уникальных босса.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3756340"
   },
   {
     "title": "Children of Morta",
@@ -1291,9 +1359,10 @@
     "releaseDate": "03.09.2019",
     "playedDate": "15.02.2020",
     "notes": "Сюжетный рогалик, который чиллово проходится в коопе.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmwOpT62IIz2r7wDj5n89fh",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "330020"
   },
   {
     "title": "Chrono Ark",
@@ -1309,9 +1378,10 @@
     "releaseDate": "03.05.2024",
     "playedDate": "05.08.2025",
     "notes": "Декбилдер с большиииим сюжетом! Инвентарь с предметами, разные аниме девочки со скинчиками. Прошли платину.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/v3ODsOSmNF8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1188930"
   },
   {
     "title": "Cinderia",
@@ -1329,7 +1399,8 @@
     "notes": "Изометричный экшн с хорошим билдостроением через выбор в забеге: абилок, реликов, пассивок и их прокачки.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3214610"
   },
   {
     "title": "Claymores of the Lost Kingdom",
@@ -1345,9 +1416,10 @@
     "releaseDate": "25.11.2024",
     "playedDate": "26.11.2024",
     "notes": "Больше карточное РПГ с большой картой, где можно торговать и грабить корованы. Однообразные мобы и скучный геймплей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/pLeO-UmFPMI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2473260"
   },
   {
     "title": "Clover Pit",
@@ -1363,9 +1435,10 @@
     "releaseDate": "26.09.2025",
     "playedDate": "03.10.2025",
     "notes": "Однорукий бандит в мрачном сеттинге. Билдостроение через ограниченное количество реликвий и пассивок. Битва с цифрой.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/xduqm7P0nrg",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3314790"
   },
   {
     "title": "Cobalt Core",
@@ -1381,9 +1454,10 @@
     "releaseDate": "08.11.2023",
     "playedDate": "20.12.2024",
     "notes": "Декбилдер про космические корабли, которые могут передвигаться и уклоняться в середине боя.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/wW93izejN70",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2179850"
   },
   {
     "title": "Codename: Ocean Keeper",
@@ -1399,9 +1473,10 @@
     "releaseDate": "19.07.2024",
     "playedDate": "29.01.2025",
     "notes": "Скрещение идей вампирлайка и дом кипера. Ужасная реализация и скучно даже спустя полгода раннего доступа.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/IYVabOxVBc8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2845630"
   },
   {
     "title": "Coin Crypt",
@@ -1417,9 +1492,10 @@
     "releaseDate": "18.11.2013",
     "playedDate": "14.05.2025",
     "notes": "Все карты имеют стоимость и играются одноразово. Карты = монеты. За монеты можно и покупать релики и донатить богам на более крутые карты.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/2jggNpYFBz0",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "264690"
   },
   {
     "title": "ColdRidge",
@@ -1435,9 +1511,10 @@
     "releaseDate": "28.10.2024",
     "playedDate": "03.01.2025",
     "notes": "В игре надо набирать деньги для жадной гильдии торговцев, захватывая клетки с ресурами максимально эффективно.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/3OBA50CMsIY",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3052500"
   },
   {
     "title": "Combo Card Clashers",
@@ -1455,7 +1532,8 @@
     "notes": "Картишки выставляются на поле, из чего выстраивается последовательность абилок героя. Каждый доп удра + урон от комбо.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2054770"
   },
   {
     "title": "Combolands",
@@ -1473,7 +1551,8 @@
     "notes": "Игра, где надо правильно построить взаимосвязи зданий и различных ресурсов, чтобы набирать цифру квоты (поселенцев в свой город).",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "4075620"
   },
   {
     "title": "Commander Quest",
@@ -1489,9 +1568,10 @@
     "releaseDate": "04.04.2025",
     "playedDate": "05.05.2025",
     "notes": "Карточный автобаттлер, где картами отправляешь в бой свои отряды, строишь башенки и используешь магию на врагов. Релики, улучшения карт и т.п. всё как в классическом Шпиле.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmxVJzBR6iPJK8ilL9EsjaK",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2697930"
   },
   {
     "title": "Crab Champions",
@@ -1507,9 +1587,10 @@
     "releaseDate": "01.04.2024",
     "playedDate": "05.04.2023",
     "notes": "Игра - первоапрельская шутка, которая на самом деле играбельный кооп шутер рогалик.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmSofTs3Es04MA-bmcjEHbk",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "774801"
   },
   {
     "title": "Crimsonland",
@@ -1527,7 +1608,8 @@
     "notes": "Вроде как прародитель вампиров. Играл часик на сабдей.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "262830"
   },
   {
     "title": "Crowntrick",
@@ -1543,9 +1625,10 @@
     "releaseDate": "16.10.2020",
     "playedDate": "21.10.2020",
     "notes": "Пошаговый поклеточный рогалик, который был дропнут из-за отсутствия времени.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmtxS6tFARy7hmOfobln1zq",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1000010"
   },
   {
     "title": "Crypt of the NecroDancer",
@@ -1561,9 +1644,10 @@
     "releaseDate": "23.04.2015",
     "playedDate": "17.05.2023",
     "notes": "Ритмичный рогалик под музыку, в т.ч. и на мобилках.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/tDP8LsZGRxE",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "247080"
   },
   {
     "title": "Cryptical Path",
@@ -1579,9 +1663,10 @@
     "releaseDate": "29.01.2025",
     "playedDate": "02.02.2025",
     "notes": "Экшн-платформер, где надо самому выстраивать путь по акту. Всего 3 босса, мало монстров, очень сложный третий акт (третий забег).",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmKlYksbCSaT71XByhBe9xA",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2549380"
   },
   {
     "title": "Cuisineer",
@@ -1597,9 +1682,10 @@
     "releaseDate": "09.11.2023",
     "playedDate": "09.06.2024",
     "notes": "Играл на сабдей на часик. Игра про менеджмент ресторана + простенькие битвы на вылазках.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/OBid1jBI8qs",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1963570"
   },
   {
     "title": "Cult of the Lamb",
@@ -1615,9 +1701,10 @@
     "releaseDate": "11.08.2022",
     "playedDate": "22.08.2022",
     "notes": "Один из простейших рогаликов, совмещённый с фермой и милой стилистикой животных.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UldViBDXXorQ9cbIXbjKA4l",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1313140"
   },
   {
     "title": "Cultist Simulator",
@@ -1635,7 +1722,8 @@
     "notes": "Это как Sultan's Game, только ничего не понятно. Выполнение действий не приносит какого-то значимого импакта в игру. На стриме несмотрибельно.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "718670"
   },
   {
     "title": "Cultivation Story: Reincarnation",
@@ -1651,9 +1739,10 @@
     "releaseDate": "30.01.2023",
     "playedDate": "18.12.2024",
     "notes": "Экшн рогалик про культиваторов со стенами текста на абилках и кучей пассивок и разных пушек и быстрыми боссами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/x7q98Ekq2Mo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1866880"
   },
   {
     "title": "Curse of the Dead Gods",
@@ -1669,9 +1758,10 @@
     "releaseDate": "23.02.2021",
     "playedDate": "27.02.2021",
     "notes": "Неудачная (непопулярная) попытка разрабов сделать клон Hades'а",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlN_BBz6Hn5Tm5B6fNDtFlu",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1123770"
   },
   {
     "title": "Cursemark",
@@ -1687,9 +1777,10 @@
     "releaseDate": "08.06.2026",
     "playedDate": "14.06.2026",
     "notes": "Рогалик с малым билдостроением, но с обширной картой, секретиками и загадками. Каждый из больших боссов возвращает в хаб для начала нового забега.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmYLr2phzC1xU78HfZSFvoQ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3219180"
   },
   {
     "title": "Dandy Ace",
@@ -1705,9 +1796,10 @@
     "releaseDate": "25.03.2021",
     "playedDate": "30.03.2021",
     "notes": "Вполне играбельный изометричный рогалик типа Hades.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmEuUzKEwBY8nYB1EJWk07V",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1037130"
   },
   {
     "title": "Dark Quest 3",
@@ -1723,9 +1815,10 @@
     "releaseDate": "24.05.2023",
     "playedDate": "02.05.2022",
     "notes": "Прошел игру только в раннем доступе.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkkpbvkopGvq0C1gidMmPj6",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1185490"
   },
   {
     "title": "Darkest Dungeon",
@@ -1741,9 +1834,10 @@
     "releaseDate": "19.01.2016",
     "playedDate": "26.07.2018",
     "notes": "Прекрасная игра, особенно чтобы изучать с нуля. Становится простой после многих забегов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnQACtI66Hjn1TrILStK4Hz",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "262060"
   },
   {
     "title": "Darkest Dungeon 2",
@@ -1759,9 +1853,10 @@
     "releaseDate": "08.05.2023",
     "playedDate": "13.05.2023",
     "notes": "Попытка сделать именно рогаликом не увенчалась успехом. Реиграбельности мало.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmHyOqUocKKh38-gJaTZ7Vo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1940340"
   },
   {
     "title": "Darksburg",
@@ -1777,9 +1872,10 @@
     "releaseDate": "23.09.2020",
     "playedDate": "26.09.2020",
     "notes": "Этакий ранний Ravenswatch. Коопный рогалик против орд зомби.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnUObCr0UdOHMdbYREdTVWe",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "939100"
   },
   {
     "title": "Dead Cells",
@@ -1795,9 +1891,10 @@
     "releaseDate": "07.08.2018",
     "playedDate": "10.01.2023",
     "notes": "Классика жанра платофрмер-рогаликов. Почти только горизонтальная мета, сложные возвышения в виде клеток.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um4v6jPEgrL08sEcIZj0Rkl",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/15hTezDow9s?list=PL5RpA6jmZ9UlaLlygNWNKSfXDkFz1bYsm",
+    "steamAppId": "588650"
   },
   {
     "title": "Dead Weight",
@@ -1815,7 +1912,8 @@
     "notes": "Пошаговая тактика, где управляешь 1м героем + двумя наёмниками. Быстрые и однообразные битвы на островах, чтобы дойти до босса.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2646720"
   },
   {
     "title": "Deadlink",
@@ -1831,9 +1929,10 @@
     "releaseDate": "27.07.2023",
     "playedDate": "05.07.2025",
     "notes": "Думоподобный (Eternal) быстрый аренный шутер, где можно восстанавливать броню, убивая слабых мобов под дебаффом (как пила в Думе).",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/PkY6jEsq07U",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1676130"
   },
   {
     "title": "Deadlock Station",
@@ -1851,7 +1950,8 @@
     "notes": "Тактика, где 3 перса (всего 10) двигаются по локациям, собирают эквип и дерутся с боссом. В плане тактики прямо в бою можно передвигать персов и юзать абилки.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2327640"
   },
   {
     "title": "Deadzone: Rogue",
@@ -1867,9 +1967,10 @@
     "releaseDate": "11.08.2025",
     "playedDate": "17.08.2025",
     "notes": "Качественный шутан с коопом, разными пушками, прокачкой в виде меты и выбора разных пассивок внутри забега и их синнергий.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um41RSVm1UlGyUQNWjPD35R",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3228590"
   },
   {
     "title": "Death by Scrolling",
@@ -1885,9 +1986,10 @@
     "releaseDate": "28.10.2025",
     "playedDate": "03.11.2025",
     "notes": "Игра с интересной задумкой, но очень слабой реализацией. Урон врагам можно наносить ограниченными зарядами карточек с оружием. Огромная мета как в вампирлайках.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/v3FvguebkBs",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3773590"
   },
   {
     "title": "Death Must Die",
@@ -1903,9 +2005,10 @@
     "releaseDate": "15.11.2023",
     "playedDate": "24.04.2024",
     "notes": "Вампирлайк с крутой механикой выноса шмоток из забега, как в action rpg играх (дьябло). Ждем релиз.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=R4OeuV9jZTE&list=PL5RpA6jmZ9UlvOHuOFSSUUfesGwBAu1ot",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2334730"
   },
   {
     "title": "Death Road to Canada",
@@ -1921,9 +2024,10 @@
     "releaseDate": "22.07.2016",
     "playedDate": "02.03.2025",
     "notes": "Бей зомби, собирай ресурсы, выбирай правильные варианты в рандомных ивентах, зависящих от статов твоих персов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/dRmg9noIpGo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "252610"
   },
   {
     "title": "Death Skid Marks",
@@ -1939,9 +2043,10 @@
     "releaseDate": "21.11.2014",
     "playedDate": "29.07.2025",
     "notes": "Бесплатный рогалик, где надо сражаться на тачках рендж и мили пушками. Показался однообразным в плане геймплея и со сложными боссами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=D1lx1ps6pTA",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "326150"
   },
   {
     "title": "Deck of Ashes",
@@ -1957,9 +2062,10 @@
     "releaseDate": "09.06.2020",
     "playedDate": "10.06.2020",
     "notes": "Один из первых подражателей Шпиля, который пытался сделать какие-то интересные механики.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/uCLg-nzp1TU",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1016730"
   },
   {
     "title": "Deck of Haunts",
@@ -1975,9 +2081,10 @@
     "releaseDate": "07.05.2025",
     "playedDate": "12.05.2025",
     "notes": "Игра, где надо отстроить дом с привидениями, пугая и убивая челиков. Контента всего на 28 игровых дня (битвы). То есть 1 забег и всё. Сомневаюсь в наличии возвышений.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/lqC3Su1Fs8Y",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3179730"
   },
   {
     "title": "Decktamer",
@@ -1993,9 +2100,10 @@
     "releaseDate": "27.10.2025",
     "playedDate": "07.11.2025",
     "notes": "Колодострой, где твоя колода это враги, которых можно прирурчить на маленьком хп. Высокая вариативность засчёт мутаций и комбинаций монстров.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ul0lU3XcIGvjyNj0A-Q1RBx",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2870340"
   },
   {
     "title": "Deep Rock Galactic: Rogue Core",
@@ -2011,9 +2119,10 @@
     "releaseDate": "20.05.2026",
     "playedDate": "21.05.2026",
     "notes": "Игра сильно напоминает оригинальную игру с бОльшим упором на экшн а не копание. Рекомендую в коопе, в соло скучновато.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UluwE2Reuai0yrhrINE-piZ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2605790"
   },
   {
     "title": "Deep Rock Galactic: Survivor",
@@ -2029,9 +2138,10 @@
     "releaseDate": "17.09.2025",
     "playedDate": "23.09.2025",
     "notes": "Отличный вампирлайк со своей уникальной механикой копания стен и обширной метой и разнообразием пушек. Ждём релиз.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=zgYdVyIkPY4&list=PL5RpA6jmZ9Un44r99vb9PozGxhHiG4p8S",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/efu05_ksLzM?list=PL5RpA6jmZ9UlaLlygNWNKSfXDkFz1bYsm",
+    "steamAppId": "2321470"
   },
   {
     "title": "Deep Sky Derelicts",
@@ -2047,9 +2157,10 @@
     "releaseDate": "26.09.2018",
     "playedDate": "14.04.2020",
     "notes": "Совсем не запомнившийся космический рогалик типа Darkest Dungeon.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmXmwfJT2kjfHJhP-QLuapr",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "698640"
   },
   {
     "title": "Deepest Chamber: Resurrection",
@@ -2065,9 +2176,10 @@
     "releaseDate": "24.10.2023",
     "playedDate": "26.07.2021",
     "notes": "Играл в раннем доступе. Запомнился как потенциально неплохой.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkbPsjpSGp358G7uRXLewd6",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1552080"
   },
   {
     "title": "Defenders of the Omniverse",
@@ -2083,9 +2195,10 @@
     "releaseDate": "26.08.2024",
     "playedDate": "31.08.2024",
     "notes": "Поиграл чуть-чуть в раннем доступе и до этого в демке. Не особо зашло.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/gCTGEPUOHew",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2461840"
   },
   {
     "title": "Demonic Mahjong",
@@ -2101,9 +2214,10 @@
     "releaseDate": "16.07.2025",
     "playedDate": "22.12.2025",
     "notes": "Я ничего не понимаю в маджонге, а в маджонге типа балатро ничего не понимаю в двойне.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=bACOQA3rGK0",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3444020"
   },
   {
     "title": "Desktop Dungeons",
@@ -2121,7 +2235,8 @@
     "notes": "Игра в которой надо правильно сделать ходы в каждом уровне подземелья.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "226620"
   },
   {
     "title": "Despot's Game: Dystopian Battle Simulator",
@@ -2137,9 +2252,10 @@
     "releaseDate": "29.09.2022",
     "playedDate": "15.10.2021",
     "notes": "Абсурдный автобаттлер от русских разрабов с пвп в конце забега.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlZGyW9I-h72y4ytjSAma7k",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1227280"
   },
   {
     "title": "Despotism 3K",
@@ -2155,9 +2271,10 @@
     "releaseDate": "08.11.2018",
     "playedDate": "13.11.2024",
     "notes": "Рогалик про порабощение человеков. С текстовыми ивентами с разными исходами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/on9ATm6nC7E",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "699920"
   },
   {
     "title": "Devil Slayer - Raksasi (Дьяволоборец Ракшаси)",
@@ -2173,9 +2290,10 @@
     "releaseDate": "22.04.2021",
     "playedDate": "13.05.2021",
     "notes": "Сложный китайский рогалик с видом сверху, где надо менеджить стамину (типа соулслайк)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkgSZf7XOc4tyudR7bKAATo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1016600"
   },
   {
     "title": "Dice & Fold",
@@ -2191,9 +2309,10 @@
     "releaseDate": "24.06.2024",
     "playedDate": "15.12.2024",
     "notes": "Кубики в игре используются для закрытия (убийства) врагов, использования абилок героя и фарма монеток. Игра на новых классах становится однообразной и простой засчёт реликов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlUbBM1nIRaOEDndnzUvn6t",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2693930"
   },
   {
     "title": "Dice a Million",
@@ -2211,7 +2330,8 @@
     "notes": "Балатролайк, где надо собирать правильную колоду кубов и фармить миллионы. Возвышения раздельные на 10 разных рук (стартовых колод). Жёсткие боссы.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3430340"
   },
   {
     "title": "Dicefolk",
@@ -2227,9 +2347,10 @@
     "releaseDate": "27.02.2024",
     "playedDate": "05.03.2024",
     "notes": "Хороший кубический рогалик, где игра идёт тремя монстрами, которые получают от игрока статы и арты.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlYzlyCEwLvPrr7B_4r9iXd",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1996430"
   },
   {
     "title": "DICEOMANCER",
@@ -2245,9 +2366,10 @@
     "releaseDate": "10.10.2024",
     "playedDate": "18.10.2024",
     "notes": "В этом декбилдере намешано прям много механик: и карты и кубики в т.ч. в ивентах и читы над цифрами. Прошел только 1 раз без возвышений.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uk-GNOsvc7GtG4ilpzTfn9F",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2501600"
   },
   {
     "title": "Dicey Dungeons",
@@ -2263,9 +2385,10 @@
     "releaseDate": "13.08.2019",
     "playedDate": "15.07.2022",
     "notes": "Крутейший декбилдер с уникальными прохождениями за разных персов, где сложность меняет геймплей!",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ume-axPKl-CsUHJ_jLKTMIa",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "861540"
   },
   {
     "title": "Die in the Dungeon",
@@ -2281,9 +2404,10 @@
     "releaseDate": "01.12.2023",
     "playedDate": "28.11.2023",
     "notes": "Кубики это колода, а играются они в специальную доску с разъёмами. В остальном обычный декбилдер шпильлевик.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/r-5FTxTxF_c",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2428770"
   },
   {
     "title": "Dimensionals",
@@ -2299,9 +2423,10 @@
     "releaseDate": "18.11.2024",
     "playedDate": "19.11.2024",
     "notes": "Детская простая игра, где надо выбирать скиллы для трёх своих мультяшных героев.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/7bgr1TMfFQM",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2856450"
   },
   {
     "title": "Dome Keeper",
@@ -2317,9 +2442,10 @@
     "releaseDate": "27.09.2022",
     "playedDate": "04.08.2024",
     "notes": "Рогалик с защитой купола и копанием, который начал свой тренд рогаликов с похожим геймплеем.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=zxgP5olTDsY&list=PL5RpA6jmZ9UlcYNm5yNBf5O-3NeNr5h8x",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/TFkG2Q-dLpY?list=PL5RpA6jmZ9UlaLlygNWNKSfXDkFz1bYsm",
+    "steamAppId": "1637320"
   },
   {
     "title": "dotAGE",
@@ -2337,7 +2463,8 @@
     "notes": "Строительство целой деревни с несколькими уровнями развития (новые типы ресурсов и разной еды). Игроку также нужно выживать от грядущих событий.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "638510"
   },
   {
     "title": "Down with the Ship",
@@ -2353,9 +2480,10 @@
     "releaseDate": "15.05.2026",
     "playedDate": "24.05.2026",
     "notes": "Клон рюкзаков в космосе. Разные корабли, капитаны со своими абилками, и в целом приятный космический вайб.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=vkl9S2PgkD4",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3523750"
   },
   {
     "title": "Dragon is Dead",
@@ -2371,9 +2499,10 @@
     "releaseDate": "06.06.2024",
     "playedDate": "09.06.2025",
     "notes": "Платформер рогалик, где весь инвентарь героя остаётся после забега в качестве меты. А в самом забеге усиляешься ещё и реликами с сет бонусами + прокачкой персонажа.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=sbHAuGs58K4&feature=youtu.be",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2803280"
   },
   {
     "title": "DreamEcho",
@@ -2391,7 +2520,8 @@
     "notes": "Игра позиционирует себя как АПРГ (ПОЕ). Но на деле просто ходишь по комнатам, в которых враги даже нормально тебя не успеют ударить.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3226060"
   },
   {
     "title": "Dreamscaper",
@@ -2407,9 +2537,10 @@
     "releaseDate": "05.08.2021",
     "playedDate": "14.08.2020",
     "notes": "Одна из ранних попыток быстро склепать рогалик типа Hades. Интересная графика и задумка со снами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnEgQLM_yXlFNTsjwj8ln22",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1040420"
   },
   {
     "title": "Drill Core",
@@ -2425,9 +2556,10 @@
     "releaseDate": "12.09.2024",
     "playedDate": "31.07.2025",
     "notes": "Идейный продолжатель Dome Keeper'а, в котором бурильщики копают отмеченные блоки, а ночью башни защищают платформу.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=9xd3pK8MDdM&list=PL5RpA6jmZ9UmMoJGhQCs0MYe1LZWrY2jH",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2821800"
   },
   {
     "title": "Drop Duchy",
@@ -2443,9 +2575,10 @@
     "releaseDate": "05.05.2025",
     "playedDate": "11.05.2025",
     "notes": "Рогалик-тетрис, где блоки не ускоряются, но надо подумать как правильно расставить свои поселения, леса, поля, реки, горы и т.д., чтобы и ресурсов нафармить и армию, чтобы победить.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ul4loP8y80uhBbaYXF57Fqi",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2525310"
   },
   {
     "title": "Dungeon 100",
@@ -2461,9 +2594,10 @@
     "releaseDate": "11.08.2023",
     "playedDate": "05.02.2023",
     "notes": "В этой игре сражаешься со своим прошлым билдом после поражения.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/_q-gD7M8eW8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1711610"
   },
   {
     "title": "Dungeon Clawler",
@@ -2479,9 +2613,10 @@
     "releaseDate": "21.11.2024",
     "playedDate": "22.11.2024",
     "notes": "Рогалик про клешню-лохотнрон. Играется прикольно, разные возвышения (4 сложности) на 11 персов в раннем доступе.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlmEVeVRoQN-7WexSrAqV6G",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2356780"
   },
   {
     "title": "Dungeons and Degenerate Gamblers",
@@ -2497,9 +2632,10 @@
     "releaseDate": "08.08.2024",
     "playedDate": "08.08.2024",
     "notes": "Игра про 21 декбилдер. Как балатро, только про блэкджэк. Сыграл только в демке, а потом не возвращался.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/r2MDr1f6XMY",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2400510"
   },
   {
     "title": "Dungeontop",
@@ -2517,7 +2653,8 @@
     "notes": "Рогалик, который я совсем не помню.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1146230"
   },
   {
     "title": "Dungreed",
@@ -2533,9 +2670,10 @@
     "releaseDate": "15.02.2018",
     "playedDate": "27.11.2024",
     "notes": "Олдовый и очень качественный экшн-платформер рогалик про подземелья.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkDi6w29stKGoOo5o4L2kDS",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/907eTbbbJlA",
+    "steamAppId": "753420"
   },
   {
     "title": "Dunjungle",
@@ -2551,9 +2689,10 @@
     "releaseDate": "10.12.2025",
     "playedDate": "12.10.2024",
     "notes": "Платофрмер-рогалик с попытками копировать Dead Cells. В релизе есть разные костюмы для разных билдов, околол 8 разных локаций, сложные боссы.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnmLUjGz44HlxXX_JXKURyM",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1589570"
   },
   {
     "title": "Dwarves: Glory, Death and Loot",
@@ -2569,9 +2708,10 @@
     "releaseDate": "22.01.2026",
     "playedDate": "26.01.2026",
     "notes": "Магазин с дворфами и шмотками -> автобитва -> повторить. Дворфам собираются разные классы, сеты, реликвии и т.д., чтобы побеждать волны орков и боссов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/n9KiuUdBJwQ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2205850"
   },
   {
     "title": "Echoes of Mystralia",
@@ -2587,9 +2727,10 @@
     "releaseDate": "11.08.2026",
     "playedDate": "11.08.2026",
     "notes": "Качественный хейдеслайк с интересными комбинациями магии. Можно создавать безумные комбо под разные спеллы (стартовые оружки) под модификациями.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmNZUwmib7cTja-bQdm_KzW",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "4378410"
   },
   {
     "title": "Ember Knights",
@@ -2605,9 +2746,10 @@
     "releaseDate": "18.07.2023",
     "playedDate": "19.01.2025",
     "notes": "Быстрый и приятный коопный рогалик",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/o0PcW43PRZg",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1135230"
   },
   {
     "title": "Emberward",
@@ -2623,9 +2765,10 @@
     "releaseDate": "25.06.2024",
     "playedDate": "07.11.2024",
     "notes": "Огромная вариативность в билдах и выставлении башен на поле засчёт тетрисовых клеток.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/YIX38j8IvbI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2459550"
   },
   {
     "title": "Enter the Chronosphere",
@@ -2641,9 +2784,10 @@
     "releaseDate": "25.05.2026",
     "playedDate": "16.06.2026",
     "notes": "Буллетхелл рогалик, где каждый шаг это течение времени. Можно играть полностью пошагово. Чат сравнивал с Superhot.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/dCRAGHvqaog",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1969810"
   },
   {
     "title": "Enter the Gungeon",
@@ -2659,9 +2803,10 @@
     "releaseDate": "05.04.2016",
     "playedDate": "07.06.2024",
     "notes": "Прошли только обычную концовку. Хороший ванильный рогалик про пушки.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnsHEAz_1xP8kHeCDosc2Zn",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/1bZZUQftGuo",
+    "steamAppId": "311690"
   },
   {
     "title": "Epic Auto Towers",
@@ -2677,9 +2822,10 @@
     "releaseDate": "14.11.2024",
     "playedDate": "14.11.2024",
     "notes": "Разные башенки синергируют между собой на всего 10 клетках. Сложно и залипательно!",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ukbz_BFlJICEguoVH3Fl4Em",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2116060"
   },
   {
     "title": "Evercore Heroes: Ascension",
@@ -2697,7 +2843,8 @@
     "notes": "Плохое общее исполнение коопного рогалика с разными персами со своими абилками как в Лиге Легенд. Нерабочие в РФ серваки, плохие звуки и т.д. и т.п.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2586780"
   },
   {
     "title": "Everything is Crab",
@@ -2713,9 +2860,10 @@
     "releaseDate": "08.05.2026",
     "playedDate": "08.05.2026",
     "notes": "Стартуешь маленьким крабом, а заканчиваешь безумным мутантом. После нескольких забегов, показалась мало вариативной внутри самих забегов. Хотя мутаций много.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ulo60RW_Um-45ohMqvC51us",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3526710"
   },
   {
     "title": "Eyes in the Dark",
@@ -2731,9 +2879,10 @@
     "releaseDate": "04.07.2022",
     "playedDate": "22.12.2022",
     "notes": "Стильный экшн-рогалик про борьбу с темнотой в старом поместье.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/lGtOvHUYFG8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1039360"
   },
   {
     "title": "Fantasy Madness Bloodbath",
@@ -2751,7 +2900,8 @@
     "notes": "Очередной вампирлайк, чья основная фишка в безумии происходящего. Все пушки - странные лесные звери, делающие то, что не должны делать лесные звери.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2185180"
   },
   {
     "title": "Few Nights More",
@@ -2767,9 +2917,10 @@
     "releaseDate": "28.04.2022",
     "playedDate": "21.12.2023",
     "notes": "Вампирский рогалик, где ты отстраиваешь и защищешь поместье. Боевка пошаговая типа darkest dungeon.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/BIo6NhuZ0iw",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1491200"
   },
   {
     "title": "Fight in Tight Spaces",
@@ -2785,9 +2936,10 @@
     "releaseDate": "02.12.2021",
     "playedDate": "15.05.2022",
     "notes": "Играл на сабдей. Прикольная задумка карточного рогалика + тактики с толканиями.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/6UqrBl5I8t0",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1265820"
   },
   {
     "title": "Fogpiercer",
@@ -2805,7 +2957,8 @@
     "notes": "В игре управление поездом идёт через карты и передвижение взад-вперёд. Маловато разнообразия и большинство этого самого разнообразия скрыто за метой.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3219010"
   },
   {
     "title": "For the King",
@@ -2821,9 +2974,10 @@
     "releaseDate": "19.04.2018",
     "playedDate": "11.06.2024",
     "notes": "Пошаговая коопная тактика, где есть отдельный рогаликовый режим.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/XkbQ4mg7SDo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "527230"
   },
   {
     "title": "For the King 2",
@@ -2839,9 +2993,10 @@
     "releaseDate": "02.11.2023",
     "playedDate": "13.08.2024",
     "notes": "Пошаговая коопная тактика, где есть отдельный рогаликовый режим.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlmsFI-HrHp_Zpgi0biRXtG",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1676840"
   },
   {
     "title": "Forestrike",
@@ -2857,9 +3012,10 @@
     "releaseDate": "17.11.2025",
     "playedDate": "14.01.2026",
     "notes": "2Д экшн рогалик, где перед битвой можно спланировать свои действия при помощи предвидения. Разные школы (колоды),пассивки, реликвии.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnjAhE7esJ6F0ph2KrMGKLL",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2325920"
   },
   {
     "title": "Frostbound",
@@ -2875,9 +3031,10 @@
     "releaseDate": "27.11.2025",
     "playedDate": "06.05.2026",
     "notes": "Игра с очень стилёвыми анимешными нейроартами. Геймплей строится на юнитах и спеллах. Юниты сражаются с врагами по столбцам.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnUkvjrl4gMJWnDqMV1S5d9",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3649580"
   },
   {
     "title": "Frostrain 2",
@@ -2895,7 +3052,8 @@
     "notes": "В игре надо доехать до финальной точки, чтобы не упало настроение пассажиров. Для этого набираются разные сеты из вагонов под баффами реликов.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3690490"
   },
   {
     "title": "FTL: Faster Than Light",
@@ -2911,9 +3069,10 @@
     "releaseDate": "14.09.2012",
     "playedDate": "03.05.2025",
     "notes": "Легендарный космический рогалик. Прошли на платину. Легенда",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ukk5cyHoj7eHrwq2haMMTsQ",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск"
+    "miVideo": "https://youtu.be/aPAw9l4i15U",
+    "steamAppId": "212680"
   },
   {
     "title": "Gambonanza",
@@ -2931,7 +3090,8 @@
     "notes": "Шахматный балатро. Борьба не с цифрой, но есть ограниченное количество реликов, влияющих на фигуры и аспекты игры. Фигуры тоже расходные и надо их сейвить.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3509230"
   },
   {
     "title": "Gatekeeper",
@@ -2947,9 +3107,10 @@
     "releaseDate": "13.05.2024",
     "playedDate": "01.05.2024",
     "notes": "Попытки повторить успех Risk of Rain в изометрии через три разных игры и кучу демок.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmabbJnBH-_9l_6bv4ODOzG",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2106670"
   },
   {
     "title": "Goblin Stone",
@@ -2965,9 +3126,10 @@
     "releaseDate": "12.03.2024",
     "playedDate": "07.03.2024",
     "notes": "Такой Darkest Dungeon за гоблинов. Понравилось в раннем доступе на безрыбье, но сейчас непонятно.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlfnviTr5PAai_2YLp8v0MN",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1521970"
   },
   {
     "title": "Godbreakers",
@@ -2983,9 +3145,10 @@
     "releaseDate": "23.10.2025",
     "playedDate": "14.01.2026",
     "notes": "Экшн рогалик с коопом, где можно использовать абилки врагов. Прошелся с 1-го трая, не был в двух биомах. Не знаю норм ли серваки в коопе.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/18Ke06zq3ro",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2687400"
   },
   {
     "title": "Godslayer Arena",
@@ -3001,9 +3164,10 @@
     "releaseDate": "16.06.2025",
     "playedDate": "19.06.2025",
     "notes": "Автобаттлер где надо собирать спеллы с сетовыми бонусами. Можно как в хс улучшать спеллы копиями по 3 шт. А также на каждую локу выбирается проклятие и у перса есть шмотки.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ukrx3-yyktg8EZo3hkzOuD4",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2870430"
   },
   {
     "title": "Gordian Quest",
@@ -3019,9 +3183,10 @@
     "releaseDate": "23.06.2022",
     "playedDate": "06.07.2022",
     "notes": "Долго ждал релиз, а потом в релизе проходить не захотелось. Чисто сюжетный карточный рогалик.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uk4yw2eMtsusrIBus3ghxPO",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "981430"
   },
   {
     "title": "Graveyard Gunslingers",
@@ -3037,9 +3202,10 @@
     "releaseDate": "08.11.2024",
     "playedDate": "08.11.2024",
     "notes": "Игра в фулл релизе, и как будто маловато контента. 9 персонажей на 3 сложности и 6 пушек. А так прикольная задумка.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/fwhtRzM5EMw",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2462060"
   },
   {
     "title": "Griftlands",
@@ -3055,9 +3221,10 @@
     "releaseDate": "01.06.2021",
     "playedDate": "03.07.2021",
     "notes": "Сюжетная игра от Klei, где прохождение за разных персонажей уникально и имеется 2 колоды (боевая и переговорная)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UndYi58-lN9RUst-JoaK-jM",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "601840"
   },
   {
     "title": "Guild of Dungeoneering",
@@ -3073,9 +3240,10 @@
     "releaseDate": "14.07.2015",
     "playedDate": "28.01.2025",
     "notes": "Сам строишь подземелья и отправляешь по ним болванчиков, которые качаются от битв с монстрами (получают карты) и проходят задания.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/-Z_2ivplleI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "317820"
   },
   {
     "title": "Guildrun",
@@ -3093,7 +3261,8 @@
     "notes": "Автобаттлер рогалик по типу ТФТ с рейтинговыми таблицами. Без трейтов, но с большой вариативностью чем, может быть тот или иной персонаж.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3669200"
   },
   {
     "title": "Gunfire Reborn",
@@ -3109,9 +3278,10 @@
     "releaseDate": "18.11.2021",
     "playedDate": "05.09.2022",
     "notes": "Хороший шутер рогалик и в соло и в коопе, где можно собрать имбу из уникальных пушек + артов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnU8bS2HZQVpSaPdYIttSDT",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1217060"
   },
   {
     "title": "Gunforged",
@@ -3127,9 +3297,10 @@
     "releaseDate": "17.02.2025",
     "playedDate": "31.03.2025",
     "notes": "Буллетхеллчик со сражением на закрытой арене (как в Бротато). Пушки создаются из 3х разных частей и так собираются безумные комбинации урона вместе с пассивками.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/oHSnpxoBQi8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2258480"
   },
   {
     "title": "Gvalt / Гвалт",
@@ -3145,9 +3316,10 @@
     "releaseDate": "27.11.2025",
     "playedDate": "11.12.2025",
     "notes": "Балатролайк, где надо собирать слова как в игре scrabble/эрудит. На русском именно руские слова.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/luL5y4YNTfM",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3898150"
   },
   {
     "title": "Hades",
@@ -3163,9 +3335,10 @@
     "releaseDate": "17.09.2020",
     "playedDate": "27.09.2020",
     "notes": "Легендарный и самый лучший рогЛАЙТ. Идеален для новичков жанра засчёт сюжета и обширной метапрогрессии. Легенда",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmdjS9twE96MLxYWbqfInWP",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск"
+    "miVideo": "https://youtu.be/2RMUZTt3b8M",
+    "steamAppId": "1145360"
   },
   {
     "title": "Hades 2",
@@ -3181,9 +3354,10 @@
     "releaseDate": "25.09.2025",
     "playedDate": "02.10.2025",
     "notes": "Отличное продолжение легендарного рогЛАЙТА со своим сюжетом и новыми боевыми механиками. Больше, лучше, контентней! Легенда",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=EKVcagcAxUI&list=PL5RpA6jmZ9Ul_2PDgyHaIVFyNMeZE0ojQ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1145350"
   },
   {
     "title": "Halls of Torment",
@@ -3199,9 +3373,10 @@
     "releaseDate": "24.09.2024",
     "playedDate": "03.10.2024",
     "notes": "Неплохой вампирлайк, построенный на выносе шмоток из забега + базовой прокачкой спеллов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=yJU6gf3V6Ys&list=PL5RpA6jmZ9UltXD_7AoWLDQDaCtlWesMd",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2218750"
   },
   {
     "title": "Hand of Fate",
@@ -3217,9 +3392,10 @@
     "releaseDate": "17.02.2015",
     "playedDate": "07.11.2017",
     "notes": "Интересное сочетание декбилдера и экшн рогалика в измотерии. Карты влияют на события и на экипировку.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlfzD54Ty8qxXfx9tn1c1Gx",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "266510"
   },
   {
     "title": "Hand of Fate 2",
@@ -3235,9 +3411,10 @@
     "releaseDate": "07.11.2017",
     "playedDate": "10.11.2017",
     "notes": "Продолжение прекрасной колодостроительной экшн игры. Сделали сильно сюжетной.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmJGsCGbsYfRxcsyZ4qF5rp",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "456670"
   },
   {
     "title": "Hand of Fate: Hordes",
@@ -3255,7 +3432,8 @@
     "notes": "Вампирлайк по легендарному хенд оф фейту. Главной особенностью являются события в забеге, которые хоть немного разбавляют геймплей вампирлайка.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3075410"
   },
   {
     "title": "Handmancers",
@@ -3271,9 +3449,10 @@
     "releaseDate": "05.05.2026",
     "playedDate": "06.05.2026",
     "notes": "Игра, где колода состоит из камня, ножниц и бумаги. Игрок знает, что выкинет оппонент, кроме полностью рандомных клеток. Сильно заточена под мету.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Un7Hflu1dwxZ509ZhRTNDt8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2423290"
   },
   {
     "title": "Haste",
@@ -3289,9 +3468,10 @@
     "releaseDate": "01.04.2025",
     "playedDate": "03.06.2025",
     "notes": "Скорее сюжетный рогалик на 10 локаций и бесконечный режим. Весь геймплей - бежать вперед и падать под наклоном, чтобы ускоряться. + релики",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=gOFceZDKIUk",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1796470"
   },
   {
     "title": "Have a Nice Death",
@@ -3307,9 +3487,10 @@
     "releaseDate": "22.03.2023",
     "playedDate": "11.04.2023",
     "notes": "Довольно сложный платформер-рогалик, который я так и не прошел на тру концовку. А там ещё и жёсткие возвышения.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlBqHBwrzodi8hjPXh-AlmH",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1740720"
   },
   {
     "title": "He is Coming",
@@ -3325,9 +3506,10 @@
     "releaseDate": "17.07.2025",
     "playedDate": "29.07.2025",
     "notes": "Ходим по путям, собираем предметы в ограниченные клетки инвентаря, готовимся и дерёмся с боссом. + есть непрямое ПВП билдами с другими игроками (отдельный режим)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UneR9oXCEjolsQ3MNPtpKaZ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2824490"
   },
   {
     "title": "Hell Clock",
@@ -3343,9 +3525,10 @@
     "releaseDate": "22.07.2025",
     "playedDate": "24.07.2025",
     "notes": "Зашел в забег - зафармил мету - вышел/умер - повторить. Очень странная кривая сложности. В 1 акте за 4 часа так и не нашел нормального увеличения урона для супергубок боссов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/hAaUNUN4gpI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1782460"
   },
   {
     "title": "Hellcard",
@@ -3361,9 +3544,10 @@
     "releaseDate": "01.02.2024",
     "playedDate": "20.02.2023",
     "notes": "Поиграл в раннем доступе в соло. Наверное, прикольно закоопить.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=CyCaCdcnXrU&list=PL5RpA6jmZ9Um9BLNaBAhVxlQlOInbx0qz",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1201540"
   },
   {
     "title": "Heretic's Fork",
@@ -3379,9 +3563,10 @@
     "releaseDate": "13.09.2023",
     "playedDate": "15.09.2023",
     "notes": "По началу супер залипательно, но потом становится супер однообразно. Нет реиграбельности.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmgspBT1MswtDkKaFxaLAlP",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2181610"
   },
   {
     "title": "Heretical",
@@ -3397,9 +3582,10 @@
     "releaseDate": "30.10.2024",
     "playedDate": "29.11.2024",
     "notes": "Изометричный соулслайк с рандомными шмотками и абилками (качаются в забеге). Ждём релиз.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkmVzypl8FC2DOTilzGArhr",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2877540"
   },
   {
     "title": "Heroes of Eternal Quest",
@@ -3417,7 +3603,8 @@
     "notes": "Луп хиро, где у героя есть абилки, расходники, а также в битве помогают здания, которые можно ставить в т.ч. и на самом пути.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2234200"
   },
   {
     "title": "Heroes of Hammerwatch",
@@ -3433,9 +3620,10 @@
     "releaseDate": "01.03.2018",
     "playedDate": "21.01.2025",
     "notes": "Много меты, много персов, много врагов! Есть вторая более современная часть.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/OfrIg5g_MLI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "677120"
   },
   {
     "title": "Heroes of Hammerwatch II",
@@ -3451,9 +3639,10 @@
     "releaseDate": "15.01.2025",
     "playedDate": "15.01.2025",
     "notes": "Рогалик с разными персами, большой метой и шмотками. Довольно долгие забеги, но очень залипательно.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UliYfghZjqnnu1oBWgqCjxQ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "619820"
   },
   {
     "title": "Holocure",
@@ -3469,9 +3658,10 @@
     "releaseDate": "17.09.2023",
     "playedDate": "03.12.2023",
     "notes": "Игра для популяризации зарубежных витуберов. Но с большим количеством интересных механик. Играл на сабдей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/80wuwDCjk0k",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2420510"
   },
   {
     "title": "Home Behind 2",
@@ -3487,9 +3677,10 @@
     "releaseDate": "16.02.2022",
     "playedDate": "16.12.2021",
     "notes": "Играл в качестве партнерского стрима, но игра понравилась. Этакий darkest dungeon с пушками и гражданской войной.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ulz4dSKhMu7oroJqapeXhOD",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1220010"
   },
   {
     "title": "How Many Dudes?",
@@ -3507,7 +3698,8 @@
     "notes": "Челы дерутся с разными животными, чтобы добраться до финальной арены. Всего 5 типов челов на 1 забег. Под них релики и другие разные усиления.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3934270"
   },
   {
     "title": "Hull Rupture",
@@ -3523,9 +3715,10 @@
     "releaseDate": "26.04.2026",
     "playedDate": "26.04.2026",
     "notes": "Строительство базы по отсекам + тавер дефенс от волн монстров. Забавные ивентики, шутеечки, всё в стиле игры про Д'спота.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ul2mv_t2EhckCbBgv_gweZd",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "4358660"
   },
   {
     "title": "Hyper Light Breaker",
@@ -3541,9 +3734,10 @@
     "releaseDate": "14.01.2025",
     "playedDate": "16.01.2025",
     "notes": "Продолжаение сюжетной игры Hyper Light Drifter. На раннем доступе багованно и дорого.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkgT9s7a7-w0Av5Ujn3Eeaf",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1534840"
   },
   {
     "title": "I Am Legion: Stand Survivors",
@@ -3559,9 +3753,10 @@
     "releaseDate": "07.03.2025",
     "playedDate": "13.03.2025",
     "notes": "В этом вампирлайке герой собирает себе помощников, соединяя их между собой из коммонок в крутые легендарки.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmS8c83NO73_WG6iYdyWHdF",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3109580"
   },
   {
     "title": "Indie's Lies",
@@ -3577,9 +3772,10 @@
     "releaseDate": "16.01.2023",
     "playedDate": "22.03.2022",
     "notes": "Перенос игры с мобилки, которая скучновато игралась на пк.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ulxo6PMHhkRUEY4W7_OsGq7",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1638390"
   },
   {
     "title": "Inkbound",
@@ -3595,9 +3791,10 @@
     "releaseDate": "09.05.2024",
     "playedDate": "03.11.2024",
     "notes": "Кооперативный рогалик от разрабов Monster Train, который не нашел популярности (и перевода на русский)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=b3P4vF4z3hE&list=PL5RpA6jmZ9UmlAOsSVSNilfzTx8Xnsca1",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1062810"
   },
   {
     "title": "Inkulinati",
@@ -3613,9 +3810,10 @@
     "releaseDate": "22.02.2024",
     "playedDate": "31.01.2023",
     "notes": "Пердящие ослы и зайцы. Безумная сложность в финале, слабая реиграбельность и геймплей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://studio.youtube.com/playlist/PL5RpA6jmZ9UnpunDV9U3OaVDrpZxrQuK1/edit",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "957960"
   },
   {
     "title": "Inscryption",
@@ -3631,9 +3829,10 @@
     "releaseDate": "19.10.2021",
     "playedDate": "24.10.2021",
     "notes": "Сюжетный декбилдер от Devolver Digital. Не все арки хороши, но общее ощущение от прохождения - кайф.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Unvbft2Sm9hZxSdhdColfDK",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1092790"
   },
   {
     "title": "Insurmountable",
@@ -3649,9 +3848,10 @@
     "releaseDate": "29.04.2021",
     "playedDate": "24.05.2022",
     "notes": "Рогалик про альпинистов и восхождение на гору.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/RmvNezw3r4U",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1385100"
   },
   {
     "title": "Into the Breach",
@@ -3667,9 +3867,10 @@
     "releaseDate": "27.02.2018",
     "playedDate": "14.06.2020",
     "notes": "Классическая тактика с толканием по клеткам про защиту планет мехами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/MkFGm64Cy0s",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "590380"
   },
   {
     "title": "Invisible Inc.",
@@ -3685,9 +3886,10 @@
     "releaseDate": "12.05.2015",
     "playedDate": "04.08.2024",
     "notes": "Тактический рогалик про шпионов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/XswQ0ERi-h4",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "243970"
   },
   {
     "title": "Iratus: Lord of the Dead",
@@ -3703,9 +3905,10 @@
     "releaseDate": "23.04.2020",
     "playedDate": "15.04.2020",
     "notes": "Попытка русских разрабов повторить успех Darkest Dungeon но в обратном направлении. Игра за некроманта.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlJ0Wpw0NsZVmdaIaNIQVHE",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "807120"
   },
   {
     "title": "Iris and the Giant",
@@ -3721,9 +3924,10 @@
     "releaseDate": "27.02.2020",
     "playedDate": "15.04.2020",
     "notes": "Стильный карточный рогалик про девочку и внутренних демонов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Umru4neRhQ1gBKivm2urdL4",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1127610"
   },
   {
     "title": "Jotunnslayer: Hordes of Hel",
@@ -3739,9 +3943,10 @@
     "releaseDate": "21.01.2025",
     "playedDate": "21.01.2025",
     "notes": "Просто качественный вампирлайк с красивой графикой. Неплохое билдтостроение и реиграбелльность.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Unhv48QRFsbT3hKStus8JoU",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2820820"
   },
   {
     "title": "Just King",
@@ -3757,9 +3962,10 @@
     "releaseDate": "19.12.2023",
     "playedDate": "21.12.2023",
     "notes": "Автобаттлер, где король набирает себе приспешников с особенностями.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/Ovffpva5tlg",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1059980"
   },
   {
     "title": "Karate Survivor",
@@ -3775,9 +3981,10 @@
     "releaseDate": "30.10.2024",
     "playedDate": "03.11.2024",
     "notes": "Вампирлайк от алаваров на 5-10 часов, где персонаж исполняет красивые карате мувы в разных комбинациях и толкает предметы.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmddLd7i4M56gHv5DROQwJ7",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3027930"
   },
   {
     "title": "KIBORG",
@@ -3793,9 +4000,10 @@
     "releaseDate": "30.04.2025",
     "playedDate": "15.05.2025",
     "notes": "Русский битемап-рогалик с уклонениями и парированиями, большим количеством меты. Играется достаточно приятно и хочется попробовать разные билды.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnjtZqpfUtJwHmBbMf62ATy",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск"
+    "miVideo": "https://www.youtube.com/watch?v=ZBTbdyMbTRw",
+    "steamAppId": "2405060"
   },
   {
     "title": "Kill Knight (Рыцарь Бездны)",
@@ -3811,9 +4019,10 @@
     "releaseDate": "02.10.2024",
     "playedDate": "20.10.2024",
     "notes": "Не совсем является рогаликом. Скорее скоростной буллет хелл на рейтинговые таблицы. Прошел демо и дропнул релиз, потому что было скучно.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/D6bNc89Fjw4",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2694420"
   },
   {
     "title": "Kingdom Loop",
@@ -3829,9 +4038,10 @@
     "releaseDate": "28.04.2026",
     "playedDate": "23.04.2026",
     "notes": "Идейный продолжатель Луп Хиро, но с пошаговой боёвкой 6-ю отрядами как в Героях. Играл в плейтест, выглядело занятно.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=5--DKPmyOC4",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3541000"
   },
   {
     "title": "Kingdom's Deck",
@@ -3847,9 +4057,10 @@
     "releaseDate": "28.04.2025",
     "playedDate": "03.06.2025",
     "notes": "Однообразные юниты и здания для защиты базы с разных сторон. Всего 3 сложности и 7 карт.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=pX4KNKIADZU",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2655590"
   },
   {
     "title": "Knock on the Coffin Lid",
@@ -3865,9 +4076,10 @@
     "releaseDate": "08.08.2024",
     "playedDate": "19.08.2024",
     "notes": "Отличная идея от русских разрабов сделать\"День сурка\" в карточном рогалике. Каждый ивент проходится по разному в разных обстоятельствах.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=le32UDkTIts&list=PL5RpA6jmZ9UkCIKQpsFkiQm4_ybad7ALR",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1232580"
   },
   {
     "title": "Konfronto",
@@ -3883,9 +4095,10 @@
     "releaseDate": "13.05.2025",
     "playedDate": "26.06.2025",
     "notes": "Попытка повторить успех бэкпаков в космосе. Интересная механика открытия клеток через экипаж и хороший перевод. Мало наглядности происходящего.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/X3XWdcSxliY",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2994150"
   },
   {
     "title": "Last Mage",
@@ -3901,9 +4114,10 @@
     "releaseDate": "24.02.2026",
     "playedDate": "03.03.2026",
     "notes": "Вампирлайк с метой в виде шмоток, которые собираются в рюкзаке как в бэкпак баттлс.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/tD_uqn9_rL4",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2990040"
   },
   {
     "title": "Legend of Keepers",
@@ -3919,9 +4133,10 @@
     "releaseDate": "29.04.2021",
     "playedDate": "20.02.2022",
     "notes": "Игра с защитой подземелья от наглых приключенцев. Сюжетные кампании не пройдены.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkKGkwkYAH69m37Wgd7opil",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "978520"
   },
   {
     "title": "Lobotomy Corporation",
@@ -3937,9 +4152,10 @@
     "releaseDate": "09.04.2018",
     "playedDate": "26.02.2023",
     "notes": "Не совсем рогалик. Игра про менеджмент SCP лаборатории.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmL7hLZ0rFuQUiyGTFmJknY",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "568220"
   },
   {
     "title": "Lone Ruin",
@@ -3955,9 +4171,10 @@
     "releaseDate": "12.01.2023",
     "playedDate": "11.01.2023",
     "notes": "Слабенький то ли изометричный экшн то ли вампирлайк (там 2 режима было). Никакой реиграбельности кроме таблиц рейтингов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmT29Cm8KuVq-0ZU3MO9kLG",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1452070"
   },
   {
     "title": "Lone Soul",
@@ -3973,9 +4190,10 @@
     "releaseDate": "20.10.2025",
     "playedDate": "22.12.2025",
     "notes": "Игра дропает первое прохождение на первом боссе, чтобы показать свою \"вариативность\" в выборе оружия с разными абилками и количество гринда. Инстадроп.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/HvPqMg3vDn0",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3237360"
   },
   {
     "title": "LONESTAR",
@@ -3991,9 +4209,10 @@
     "releaseDate": "18.01.2025",
     "playedDate": "11.02.2025",
     "notes": "Даже для раннего доступа много контента, есть возвышения и просто интересный геймплей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/7D-p6s4W2CI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2056210"
   },
   {
     "title": "Loop Hero",
@@ -4009,9 +4228,10 @@
     "releaseDate": "04.03.2021",
     "playedDate": "03.09.2025",
     "notes": "Уникальный рогалик про хождение кругами. Интересные сочетания строений, которые игрок сам \"вспоминает\" на карте.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlvnGv6avpjzFs8H2XmKu0t",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1282730"
   },
   {
     "title": "Loot River",
@@ -4027,9 +4247,10 @@
     "releaseDate": "03.05.2022",
     "playedDate": "03.05.2022",
     "notes": "Очень ждали и очень разочаровались. Слабый \"релиз\"",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Un0yYXCyYDQRbrVLWn84U0W",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1494260"
   },
   {
     "title": "Lootbound",
@@ -4047,7 +4268,8 @@
     "notes": "Пошаговый данжн кровлер с выбором пути из Шпиля, где всё усиление перса идёт от шмоток, которые нужно выставить правильно в ограниченном инвентаре.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3091140"
   },
   {
     "title": "Lost Castle",
@@ -4065,7 +4287,8 @@
     "notes": "Устаревшая игра.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "434650"
   },
   {
     "title": "Lost Castle 2",
@@ -4081,9 +4304,10 @@
     "releaseDate": "12.06.2026",
     "playedDate": "13.06.2026",
     "notes": "Релиз не оправдал ожиданий. Добавилось много новых лок и сюжета. + сложность типа черепов хейдеса. Но сама по себе игра всё ещё отличный коопный рогалик.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmtaOSiNGnN2jAKgsTtUa7U",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2445690"
   },
   {
     "title": "Lost in Random: The Eternal Die",
@@ -4099,9 +4323,10 @@
     "releaseDate": "17.06.2025",
     "playedDate": "11.06.2025",
     "notes": "Хейдслайк по вселенной игры Lost in Random с хорошим билдостроением через инвентарь реликвий и покраску этих реликвий в ряды цвета, которые дают пассивные бонусы.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um-oL3_68-Hnl1n8ycQb0NW",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/xrJ_jLrnaP8",
+    "steamAppId": "2564520"
   },
   {
     "title": "Lost Potato",
@@ -4117,9 +4342,10 @@
     "releaseDate": "14.08.2020",
     "playedDate": "04.01.2023",
     "notes": "Первая мини игрулька от разработчика Бротаты!",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/4lIuFQKdbKQ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1365010"
   },
   {
     "title": "Luck & Loot",
@@ -4135,9 +4361,10 @@
     "releaseDate": "01.08.2025",
     "playedDate": "01.08.2025",
     "notes": "Идейный продолжатель Slice & Dice. Но вместо 4х персов один с 4мя кубиками со своими сторонами. Мало контента и реиграбельности.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnPmMiNhdk1UuqY8syXaLoc",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3208110"
   },
   {
     "title": "Lucky Hero",
@@ -4153,9 +4380,10 @@
     "releaseDate": "16.01.2023",
     "playedDate": "21.12.2023",
     "notes": "Фэнтезийный рогалик про слоты. Понравился, но наиграли не очень много.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uk2myd-6tUEO3zXLwnCYDzA",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2404510"
   },
   {
     "title": "Lucky Hunter",
@@ -4171,9 +4399,10 @@
     "releaseDate": "05.11.2024",
     "playedDate": "11.01.2025",
     "notes": "Объединение юнитов на столе, которые сражаются с врагами. Без возвышений, но с ендлесс модом.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/x5Ez999zj5g",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2824310"
   },
   {
     "title": "Lucky Tower Ultimate",
@@ -4189,9 +4418,10 @@
     "releaseDate": "16.04.2026",
     "playedDate": "17.04.2026",
     "notes": "Рогалик про изучение игры через очень рандомные смерти. Смешные персонажи и шуточки, разные квесты и сюжет, в котором нужно много фарма.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkR_TaX2P0A4eZ3_myZzIhB",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1700270"
   },
   {
     "title": "Lumencraft",
@@ -4207,9 +4437,10 @@
     "releaseDate": "28.02.2023",
     "playedDate": "16.07.2025",
     "notes": "В игре несколько режимов. Я попробовал кампанию и было медленно и скучно (в демке). Может в релизе ускорили контент, или можно сразу врываться в сессионные забеги.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=pJBUp8i7yNg",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1713810"
   },
   {
     "title": "Madshot",
@@ -4225,9 +4456,10 @@
     "releaseDate": "18.07.2023",
     "playedDate": "15.06.2022",
     "notes": "Делали быстренький обзор игры в раннем доступе. Не затянуло, чтобы вернуться на релиз.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/55iTHuox01c",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1524550"
   },
   {
     "title": "Magic Ocean",
@@ -4243,9 +4475,10 @@
     "releaseDate": "28.01.2021",
     "playedDate": "30.11.2020",
     "notes": "Попытка русского разработчика сделать автобаттлер с пиратскими кораблями как в ФТЛ.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/ccGcXEr7x1E",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1419430"
   },
   {
     "title": "Magicraft",
@@ -4261,9 +4494,10 @@
     "releaseDate": "01.11.2024",
     "playedDate": "03.11.2024",
     "notes": "Вид как в айзеке, магия как в Нойте. Сбор имба палок не такой сложный.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnxiZT6qKVosZQ8sqIX_Cwc",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2103140"
   },
   {
     "title": "Mask Around",
@@ -4279,9 +4513,10 @@
     "releaseDate": "24.11.2024",
     "playedDate": "03.01.2025",
     "notes": "Персонаж меняет маски как короны в Нуклеар Троне и накачивает себе руку с мутацией (она же валюта)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/q87Pol8U3Ic",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2849230"
   },
   {
     "title": "Master of Piece",
@@ -4297,9 +4532,10 @@
     "releaseDate": "04.02.2026",
     "playedDate": "03.03.2026",
     "notes": "Игрок выставляет фигуры, которые бьют вперёд и имеют каждый свои особенности. В битве надо победить вражеский флаг и защитить свой.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/nHkB7ngyGjs",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3009310"
   },
   {
     "title": "Megabonk",
@@ -4315,9 +4551,10 @@
     "releaseDate": "18.09.2025",
     "playedDate": "03.10.2025",
     "notes": "Вполне базовый вампирлайк, перенесённый в 3D с прыжками и перекатами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlJq_BC-f8x4pnHJNsTCgkG",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3405340"
   },
   {
     "title": "Megaloot",
@@ -4333,9 +4570,10 @@
     "releaseDate": "30.08.2024",
     "playedDate": "02.09.2024",
     "notes": "Игра залипательная, но маленькая оценка за недоработанность на релизе. (очень однообразно после десятых уровней)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkdEJufuE-qiU6cHkMGFKoX",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2440380"
   },
   {
     "title": "Menace from the Deep",
@@ -4351,9 +4589,10 @@
     "releaseDate": "11.11.2024",
     "playedDate": "29.11.2024",
     "notes": "Есть разные особые механики для карточной игры и связанные со вселенной лавкрафта.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/sETvoSYMhtU",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2644610"
   },
   {
     "title": "Metavoidal",
@@ -4371,7 +4610,8 @@
     "notes": "Экшн рогалик про барабанщика, который собирает комбо ударов палочка + усиления на абилки по типу хейдеса. Мало типов врагов, сильная метапрогрессия.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2221780"
   },
   {
     "title": "Mewgenics",
@@ -4387,9 +4627,10 @@
     "releaseDate": "10.02.2026",
     "playedDate": "03.03.2026",
     "notes": "Игра от разраба Айзека. Один из лучших представителей тактических рогаликов. Много контента и разнообразия в билдостроении котов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ul7srr3KzXsXvrLpzlyLBHg",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "686060"
   },
   {
     "title": "MINOS",
@@ -4407,7 +4648,8 @@
     "notes": "Больше сюжетная игра с сильной метапрогрессией, но малой вариативностью ловушек в забегах.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3181650"
   },
   {
     "title": "Monster Slayers",
@@ -4423,9 +4665,10 @@
     "releaseDate": "23.03.2017",
     "playedDate": "06.05.2026",
     "notes": "Декбилдер с разными классами, в котором важно выбирать путь, зная абилки тех или иных противников и финального босса.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmEFoxJ0ZZNLh17KLUx40cG",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "496620"
   },
   {
     "title": "Monster Train",
@@ -4441,9 +4684,10 @@
     "releaseDate": "21.05.2020",
     "playedDate": "09.04.2021",
     "notes": "Лучший карточный рогалик по моему мнение. Сочетание фракций и крутые возвышения дают очень большую реиграбельность!",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnTXLKNxn-9BvoMGSFOQGBS",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1102190"
   },
   {
     "title": "Monster Train 2",
@@ -4459,9 +4703,10 @@
     "releaseDate": "21.05.2025",
     "playedDate": "06.02.2026",
     "notes": "Легендарное продолжение одного из самых лучших Декбилдер Рогаликов. В несколько раз больше контента и вариативности в создании комбинаций и билдов на разных кланах!",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uli4IkxPeZXwQcVumsHCW5L",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2742830"
   },
   {
     "title": "Monsters are Coming: Rock & Road",
@@ -4477,9 +4722,10 @@
     "releaseDate": "20.11.2025",
     "playedDate": "15.12.2025",
     "notes": "Вампирлайк со своей интересной механикой строительства башен и разных зданий в движущемся замке. Реиграбельность невысокая. 4 сложности на 4 карты.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnOkXHbkEAG3ZC7csaOGDU1",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2934220"
   },
   {
     "title": "Moon Hunters",
@@ -4497,7 +4743,8 @@
     "notes": "Играл на сабдей. Игру не помню.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "320040"
   },
   {
     "title": "Moonlighter",
@@ -4513,9 +4760,10 @@
     "releaseDate": "29.05.2018",
     "playedDate": "01.06.2018",
     "notes": "Рогалик про торговца, который берёт все свои товары в подземелье! (почти попаданец)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Unoq8yUQN5ptOxxoNWFm6LF",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/rr2BhH_wLR8",
+    "steamAppId": "606150"
   },
   {
     "title": "Moonlighter 2: The Endless Vault",
@@ -4531,9 +4779,10 @@
     "releaseDate": "19.11.2025",
     "playedDate": "10.12.2025",
     "notes": "Хорошее продолжение игры, развивающее идею торговли и добавляющее к ней механику благословения из хейдеса. Боёвка как и в 1 части не главное.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnYuo26wK0UvMvIk0L-bfB-",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2350790"
   },
   {
     "title": "Moonsigil Atlas",
@@ -4549,9 +4798,10 @@
     "releaseDate": "28.05.2026",
     "playedDate": "05.06.2026",
     "notes": "Декбилдер, где карты - это блоки, которые нужно уместить в ограниченное пространство. В остальном: битвы с врагами, выбор пути, релики и т.д.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnV5HwG_SvYRo-9Y_f7qWha",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3284290"
   },
   {
     "title": "MOTHERGUNSHIP",
@@ -4567,9 +4817,10 @@
     "releaseDate": "17.07.2018",
     "playedDate": "25.08.2025",
     "notes": "В этой игре можно из разных звеньев делать огромные пушки с разными дулами и обвесом.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/Rc7KCtv-sOE",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "574090"
   },
   {
     "title": "Neon Abyss",
@@ -4585,9 +4836,10 @@
     "releaseDate": "14.07.2020",
     "playedDate": "08.08.2020",
     "notes": "Платформер рогалик, где пытались сделать пушки как в Ганшене и всякие механики из Айзека.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmSD1HNJIFkRD5-ArJyCkFe",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск"
+    "miVideo": "https://youtu.be/va6Giq-uZRg",
+    "steamAppId": "788100"
   },
   {
     "title": "Neon Abyss 2",
@@ -4603,9 +4855,10 @@
     "releaseDate": "17.07.2025",
     "playedDate": "18.07.2025",
     "notes": "Продолжение с квалити оф лайф фичами и более интересными механиками веры кроме Ареса и Афины. Из минусов ОЧЕНЬ ПЛОХИЕ возвышения и непонятный переход к супербоссам.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um8zb7qSd4Qac3WLAiUheIF",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2235200"
   },
   {
     "title": "Neoverse",
@@ -4621,9 +4874,10 @@
     "releaseDate": "19.02.2020",
     "playedDate": "10.04.2020",
     "notes": "3д аниме тяночки в карточном декбилдере.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/UI1Wc0Y87ow",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "994220"
   },
   {
     "title": "NET.CRAWL",
@@ -4639,9 +4893,10 @@
     "releaseDate": "30.01.2026",
     "playedDate": "05.02.2026",
     "notes": "Очень необычный рогалик, где надо построить правильный путь по рандомным клеткам из своей колоды.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/XC5wzyeQyPA",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2958140"
   },
   {
     "title": "Netherworld Covenant",
@@ -4657,9 +4912,10 @@
     "releaseDate": "09.12.2025",
     "playedDate": "15.12.2025",
     "notes": "Легко проходил и были неплохие боссы, с которыми танцуешь доджами и иногда парируешь. Но финальный босс имеет неадекватные хитбоксы.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=jh0bC826Ulc",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2735580"
   },
   {
     "title": "Neurodeck: Psychological Deckbuilder",
@@ -4675,9 +4931,10 @@
     "releaseDate": "18.03.2021",
     "playedDate": "18.03.2021",
     "notes": "Очередной конвеер на популярности декбилдеров после шпиля.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmC_dJV0okGQicPToBp51BE",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1253860"
   },
   {
     "title": "Never Grave: The Witch and the Curse",
@@ -4693,9 +4950,10 @@
     "releaseDate": "04.03.2026",
     "playedDate": "04.03.2026",
     "notes": "Платформер, где заставляют перепроходить одинаковые комнаты, чтобы открыть следующую локу и первого босса. Много гринда через строительство на базе.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/gqIBtC9xn7U",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2395770"
   },
   {
     "title": "Nigate Tale",
@@ -4711,9 +4969,10 @@
     "releaseDate": "25.09.2024",
     "playedDate": "22.04.2021",
     "notes": "Прошел только в раннем доступе и больше не возвращался. Игра вышла на хайпе Хейдеса.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmjaLkXSy2utr9Xw899Vksf",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1048350"
   },
   {
     "title": "Nightfall Comes",
@@ -4729,9 +4988,10 @@
     "releaseDate": "10.09.2024",
     "playedDate": "08.10.2023",
     "notes": "Делали обзорчик на сабдей. Играбельно",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/xJI_6WC3-Rk",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1935100"
   },
   {
     "title": "Nightmare: The Lunatic",
@@ -4747,9 +5007,10 @@
     "releaseDate": "31.03.2024",
     "playedDate": "03.12.2024",
     "notes": "Скалоподобный рогалик тоже от Корейцев! Главная особенность - три оружия у гг, которые усиляют друг друга.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Umw3Chjx12uZ5bG_QUWSFYw",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1842730"
   },
   {
     "title": "Nimrods: Guncraft Survivor",
@@ -4765,9 +5026,10 @@
     "releaseDate": "28.10.2024",
     "playedDate": "28.10.2024",
     "notes": "Неплохой вампирлайк в раннем доступе, в котором персонаж делает одну имба пушку.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uk26LbGxWyPeOW4XWJChQlD",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2086430"
   },
   {
     "title": "Nitro Kid",
@@ -4783,9 +5045,10 @@
     "releaseDate": "18.10.2022",
     "playedDate": "13.01.2025",
     "notes": "Карточный с хорошей музыкой и поклеточным расположением перса и врагов. (как в Fights in Tight Spaces)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/INYeJ4mSK38",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1709050"
   },
   {
     "title": "Noita",
@@ -4801,9 +5064,10 @@
     "releaseDate": "15.10.2020",
     "playedDate": "19.04.2026",
     "notes": "Игра (больше песочница чем рогалик) про создание волшебных палок, рандомные взрывы, копание породы, секретных боссов и ОЧЕНЬ случайные смерти.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlD5gSqAnMKbQHRYD75yn15",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "881100"
   },
   {
     "title": "None Shall Intrude",
@@ -4821,7 +5085,8 @@
     "notes": "Ужасный перевод на русский и странный геймплей, где надо поджигать и раздувать клетки, защищаясь от рейдов человеков.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2518630"
   },
   {
     "title": "Noobs Are Coming",
@@ -4837,9 +5102,10 @@
     "releaseDate": "15.07.2025",
     "playedDate": "04.07.2025",
     "notes": "Более простая версия бротаты с интересными своими механиками, пушками и идеями на разные усиления.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmluIedbPeEg4El6PexZNrP",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2225960"
   },
   {
     "title": "Nordhold",
@@ -4855,9 +5121,10 @@
     "releaseDate": "25.03.2025",
     "playedDate": "27.05.2025",
     "notes": "ТД с большим количеством метапрогрессии. Помимо самих башен надо строить здания в замке и распределять работяг для фарма ресурсов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=H55j9Czpi7E",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3028310"
   },
   {
     "title": "Nordic Ashes",
@@ -4873,9 +5140,10 @@
     "releaseDate": "26.04.2024",
     "playedDate": "06.08.2023",
     "notes": "Так и не поиграл после релиза. Вполне хороший автошутер.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=KWPi3e2l6BE",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2068280"
   },
   {
     "title": "Nova Drift",
@@ -4891,9 +5159,10 @@
     "releaseDate": "12.08.2024",
     "playedDate": "15.08.2024",
     "notes": "Безумный долгострой, который на релизе прошел один раз и дальше играть не захотелось.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkR6yliI6F2vl27H4x46gSG",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "858210"
   },
   {
     "title": "Nubby's Number Factory",
@@ -4909,9 +5178,10 @@
     "releaseDate": "07.03.2025",
     "playedDate": "03.06.2025",
     "notes": "В игре надо кидать шары (Nubby), который выбивают цифры, растущие в геометрической прогрессии. Геймплей чилловый с разными усилениями через релики и перки.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=st9hZoXOlvc",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3191030"
   },
   {
     "title": "Nuclear Throne",
@@ -4927,9 +5197,10 @@
     "releaseDate": "05.12.2015",
     "playedDate": "25.11.2024",
     "notes": "Быстрый буллет хелл с секретиками, разными персонажами и пушками.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ukh6i-xF1TrmxmSHM18FAhy",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "242680"
   },
   {
     "title": "Numeral Strike",
@@ -4945,9 +5216,10 @@
     "releaseDate": "23.04.2026",
     "playedDate": "24.04.2026",
     "notes": "Игра, где надо собирать ближние друг к другу одинаковые цифры или комбо равное десяти, чтобы набирать атаку и защиту для битвы с врагов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=WlWs8nMYvJ8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3708620"
   },
   {
     "title": "Nunholy",
@@ -4965,7 +5237,8 @@
     "notes": "Хейдеслайк про монашек. 0 нсфв контента, хоть и есть тэги в стиме. Играется медленно и скучно.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2854740"
   },
   {
     "title": "Oaken Tower",
@@ -4981,9 +5254,10 @@
     "releaseDate": "28.04.2026",
     "playedDate": "24.05.2026",
     "notes": "Рюкзаки, где всего 6 слотов! Много разных синергий между шмотками, пассивками и т.п. и т.п.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnYPvNVFg8L2hXWZR0cIeIw",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3400960"
   },
   {
     "title": "Oblivion Override",
@@ -4999,9 +5273,10 @@
     "releaseDate": "25.01.2024",
     "playedDate": "17.11.2024",
     "notes": "Дед селлз в меха стилистике и довольно простой по началу. Чат говорит про интересные возвышения.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/ZzB6mg0Labc",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1952370"
   },
   {
     "title": "Odinfall",
@@ -5017,9 +5292,10 @@
     "releaseDate": "11.03.2025",
     "playedDate": "17.03.2025",
     "notes": "Более современный Nuclear Throne с квалити оф лайф фишками, модификаторами на пушки и метой на персонажей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um4Jl-k2jrBeYLPMNacFmSn",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2154240"
   },
   {
     "title": "One Boss One Fight",
@@ -5035,9 +5311,10 @@
     "releaseDate": "28.11.2024",
     "playedDate": "04.02.2025",
     "notes": "Игра, где дерешься со смертью, мобами и её фазами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/qt3Jb3Dc4xs",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2908120"
   },
   {
     "title": "One Step From Eden",
@@ -5053,9 +5330,10 @@
     "releaseDate": "26.03.2020",
     "playedDate": "03.04.2020",
     "notes": "Уникальный и сложный экшн-рогалик, в котором колода спеллов прокручивается в реальном времени.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlIR3kuvCPxO2JSNgA7iZ2k",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "960690"
   },
   {
     "title": "Orbital Bullet",
@@ -5071,9 +5349,10 @@
     "releaseDate": "21.03.2022",
     "playedDate": "22.03.2022",
     "notes": "Сложная игра, от которой кружится голова даже с хорошей вестибуляркой.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnvUQF0AUILU_2FLf8pOwaB",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1167680"
   },
   {
     "title": "ORX",
@@ -5089,9 +5368,10 @@
     "releaseDate": "30.08.2022",
     "playedDate": "03.09.2022",
     "notes": "Рогалик, в котором надо строить замок как в настолке - Каркассон, которая сама защищается от орков.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UktEDKpvERSxdBj1jVXwlg8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1071140"
   },
   {
     "title": "Othercide",
@@ -5107,9 +5387,10 @@
     "releaseDate": "28.07.2020",
     "playedDate": "30.07.2020",
     "notes": "Нуарная тактика типа икскома с монстрами и аниме тянками.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlyUF6HDN1EThjE_1TOOjZj",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "798490"
   },
   {
     "title": "Outcast Tales",
@@ -5125,9 +5406,10 @@
     "releaseDate": "29.01.2024",
     "playedDate": "30.01.2024",
     "notes": "Ещё не релизнулась. Играли в демку.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/yukcYlPyw0U",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "882590"
   },
   {
     "title": "Overlooting",
@@ -5143,9 +5425,10 @@
     "releaseDate": "01.09.2025",
     "playedDate": "17.09.2025",
     "notes": "Игра про надевание предметов на перса с автобитвой. Неплохая на разовое прохождение всех сложностей всеми персами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmDs3xzx4PX7U1ObcEWd4_k",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3410180"
   },
   {
     "title": "Ovis Loop",
@@ -5161,9 +5444,10 @@
     "releaseDate": "14.08.2025",
     "playedDate": "25.08.2025",
     "notes": "Для раннего доступа игра подаёт хорошие надежды на качественный платформер-роглайт. Несколько абилок, усиления в виде улучшения этих абилок и набора реликвий.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnFU6hRoixGR8TREbBGxXbo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2226730"
   },
   {
     "title": "Pairs & Perils",
@@ -5179,9 +5463,10 @@
     "releaseDate": "20.01.2025",
     "playedDate": "17.01.2025",
     "notes": "Игра, где нужно запоминать расположение карт и собирать их пары, чтобы дамажить монстров.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/2ItnMtFzxfo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3179860"
   },
   {
     "title": "Pass the Fear",
@@ -5199,7 +5484,8 @@
     "notes": "Буллетхелл рогалик, подозрительно напоминающий Lost Castle 2. Похожая система реликвий с цветами урона и т.п. Качественная копирка или неповторимый оригинал?",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3561220"
   },
   {
     "title": "Pathogenic",
@@ -5217,7 +5503,8 @@
     "notes": "Игра про микроб, мутирующий и убивающий организм учёного. Интереснрое билдостроение по соединениям внутренних и внешних клеток.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3808690"
   },
   {
     "title": "Peglin",
@@ -5233,9 +5520,10 @@
     "releaseDate": "8/27/2024",
     "playedDate": "19.10.2024",
     "notes": "Один из самых сложных и рандомных рогаликов на высоких возвышениях. А вообще чилл и кайф кидать шарики в штыри.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlaC74P67cGQJxN0pW1qTVM",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/CFEciojqE6c?list=PL5RpA6jmZ9UlaLlygNWNKSfXDkFz1bYsm",
+    "steamAppId": "1296610"
   },
   {
     "title": "PERISH",
@@ -5251,9 +5539,10 @@
     "releaseDate": "02.02.2023",
     "playedDate": "04.02.2023",
     "notes": "Прошли на плохую концовку в коопиче с тостаром.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlW60syKrAhdRivYJAy33ff",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1016360"
   },
   {
     "title": "Plinbo: Plinko Roguelike",
@@ -5269,9 +5558,10 @@
     "releaseDate": "31.01.2026",
     "playedDate": "19.01.2026",
     "notes": "Пачинко геймплей без контроля, куда кидаются шары. Вся игра в \"джокерах\" типа балатры, а также усилении шариков и пинов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/UtTDTMRsdoI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3948580"
   },
   {
     "title": "Poker Quest",
@@ -5287,9 +5577,10 @@
     "releaseDate": "15.11.2022",
     "playedDate": "25.11.2022",
     "notes": "Фентезийно-покерный декбилдер с разными персонажами. Круто сделано, но не нашел своей популярности.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkrcAuWbTyvVIX5MI7PLw7E",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1184820"
   },
   {
     "title": "Rabbit & Steel",
@@ -5305,9 +5596,10 @@
     "releaseDate": "09.05.2024",
     "playedDate": "23.12.2024",
     "notes": "Яркий буллет хелл с интересными паттернами врагов и боссов заточенный под кооп (типа пати против боссов из ммо с войдзонами)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/RUMDlGZaewM",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2132850"
   },
   {
     "title": "RACCOIN: Coin Pusher Roguelike",
@@ -5323,9 +5615,10 @@
     "releaseDate": "31.03.2026",
     "playedDate": "21.04.2026",
     "notes": "Очень рандомный рогалик, где надо наполнить стол монетками, чтобы они упали и заработали очки. Монетки разных видов, множителей и т.д.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkSsdUjqUw4_Yb0VjgbMi5h",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3784030"
   },
   {
     "title": "Rack and Slay",
@@ -5341,9 +5634,10 @@
     "releaseDate": "27.05.2024",
     "playedDate": "25.02.2025",
     "notes": "Рогалик, чем-то напоминающий Пеглин, т.к. надо правильно кинуть бильярдный шар, чтобы убить врагов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/8NW-6BwATc0",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2311990"
   },
   {
     "title": "RAD",
@@ -5359,9 +5653,10 @@
     "releaseDate": "20.08.2019",
     "playedDate": "21.08.2019",
     "notes": "Что-то из ранних экшн рогаликов. Персонаж мутирует от улучшений.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmaMirR-KPsExMA6HwWqU0g",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "722560"
   },
   {
     "title": "Ragnar",
@@ -5377,9 +5672,10 @@
     "releaseDate": "27.11.2025",
     "playedDate": "18.12.2025",
     "notes": "Билдострой идёт от оружки, которую можно менять в середине забега и благословлений как в хейдесе. + есть реликвии с пассивными бонусами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmNl469FpSgGWaQ3QvE15W0",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3309140"
   },
   {
     "title": "Ratropolis",
@@ -5395,9 +5691,10 @@
     "releaseDate": "22.12.2020",
     "playedDate": "02.03.2021",
     "notes": "Это как Kingdom, только надо защищать базу с двух сторон при помощи карточек.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Un3dZw4Te4KXlD02QoFiPvA",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1108370"
   },
   {
     "title": "Ravenbound",
@@ -5413,9 +5710,10 @@
     "releaseDate": "30.03.2023",
     "playedDate": "13.04.2023",
     "notes": "Странный оупен ворлд рогалик с соулслайк боёвкой и слабым билдостроением.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=0djljOK2eLE&list=PL5RpA6jmZ9UknqjPeAitWJco6LZMlA-me",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1307660"
   },
   {
     "title": "Ravenswatch",
@@ -5431,9 +5729,10 @@
     "releaseDate": "26.09.2024",
     "playedDate": "26.09.2024",
     "notes": "Один из прикольнейших коопных экшн рогаликов! Советую как в соло, так и в коопе.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=-uWZOakI-UI&list=PL5RpA6jmZ9UmR-qpsar95iRWRPOoE9SmI",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/oL4Ek6xDY6Q?list=PL5RpA6jmZ9UlaLlygNWNKSfXDkFz1bYsm",
+    "steamAppId": "2071280"
   },
   {
     "title": "Realm of Ink",
@@ -5449,9 +5748,10 @@
     "releaseDate": "27.05.2026",
     "playedDate": "16.06.2026",
     "notes": "На релизе всё ещё пробелемы со звуками (не все есть, что-то тихое). Но неплохой рогалик в плане билдостроя и имбы, которую можно собрать разными способами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/zSu-N-dkm8U",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2597080"
   },
   {
     "title": "Reignbreaker",
@@ -5467,9 +5767,10 @@
     "releaseDate": "18.03.2025",
     "playedDate": "21.03.2025",
     "notes": "Средненький хейдеслайк с забегами по 15 минут, где тебе не дают дойти до финального босса, потому что иди прокачайся и сюжет толкни. Дропнул после двух побед.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/jsXPe-vluOo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2129810"
   },
   {
     "title": "Relic Arena",
@@ -5485,9 +5786,10 @@
     "releaseDate": "07.05.2026",
     "playedDate": "24.05.2026",
     "notes": "Автобаттлер, где не надо покупать юнитов. Весь билдострой на реликах (по 4 штуки на перса), которые синергируегшь и качаешь до 9 имба уровня.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/Ba_mrQ6M4aM",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2654490"
   },
   {
     "title": "Replicat",
@@ -5505,7 +5807,8 @@
     "notes": "Игра про поиск пары и набор квоты как в балатро. Все картинки = мемы с котиками. Разнообразие и билдостроение интересное.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3509430"
   },
   {
     "title": "Returnal",
@@ -5521,9 +5824,10 @@
     "releaseDate": "30.04.2021",
     "playedDate": "04.05.2021",
     "notes": "Первый AAA рогалик! Шутер, в который пришлось играть на консоли, но уже вышел в стиме. Не было реиграбельности. Сейчас есть рогаликовый режим.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlQ0z8IHgWMDyfCDftvAd0r",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1649240"
   },
   {
     "title": "Reus 2",
@@ -5539,9 +5843,10 @@
     "releaseDate": "28.05.2024",
     "playedDate": "02.02.2025",
     "notes": "Стратегия, где нужно осваивать землю, выполняя задания поселений по заработку ресурсов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnBSDaSckQn4Yn2PX-dXivh",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1875060"
   },
   {
     "title": "Right and Down",
@@ -5557,9 +5862,10 @@
     "releaseDate": "18.10.2022",
     "playedDate": "06.12.2022",
     "notes": "Буквально рогалик про движение вправо и вниз.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ult6KVklL1u6_jfX803UoLH",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2008050"
   },
   {
     "title": "Ring of Pain",
@@ -5575,9 +5881,10 @@
     "releaseDate": "15.10.2020",
     "playedDate": "25.11.2020",
     "notes": "Мрачный рогалик, где надо двигаться вправо или влево и побеждать карты монстров и собирать карты предметов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UleLxsix4O9WLj_3nw0RsaD",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "998740"
   },
   {
     "title": "Risk of Rain",
@@ -5593,9 +5900,10 @@
     "releaseDate": "08.11.2013",
     "playedDate": "20.11.2023",
     "notes": "Игра очень устаревшая в плане геймплея, однако недавно вышел ремастер.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlDd5jM-Ow6qb1yw2dOa6Y6",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "248820"
   },
   {
     "title": "Risk of Rain 2",
@@ -5611,9 +5919,10 @@
     "releaseDate": "11.08.2020",
     "playedDate": "14.09.2024",
     "notes": "Лучший коопный шутер-рогалик! Легенда",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Umj37YgVdyqlvestFJrPmd7",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/3_2WJ9fsM4w?list=PL5RpA6jmZ9UlaLlygNWNKSfXDkFz1bYsm",
+    "steamAppId": "632360"
   },
   {
     "title": "Roach Post",
@@ -5629,9 +5938,10 @@
     "releaseDate": "17.02.2026",
     "playedDate": "03.03.2026",
     "notes": "В игре надо сочетать цвета почтовых марок на ограниченном поле, чтобы набирать очки как в Балатро.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/VVE-EQLgP_o",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3514630"
   },
   {
     "title": "Roboquest",
@@ -5647,9 +5957,10 @@
     "releaseDate": "07.11.2023",
     "playedDate": "03.02.2025",
     "notes": "Сложный и очень качественный шутер. Один из лучших представителей жанра по билдострою.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkjLBS-G3-6A1-fAzSwH37_",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/IUdZVSMS3A0",
+    "steamAppId": "692890"
   },
   {
     "title": "Rogue Command",
@@ -5665,9 +5976,10 @@
     "releaseDate": "18.11.2024",
     "playedDate": "18.11.2024",
     "notes": "Единственный РТС рогалик, если вы скучаете по жанру из нашего детства. Но играется очень однообразно.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/wm9oZM-LVAg",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1461910"
   },
   {
     "title": "Rogue Legacy",
@@ -5683,9 +5995,10 @@
     "releaseDate": "27.06.2013",
     "playedDate": "01.07.2020",
     "notes": "Супер сильно устарел по сравнению со 2 частью (плохое управление и общее количество механик). Но всё ещё легаси.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlmIoi9SBh73s5zAnlS-IpN",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "241600"
   },
   {
     "title": "Rogue Legacy 2",
@@ -5701,9 +6014,10 @@
     "releaseDate": "28.04.2020",
     "playedDate": "19.05.2022",
     "notes": "Один из лучших платформер-рогаликов после релиза. Долго находился в слабеньком раннем доступе, но сейчас игра-конфетка! Легенда",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlVMg_WXKDHK-QUAD2z8TUu",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1253920"
   },
   {
     "title": "Rogue Loops",
@@ -5719,9 +6033,10 @@
     "releaseDate": "06.01.2025",
     "playedDate": "07.01.2025",
     "notes": "Глянули демку. Хейдеслайк с механикой хождения по комнатам и проклятий на эти комнаты",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/erWIiVSaUg8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3366180"
   },
   {
     "title": "Rogue Lords",
@@ -5737,9 +6052,10 @@
     "releaseDate": "30.09.2021",
     "playedDate": "21.10.2021",
     "notes": "Сюжетный рогалик про вампиров и прочую нечисть. Колода состоит из абилок персонажей, а не карт.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkzhaBSlxoVpv5nehKts2PK",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1069690"
   },
   {
     "title": "Rogue Spirit",
@@ -5755,9 +6071,10 @@
     "releaseDate": "07.04.2023",
     "playedDate": "02.09.2021",
     "notes": "Игра про вселение в убитых монстров. В раннем доступе было не очень интересно и мало контента.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/cq9F-lzcbnw",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1554970"
   },
   {
     "title": "Rogue Waters",
@@ -5773,9 +6090,10 @@
     "releaseDate": "30.09.2024",
     "playedDate": "04.10.2024",
     "notes": "Тактика про толкания, пиратские корабли и больших монстров.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlKlO8eiBrD1-ye2h4fJ-KU",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1691190"
   },
   {
     "title": "Rogue: Genesia",
@@ -5791,9 +6109,10 @@
     "releaseDate": "19.09.2022",
     "playedDate": "24.11.2022",
     "notes": "Выбор пути как в Шпиле и быстрые битвы в вампирлайке. + модификаторы на полное изменение геймплея",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmUH9pqYkWTKPzsKOP1_U-u",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2067920"
   },
   {
     "title": "Roguebook",
@@ -5809,9 +6128,10 @@
     "releaseDate": "17.06.2021",
     "playedDate": "03.07.2021",
     "notes": "Карточный рогалик по мотивам крутейшей карточной игры - Faeria. Персонаж передвигается и открывает карту за ресурсы.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um2WHsC2AG36tX_KyxaMkR3",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1076200"
   },
   {
     "title": "Roots of Yggdrasil",
@@ -5827,9 +6147,10 @@
     "releaseDate": "06.09.2024",
     "playedDate": "25.11.2024",
     "notes": "Быстрые поселения строятся карточками, выбор пути как в шпиле. Забирал платину по аукциону.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlrBAi_eAcJwfemJVyfqNyi",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2071430"
   },
   {
     "title": "Rotwood",
@@ -5845,9 +6166,10 @@
     "releaseDate": "03.03.2026",
     "playedDate": "04.03.2026",
     "notes": "Битемап рогалик от разрабов Klei. Прошел долгий ранний доступ, чтобы остаться очень среднячковым.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=2Y3PHLpU1OA&list=PL5RpA6jmZ9UkaD1ekZsFINaI3nKii29xh",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2015270"
   },
   {
     "title": "Roundguard",
@@ -5863,9 +6185,10 @@
     "releaseDate": "13.03.2020",
     "playedDate": "28.04.2025",
     "notes": "Как Пеглин, но вышло раньше и вместо колоды шариков играешь 1 из 4 персонажей, у каждого свои спеллы и предметы для победы над монстрами, которые стоят на самом борде.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/BhTSjC7MhzI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "848030"
   },
   {
     "title": "Rune Coliseum",
@@ -5881,9 +6204,10 @@
     "releaseDate": "24.09.2024",
     "playedDate": "21.03.2025",
     "notes": "Пошаговая арена с передвижениями влево вправо и набором колоды абилок + шмотки и релики.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/8mHoL0105T4",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2360210"
   },
   {
     "title": "Rune Dice",
@@ -5899,9 +6223,10 @@
     "releaseDate": "19.05.2026",
     "playedDate": "20.05.2026",
     "notes": "Больше сюжетная игр с роглайт элементами. Всего по 3 босса на 3 локи, которых можно убить разными героями + на \"высокой\" сложности.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=LE00Viiq_p0",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3542380"
   },
   {
     "title": "Rungore",
@@ -5917,9 +6242,10 @@
     "releaseDate": "16.05.2024",
     "playedDate": "01.11.2023",
     "notes": "Комедийный карточный рогалик с мемасами в картах и реальным временем битвы.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uk-mniSya5bJZXSeSxqBvt-",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2113040"
   },
   {
     "title": "Sandwalkers",
@@ -5935,9 +6261,10 @@
     "releaseDate": "08.04.2025",
     "playedDate": "18.08.2025",
     "notes": "Игра про караван, который движется через пустыню в поисках еды и спасения. Сюжетная на пройти 1 раз. В конце явно не допилили игру.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkVwbIfI_Xt0FPigK7hpnOq",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1639080"
   },
   {
     "title": "SAROS",
@@ -5953,7 +6280,7 @@
     "releaseDate": "30.04.2026",
     "playedDate": "30.04.2026",
     "notes": "Буквально вторая часть игры Returnal со своим сюжетом. Хуже реиграбельность и вариативность пушек и билдостроя.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkZWRa7s6WWV9mByrpFY2tN",
     "hasMI": "FALSE",
     "miVideo": ""
   },
@@ -5971,9 +6298,10 @@
     "releaseDate": "25.03.2024",
     "playedDate": "06.01.2025",
     "notes": "Вполне обычный вампирлайк с большим количеством меты между забегами и разными персами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/EZRsFWy9Xmo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2181720"
   },
   {
     "title": "SENTRY",
@@ -5989,9 +6317,10 @@
     "releaseDate": "25.03.2024",
     "playedDate": "30.03.2025",
     "notes": "Неплохой тавер дефенс, большим минусом для меня оказалось перетаскивание башен (ловушек) с одной точки на другую в каждой новой волне.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/yHgCFMOBrLQ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1252680"
   },
   {
     "title": "Sephiria",
@@ -6007,9 +6336,10 @@
     "releaseDate": "31.07.2026",
     "playedDate": "02.08.2026",
     "notes": "Игра от разрабов Dungreed. Сет бонусы и ограниченный инвентарь разнообразных реликвий под усилениями. Много билдостроя, сюжетно открывает новых боссов с забегами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkWtWif3Rtnf7xvxXOE1xQa",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2436940"
   },
   {
     "title": "Shadow of the Depth",
@@ -6025,9 +6355,10 @@
     "releaseDate": "23.04.2024",
     "playedDate": "17.12.2024",
     "notes": "Однообразные локации и монстры, очень лёгкая игра после пары пассивок. Играть просто скучно.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/DxvPgnuCuyA",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2100150"
   },
   {
     "title": "Shadowveil: Legend of Five Rings",
@@ -6045,7 +6376,8 @@
     "notes": "Автобаттлер с сюжетом и большим количеством меты. Персонажи сражаются автоматически, используя абилки. Нужно правильно продумать расстановку.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2536960"
   },
   {
     "title": "Shape Hero Factory",
@@ -6061,9 +6393,10 @@
     "releaseDate": "06.11.2024",
     "playedDate": "15.11.2024",
     "notes": "Выглядит как хороший конвеерный тавер дефенс рогалик, но я не осилил строительство конвееров.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=KwpvxuZxa8A&ab_channel=TianKami",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2389040"
   },
   {
     "title": "Shape of Dreams",
@@ -6079,9 +6412,10 @@
     "releaseDate": "11.09.2025",
     "playedDate": "08.11.2025",
     "notes": "Рогалик с интересным билдостроением, где любой персонаж может создать любой билд засчёт замены абилок и камней, баффающих эти абилки.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlP_qZz4aUHfLfF804F8M75",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2444750"
   },
   {
     "title": "Shattered Pixel Dungeon",
@@ -6099,7 +6433,8 @@
     "notes": "Классический пошаговый рогалик. Каждый ход приближает голод, врагов, откаты умений и т.д. Все предметы идентифицируются в каждом забеге с нуля.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1769170"
   },
   {
     "title": "Shogun Curse",
@@ -6115,9 +6450,10 @@
     "releaseDate": "12.12.2024",
     "playedDate": "10.03.2025",
     "notes": "Вполне обычный колодострой с красивыми анимациями, но лагучими звуками и внезапной мета прогрессией.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/eaAkYnqtsY8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2800170"
   },
   {
     "title": "Shogun Showdown",
@@ -6133,9 +6469,10 @@
     "releaseDate": "05.09.2024",
     "playedDate": "29.06.2023",
     "notes": "Рогалик, в котором можно бить врагов только слева и справа.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/3gdkcGOIGRQ",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2084000"
   },
   {
     "title": "Shotgun King: The Final Checkmate",
@@ -6151,9 +6488,10 @@
     "releaseDate": "12.05.2022",
     "playedDate": "17.03.2025",
     "notes": "Шахматный рогалик, с усилениями на своего короля и дробовик. Есть билдостроение и возвышения.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnEBvsD8QdTLC72s8NSFMgO",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1972440"
   },
   {
     "title": "Shoulders of Giants",
@@ -6171,7 +6509,8 @@
     "notes": "Играл вне стрима в коопе. Подпивасный риск оф рейн такой.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2283880"
   },
   {
     "title": "Sin Slayers: Reign of The 8th",
@@ -6189,7 +6528,8 @@
     "notes": "Игра мне не показалась рогаликом. Скорее всего рандомится только локация в забеге.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2790000"
   },
   {
     "title": "Skill Legends Royale",
@@ -6205,9 +6545,10 @@
     "releaseDate": "05.11.2024",
     "playedDate": "18.11.2024",
     "notes": "Автобаттлер, где герой покупает использует много пассивных абилок. Бесплатная китайская с кривыми переводами, но залипнуть можно.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/644vllSLPCE",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3114410"
   },
   {
     "title": "Skul: The Hero Slayer",
@@ -6223,9 +6564,10 @@
     "releaseDate": "21.01.2021",
     "playedDate": "27.01.2023",
     "notes": "Один из лучших платформер-рогаликов. Интереснейшие возвышения, которые добавляют новые механики врагам и игроку в том числе. Легенда",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnJwDyxv2f2OCT5WkukosXq",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/VPQa-6xAU2o?list=PL5RpA6jmZ9UlaLlygNWNKSfXDkFz1bYsm",
+    "steamAppId": "1147560"
   },
   {
     "title": "Slasher's Keep",
@@ -6241,9 +6583,10 @@
     "releaseDate": "19.11.2020",
     "playedDate": "08.07.2021",
     "notes": "Исследуем подземелья, бьём гоблинов, собираем лут.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnmqqAAbLCcMscBD2uqeons",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "598060"
   },
   {
     "title": "Slay the Spire",
@@ -6259,9 +6602,10 @@
     "releaseDate": "23.01.2019",
     "playedDate": "14.04.2019",
     "notes": "База карточных рогаликов, которая проложила путь целому жанру. Минус балл за отедльные возвышения и базированность в настоящее время.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UknlFe4eRKYAa1VT_h_JRay",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "646570"
   },
   {
     "title": "Slay the Spire II",
@@ -6277,9 +6621,10 @@
     "releaseDate": "05.03.2026",
     "playedDate": "16.06.2026",
     "notes": "Продолжение игры, популяризировавшей колодостроительные рогалики. Имеет тот же первородный грех, что и 1 часть - раздельные возвышения персов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkPYhWLBvUzeeHP5NO_8yqi",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2868840"
   },
   {
     "title": "Slice & Dice",
@@ -6295,9 +6640,10 @@
     "releaseDate": "20.03.2024",
     "playedDate": "01.07.2026",
     "notes": "Один из крутейших и вариативных колодостроительных (кубических) рогаликов. Есть на мобилках!",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=zE3h7NljlyE&list=PL5RpA6jmZ9UlYoWc_mq6t2M3E7GlhYBhP",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1775490"
   },
   {
     "title": "Slime 3K: Rise Against Despot",
@@ -6313,9 +6659,10 @@
     "releaseDate": "31.10.2024",
     "playedDate": "31.10.2024",
     "notes": "Вампирлайк с построением колоды абилок, но абсолютно захламлённым геймплеем. Весь экран во врагах и в усилениях.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnPmhH3XvFpTwxYs1ENtL-s",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2348610"
   },
   {
     "title": "Slots & Daggers",
@@ -6331,9 +6678,10 @@
     "releaseDate": "24.10.2025",
     "playedDate": "03.11.2025",
     "notes": "Очень линейная игра с почти никаким билдостроением. Рогаликом назвать сложно. Люди проходят на фулл за 3-5 часов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=mmaMC9JiAWg",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3631290"
   },
   {
     "title": "Sol Cesto",
@@ -6349,9 +6697,10 @@
     "releaseDate": "10.04.2026",
     "playedDate": "18.04.2026",
     "notes": "Концептуальный рогалик, где сражение с врагами на экране проходит по линиям против рандомного врага. Шансы на битву/сундуки/хил можно менять реликвиями.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=qrftRX5G0-I",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2738490"
   },
   {
     "title": "Soulstone Survivors",
@@ -6367,9 +6716,10 @@
     "releaseDate": "07.11.2022",
     "playedDate": "10.06.2024",
     "notes": "Вампирлайк с хорошим билдостроением и деревом навыков и жёстким бесконечным режимом.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ulrpn3P4WtLgFhxrePuHd_l",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2066020"
   },
   {
     "title": "Space Gladiators: Escaping Tartarus",
@@ -6385,9 +6735,10 @@
     "releaseDate": "10.03.2021",
     "playedDate": "29.11.2022",
     "notes": "Платформер-рогалик от разработчика великой Бротаты!",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um5ZJb6N3BRJla6qsWyZ7NY",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1144910"
   },
   {
     "title": "Space Robinson",
@@ -6403,9 +6754,10 @@
     "releaseDate": "08.10.2019",
     "playedDate": "08.10.2019",
     "notes": "Делал партнерский стримчик. Игра про чела в космосе.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um_cyFSwXayfVO4kAKRjHjk",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "953870"
   },
   {
     "title": "Spell Disk",
@@ -6421,9 +6773,10 @@
     "releaseDate": "01.03.2024",
     "playedDate": "30.05.2026",
     "notes": "Экшн рогалик в изомтреии, где надо создать правильные цепочки авто спеллов через диски. Есть доп режим однообразного вампирлайка .",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlCM77Ig7ovleeLbC-ykLq-",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2292060"
   },
   {
     "title": "SpellRogue",
@@ -6439,9 +6792,10 @@
     "releaseDate": "12.02.2024",
     "playedDate": "14.02.2024",
     "notes": "Игра про заклинания, которые кастуются кубиками. Довольно линейное билдостроение на одном-двух сильных спеллах.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnV7BpcI9CevN-juQxtTXD8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1990110"
   },
   {
     "title": "Spelunky",
@@ -6457,9 +6811,10 @@
     "releaseDate": "08.08.2013",
     "playedDate": "17.11.2025",
     "notes": "Хардкорный платформер, где смерти зачастую идут от ваншота самыми разными способами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uk6d2uvKnCqKztzorkOMNZ1",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "239350"
   },
   {
     "title": "Spelunky 2",
@@ -6475,9 +6830,10 @@
     "releaseDate": "29.09.2020",
     "playedDate": "06.10.2020",
     "notes": "Безумное продолжение первой части, с ещё большим количеством контента! Слабонервным не играть.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlCXvZYmGpeK9j4mvaSI_dN",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "418530"
   },
   {
     "title": "Spin Hero",
@@ -6493,9 +6849,10 @@
     "releaseDate": "08.10.2024",
     "playedDate": "18.03.2025",
     "notes": "Собирай 20 предметов в деку, крути лохотрон. В отличие от обычных декбилдеров, нет реликов, но есть полурасходники (раз в 3 файта) для битвы с боссами и элитками",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/LN25nkMomOw",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2917350"
   },
   {
     "title": "Spirit Hunters: Infinite Horde",
@@ -6511,9 +6868,10 @@
     "releaseDate": "20.06.2023",
     "playedDate": "08.06.2022",
     "notes": "Один из первых вампирлайков, которые вышли довольно быстро и мы поиграли в раннем доступе.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnMAuVVpLSkG-B2qK0wFxwx",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1914580"
   },
   {
     "title": "Spirits of the Silicium Forest",
@@ -6529,9 +6887,10 @@
     "releaseDate": "25.07.2024",
     "playedDate": "29.04.2025",
     "notes": "Странный рогалик с сюжетным режимом и роглайк режимом. 3 пути, уклонение при передвижении по путям и игра через разные статусы на себя и противника.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=celZ2BmY9V8&ab_channel=TianKami",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2233220"
   },
   {
     "title": "Star Renegades",
@@ -6547,9 +6906,10 @@
     "releaseDate": "08.09.2020",
     "playedDate": "15.09.2020",
     "notes": "Проходной рогалик, который совсем не запомнился и игрался на безрыбье.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkMP29TIArxszO3uXYQI9C-",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "651670"
   },
   {
     "title": "StarVaders",
@@ -6565,9 +6925,10 @@
     "releaseDate": "30.04.2025",
     "playedDate": "01.05.2025",
     "notes": "Колодострой с перегревами маны и врагами по клеткам. Несколько персонажей и 3 робота, которых они пилотируют с разным геймплеем.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkNvfDWSlaQGovaBRD-fA0k",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2097570"
   },
   {
     "title": "SteamWorld Quest: Hand of Gilgamech",
@@ -6583,9 +6944,10 @@
     "releaseDate": "31.05.2019",
     "playedDate": "05.06.2019",
     "notes": "Это даже не совсем рогалик. Скорее сюжетный декбилдер.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkcrMgInW5OVSnw2WGH27XH",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "804010"
   },
   {
     "title": "Steredenn: Binary Stars",
@@ -6601,9 +6963,10 @@
     "releaseDate": "01.10.2015",
     "playedDate": "04.12.2024",
     "notes": "Шутемап (ностальгия) и рогалик. Разные корабли, пушки и улучшения между боссами.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/apGlhe6Odbc",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "347160"
   },
   {
     "title": "Stray Path",
@@ -6619,9 +6982,10 @@
     "releaseDate": "06.02.2025",
     "playedDate": "11.02.2025",
     "notes": "Пошаговые сражения с монстрами, набор реликов и статов персонажу. Выбор из 5 путей-карт, которые лежат друг на друге как в пасьянсе, и их можно таскать.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/DU-Yg7658Y8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2531940"
   },
   {
     "title": "Streets of Rogue 2",
@@ -6637,9 +7001,10 @@
     "releaseDate": "",
     "playedDate": "18.08.2025",
     "notes": "Не рогалик, а песочница. Если нравится строить дома, добывать дерево и грабить корованы, мб норм.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/EJrBE1jmmVo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2165810"
   },
   {
     "title": "Sulfur",
@@ -6655,9 +7020,10 @@
     "releaseDate": "28.10.2024",
     "playedDate": "27.01.2025",
     "notes": "Шутер-рогалик с большим инвентарём и 5 актами в раннем доступе. Долгие забеги.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/mA2HEdTl5xs",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2124120"
   },
   {
     "title": "Sultan's Game",
@@ -6675,7 +7041,8 @@
     "notes": "Номинально игра рогаликом явялется только на макс. сложности и то с натяжкой. Огромная история с ивентами, разными персонажами, предметами и рандомом.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3117820"
   },
   {
     "title": "Super Auto Pets",
@@ -6691,9 +7058,10 @@
     "releaseDate": "21.09.2021",
     "playedDate": "13.11.2023",
     "notes": "Игра вышла раньше рюкзаков, но не сыскала такой популярности.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnzttHLcVLDLkrkq8oZWsND",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1714040"
   },
   {
     "title": "Super Fantasy Kingdom",
@@ -6709,9 +7077,10 @@
     "releaseDate": "24.10.2025",
     "playedDate": "26.10.2025",
     "notes": "Стратегия, где нужно правильно распределить ресурсы на экономику и воинов, а также мета качается прям на карте игры.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmXDB_GUC1gxmprzBbu3-sE",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2289750"
   },
   {
     "title": "Sworn",
@@ -6727,9 +7096,10 @@
     "releaseDate": "23.09.2025",
     "playedDate": "24.09.2025",
     "notes": "Хейдеслайк в мрачном мире злого короля Артура. Хорошо играется и в коопе и в соло. На релизе не довезли контента, вариативность есть засчёт разных пушек и благословений.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkDiL7uM1qbeIwflOC2iUgf",
     "hasMI": "TRUE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1763250"
   },
   {
     "title": "Tabletop Tavern",
@@ -6745,9 +7115,10 @@
     "releaseDate": "11.06.2026",
     "playedDate": "21.06.2026",
     "notes": "Стратегический рогалик, где отряды набираются по пути как в Шпиле, а битва идёт как в тотал варах. Мало контента, разнообразия и реиграбельности.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UleBy1XuCsKmg2Y40wa_5kF",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3337380"
   },
   {
     "title": "Tainted Grail: Conquest",
@@ -6763,9 +7134,10 @@
     "releaseDate": "27.03.2021",
     "playedDate": "10.11.2021",
     "notes": "Прикольный мрачный декбилдер по настольной игре. Несколько классов и какие-то свои механики с туманом.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Umk9pCJ1z34X0h4F9mKTUhE",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1199030"
   },
   {
     "title": "Talented",
@@ -6781,9 +7153,10 @@
     "releaseDate": "20.12.2024",
     "playedDate": "02.01.2025",
     "notes": "Герой набирает большое количество пассивок и разные абилки в дереве навыков.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmH1nXUlJGQg9AC2oP229GG",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2435090"
   },
   {
     "title": "Tales & Tactics",
@@ -6799,9 +7172,10 @@
     "releaseDate": "15.08.2024",
     "playedDate": "13.02.2025",
     "notes": "ТФТ подобный автобаттлер, где можно скрещивать юнитов, кидать расходники, скрещивать предметы на юнитах и т.д.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/0IDmeqvC3WI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1652250"
   },
   {
     "title": "Talespinner",
@@ -6819,7 +7193,8 @@
     "notes": "В игре три уникальных перса и три уникальных сюжета на 3, 4 и 5 локаций. Медленная прогрессия по новым картам, из-за чего не хочется снова переигрывать.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1725410"
   },
   {
     "title": "Tangledeep",
@@ -6837,7 +7212,8 @@
     "notes": "Сложный рогалик, играли на сабдей часик.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "628770"
   },
   {
     "title": "Tape to Tape",
@@ -6853,9 +7229,10 @@
     "releaseDate": "03.05.2024",
     "playedDate": "03.03.2024",
     "notes": "Рогалик про хоккей. Управление персонажами сложное, возможно проще играть в несколько человек.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/XcberyuF7wo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1566200"
   },
   {
     "title": "Tears of Metal",
@@ -6873,7 +7250,8 @@
     "notes": "Слешер, где игрок сражается с целыми армиями, но по факту дерётся с элитками, а армии убиваются параллельно или своими отрядами.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1913120"
   },
   {
     "title": "Teenage Mutant Ninja Turtles: Splintered Fate",
@@ -6889,9 +7267,10 @@
     "releaseDate": "06.11.2024",
     "playedDate": "07.11.2024",
     "notes": "Это внезапно порт мобилки на свитч, а потом на ПК. Есть небольшие траблы с технической стороны (коллизии, звуки и т.д.), но в целом неплохо.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Ums-6_ASXXepZiQnbMp11FE",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2996040"
   },
   {
     "title": "Temtem: Swarm",
@@ -6907,9 +7286,10 @@
     "releaseDate": "14.11.2024",
     "playedDate": "14.11.2024",
     "notes": "Советую играть только с друзьями. В соло было скучновато и простовато.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/pXE-Q2YcRBA",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2510960"
   },
   {
     "title": "Terraformers",
@@ -6925,9 +7305,10 @@
     "releaseDate": "09.03.2023",
     "playedDate": "12.02.2025",
     "notes": "Игра про создание колоний на ограниченных участках марса и ресурс пошаговый ресурс менеджмент.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/A7IE5HMt0dI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1244800"
   },
   {
     "title": "TerraTech Legion",
@@ -6943,9 +7324,10 @@
     "releaseDate": "30.04.2026",
     "playedDate": "27.05.2026",
     "notes": "В этом вампирике игрок кастомизирует машину, выставляя пушки и всякие баффы на специальные слоты.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/eg0RxQdtubE",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3596700"
   },
   {
     "title": "The Baazar",
@@ -6961,7 +7343,7 @@
     "releaseDate": "30.10.2024",
     "playedDate": "10.11.2024",
     "notes": "Автобаттлер смесь рюкзаков и ХС БГ. Геймплей приятный, но серверная и техническая часть хромают.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmzShNKSP87oyC9AQufBmgZ",
     "hasMI": "FALSE",
     "miVideo": ""
   },
@@ -6979,9 +7361,10 @@
     "releaseDate": "28.09.2011",
     "playedDate": "30.10.2011",
     "notes": "Проходил игру в далёком 2011 году до стримов и с тех пор вернуться так и не захотелось.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um0NQ6w4ys9RqQYNnzZrGkJ",
     "hasMI": "TRUE",
-    "miVideo": "Ссылка на выпуск МИ"
+    "miVideo": "https://youtu.be/xyJ1gpduv8I?list=PL5RpA6jmZ9UlaLlygNWNKSfXDkFz1bYsm",
+    "steamAppId": "250900"
   },
   {
     "title": "The King is Watching",
@@ -6997,9 +7380,10 @@
     "releaseDate": "21.07.2025",
     "playedDate": "19.03.2026",
     "notes": "Король смотрит на клетки - клетки работают и приносят ресурсы, юнитов, и делают прочие вещи. Есть возвышения, разные короли, билды, реликвии и всё всё. Залипательно.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkjiaYSOLprSdqRctFH3MvY",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2753900"
   },
   {
     "title": "The Last Flame",
@@ -7015,9 +7399,10 @@
     "releaseDate": "17.01.2024",
     "playedDate": "23.01.2024",
     "notes": "Автобаттлер по типу ТФТ только без пвп.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnzmH75kVfX85hSaGZLVXCW",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1830970"
   },
   {
     "title": "The Last Spell",
@@ -7033,9 +7418,10 @@
     "releaseDate": "09.03.2023",
     "playedDate": "22.03.2023",
     "notes": "Долгие забеги (и плюс и минус игры) с пошаговой зачисткой карты от орд зомби.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmK5bjard5sd8hDwgk795ek",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1105670"
   },
   {
     "title": "The Last Stand: Aftermath",
@@ -7051,9 +7437,10 @@
     "releaseDate": "16.11.2021",
     "playedDate": "07.12.2021",
     "notes": "Рогалик, где поселение отправляет заражённых на поиски ресурсов и лекарства.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkBhjiKJiPDM4Lj9OSbjz7n",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1266840"
   },
   {
     "title": "The Legend of Bum-Bo",
@@ -7069,9 +7456,10 @@
     "releaseDate": "12.11.2019",
     "playedDate": "22.11.2019",
     "notes": "Матч три игра по Айзеку. Прошел разок и забыл.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uk8Q6zCYLHVpXd45rau8it2",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1148650"
   },
   {
     "title": "The Rogue Prince of Persia",
@@ -7087,9 +7475,10 @@
     "releaseDate": "20.08.2025",
     "playedDate": "22.08.2025",
     "notes": "Уже не фиолетовый принц от разрабов Dead Cells. Всё, чем выделяется игра - это механика бега по бэкграундным стенам и дэш по головам врагов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkWdS22n1VyMiPCfueOPhXB",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2717880"
   },
   {
     "title": "The Spell Brigade",
@@ -7105,9 +7494,10 @@
     "releaseDate": "16.09.2024",
     "playedDate": "28.11.2024",
     "notes": "Из особенностей в этом коопном вампирлайке - френдлифаер, если не переделать абилки в хил. (можно отключить режимом в игре)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Umdy7Gm6Xb-j6B-8u8qcD7q",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2904000"
   },
   {
     "title": "The Unliving",
@@ -7123,9 +7513,10 @@
     "releaseDate": "26.10.2023",
     "playedDate": "08.11.2022",
     "notes": "Прошел скучненький и багованный ранний доступ с 1 попытки. Игра про некроманта и его армию. (сам некромант слаб)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/LXeBgfrohPw",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "986040"
   },
   {
     "title": "Time Wasters",
@@ -7141,9 +7532,10 @@
     "releaseDate": "25.09.2023",
     "playedDate": "20.01.2025",
     "notes": "Космический вампирлайк с форпостами, которые дают разные бонусы с кулдауном.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/5bgt3gCx0Wo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1290330"
   },
   {
     "title": "Tiny Rogues",
@@ -7159,9 +7551,10 @@
     "releaseDate": "23.09.2022",
     "playedDate": "06.01.2023",
     "notes": "Прикольный и вариативный пиксельный рогалик с разными классами в подземельях.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=T3s3ytZxJjM&list=PL5RpA6jmZ9UloC3SQ_z5Aqaruof_jacdn",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2088570"
   },
   {
     "title": "Toads of the Bayou",
@@ -7177,9 +7570,10 @@
     "releaseDate": "19.11.2024",
     "playedDate": "02.12.2024",
     "notes": "Тестил игру в демке и на релизе. Просто было скучновато. Карточная тактика с толканиями",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/mA2HEdTl5xs",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2190400"
   },
   {
     "title": "Tower Dominion",
@@ -7195,9 +7589,10 @@
     "releaseDate": "08.05.2025",
     "playedDate": "27.05.2025",
     "notes": "Башенки с интересными областями атаки у каждой башни. Например, есть артиллерия, которую надо выставлять далеко от главной базы.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uka0CetDSeS3v1V7qpB_DDc",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3226530"
   },
   {
     "title": "Trials of Fire",
@@ -7213,9 +7608,10 @@
     "releaseDate": "09.04.2021",
     "playedDate": "27.04.2021",
     "notes": "РПГ-рогалик с рандомной генерацией карты и броском кубика на ивенты от характеристик персонажей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnySA8mZ9gSKFK6xue4rxD6",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1038370"
   },
   {
     "title": "Trigon: Space Story",
@@ -7233,7 +7629,8 @@
     "notes": "Слабая попытка повторить успех FTL с красивой 3d графикой",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1226510"
   },
   {
     "title": "Trinity Fusion",
@@ -7249,9 +7646,10 @@
     "releaseDate": "15.12.2023",
     "playedDate": "15.12.2023",
     "notes": "Проводил партнерский стрим. Пройдено за 1 из 3-х персонажей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkHKZFaiwe8PxFX2Ouxhlta",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1911360"
   },
   {
     "title": "Turnbound - Доска Забвения",
@@ -7267,9 +7665,10 @@
     "releaseDate": "22.01.2026",
     "playedDate": "26.01.2026",
     "notes": "Пока что первый затянувший меня клон бэкпаков. Требует дополнительного изучения. Нет мороки с покупкой рюкзаков, т.к. открываются слоты за 1 монетку.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Umhbt4TNp0VrFJ5_XBH9Dok",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3802470"
   },
   {
     "title": "Uncle Chop's Rocket Shop",
@@ -7285,9 +7684,10 @@
     "releaseDate": "05.12.2024",
     "playedDate": "23.12.2024",
     "notes": "Скорее сюжетная игра с метой между забегами и рандомными починками машин (и не только). Куча секретов как в Тунике.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmQyGxySBU9ZkEX707mQIZK",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1849790"
   },
   {
     "title": "Underboard",
@@ -7303,9 +7703,10 @@
     "releaseDate": "06.02.2026",
     "playedDate": "10.02.2026",
     "notes": "Рогалик, где надо выбрать правильных юнитов и предметы им под разные трэйты. Расстановка в бою тоже сильно влияет на битвы.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnYL6lqw6bCA6dsE6GKtnZq",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2376610"
   },
   {
     "title": "UnderMine",
@@ -7321,9 +7722,10 @@
     "releaseDate": "06.08.2020",
     "playedDate": "08.08.2020",
     "notes": "Ждал из раннего доступа. На релизе быстро прошел и забил.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkDXbpdaycnlrt7Ct4ijUI7",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "656350"
   },
   {
     "title": "Undermine 2",
@@ -7339,9 +7741,10 @@
     "releaseDate": "22.07.2025",
     "playedDate": "24.07.2025",
     "notes": "Продолжение неплохого рогалика про шахты и шахтёрос, со слабой реализацией в раннем доступе. Посмотрим что в релизе.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmGwnRaFbd2nrzhdBbKGANj",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1869780"
   },
   {
     "title": "Union of Gnomes",
@@ -7357,9 +7760,10 @@
     "releaseDate": "18.07.2024",
     "playedDate": "31.01.2025",
     "notes": "Гномы против Белоснежки. В игре есть сюжетные главы и сайдовые миссии.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/5-XJPLvI0oU",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2097030"
   },
   {
     "title": "Vagante",
@@ -7375,9 +7779,10 @@
     "releaseDate": "22.02.2018",
     "playedDate": "16.12.2025",
     "notes": "От спелланки в этой игре только камни на голову и шипы. А так платформер рпг, где надо собрать норм лут и пройти всех боссов. Реиграбельности мало.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnSgsNgnslRc8yelH37xVjD",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "323220"
   },
   {
     "title": "Vampire Crawlers: The Turbo Wildcard From Vampire Survivors",
@@ -7393,9 +7798,10 @@
     "releaseDate": "21.04.2026",
     "playedDate": "23.04.2026",
     "notes": "Колодострой с оригинальной механикой комбо по стоимости карт и механикой эволюций как в вампир сурвайворах.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmgCY79mI49hwNpkvKh3MZO",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3265700"
   },
   {
     "title": "Vampire Hunters",
@@ -7411,9 +7817,10 @@
     "releaseDate": "30.10.2024",
     "playedDate": "07.11.2024",
     "notes": "Мясной автошутер от первого лица. Немного укачивает.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/R1u-qf6FVAU",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2206270"
   },
   {
     "title": "Vampire Survivors",
@@ -7429,9 +7836,10 @@
     "releaseDate": "20.10.2022",
     "playedDate": "06.08.2023",
     "notes": "Игра, которая создала/популяризировала целый жанр, но на данный момент является мешаниной из ДЛС и франшиз с очень базированным геймплеем.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkEzMYD6VF76N4X9fBra15w",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1794680"
   },
   {
     "title": "Vilde",
@@ -7449,7 +7857,8 @@
     "notes": "Шутер рогали с всего тремя локациями и треми уровнями пушек и абилок. Однообразно уже к третьему акту.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2430470"
   },
   {
     "title": "Void Bastards",
@@ -7465,9 +7874,10 @@
     "releaseDate": "29.05.2019",
     "playedDate": "10.06.2019",
     "notes": "Лутаем заброшенные космические корабли и летим дальше, играя за космических отбросов.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmhaOxns-s2lUPMCF_2xLtp",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "857980"
   },
   {
     "title": "Void War",
@@ -7483,9 +7893,10 @@
     "releaseDate": "02.06.2025",
     "playedDate": "03.06.2025",
     "notes": "FTL по Вархаммеру без авторских прав. Простое начало и сложный финальный босс. Разные сочетания капитанов и кораблей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=Z9BzwtWa704",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2853590"
   },
   {
     "title": "VOID/BREAKER",
@@ -7501,9 +7912,10 @@
     "releaseDate": "19.08.2025",
     "playedDate": "22.08.2025",
     "notes": "Главная особенность игры - разрушаемость строений/стен/полов на каждой боевой арене. Это станит врагов и позволяет выбивать хилки. Хорошо и динамично.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkABuycdhkvHMQnn6yOtF28",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2615540"
   },
   {
     "title": "Voidigo",
@@ -7519,9 +7931,10 @@
     "releaseDate": "08.06.2023",
     "playedDate": "12.06.2023",
     "notes": "Хорошая качественная игра по типу буллет хеллов как Gungeon или Nuclear Throne.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uldrd51l12akTJRSshr_Mtu",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1304680"
   },
   {
     "title": "Wall World",
@@ -7537,9 +7950,10 @@
     "releaseDate": "05.04.2023",
     "playedDate": "09.04.2023",
     "notes": "Типичная залипаловка от Алаваров, которая хорошая вначале, но скучна в ендгейме.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UngHz_oono9PsLgvzzhiM05",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2187290"
   },
   {
     "title": "Wall World 2",
@@ -7555,9 +7969,10 @@
     "releaseDate": "11.11.2025",
     "playedDate": "13.11.2025",
     "notes": "Продолжение копалки и защиты купола-паука. Добивились механики с врагами в шахтах. В остальном всё то же самое. Залипалка на ~10 часов от Алаваров.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UnP65jOGhWONS_LvOOSDbPb",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3467710"
   },
   {
     "title": "Warden's Will",
@@ -7573,9 +7988,10 @@
     "releaseDate": "08.01.2025",
     "playedDate": "08.01.2025",
     "notes": "Попытка клона РоРа2. Играется скучновато, враги слабые, меты для анлоков мало, пассивки местами не понятные.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/UGJkZQFBcLg",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1689640"
   },
   {
     "title": "Wedding Witch",
@@ -7593,7 +8009,8 @@
     "notes": "Околохентайный рогалик про ведьмочку и её преображающие зелья.",
     "youtube": "Нет",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2529820"
   },
   {
     "title": "West of Dead",
@@ -7609,9 +8026,10 @@
     "releaseDate": "18.06.2020",
     "playedDate": "17.06.2020",
     "notes": "На релизе было скучно. Дропнул и не возвращался. Неплохая мрачная вестерн стилистика.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmDbU5cko_GbG-OVe6tzyvf",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1016790"
   },
   {
     "title": "Whisker Squadron: Survivor",
@@ -7627,9 +8045,10 @@
     "releaseDate": "21.02.2025",
     "playedDate": "02.06.2025",
     "notes": "Шутемап со сбором опыта с врагов как в вампирлайках, но от 3 лица. Довольно сложный и медленно качается мета.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=ERD6yKrCHOo",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2140100"
   },
   {
     "title": "White Knuckle",
@@ -7645,9 +8064,10 @@
     "releaseDate": "17.04.2025",
     "playedDate": "27.05.2025",
     "notes": "Игра по типу Beton Brutal но с процедурной генерацией каждой комнаты и какими-то аугментами (усилениями перса) начиная с 700 метров.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=uyGPjWAVl3w",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3195790"
   },
   {
     "title": "Wild Woods",
@@ -7663,9 +8083,10 @@
     "releaseDate": "09.12.2024",
     "playedDate": "12.12.2024",
     "notes": "Кооп, где котики защищают повозку от других животных, собирая ресурсы и усиливаясь разными перками.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=GngZmo8JxPQ&ab_channel=TianKami",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1975580"
   },
   {
     "title": "Wildfrost",
@@ -7681,9 +8102,10 @@
     "releaseDate": "12.04.2023",
     "playedDate": "14.04.2023",
     "notes": "Хороший и недооценённый карточный рогалик, где персонажи и враги сражаются на 2 линиях в конце хода.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=W7ufm8LC86M&list=PL5RpA6jmZ9Ul1d2xdAxQIht0I8W5dJTO-",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1811990"
   },
   {
     "title": "Windblown",
@@ -7699,9 +8121,10 @@
     "releaseDate": "24.10.2024",
     "playedDate": "25.10.2024",
     "notes": "Быстрый и интересный коопный рогалик от разрабов Dead Cells.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=aJ2nXiE6UZM&list=PL5RpA6jmZ9UkMUmGrFuvI9aD_DEhIM_Q3",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1911610"
   },
   {
     "title": "Winnie's Hole",
@@ -7717,9 +8140,10 @@
     "releaseDate": "26.01.2026",
     "playedDate": "23.01.2026",
     "notes": "Безумный рогалик про мутирующего Винни Пуха. Для колодостроя интересно реализован геймплей и прокачка персонажа внутри забега.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UmPlGwqXoE8hq9TiG38Ai6o",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2319730"
   },
   {
     "title": "Wizard of Legend",
@@ -7735,9 +8159,10 @@
     "releaseDate": "15.05.2018",
     "playedDate": "22.05.2018",
     "notes": "Скоростной рогалик про магию разных стихий в разных сочетаниях.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um2YfAvDQsRpl-YUJNvcxsU",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "445980"
   },
   {
     "title": "Wizard of Legend 2",
@@ -7753,9 +8178,10 @@
     "releaseDate": "03.10.2024",
     "playedDate": "12.06.2025",
     "notes": "Копирка первой части в новой графике без каких либо интересных механик. Забеги однообразные, зачистка комнат и билдостроение скучное. Но есть кооп.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Um9O-IeRFZFJ-ZoH7UElc2j",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2193540"
   },
   {
     "title": "World of Horror",
@@ -7771,9 +8197,10 @@
     "releaseDate": "19.10.2023",
     "playedDate": "07.11.2023",
     "notes": "Хоррор рогалик-детектив с рисовкой мастера ужасов Дзюндзи Итто!",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UlADt8vU9LY8RSY4am-glHI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "913740"
   },
   {
     "title": "Worship",
@@ -7789,9 +8216,10 @@
     "releaseDate": "16.08.2025",
     "playedDate": "18.08.2025",
     "notes": "Игра по типу Overlord, где надо отправлять балванчиков делать разные дела. В основном решать головоломки, драться и собирать подношения богу.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/aAwDw3Y1vDI",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1548180"
   },
   {
     "title": "Wretch: Divine Ascent",
@@ -7807,9 +8235,10 @@
     "releaseDate": "20.11.2025",
     "playedDate": "11.12.2025",
     "notes": "Клон рюкзаков с прикольными битвами, но сложным восприятием и пониманием того, что делают предметы (куча китайских табличек)",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/watch?v=AOXGEspuy1s",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "3081280"
   },
   {
     "title": "Yet Another Zombie Survivors",
@@ -7825,9 +8254,10 @@
     "releaseDate": "20.08.2026",
     "playedDate": "24.01.2025",
     "notes": "Вампирлайк, главной особенностью которого является набор в команду трёх персонажей и их синергии.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/NKMhL8BHze8",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2163330"
   },
   {
     "title": "Yi Xian: The Cultivation Card Game",
@@ -7843,9 +8273,10 @@
     "releaseDate": "22.01.2024",
     "playedDate": "22.12.2022",
     "notes": "ПВПшный автобаттлер про культиваторов. Делал обзор за донатик.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9UkSbNC4lPbATl79xdd4Pc_B",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1948800"
   },
   {
     "title": "Zet Zillions",
@@ -7861,9 +8292,10 @@
     "releaseDate": "23.05.2024",
     "playedDate": "02.12.2024",
     "notes": "Карты мусора и челиков можно сливать в новую карту. А также станить (колонизировать) врагов челиками.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/VfHT82mNufA",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "2229560"
   },
   {
     "title": "Ziggurat 2",
@@ -7879,9 +8311,10 @@
     "releaseDate": "28.10.2021",
     "playedDate": "22.12.2022",
     "notes": "Быстрый шутанчик про магию и подземелья. Играл на сабдей.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://youtu.be/9t0lmZKxL7A",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1159560"
   },
   {
     "title": "Zombie Rollerz: Pinball Heroes",
@@ -7899,7 +8332,8 @@
     "notes": "Пинбол, где особыми шарами и их абилками надо выбивать зомби, а также параллельно всякие важные объекты.",
     "youtube": "Ссылка на плейлист",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "915230"
   },
   {
     "title": "暖雪 Warm Snow",
@@ -7915,8 +8349,9 @@
     "releaseDate": "19.01.2022",
     "playedDate": "16.03.2022",
     "notes": "Попытка разрабов сделать азиатский Hades со своими фишечками. В целом солидный хейдеслайк.",
-    "youtube": "Ссылка на плейлист",
+    "youtube": "https://www.youtube.com/playlist?list=PL5RpA6jmZ9Uk44N9S1lztXQ_Efw4nzsZB",
     "hasMI": "FALSE",
-    "miVideo": ""
+    "miVideo": "",
+    "steamAppId": "1296830"
   }
 ]

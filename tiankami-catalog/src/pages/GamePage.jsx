@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchGames } from "../utils/loadData";
 import { slugify } from "../utils/slugify";
@@ -23,45 +23,38 @@ const GamePage = () => {
       });
   }, []);
 
+  // Находим игру по слагу (мемоизируем)
+  const game = useMemo(() => {
+    return games.find((g) => slugify(g.title) === slug) || null;
+  }, [games, slug]);
+
   // Мета-теги для соцсетей
   useEffect(() => {
-    if (games.length > 0) {
-      const game = games.find((g) => slugify(g.title) === slug);
-      if (game) {
-        document.title = `${game.title} — Tiankami Catalog`;
-        const metaDescription = document.querySelector(
-          'meta[name="description"]',
-        );
-        if (metaDescription) {
-          metaDescription.setAttribute("content", game.notes || game.title);
-        } else {
-          const meta = document.createElement("meta");
-          meta.name = "description";
-          meta.content = game.notes || game.title;
-          document.head.appendChild(meta);
-        }
-        // Open Graph
-        const setMeta = (property, content) => {
-          let meta = document.querySelector(`meta[property="${property}"]`);
-          if (!meta) {
-            meta = document.createElement("meta");
-            meta.setAttribute("property", property);
-            document.head.appendChild(meta);
-          }
-          meta.setAttribute("content", content);
-        };
-        setMeta("og:title", game.title);
-        setMeta("og:description", game.notes || game.title);
-        setMeta("og:type", "article");
-      }
+    if (!game) return;
+
+    // Устанавливаем мета-теги
+    document.title = `${game.title} — ${BRAND.siteTitle}`;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", game.notes || game.title);
     }
 
+    const setMeta = (property, content) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute("property", property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute("content", content);
+    };
+    setMeta("og:title", game.title);
+    setMeta("og:description", game.notes || game.title);
+    setMeta("og:type", "article");
+
+    // Cleanup: восстанавливаем дефолтные мета-теги
     return () => {
-      // Восстанавливаем дефолтные мета-теги (не удаляем — они нужны другим страницам)
       document.title = BRAND.siteTitle;
-      const metaDescription = document.querySelector(
-        'meta[name="description"]',
-      );
       if (metaDescription) {
         metaDescription.setAttribute(
           "content",
@@ -72,11 +65,9 @@ const GamePage = () => {
         .querySelectorAll('meta[property^="og:"]')
         .forEach((meta) => meta.remove());
     };
-  }, [games, slug]);
+  }, [game]);
 
   if (loading) return <div className="text-center py-20">Загрузка...</div>;
-
-  const game = games.find((g) => slugify(g.title) === slug);
 
   if (!game) {
     return (

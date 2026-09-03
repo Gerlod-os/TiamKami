@@ -39,19 +39,19 @@ const CatalogPage = () => {
 
   const allGenres = useMemo(() => {
     const genres = new Set();
-    games.forEach((game) =>
-      game.genre.split(",").forEach((g) => genres.add(g.trim())),
-    );
-    return [...genres].sort();
+    games.forEach((game) => {
+      const genre = game.genre || "";
+      genre.split(",").forEach((g) => genres.add(g.trim()));
+    });
+    return [...genres].filter(Boolean).sort();
   }, [games]);
 
   const allYears = useMemo(() => {
     const years = new Set();
     games.forEach((game) => {
-      if (game.releaseDate) {
-        const match = game.releaseDate.match(/\d{4}/);
-        if (match) years.add(match[0]);
-      }
+      const releaseDate = game.releaseDate || "";
+      const match = releaseDate.match(/\d{4}/);
+      if (match) years.add(match[0]);
     });
     return [...years].sort();
   }, [games]);
@@ -63,20 +63,21 @@ const CatalogPage = () => {
       const q = searchQuery.toLowerCase();
       result = result.filter(
         (game) =>
-          game.title.toLowerCase().includes(q) ||
-          game.notes.toLowerCase().includes(q),
+          (game.title || "").toLowerCase().includes(q) ||
+          (game.notes || "").toLowerCase().includes(q),
       );
     }
 
     if (filters.genres.length > 0) {
-      result = result.filter((game) =>
-        filters.genres.some((genre) =>
-          game.genre
+      result = result.filter((game) => {
+        const genre = game.genre || "";
+        return filters.genres.some((g) =>
+          genre
             .split(",")
-            .map((g) => g.trim())
-            .includes(genre),
-        ),
-      );
+            .map((x) => x.trim())
+            .includes(g),
+        );
+      });
     }
 
     if (filters.statuses.length > 0) {
@@ -85,48 +86,51 @@ const CatalogPage = () => {
 
     if (filters.minRating !== "") {
       result = result.filter(
-        (game) => parseFloat(game.rating) >= parseFloat(filters.minRating),
+        (game) => parseFloat(game.rating || 0) >= parseFloat(filters.minRating),
       );
     }
     if (filters.maxRating !== "") {
       result = result.filter(
-        (game) => parseFloat(game.rating) <= parseFloat(filters.maxRating),
+        (game) => parseFloat(game.rating || 0) <= parseFloat(filters.maxRating),
       );
     }
 
     if (filters.minComplexity !== "") {
       result = result.filter(
         (game) =>
-          parseFloat(game.complexity) >= parseFloat(filters.minComplexity),
+          parseFloat(game.complexity || 0) >= parseFloat(filters.minComplexity),
       );
     }
     if (filters.maxComplexity !== "") {
       result = result.filter(
         (game) =>
-          parseFloat(game.complexity) <= parseFloat(filters.maxComplexity),
+          parseFloat(game.complexity || 0) <= parseFloat(filters.maxComplexity),
       );
     }
 
     if (filters.minHours !== "") {
       result = result.filter(
-        (game) => parseFloat(game.hours) >= parseFloat(filters.minHours),
+        (game) => parseFloat(game.hours || 0) >= parseFloat(filters.minHours),
       );
     }
     if (filters.maxHours !== "") {
       result = result.filter(
-        (game) => parseFloat(game.hours) <= parseFloat(filters.maxHours),
+        (game) => parseFloat(game.hours || 0) <= parseFloat(filters.maxHours),
       );
     }
 
     if (filters.years.length > 0) {
       result = result.filter((game) => {
-        const match = game.releaseDate.match(/\d{4}/);
+        const releaseDate = game.releaseDate || "";
+        const match = releaseDate.match(/\d{4}/);
         return match && filters.years.includes(match[0]);
       });
     }
 
     if (filters.hasMI) {
-      result = result.filter((game) => game.hasMI.toLowerCase() === "true");
+      result = result.filter(
+        (game) => (game.hasMI || "").toLowerCase() === "true",
+      );
     }
 
     switch (sortBy) {

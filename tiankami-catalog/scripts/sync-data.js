@@ -5,9 +5,6 @@ import Papa from "papaparse";
 import {
   normalizeGames,
   normalizeCollections,
-  extractHyperlinkParts,
-  isUrl,
-  extractSteamAppId,
 } from "../src/utils/normalize.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -24,15 +21,15 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-const { SPREADSHEET_ID, GAMES_SHEET_NAME, GAMES_URL, COLLECTIONS_URL } =
+const { GAMES_SHEET_NAME, GAMES_URL, COLLECTIONS_URL } =
   await import("../src/config/dataSources.js");
 
-// Для серверных запросов (sync) нужен ОТДЕЛЬНЫЙ ключ без Websites-ограничения:
-// браузерный ключ с ограничением по рефереру всегда даёт 403 из Node.
-// Серверный ключ хранится в .env и никогда не попадает в клиентский бандл.
 const SERVER_SHEETS_API_KEY = process.env.SHEETS_API_KEY_SERVER || "";
-const SHEETS_URL = (range) =>
-  `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${encodeURIComponent(`${GAMES_SHEET_NAME}!${range}`)}?key=${SERVER_SHEETS_API_KEY}&valueRenderOption=FORMULA`;
+
+// КОПИЯ таблицы: там Apps Script заполнил Steam/YouTube/МИ ссылки
+const COPY_SPREADSHEET_ID = "1NrxkJzDIC4S7Epv8wo8jDyqF6Vfvfok7Kf0EJL8tomA";
+const COPY_SHEETS_URL = (range) =>
+  `https://sheets.googleapis.com/v4/spreadsheets/${COPY_SPREADSHEET_ID}/values/${encodeURIComponent(`${GAMES_SHEET_NAME}!${range}`)}?key=${SERVER_SHEETS_API_KEY}&valueRenderOption=UNFORMATTED_VALUE`;
 
 const dataDir = path.join(__dirname, "..", "src", "data");
 
@@ -42,7 +39,7 @@ function ensureDataDir() {
   }
 }
 
-async function fetchAndParse(url, delimiter = "	") {
+async function fetchAndParse(url, delimiter = "\t") {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`HTTP ${response.status} for ${url}`);
   const text = await response.text();
@@ -54,12 +51,9 @@ async function fetchAndParse(url, delimiter = "	") {
 }
 
 /**
- * Достаёт steamAppId из гиперссылок через Sheets API (ссылка вшита
- * в название игры и теряется при TSV-экспорте). Ровно 1 запрос за
- * запуск — правило PROJECT_BRIEF п.7.
- * Обложка и ссылка на Steam строятся из appid на лету (runtime).
- * YouTube/МИ-ссылки здесь НЕ достаём: их проверка авторства (noembed)
- * допустима только в браузере посетителя.
+ * Достаёт Steam/YouTube/МИ из КОПИИ таблицы.
+ * ЧИТАЕТ колонки C:W — название + Steam + YouTube + МИ.
+ * Сопоставляет по названию из колонки C.
  */
 async function enrichFromSheetsApi(games) {
   if (!SERVER_SHEETS_API_KEY) {
@@ -69,12 +63,10 @@ async function enrichFromSheetsApi(games) {
     return games;
   }
   try {
-    // API может быть недоступен из некоторых сетей (DPI) — таймаут + 2 повтора,
-    // чтобы sync никогда не зависал. Без успеха — просто работаем без appid.
     let response = null;
     for (let attempt = 0; attempt < 3 && !response; attempt++) {
       try {
-        response = await fetch(SHEETS_URL("A:Z"), {
+        response = await fetch(COPY_SHEETS_URL("C:W"), {
           signal: AbortSignal.timeout(15000),
         });
       } catch {
@@ -85,34 +77,43 @@ async function enrichFromSheetsApi(games) {
     const json = await response.json();
     const rows = json.values || [];
 
-    const steamByTitle = {};
+    const linksByTitle = {};
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i] || [];
-      // Ячейки могут быть не строками (числа, bool) — приводим к строке
-      const title = (row.find((c) => String(c ?? "").trim()) || "")
-        .toString()
-        .trim();
+      // C:W: C=0 (название), U=18 (Steam), V=19 (YouTube), W=20 (МИ)
+      const title = (row[0] || "").toString().trim();
       if (!title) continue;
-      for (const cell of row) {
-        const { url } = extractHyperlinkParts(String(cell ?? ""));
-        if (
-          isUrl(url) &&
-          /steampowered\.com/i.test(url) &&
-          !steamByTitle[title]
-        ) {
-          steamByTitle[title] = url;
-        }
+
+      const steamUrl = (row[18] || "").toString().trim();
+      const ytUrl = (row[19] || "").toString().trim();
+      const miUrl = (row[20] || "").toString().trim();
+
+      const entry = {};
+      const steamMatch = steamUrl.match(/store\.steampowered\.com\/app\/(\d+)/i);
+      if (steamMatch) {
+        entry.steamAppId = steamMatch[1];
+      }
+      if (ytUrl && ytUrl.startsWith("http")) {
+        entry.youtube = ytUrl;
+      }
+      if (miUrl && miUrl.startsWith("http")) {
+        entry.miVideo = miUrl;
+      }
+
+      if (Object.keys(entry).length > 0) {
+        linksByTitle[title] = entry;
       }
     }
 
     let added = 0;
     const enriched = games.map((g) => {
-      const appId = extractSteamAppId(steamByTitle[g.title] || "");
-      if (!appId) return g;
+      const link = linksByTitle[g.title];
+      if (!link) return g;
       added++;
-      return { ...g, steamAppId: appId };
+      return { ...g, ...link };
     });
-    console.log(`Steam appid: ${added} из ${games.length} игр`);
+
+    console.log(`Сопоставлено: ${added} из ${games.length} игр`);
     return enriched;
   } catch (err) {
     console.warn("Sheets API пропущен:", err.message);

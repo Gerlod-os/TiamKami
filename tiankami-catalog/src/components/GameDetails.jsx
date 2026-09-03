@@ -1,10 +1,4 @@
-import {
-  FaStar,
-  FaClock,
-  FaCalendarAlt,
-  FaYoutube,
-  FaGamepad,
-} from "react-icons/fa";
+import { FaClock, FaCalendarAlt, FaYoutube, FaGamepad } from "react-icons/fa";
 import { isUrl } from "../utils/normalize.js";
 
 // Тематические иконки статусов (единый справочник с GameCard)
@@ -43,13 +37,13 @@ const GameDetails = ({ game }) => {
           <div>
             <span className="text-white/70">Сеттинг:</span> {game.setting}
           </div>
-          <div className="flex items-center gap-2">
-            <FaStar className="text-yellow-400" />
-            <span className="text-white/70">Оценка:</span> {game.rating}/10
+          <div>
+            <span className="text-white/70">Оценка:</span>{" "}
+            {game.rating ? `${game.rating}/10` : "—"}
           </div>
           <div>
-            <span className="text-white/70">Сложность:</span> {game.complexity}
-            /10
+            <span className="text-white/70">Сложность:</span>{" "}
+            {game.complexity ? `${game.complexity}/10` : "—"}
           </div>
           <div className="flex items-center gap-2">
             <FaClock className="text-white/60" />
