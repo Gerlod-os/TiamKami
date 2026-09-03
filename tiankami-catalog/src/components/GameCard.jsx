@@ -1,7 +1,5 @@
-import { useState, useMemo } from "react";
 import { FaStar, FaClock } from "react-icons/fa";
 import { isUrl } from "../utils/normalize.js";
-import { getImageSources } from "../utils/imageFallback.js";
 
 // Тематические иконки статусов в духе рогаликов
 const statusIcons = {
@@ -14,14 +12,6 @@ const statusIcons = {
 
 const GameCard = ({ game, onClick }) => {
   const statusIcon = statusIcons[game.status] || null;
-  
-  // Вычисляем массив источников один раз при рендере
-  const imageSources = useMemo(() => getImageSources(game), [game]);
-  const [currentSourceIndex, setCurrentSourceIndex] = useState(0);
-
-  // Если текущий индекс выходит за пределы массива, показываем заглушку
-  const hasValidImage = currentSourceIndex < imageSources.length;
-  const currentImageSrc = hasValidImage ? imageSources[currentSourceIndex] : null;
 
   return (
     <div
@@ -37,29 +27,14 @@ const GameCard = ({ game, onClick }) => {
       aria-label={`${game.title}, ${game.genre || "жанр не указан"}, оценка ${game.rating || "неизвестно"} из 10`}
       className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-accent-purple/50 hover:shadow-glow-purple hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer"
     >
-      <div className="h-40 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 flex items-center justify-center overflow-hidden relative">
-        {hasValidImage && currentImageSrc.startsWith('data:image/svg') ? (
-          // Если это SVG-заглушка, рендерим сразу без попытки загрузки
+      <div className="h-40 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 flex items-center justify-center">
+        {isUrl(game.image) ? (
           <img
-            src={currentImageSrc}
+            src={game.image}
             alt={game.title}
             className="w-full h-full object-cover"
-          />
-        ) : hasValidImage ? (
-          // Если это URL, пробуем загрузить с обработкой ошибок
-          <img
-            src={currentImageSrc}
-            alt={game.title}
-            className="w-full h-full object-cover"
-            onError={() => {
-              // Пробуем следующий источник
-              if (currentSourceIndex < imageSources.length - 1) {
-                setCurrentSourceIndex(prev => prev + 1);
-              }
-            }}
           />
         ) : (
-          // Фоллбэк на случай полной неудачи (не должен достигаться благодаря SVG)
           <span className="text-4xl" aria-hidden="true">
             🎮
           </span>
