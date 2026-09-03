@@ -8,6 +8,9 @@
 const STATUS_ALIASES = {
   "жду релиз": "Жду релиза",
   "жду релиза": "Жду релиза",
+  "жду": "Жду релиза",
+  "не начал": "Не начал",
+  "в паузе": "В паузе",
   пройдено: "Пройдено",
   дропнуто: "Дропнуто",
   обзор: "Обзор",
@@ -16,7 +19,10 @@ const STATUS_ALIASES = {
 
 export function normalizeStatus(raw) {
   const s = (raw || "").trim();
-  return STATUS_ALIASES[s.toLowerCase()] || s;
+  const normalized = STATUS_ALIASES[s.toLowerCase()];
+  if (normalized) return normalized;
+  // Если не нашли — приводим к нормальному регистру (первая буква заглавная)
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
 /**
@@ -70,12 +76,16 @@ export function buildColIndex(headerRow, firstDataRow) {
   if (idx["Название"] !== undefined) {
     titleIdx = idx["Название"];
   } else {
-    // 2. Эвристика: колонка с пустым заголовком, в которой есть данные
+    // 2. Эвристика: колонка с пустым заголовком, в которой есть данные.
+    // Пропускаем колонку с картинкой — там URL или =IMAGE, а не название.
     for (let i = 0; i < headerRow.length; i++) {
       const headerEmpty = !headerRow[i] || !headerRow[i].trim();
       const dataExists =
         firstDataRow && firstDataRow[i] && firstDataRow[i].trim() !== "";
       if (headerEmpty && dataExists) {
+        const firstData = firstDataRow[i].trim();
+        // Картинка: URL или формула =IMAGE — пропускаем
+        if (/^https?:\/\//i.test(firstData) || /^=IMAGE/i.test(firstData)) continue;
         titleIdx = i;
         break;
       }
@@ -125,7 +135,32 @@ export function normalizeGames(rows) {
 
   // Сортировка по названию
   games.sort((a, b) => a.title.localeCompare(b.title, "ru"));
-  return games;
+
+  // Генерируем уникальные слаги
+  const usedSlugs = new Set();
+  const slugify = (title) =>
+    title
+      .toLowerCase()
+      .replace(/[^\wа-яёА-Я\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  const uniqueSlug = (slug, used) => {
+    if (!used.has(slug)) return slug;
+    let i = 2;
+    const base = slug;
+    while (used.has(`${base}-${i}`)) i++;
+    return `${base}-${i}`;
+  };
+
+  const finalGames = games.map((game) => {
+    const baseSlug = slugify(game.title);
+    const slug = uniqueSlug(baseSlug, usedSlugs);
+    usedSlugs.add(slug);
+    return { ...game, slug };
+  });
+
+  return finalGames;
 }
 
 /**
@@ -245,8 +280,66 @@ export function extractSteamAppId(url) {
 }
 
 /**
+ * Извлекает Steam-ссылки из строки таблицы (колонки C:W в Копии).
+ * C=0 (название), U=18 (Steam), V=19 (YouTube), W=20 (МИ).
+ * Возвращает объект { steamAppId, youtube, miVideo } или null.
+ */
+export function extractLinksFromCopyRow(row) {
+  const title = (row[0] || "").toString().trim();
+  if (!title) return null;
+
+  const entry = {};
+
+  // Steam — колонка U (индекс 18 в C:W)
+  const steamRaw = (row[18] || "").toString().trim();
+  if (steamRaw) {
+    const appId = extractSteamAppId(steamRaw);
+    if (appId) entry.steamAppId = appId;
+  }
+
+  // YouTube — колонка V (индекс 19 в C:W)
+  const ytRaw = (row[19] || "").toString().trim();
+  if (ytRaw && ytRaw.startsWith("http")) {
+    entry.youtube = ytRaw;
+  }
+
+  // МИ — колонка W (индекс 20 в C:W)
+  const miRaw = (row[20] || "").toString().trim();
+  if (miRaw && miRaw.startsWith("http")) {
+    entry.miVideo = miRaw;
+  }
+
+  return entry.steamAppId || entry.youtube || entry.miVideo
+    ? { title, entry }
+    : null;
+}
+
+/**
  * CDN-обложка Steam по appid (бесплатно, без ключей).
  */
 export function steamHeaderUrl(appId) {
   return `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/header.jpg`;
+}
+
+/**
+ * Извлекает уникальные жанры и годы из списка игр.
+ * Кэшируется вместе с играми, чтобы не пересчитывать при каждой ревалидации.
+ */
+export function getGameMetadata(games) {
+  const genres = new Set();
+  const years = new Set();
+
+  games.forEach((game) => {
+    (game.genre || "").split(",").forEach((g) => {
+      const trimmed = g.trim();
+      if (trimmed) genres.add(trimmed);
+    });
+    const match = (game.releaseDate || "").match(/\d{4}/);
+    if (match) years.add(match[0]);
+  });
+
+  return {
+    genres: [...genres].sort(),
+    years: [...years].sort(),
+  };
 }

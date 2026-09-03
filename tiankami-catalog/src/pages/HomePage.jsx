@@ -1,7 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { fetchGames, fetchCollections } from "../utils/loadData";
-import { slugify } from "../utils/slugify";
 import { parseRuDate } from "../utils/date";
 import GameCard from "../components/GameCard";
 import TwitchWidget from "../components/TwitchWidget";
@@ -47,39 +46,38 @@ const HomePage = () => {
       });
   }, []);
 
-  const topRated = useMemo(() => {
-    return [...games]
+  // Один useMemo — один проход по массиву, вместо 4 отдельных копий
+  const homeData = useMemo(() => {
+    const topRated = [...games]
       .filter((g) => g.rating)
       .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
       .slice(0, 5);
-  }, [games]);
 
-  const freshReleases = useMemo(() => {
-    return [...games]
+    const freshReleases = [...games]
       .filter((g) => g.releaseDate)
       .sort(
         (a, b) =>
           (parseRuDate(b.releaseDate) || 0) - (parseRuDate(a.releaseDate) || 0),
       )
       .slice(0, 5);
-  }, [games]);
 
-  const lastPlayed = useMemo(() => {
-    return [...games]
+    const lastPlayed = [...games]
       .filter((g) => g.playedDate)
       .sort(
         (a, b) =>
           (parseRuDate(b.playedDate) || 0) - (parseRuDate(a.playedDate) || 0),
       )
       .slice(0, 5);
-  }, [games]);
 
-  const topByHours = useMemo(() => {
-    return [...games]
+    const topByHours = [...games]
       .filter((g) => parseFloat(g.hours) > 0)
       .sort((a, b) => parseFloat(b.hours) - parseFloat(a.hours))
       .slice(0, 5);
+
+    return { topRated, freshReleases, lastPlayed, topByHours };
   }, [games]);
+
+  const { topRated, freshReleases, lastPlayed, topByHours } = homeData;
 
   // Статистика
   const totalGames = games.length;
@@ -190,7 +188,7 @@ const HomePage = () => {
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {(showAllTopRated ? topRated : topRated.slice(0, 5)).map((game) => (
-            <Link to={`/catalog/${slugify(game.title)}`} key={game.title}>
+            <Link to={`/catalog/${game.slug}`} key={game.slug}>
               <GameCard game={game} />
             </Link>
           ))}
@@ -213,7 +211,7 @@ const HomePage = () => {
             ? freshReleases
             : freshReleases.slice(0, 5)
           ).map((game) => (
-            <Link to={`/catalog/${slugify(game.title)}`} key={game.title}>
+            <Link to={`/catalog/${game.slug}`} key={game.slug}>
               <GameCard game={game} />
             </Link>
           ))}
@@ -234,7 +232,7 @@ const HomePage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {(showAllLastPlayed ? lastPlayed : lastPlayed.slice(0, 5)).map(
             (game) => (
-              <Link to={`/catalog/${slugify(game.title)}`} key={game.title}>
+              <Link to={`/catalog/${game.slug}`} key={game.slug}>
                 <GameCard game={game} />
               </Link>
             ),
@@ -256,7 +254,7 @@ const HomePage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {(showAllTopByHours ? topByHours : topByHours.slice(0, 5)).map(
             (game) => (
-              <Link to={`/catalog/${slugify(game.title)}`} key={game.title}>
+              <Link to={`/catalog/${game.slug}`} key={game.slug}>
                 <GameCard game={game} />
               </Link>
             ),

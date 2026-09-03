@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { FaCog, FaVolumeUp, FaMousePointer, FaPalette } from "react-icons/fa";
+import { safeGet, safeSet } from "../utils/storage.js";
 
 // Секретная панелька: звуки, кастомный курсор и переключатель тем. По умолчанию выключено.
 // Состояние хранится в localStorage. Звуки — короткие синтезированные
@@ -18,7 +19,7 @@ function ensureAudioHooks(onEnabledChange) {
   if (window.__tkBeep) return;
   let ctx = null;
   window.__tkBeep = (type) => {
-    if (localStorage.getItem(SOUND_KEY) !== "on") return;
+    if (safeGet(SOUND_KEY) !== "on") return;
     try {
       ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
       const osc = ctx.createOscillator();
@@ -34,7 +35,7 @@ function ensureAudioHooks(onEnabledChange) {
       } else {
         osc.frequency.value = 880;
         gain.gain.setValueAtTime(0.02, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
         osc.start();
         osc.stop(ctx.currentTime + 0.06);
       }
@@ -43,23 +44,10 @@ function ensureAudioHooks(onEnabledChange) {
     }
   };
   if (onEnabledChange)
-    window.__tkFxCursor = () => localStorage.getItem(CURSOR_KEY) === "on";
+    window.__tkFxCursor = () => safeGet(CURSOR_KEY) === "on";
 }
 
 export default function FxPanel() {
-  function safeGet(key) {
-    try {
-      return localStorage.getItem(key);
-    } catch {
-      return null;
-    }
-  }
-  function safeSet(key, value) {
-    try {
-      localStorage.setItem(key, value);
-    } catch {}
-  }
-
   const [open, setOpen] = useState(false);
   const [sound, setSound] = useState(() => safeGet(SOUND_KEY) === "on");
   const [cursor, setCursor] = useState(() => safeGet(CURSOR_KEY) === "on");

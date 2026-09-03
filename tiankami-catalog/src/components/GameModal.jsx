@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import GameDetails from "./GameDetails";
-import { slugify } from "../utils/slugify";
 
 const GameModal = ({ game, onClose }) => {
   const modalRef = useRef(null);
@@ -47,7 +46,7 @@ const GameModal = ({ game, onClose }) => {
           <GameDetails game={game} />
 
           <Link
-            to={`/catalog/${slugify(game.title)}`}
+            to={`/catalog/${game.slug}`}
             className="inline-block mt-4 px-4 py-2 bg-accent-pink text-black font-heading rounded-xl hover:bg-white transition-colors"
             onClick={onClose}
           >

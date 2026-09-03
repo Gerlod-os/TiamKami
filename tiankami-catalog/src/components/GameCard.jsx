@@ -1,3 +1,4 @@
+import { useState, useCallback } from "react";
 import { FaStar, FaClock } from "react-icons/fa";
 import { isUrl } from "../utils/normalize.js";
 
@@ -12,6 +13,13 @@ const statusIcons = {
 
 const GameCard = ({ game, onClick }) => {
   const statusIcon = statusIcons[game.status] || null;
+  const [imageError, setImageError] = useState(false);
+
+  const handleError = useCallback(() => {
+    setImageError(true);
+  }, []);
+
+  const hasValidImage = isUrl(game.image) && !imageError;
 
   return (
     <div
@@ -27,12 +35,13 @@ const GameCard = ({ game, onClick }) => {
       aria-label={`${game.title}, ${game.genre || "жанр не указан"}, оценка ${game.rating || "неизвестно"} из 10`}
       className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-accent-purple/50 hover:shadow-glow-purple hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer"
     >
-      <div className="h-40 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 flex items-center justify-center">
-        {isUrl(game.image) ? (
+      <div className="h-40 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 flex items-center justify-center overflow-hidden aspect-[2/1]">
+        {hasValidImage ? (
           <img
             src={game.image}
             alt={game.title}
             className="w-full h-full object-cover"
+            onError={handleError}
           />
         ) : (
           <span className="text-4xl" aria-hidden="true">

@@ -1,3 +1,4 @@
+import { useState, useCallback } from "react";
 import { FaClock, FaCalendarAlt, FaYoutube, FaGamepad } from "react-icons/fa";
 import { isUrl } from "../utils/normalize.js";
 
@@ -11,15 +12,24 @@ const statusIcons = {
 };
 
 const GameDetails = ({ game }) => {
+  const [imageError, setImageError] = useState(false);
+
+  const handleError = useCallback(() => {
+    setImageError(true);
+  }, []);
+
+  const hasValidImage = isUrl(game.image) && !imageError;
+
   return (
     <div className="grid md:grid-cols-2 gap-6">
       <div>
-        <div className="h-56 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 rounded-xl flex items-center justify-center mb-4">
-          {isUrl(game.image) ? (
+        <div className="h-56 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 rounded-xl flex items-center justify-center mb-4 overflow-hidden aspect-[2/1]">
+          {hasValidImage ? (
             <img
               src={game.image}
               alt={game.title}
               className="w-full h-full object-cover rounded-xl"
+              onError={handleError}
             />
           ) : (
             <span className="text-6xl">🎮</span>

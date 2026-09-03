@@ -9,6 +9,8 @@
 
 Дизайн-концепция: «уютный хардкор» — тёмная тема (#121212 → #1a1a2e), пастельные акценты (розовый #FFB6C1, фиолетовый #C9A0DC, голубой #A0C4FF), скругления 12–16px, свечение при наведении. Шрифты: Nunito (заголовки), Inter (текст). Маскоты: свои SVG-персонажи (геймпад с рожицей, герой в капюшоне) — в `src/assets/`.
 
+примеры для подрожания https://stopgame.ru/games/catalog.  https://igm.gg/catalog?srsltid=AfmBOopaeaxaZ9itDk5pXTb_6tJPQcqgvE87hqf26o9y3IATmTsaObcn. 
+
 ## 2. Технический стек (фиксированный)
 
 - Vite 8 + React 19 + Tailwind CSS v3
@@ -43,6 +45,14 @@
 
 Гиперссылки (YouTube-плейлисты, МИ, Steam) достаются из копии через Sheets API (`valueRenderOption=UNFORMATTED_VALUE`). Ключей два: **браузерный** `VITE_SHEETS_API_KEY` (Websites-ограниченный, публичный по дизайну; из Node всегда 403) и **серверный** `SHEETS_API_KEY_SERVER` (секрет, только для sync-скрипта, не попадает в клиентский бандл). YouTube-ссылки фильтруются «только канал стримера» (noembed, кэш авторства бессрочный, лимит 20 проверок за сессию).
 
+### Новые утилиты (03.09.2026)
+
+| Утилита | Назначение |
+|---|---|
+| `utils/storage.js` | `safeGet`/`safeSet` — единая обёртка localStorage с try/catch |
+| `utils/swr.js` | Stale-while-revalidate — абстракция фоновой ревалидации |
+| `utils/normalize.js` | `getGameMetadata()` — жанры/годы, `extractLinksFromCopyRow()` — унифицированное извлечение Steam/YouTube/МИ |
+
 ## 4. Реализовано (проверено сборкой и линтером)
 
 - Загрузка SWR + локальный фолбэк + `npm run sync` (sync обогащает games.json steamAppId через серверный ключ; без него — корректная деградация)
@@ -57,7 +67,10 @@
 - SEO-пререндер: `npm run build` генерирует index + catalog + collections + 440 страниц игр + sitemap.xml (443 URL) + robots.txt (`scripts/prerender.mjs`)
 - Мобильное меню-гамбургер, доступность (role, tabIndex, Escape, focus-visible)
 - Конфиги: `src/config/branding.js` (всё личное) + `src/config/dataSources.js` (таблица, API-ключ)
-- Яндекс.Метрика: счётчик `98370656` интегрирован в корневой layout (`src/components/YandexMetrika.jsx`), отслеживает просмотры страниц и события, работает в production-сборке.
+- Яндекс.Метрика: счётчик `112105255` интегрирован в `index.html` (ноутскрип в body), отслеживает просмотры страниц и события, работает в production-сборке
+- Уникальные слаги: `normalizeGames` генерирует `slug` для каждой игры, все ссылки используют `game.slug` вместо `slugify(game.title)`
+- Мета-теги: `GamePage` и `prerender.mjs` генерируют `og:image` для превью в Telegram/Discord/VK
+- Статусы: `normalizeStatus` поддерживает "Жду релиза", "Не начал", "В паузе"
 
 ## 5. Не реализовано (бэклог, по согласованию)
 

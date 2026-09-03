@@ -1,9 +1,9 @@
 import { useEffect, useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchGames } from "../utils/loadData";
-import { slugify } from "../utils/slugify";
 import { BRAND } from "../config/branding.js";
 import GameDetails from "../components/GameDetails";
+import { isUrl } from "../utils/normalize.js";
 import { FaChevronRight } from "react-icons/fa";
 
 const GamePage = () => {
@@ -24,8 +24,9 @@ const GamePage = () => {
   }, []);
 
   // Находим игру по слагу (мемоизируем)
+  // Слоги теперь хранятся в данных (normalizeGames), slugify не нужен
   const game = useMemo(() => {
-    return games.find((g) => slugify(g.title) === slug) || null;
+    return games.find((g) => g.slug === slug) || null;
   }, [games, slug]);
 
   // Мета-теги для соцсетей
@@ -51,6 +52,9 @@ const GamePage = () => {
     setMeta("og:title", game.title);
     setMeta("og:description", game.notes || game.title);
     setMeta("og:type", "website");
+    if (game.image && isUrl(game.image)) {
+      setMeta("og:image", game.image);
+    }
 
     // Cleanup: восстанавливаем дефолтные мета-теги
     return () => {
@@ -61,9 +65,11 @@ const GamePage = () => {
           `Каталог рогаликов ${BRAND.name}`,
         );
       }
-      document
-        .querySelectorAll('meta[property^="og:"]')
-        .forEach((meta) => meta.remove());
+      // Удаляем только те og: мета-теги, что создали мы
+      ["og:title", "og:description", "og:type", "og:image"].forEach((prop) => {
+        const meta = document.querySelector(`meta[property="${prop}"]`);
+        if (meta) meta.remove();
+      });
     };
   }, [game]);
 

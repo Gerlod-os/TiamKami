@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { fetchGames } from "../utils/loadData";
-import { slugify } from "../utils/slugify";
 import { parseRuDate } from "../utils/date";
+import { getGameMetadata } from "../utils/normalize";
 import GameCard from "../components/GameCard";
 import GameModal from "../components/GameModal";
 import { FaDice, FaFilter } from "react-icons/fa";
@@ -42,24 +42,10 @@ const CatalogPage = () => {
       });
   }, []);
 
-  const allGenres = useMemo(() => {
-    const genres = new Set();
-    games.forEach((game) => {
-      const genre = game.genre || "";
-      genre.split(",").forEach((g) => genres.add(g.trim()));
-    });
-    return [...genres].filter(Boolean).sort();
-  }, [games]);
-
-  const allYears = useMemo(() => {
-    const years = new Set();
-    games.forEach((game) => {
-      const releaseDate = game.releaseDate || "";
-      const match = releaseDate.match(/\d{4}/);
-      if (match) years.add(match[0]);
-    });
-    return [...years].sort();
-  }, [games]);
+  // Используем утилиту вместо inline-вычислений
+  const metadata = useMemo(() => getGameMetadata(games), [games]);
+  const allGenres = metadata.genres;
+  const allYears = metadata.years;
 
   const filteredGames = useMemo(() => {
     let result = [...games];
@@ -543,7 +529,7 @@ const CatalogPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredGames.map((game) => (
           <GameCard
-            key={slugify(game.title)}
+            key={game.slug}
             game={game}
             onClick={() => setSelectedGame(game)}
           />

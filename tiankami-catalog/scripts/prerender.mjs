@@ -10,8 +10,8 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { slugify, uniqueSlug } from "../src/utils/slugify.js";
 import { BRAND } from "../src/config/branding.js";
+import { isUrl } from "../src/utils/normalize.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, "..", "dist");
@@ -42,7 +42,7 @@ const collections = JSON.parse(fs.readFileSync(collectionsPath, "utf-8"));
 const template = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
 
 /** Вставляет/заменяет мета-теги в шаблоне. */
-function withMeta({ title, description, ogType = "website" }) {
+function withMeta({ title, description, ogType = "website", ogImage }) {
   const esc = (s) =>
     String(s || "")
       .replace(/&/g, "&amp;")
@@ -54,7 +54,9 @@ function withMeta({ title, description, ogType = "website" }) {
     <meta name="description" content="${esc(description)}" />
     <meta property="og:title" content="${esc(title)}" />
     <meta property="og:description" content="${esc(description)}" />
-    <meta property="og:type" content="${ogType}" />`;
+    <meta property="og:type" content="${ogType}" />${
+      ogImage && isUrl(ogImage) ? `\n    <meta property="og:image" content="${esc(ogImage)}" />` : ""
+    }`;
   return template
     .replace(/<title>.*?<\/title>/s, meta)
     .replace(/<meta name="description"[^>]*>/gi, "");
@@ -91,19 +93,15 @@ fs.writeFileSync(
 const catalogDir = path.join(distDir, "catalog");
 fs.mkdirSync(catalogDir, { recursive: true });
 
-const usedSlugs = new Set();
 const gamePages = []; // слаги для sitemap
-let count = 0;
 for (const game of games) {
-  const baseSlug = slugify(game.title) || `game-${count}`;
-  const unique = uniqueSlug(baseSlug, usedSlugs);
-  usedSlugs.add(unique);
-  gamePages.push(unique);
+  const slug = game.slug || `game-${gamePages.length}`;
+  gamePages.push(slug);
 
   const desc = (game.notes || game.title).slice(0, 160);
   // Создаём папку для слага и кладём туда index.html
   // Чтобы URL /catalog/<slug> отдавал именно этот статический файл
-  const gameDir = path.join(catalogDir, unique);
+  const gameDir = path.join(catalogDir, slug);
   fs.mkdirSync(gameDir, { recursive: true });
   fs.writeFileSync(
     path.join(gameDir, "index.html"),
@@ -111,12 +109,12 @@ for (const game of games) {
       title: `${game.title} — ${BRAND.name}`,
       description: `${game.genre || "Рогалик"}. Оценка ${game.rating || "—"}/10. ${desc}`,
       ogType: "article",
+      ogImage: game.image || "",
     }),
   );
-  count++;
 }
 
-console.log(`Пререндер: index + catalog + collections + ${count} страниц игр`);
+console.log(`Пререндер: index + catalog + collections + ${games.length} страниц игр`);
 
 // 5. sitemap.xml (пререндеренные страницы игр + основные разделы)
 const escXml = (s) =>

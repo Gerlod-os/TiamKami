@@ -5,6 +5,7 @@ import Papa from "papaparse";
 import {
   normalizeGames,
   normalizeCollections,
+  extractLinksFromCopyRow,
 } from "../src/utils/normalize.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -79,28 +80,9 @@ async function enrichFromSheetsApi(games) {
     const linksByTitle = {};
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i] || [];
-      // C:W: C=0 (название), U=18 (Steam), V=19 (YouTube), W=20 (МИ)
-      const title = (row[0] || "").toString().trim();
-      if (!title) continue;
-
-      const steamUrl = (row[18] || "").toString().trim();
-      const ytUrl = (row[19] || "").toString().trim();
-      const miUrl = (row[20] || "").toString().trim();
-
-      const entry = {};
-      const steamMatch = steamUrl.match(/store\.steampowered\.com\/app\/(\d+)/i);
-      if (steamMatch) {
-        entry.steamAppId = steamMatch[1];
-      }
-      if (ytUrl && ytUrl.startsWith("http")) {
-        entry.youtube = ytUrl;
-      }
-      if (miUrl && miUrl.startsWith("http")) {
-        entry.miVideo = miUrl;
-      }
-
-      if (Object.keys(entry).length > 0) {
-        linksByTitle[title] = entry;
+      const parsed = extractLinksFromCopyRow(row);
+      if (parsed) {
+        linksByTitle[parsed.title] = parsed.entry;
       }
     }
 

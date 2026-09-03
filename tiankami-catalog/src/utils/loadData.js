@@ -19,6 +19,7 @@ import {
   extractSteamAppId,
   steamHeaderUrl,
 } from "./normalize.js";
+import { safeGet, safeSet } from "./storage.js";
 
 /* ─────────── Обогащение игр из локального JSON ─────────── */
 
@@ -52,18 +53,7 @@ const COLLECTIONS_CACHE_TIME_KEY = `${COLLECTIONS_CACHE_KEY}_time`;
 const CACHE_DURATION = 6 * 60 * 60 * 1000; // TTL кэша: 6 часов
 const REVALIDATE_INTERVAL = 15 * 60 * 1000; // сверка с таблицей не чаще раза в 15 минут
 
-function safeGet(key) {
-  try {
-    return localStorage.getItem(key);
-  } catch {
-    return null;
-  }
-}
-function safeSet(key, value) {
-  try {
-    localStorage.setItem(key, value);
-  } catch {}
-}
+
 
 /* ─────────── Состояние в памяти (мгновенный источник) ─────────── */
 
@@ -111,7 +101,7 @@ async function fetchRows(url, delimiter) {
  * Название игры берётся из колонки C (индекс 2).
  * В Оригинал это формула =HYPERLINK("url";"label"), в Копии — просто текст.
  * В Копии YouTube и МИ находятся в отдельных колонках (V=21, W=22),
- * поэтому используем индекс для различения.
+ * используем индекс колонки как первичный маркер, label — как fallback.
  */
 function parseLinksFromRow(row) {
   // Название игры — колонка C (индекс 2).
@@ -125,28 +115,22 @@ function parseLinksFromRow(row) {
 
   const entry = {};
   row.forEach((cell, colIdx) => {
-    const { url, label } = extractHyperlinkParts(String(cell ?? ""));
+    const { url } = extractHyperlinkParts(String(cell ?? ""));
     if (!isUrl(url)) return;
 
-    // Определяем тип ссылки по позиции колонки (для Копии) или по label (для Оригинал)
-    let type = null; // "youtube" | "miVideo" | "steam"
-
     if (/steampowered\.com/i.test(url)) {
-      type = "steam";
+      entry.steam = url;
     } else if (isYouTubeUrl(url)) {
-      // В Оригинал label = "Выпуск МИ" → miVideo, иначе → youtube
-      // В Копии колонка V(21)=youtube, W(22)=miVideo
-      const isMiLabel = /ми|выпуск/i.test(label);
-      const isMiCol = colIdx === 22; // колонка W
-      if (isMiLabel || isMiCol) {
-        type = !entry.miVideo ? "miVideo" : "youtube";
-      } else {
-        type = !entry.youtube ? "youtube" : "miVideo";
+      // Индекс колонки — приоритетнее label
+      if (colIdx === 22) {
+        entry.miVideo = url;       // колонка W — МИ
+      } else if (colIdx === 21) {
+        entry.youtube = url;       // колонка V — YouTube
+      } else if (!entry.miVideo) {
+        entry.miVideo = url;       // fallback — первая YouTube-ссылка
+      } else if (!entry.youtube) {
+        entry.youtube = url;       // fallback — вторая
       }
-    }
-
-    if (type && !entry[type]) {
-      entry[type] = url;
     }
   });
 
@@ -174,6 +158,7 @@ export async function fetchGames({ onUpdate } = {}) {
 
 /**
  * Проверяет, изменились ли данные игры (кроме steamAppId/image/steamUrl).
+ * Пустые строки и undefined считаются одинаковыми.
  */
 function isGameDataChanged(oldGame, newGame) {
   const fields = [
@@ -192,7 +177,11 @@ function isGameDataChanged(oldGame, newGame) {
     "hasMI",
     "miVideo",
   ];
-  return fields.some((f) => oldGame[f] !== newGame[f]);
+  return fields.some((f) => {
+    const a = oldGame[f] || "";
+    const b = newGame[f] || "";
+    return a !== b;
+  });
 }
 
 async function revalidateGames(onUpdate) {

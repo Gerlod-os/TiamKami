@@ -1,22 +1,10 @@
 import { useEffect, useState } from "react";
 import { BRAND } from "../config/branding.js";
+import { safeGet, safeSet } from "../utils/storage.js";
 
 // Кэш: статус 5 минут, аватар 24 часа (защита от блокировок DecAPI)
 const STATUS_TTL = 5 * 60 * 1000;
 const AVATAR_TTL = 24 * 60 * 60 * 1000;
-
-function safeGet(key) {
-  try {
-    return localStorage.getItem(key);
-  } catch {
-    return null;
-  }
-}
-function safeSet(key, value) {
-  try {
-    localStorage.setItem(key, value);
-  } catch {}
-}
 
 // Глобальный сброс кэша Twitch (вызывается из FxPanel)
 window.__tkResetTwitchCache = () => {
@@ -24,7 +12,8 @@ window.__tkResetTwitchCache = () => {
   safeSet("tk_status_time", "0");
   safeSet("tk_avatar", "");
   safeSet("tk_avatar_time", "0");
-  window.location.reload();
+  // Dispatch event — TwitchWidget сам перезагрузит данные без reload страницы
+  window.dispatchEvent(new Event("tk-twitch-cache-reset"));
 };
 
 export default function TwitchWidget() {
@@ -32,6 +21,12 @@ export default function TwitchWidget() {
 
   useEffect(() => {
     let cancelled = false;
+
+    // Слушаем сброс кэша из FxPanel — перезагружаем данные без reload страницы
+    const onCacheReset = () => {
+      if (!cancelled) setState({ loading: true });
+    };
+    window.addEventListener("tk-twitch-cache-reset", onCacheReset);
 
     const load = async () => {
       // Аватарка: раз в сутки
@@ -93,6 +88,7 @@ export default function TwitchWidget() {
     load();
     return () => {
       cancelled = true;
+      window.removeEventListener("tk-twitch-cache-reset", onCacheReset);
     };
   }, []);
 
