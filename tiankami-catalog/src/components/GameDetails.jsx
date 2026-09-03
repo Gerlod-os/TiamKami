@@ -1,5 +1,7 @@
+import { useState, useMemo } from "react";
 import { FaClock, FaCalendarAlt, FaYoutube, FaGamepad } from "react-icons/fa";
 import { isUrl } from "../utils/normalize.js";
+import { getImageSources } from "../utils/imageFallback.js";
 
 // Тематические иконки статусов (единый справочник с GameCard)
 const statusIcons = {
@@ -11,17 +13,40 @@ const statusIcons = {
 };
 
 const GameDetails = ({ game }) => {
+  // Вычисляем массив источников один раз при рендере
+  const imageSources = useMemo(() => getImageSources(game), [game]);
+  const [currentSourceIndex, setCurrentSourceIndex] = useState(0);
+
+  // Если текущий индекс выходит за пределы массива, показываем заглушку
+  const hasValidImage = currentSourceIndex < imageSources.length;
+  const currentImageSrc = hasValidImage ? imageSources[currentSourceIndex] : null;
+  
   return (
     <div className="grid md:grid-cols-2 gap-6">
       <div>
-        <div className="h-56 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 rounded-xl flex items-center justify-center mb-4">
-          {isUrl(game.image) ? (
+        <div className="h-56 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 rounded-xl flex items-center justify-center mb-4 overflow-hidden relative">
+          {hasValidImage && currentImageSrc.startsWith('data:image/svg') ? (
+            // Если это SVG-заглушка, рендерим сразу без попытки загрузки
             <img
-              src={game.image}
+              src={currentImageSrc}
               alt={game.title}
               className="w-full h-full object-cover rounded-xl"
             />
+          ) : hasValidImage ? (
+            // Если это URL, пробуем загрузить с обработкой ошибок
+            <img
+              src={currentImageSrc}
+              alt={game.title}
+              className="w-full h-full object-cover rounded-xl"
+              onError={() => {
+                // Пробуем следующий источник
+                if (currentSourceIndex < imageSources.length - 1) {
+                  setCurrentSourceIndex(prev => prev + 1);
+                }
+              }}
+            />
           ) : (
+            // Фоллбэк на случай полной неудачи
             <span className="text-6xl">🎮</span>
           )}
         </div>
