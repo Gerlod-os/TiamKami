@@ -1,8 +1,9 @@
 import { useEffect, useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { fetchGames, fetchCollections } from "../utils/loadData";
 import { parseRuDate } from "../utils/date";
 import GameCard from "../components/GameCard";
+import GameModal from "../components/GameModal";
 import TwitchWidget from "../components/TwitchWidget";
 import {
   FaStar,
@@ -29,9 +30,11 @@ const ToggleList = ({ visible, onToggle }) => (
 );
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const [games, setGames] = useState([]);
   const [collections, setCollections] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [quickViewGame, setQuickViewGame] = useState(null);
 
   useEffect(() => {
     Promise.all([fetchGames(), fetchCollections()])
@@ -188,9 +191,12 @@ const HomePage = () => {
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {(showAllTopRated ? topRated : topRated.slice(0, 5)).map((game) => (
-            <Link to={`/catalog/${game.slug}`} key={game.slug}>
-              <GameCard game={game} />
-            </Link>
+            <GameCard
+              key={game.slug}
+              game={game}
+              onQuickView={() => setQuickViewGame(game)}
+              onClick={() => navigate(`/catalog/${game.slug}`)}
+            />
           ))}
         </div>
         {topRated.length > 5 && (
@@ -211,9 +217,12 @@ const HomePage = () => {
             ? freshReleases
             : freshReleases.slice(0, 5)
           ).map((game) => (
-            <Link to={`/catalog/${game.slug}`} key={game.slug}>
-              <GameCard game={game} />
-            </Link>
+            <GameCard
+              key={game.slug}
+              game={game}
+              onQuickView={() => setQuickViewGame(game)}
+              onClick={() => navigate(`/catalog/${game.slug}`)}
+            />
           ))}
         </div>
         {freshReleases.length > 5 && (
@@ -232,9 +241,12 @@ const HomePage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {(showAllLastPlayed ? lastPlayed : lastPlayed.slice(0, 5)).map(
             (game) => (
-              <Link to={`/catalog/${game.slug}`} key={game.slug}>
-                <GameCard game={game} />
-              </Link>
+              <GameCard
+                key={game.slug}
+                game={game}
+                onQuickView={() => setQuickViewGame(game)}
+                onClick={() => navigate(`/catalog/${game.slug}`)}
+              />
             ),
           )}
         </div>
@@ -254,9 +266,12 @@ const HomePage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {(showAllTopByHours ? topByHours : topByHours.slice(0, 5)).map(
             (game) => (
-              <Link to={`/catalog/${game.slug}`} key={game.slug}>
-                <GameCard game={game} />
-              </Link>
+              <GameCard
+                key={game.slug}
+                game={game}
+                onQuickView={() => setQuickViewGame(game)}
+                onClick={() => navigate(`/catalog/${game.slug}`)}
+              />
             ),
           )}
         </div>
@@ -267,6 +282,10 @@ const HomePage = () => {
           />
         )}
       </section>
+
+      {quickViewGame && (
+        <GameModal game={quickViewGame} onClose={() => setQuickViewGame(null)} />
+      )}
     </div>
   );
 };

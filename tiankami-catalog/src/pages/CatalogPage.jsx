@@ -21,7 +21,7 @@ const CatalogPage = () => {
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
   const [filters, setFilters] = useState({
     genres: [],
-    statuses: [],
+    status: "",
     minRating: "",
     maxRating: "",
     minComplexity: "",
@@ -47,7 +47,7 @@ const CatalogPage = () => {
     setSearchQuery("");
     setFilters({
       genres: [],
-      statuses: [],
+      status: "",
       minRating: "",
       maxRating: "",
       minComplexity: "",
@@ -116,7 +116,7 @@ const CatalogPage = () => {
     if (filters.genres.length > 0) {
       result = result.filter((game) => {
         const genre = game.genre || "";
-        return filters.genres.some((g) =>
+        return filters.genres.every((g) =>
           genre
             .split(",")
             .map((x) => x.trim())
@@ -125,8 +125,8 @@ const CatalogPage = () => {
       });
     }
 
-    if (filters.statuses.length > 0) {
-      result = result.filter((game) => filters.statuses.includes(game.status));
+    if (filters.status) {
+      result = result.filter((game) => game.status === filters.status);
     }
 
     if (filters.minRating !== "") {
@@ -320,48 +320,22 @@ const CatalogPage = () => {
               <p className="text-xs text-white/50 uppercase tracking-wide mb-2">
                 Статус
               </p>
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() =>
+              <select
+                value={filters.status}
+                onChange={(e) =>
                   setFilterAndResetPage((prev) => ({
                     ...prev,
-                    statuses:
-                      prev.statuses.length === 4
-                        ? []
-                        : ["Пройдено", "Дропнуто", "Обзор", "Жду релиза"],
+                    status: e.target.value,
                   }))
                 }
-                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                  filters.statuses.length === 0
-                    ? "bg-purple-600 text-white"
-                    : "bg-white/10 text-white/70 hover:bg-white/20"
-                }`}
+                className="bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2 px-3 focus:outline-none focus:border-purple-500 w-full"
               >
-                Все
-              </button>
-              {["Пройдено", "Дропнуто", "Обзор", "Жду релиза"].map((status) => (
-                <button
-                  key={status}
-                  type="button"
-                  onClick={() =>
-                    setFilterAndResetPage((prev) => ({
-                      ...prev,
-                      statuses: prev.statuses.includes(status)
-                        ? prev.statuses.filter((s) => s !== status)
-                        : [...prev.statuses, status],
-                    }))
-                  }
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                    filters.statuses.includes(status)
-                      ? "bg-purple-600 text-white"
-                      : "bg-white/10 text-white/70 hover:bg-white/20"
-                  }`}
-                >
-                  {status}
-                </button>
-              ))}
-            </div>
+                <option value="">Все</option>
+                <option value="Пройдено">Пройдено</option>
+                <option value="Дропнуто">Дропнуто</option>
+                <option value="Обзор">Обзор</option>
+                <option value="Жду релиза">Жду релиза</option>
+              </select>
             </div>
 
             {/* Жанры */}
@@ -369,6 +343,7 @@ const CatalogPage = () => {
               <p className="text-xs text-white/50 uppercase tracking-wide mb-2">
                 Жанры
               </p>
+              <p className="text-xs text-white/30 mb-2">Выберите до 2 жанров</p>
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
@@ -394,17 +369,23 @@ const CatalogPage = () => {
                   key={genre}
                   type="button"
                   onClick={() =>
-                    setFilterAndResetPage((prev) => ({
-                      ...prev,
-                      genres: prev.genres.includes(genre)
-                        ? prev.genres.filter((g) => g !== genre)
-                        : [...prev.genres, genre],
-                    }))
+                    setFilterAndResetPage((prev) => {
+                      if (prev.genres.includes(genre)) {
+                        return {
+                          ...prev,
+                          genres: prev.genres.filter((g) => g !== genre),
+                        };
+                      }
+                      if (prev.genres.length >= 2) return prev;
+                      return { ...prev, genres: [...prev.genres, genre] };
+                    })
                   }
                   className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                     filters.genres.includes(genre)
                       ? "bg-purple-600 text-white"
-                      : "bg-white/10 text-white/70 hover:bg-white/20"
+                      : filters.genres.length >= 2
+                        ? "bg-white/5 text-white/20 cursor-not-allowed"
+                        : "bg-white/10 text-white/70 hover:bg-white/20"
                   }`}
                 >
                   {genre}
