@@ -1,0 +1,378 @@
+// ═══════════════════════════════════════════════════════════
+// Скрипт для копирования гиперссылок из Оригинала в Копию
+// Оригинал: 16-b4LC_n2g1pq2fVGkUJyRsq9xklzlRpIwVH5Gv3C4U
+// ═══════════════════════════════════════════════════════════
+
+const ORIGINAL_ID = '16-b4LC_n2g1pq2fVGkUJyRsq9xklzlRpIwVH5Gv3C4U';
+const SHEET_NAME = 'Все рогалики';
+
+// ── Номера колонок в листе «Все рогалики» (жестко, по структуре таблицы) ──
+const COL_TITLE = 3;       // C — Название (с гиперссылкой на Steam)
+const COL_YT = 18;         // R — YouTube прохождение
+const COL_MI = 20;         // T — Выпуск МИ
+
+// Колонки для записи в копию (после колонки T = 20)
+const COL_STEAM_OUT = 21;  // U
+const COL_YT_OUT = 22;     // V
+const COL_MI_OUT = 23;     // W
+
+// ═══════════════ МЕНЮ ═══════════════
+function onOpen() {
+  const ui = SpreadsheetApp.getUi();
+  ui.createMenu('🔄 Синхронизация')
+    .addItem('♨️ Обновить ВСЕ ссылки', 'syncAllLinks')
+    .addSeparator()
+    .addItem('♨️ 1. Steam URL', 'syncSteamOnly')
+    .addItem('♨️ 2. YouTube URL', 'syncYouTubeOnly')
+    .addItem('♨️ 3. МИ URL', 'syncMIOnly')
+    .addSeparator()
+    .addItem('⚙️ Добавить триггер (каждые 4 ч)', 'installTrigger')
+    .addItem('🗑 Удалить все триггеры', 'removeAllTriggers')
+    .addToUi();
+}
+
+// ═══════════════ ТРИГГЕРЫ ═══════════════
+function installTrigger() {
+  removeAllTriggers();
+  // Триггер запускает chainSync — он по очереди вызывает syncSteamOnly, syncYouTubeOnly, syncMIOnly
+  ScriptApp.newTrigger('chainSync')
+    .timeBased()
+    .everyHours(4)
+    .create();
+  SpreadsheetApp.getUi().alert('✅ Триггер установлен:\nкаждые 4 часа запускается chainSync');
+}
+
+function removeAllTriggers() {
+  const triggers = ScriptApp.getProjectTriggers();
+  let count = 0;
+  triggers.forEach(t => {
+    ScriptApp.deleteTrigger(t);
+    count++;
+  });
+  SpreadsheetApp.getUi().alert('🗑 Удалено триггеров: ' + count);
+}
+
+// Цепочка: запускает все три синхронизации по очереди с паузами
+function chainSync() {
+  Logger.log('=== chainSync START ===');
+  syncSteamOnly();
+  Utilities.sleep(1000); // 1 сек пауза
+
+  syncYouTubeOnly();
+  Utilities.sleep(1000);
+
+  syncMIOnly();
+  Utilities.sleep(1000);
+
+  Logger.log('=== chainSync END ===');
+}
+
+// ═══════════════ ОСНОВНЫЕ ФУНКЦИИ ═══════════════
+
+/**
+ * Обновляет ВСЕ ссылки (Steam + YouTube + МИ) за один проход.
+ */
+function syncAllLinks() {
+  const orig = getSheet(ORIGINAL_ID);
+  const copy = getActiveSheet();
+  if (!orig || !copy) return;
+
+  const lastRow = Math.max(orig.getLastRow(), copy.getLastRow());
+  let updated = 0;
+  let skipped = 0;
+  let emptyStreak = 0;
+
+  for (let r = 2; r <= lastRow; r++) {
+    const titleCopy = safeGetString(copy, r, COL_TITLE);
+    const titleOrig = safeGetString(orig, r, COL_TITLE);
+
+    // 2 пустые подряд = конец таблицы
+    if (titleCopy === '' && titleOrig === '') {
+      emptyStreak++;
+      if (emptyStreak >= 2) break;
+      continue;
+    }
+    emptyStreak = 0;
+
+    // Оригиналь закончился, а копия нет — стоп
+    if (titleOrig === '' && titleCopy !== '') break;
+
+    // --- Steam ---
+    const existingSteam = safeGetString(copy, r, COL_STEAM_OUT);
+    if (existingSteam === '') {
+      const url = extractLink(orig, r, COL_TITLE);
+      if (url) {
+        copy.getRange(r, COL_STEAM_OUT).setValue(url);
+        updated++;
+      }
+    } else {
+      skipped++;
+    }
+
+    // --- YouTube ---
+    const existingYt = safeGetString(copy, r, COL_YT_OUT);
+    if (existingYt === '') {
+      const url = extractLink(orig, r, COL_YT);
+      if (url) {
+        copy.getRange(r, COL_YT_OUT).setValue(url);
+        updated++;
+      }
+    } else {
+      skipped++;
+    }
+
+    // --- МИ ---
+    const existingMi = safeGetString(copy, r, COL_MI_OUT);
+    if (existingMi === '') {
+      const url = extractLink(orig, r, COL_MI);
+      if (url) {
+        copy.getRange(r, COL_MI_OUT).setValue(url);
+        updated++;
+      }
+    } else {
+      skipped++;
+    }
+  }
+
+  writeHeaders(copy);
+  SpreadsheetApp.getUi().alert(
+    '✅ Готово!\nОбновлено: ' + updated + '\nПропущено (уже есть): ' + skipped
+  );
+}
+
+/**
+ * Обновляет ТОЛЬКО Steam URL.
+ */
+function syncSteamOnly() {
+  const orig = getSheet(ORIGINAL_ID);
+  const copy = getActiveSheet();
+  if (!orig || !copy) return;
+
+  const lastRow = Math.max(orig.getLastRow(), copy.getLastRow());
+  let updated = 0;
+  let skipped = 0;
+  let emptyStreak = 0;
+
+  for (let r = 2; r <= lastRow; r++) {
+    const titleCopy = safeGetString(copy, r, COL_TITLE);
+    const titleOrig = safeGetString(orig, r, COL_TITLE);
+
+    if (titleCopy === '' && titleOrig === '') {
+      emptyStreak++;
+      if (emptyStreak >= 2) break;
+      continue;
+    }
+    emptyStreak = 0;
+    if (titleOrig === '' && titleCopy !== '') break;
+
+    const existing = safeGetString(copy, r, COL_STEAM_OUT);
+    if (existing === '') {
+      const url = extractLink(orig, r, COL_TITLE);
+      if (url) {
+        copy.getRange(r, COL_STEAM_OUT).setValue(url);
+        updated++;
+      }
+    } else {
+      skipped++;
+    }
+  }
+
+  writeHeaders(copy);
+  SpreadsheetApp.getUi().alert(
+    '♨️ Steam URL\nОбновлено: ' + updated + '\nПропущено: ' + skipped
+  );
+}
+
+/**
+ * Обновляет ТОЛЬКО YouTube URL.
+ */
+function syncYouTubeOnly() {
+  const orig = getSheet(ORIGINAL_ID);
+  const copy = getActiveSheet();
+  if (!orig || !copy) return;
+
+  const lastRow = Math.max(orig.getLastRow(), copy.getLastRow());
+  let updated = 0;
+  let skipped = 0;
+  let emptyStreak = 0;
+
+  for (let r = 2; r <= lastRow; r++) {
+    const titleCopy = safeGetString(copy, r, COL_TITLE);
+    const titleOrig = safeGetString(orig, r, COL_TITLE);
+
+    if (titleCopy === '' && titleOrig === '') {
+      emptyStreak++;
+      if (emptyStreak >= 2) break;
+      continue;
+    }
+    emptyStreak = 0;
+    if (titleOrig === '' && titleCopy !== '') break;
+
+    const existing = safeGetString(copy, r, COL_YT_OUT);
+    if (existing === '') {
+      const url = extractLink(orig, r, COL_YT);
+      if (url) {
+        copy.getRange(r, COL_YT_OUT).setValue(url);
+        updated++;
+      }
+    } else {
+      skipped++;
+    }
+  }
+
+  writeHeaders(copy);
+  SpreadsheetApp.getUi().alert(
+    '♨️ YouTube URL\nОбновлено: ' + updated + '\nПропущено: ' + skipped
+  );
+}
+
+/**
+ * Обновляет ТОЛЬКО МИ URL.
+ */
+function syncMIOnly() {
+  const orig = getSheet(ORIGINAL_ID);
+  const copy = getActiveSheet();
+  if (!orig || !copy) return;
+
+  const lastRow = Math.max(orig.getLastRow(), copy.getLastRow());
+  let updated = 0;
+  let skipped = 0;
+  let emptyStreak = 0;
+
+  for (let r = 2; r <= lastRow; r++) {
+    const titleCopy = safeGetString(copy, r, COL_TITLE);
+    const titleOrig = safeGetString(orig, r, COL_TITLE);
+
+    if (titleCopy === '' && titleOrig === '') {
+      emptyStreak++;
+      if (emptyStreak >= 2) break;
+      continue;
+    }
+    emptyStreak = 0;
+    if (titleOrig === '' && titleCopy !== '') break;
+
+    const existing = safeGetString(copy, r, COL_MI_OUT);
+    if (existing === '') {
+      const url = extractLink(orig, r, COL_MI);
+      if (url) {
+        copy.getRange(r, COL_MI_OUT).setValue(url);
+        updated++;
+      }
+    } else {
+      skipped++;
+    }
+  }
+
+  writeHeaders(copy);
+  SpreadsheetApp.getUi().alert(
+    '♨️ МИ URL\nОбновлено: ' + updated + '\nПропущено: ' + skipped
+  );
+}
+
+// ═══════════════ ВСПОМОГАТЕЛЬНЫЕ ═══════════════
+
+/** Открыть лист по ID таблицы */
+function getSheet(sheetId) {
+  try {
+    const sheet = SpreadsheetApp.openById(sheetId).getSheetByName(SHEET_NAME);
+    if (!sheet) {
+      SpreadsheetApp.getUi().alert('❌ Лист "' + SHEET_NAME + '" не найден в таблице ' + sheetId);
+    }
+    return sheet;
+  } catch (e) {
+    SpreadsheetApp.getUi().alert('❌ Ошибка открытия таблицы: ' + e.message);
+    return null;
+  }
+}
+
+/** Открыть активный лист (копию) */
+function getActiveSheet() {
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+    if (!sheet) {
+      SpreadsheetApp.getUi().alert('❌ Лист "' + SHEET_NAME + '" не найден в копии');
+    }
+    return sheet;
+  } catch (e) {
+    SpreadsheetApp.getUi().alert('❌ Ошибка: ' + e.message);
+    return null;
+  }
+}
+
+/** Безопасное получение строки из ячейки */
+function safeGetString(sheet, row, col) {
+  try {
+    return String(sheet.getRange(row, col).getValue() || '').trim();
+  } catch (e) {
+    return '';
+  }
+}
+
+/** Записать заголовки новых колонок */
+function writeHeaders(sheet) {
+  const lastCol = sheet.getLastColumn();
+  if (lastCol >= COL_STEAM_OUT) {
+    sheet.getRange(1, COL_STEAM_OUT).setValue('Steam URL');
+    sheet.getRange(1, COL_YT_OUT).setValue('YouTube URL');
+    sheet.getRange(1, COL_MI_OUT).setValue('МИ URL');
+  }
+}
+
+/**
+ * Извлекает гиперссылку из ячейки.
+ * 3 метода извлечения (по приоритету):
+ * 1) getRichTextValue().getLinkUrl() — для ссылок из UI
+ * 2) getFormula() + regex HYPERLINK — для формул =HYPERLINK(...)
+ * 3) getValue() + regex URL — fallback на текст
+ */
+function extractLink(sheet, row, col) {
+  const range = sheet.getRange(row, col);
+  let url = '';
+
+  // Метод 1: RichText (ссылки из UI)
+  try {
+    url = range.getRichTextValue().getLinkUrl() || '';
+    if (url) {
+      Logger.log('  [Row ' + row + '] RichText OK: ' + url.substring(0, 60));
+      return url;
+    }
+  } catch (e) {
+    Logger.log('  [Row ' + row + '] RichText failed: ' + e.message);
+  }
+
+  // Метод 2: Формула HYPERLINK
+  try {
+    const formula = range.getFormula();
+    if (formula && formula.toLowerCase().startsWith('=hyperlink')) {
+      // Извлекаем URL из =HYPERLINK("url", "text")
+      const match = formula.match(/=HYPERLINK\(\s*"([^"]+)"/i);
+      if (match && match[1]) {
+        Logger.log('  [Row ' + row + '] Formula OK: ' + match[1].substring(0, 60));
+        return match[1];
+      }
+      // Попробовать с одинарными кавычками
+      const match2 = formula.match(/=HYPERLINK\(\s*'([^']+)'/i);
+      if (match2 && match2[1]) {
+        Logger.log('  [Row ' + row + '] Formula (single quote) OK: ' + match2[1].substring(0, 60));
+        return match2[1];
+      }
+    }
+  } catch (e) {
+    Logger.log('  [Row ' + row + '] Formula failed: ' + e.message);
+  }
+
+  // Метод 3: Regex из getValue()
+  try {
+    const val = String(range.getValue() || '');
+    const match = val.match(/(https?:\/\/[^\s<>"{}\\[\]\\|]+)/);
+    if (match) {
+      Logger.log('  [Row ' + row + '] Regex OK: ' + match[1].substring(0, 60));
+      return match[1];
+    }
+  } catch (e) {
+    Logger.log('  [Row ' + row + '] Regex failed: ' + e.message);
+  }
+
+  Logger.log('  [Row ' + row + '] NO LINK FOUND');
+  return '';
+}
