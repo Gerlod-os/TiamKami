@@ -6,10 +6,77 @@ import GameDetails from "../components/GameDetails";
 import { isUrl } from "../utils/normalize.js";
 import { FaChevronRight } from "react-icons/fa";
 
+const genreColors = [
+  "bg-pink-300/30 text-pink-200",
+  "bg-purple-300/30 text-purple-200",
+  "bg-blue-300/30 text-blue-200",
+];
+
+const GameCardInline = ({ game, imageError, setImageError }) => {
+  const genres = (game.genre || "").split(",").map((g) => g.trim()).filter(Boolean);
+  const isPerfectRating = game.rating === 10;
+  const hasValidImage = isUrl(game.image) && !imageError;
+
+  return (
+    <div className="max-w-4xl mx-auto bg-white/5 rounded-2xl overflow-hidden border border-white/10">
+      {/* Обложка */}
+      <div className="relative h-52 overflow-hidden bg-gradient-to-br from-white/5 to-white/10">
+        {hasValidImage ? (
+          <img
+            src={game.image}
+            alt={game.title}
+            className="w-full h-full object-cover"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-5xl" aria-hidden="true">🎮</span>
+          </div>
+        )}
+
+        {/* Затемнение снизу */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+
+        {/* Бейдж рейтинга */}
+        <div
+          className={`absolute top-3 right-3 flex items-center justify-center w-12 h-12 rounded-xl font-heading font-bold text-lg shadow-lg ${
+            isPerfectRating
+              ? "bg-gradient-to-br from-yellow-300 to-amber-500 text-amber-950"
+              : "bg-black/50 backdrop-blur-sm text-white"
+          }`}
+        >
+          {game.rating || "—"}
+        </div>
+      </div>
+
+      {/* Контент */}
+      <div className="p-4 flex flex-col gap-3">
+        <h2 className="font-heading text-lg text-white font-bold truncate">
+          {game.title}
+        </h2>
+
+        {genres.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {genres.slice(0, 3).map((genre, index) => (
+              <span
+                key={genre}
+                className={`px-3 py-1 rounded-full text-xs font-medium ${genreColors[index % genreColors.length]}`}
+              >
+                {genre}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const GamePage = () => {
   const { slug } = useParams();
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [cardImageError, setCardImageError] = useState(false);
 
   useEffect(() => {
     fetchGames()
@@ -26,7 +93,14 @@ const GamePage = () => {
   // Находим игру по слагу (мемоизируем)
   // Слоги теперь хранятся в данных (normalizeGames), slugify не нужен
   const game = useMemo(() => {
-    return games.find((g) => g.slug === slug) || null;
+    console.log("[GamePage] slug из параметров:", slug);
+    const found = games.find((g) => g.slug === slug) || null;
+    if (found) {
+      console.log("[GamePage] найдена игра:", found.title);
+    } else {
+      console.log("[GamePage] игра не найдена для slug:", slug);
+    }
+    return found;
   }, [games, slug]);
 
   // Мета-теги для соцсетей
@@ -88,22 +162,55 @@ const GamePage = () => {
 
   return (
     <div>
-      {/* Хлебные крошки */}
-      <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
-        <Link to="/" className="hover:text-accent-pink">
-          Главная
-        </Link>
-        <FaChevronRight size={12} />
-        <Link to="/catalog" className="hover:text-accent-pink">
-          Каталог
-        </Link>
-        <FaChevronRight size={12} />
-        <span className="text-white">{game.title}</span>
-      </nav>
+      {/* Hero-баннер: обложка-фон + название поверх */}
+      <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-8 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20">
+        {game.image && isUrl(game.image) ? (
+          <img
+            src={game.image}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={() => setCardImageError(true)}
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-accent-purple/30 to-accent-pink/30" />
+        )}
 
-      <h1 className="text-3xl font-heading mb-6">{game.title}</h1>
+        {/* Затемнение */}
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
 
-      <GameDetails game={game} />
+        {/* Хлебные крошки */}
+        <div className="relative z-10 px-4 py-3 flex items-center gap-2 text-sm text-white/60">
+          <Link to="/" className="hover:text-accent-pink">
+            Главная
+          </Link>
+          <FaChevronRight size={12} />
+          <Link to="/catalog" className="hover:text-accent-pink">
+            Каталог
+          </Link>
+          <FaChevronRight size={12} />
+          <span className="text-white">{game.title}</span>
+        </div>
+
+        {/* Название игры поверх обложки */}
+        <div className="relative z-10 px-4 pb-6 md:px-8 md:pb-8">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white drop-shadow-lg">
+            {game.title}
+          </h1>
+        </div>
+      </div>
+
+      {/* Карточка игры: обложка + бейдж рейтинга + чипсы жанров */}
+      <GameCardInline
+        game={game}
+        imageError={cardImageError}
+        setImageError={setCardImageError}
+      />
+
+      {/* Детали */}
+      <div className="mt-8">
+        <GameDetails game={game} />
+      </div>
     </div>
   );
 };
