@@ -11,6 +11,7 @@ const STATUS_ALIASES = {
   пройдено: "Пройдено",
   дропнуто: "Дропнуто",
   обзор: "Обзор",
+  "в процессе": "В процессе",
 };
 
 export function normalizeStatus(raw) {
@@ -141,6 +142,12 @@ export function normalizeCollections(rows) {
   const headerRow = rows[0];
   const isNumeric = (s) => /^\d+([.,]\d+)?$/.test((s || "").trim());
 
+  // Ширина окна подборки: от заголовка до +5 (следующий блок начинается на +4,
+  // но его игры — на +6, поэтому +5 не задевает чужие игры)
+  const WINDOW_SIZE = 5;
+  // Диапазон поиска ранга: числа правее игры (в той же строке, до +4 колонок)
+  const RANK_RANGE = 4;
+
   // Индексы заголовков подборок
   const titleIndices = [];
   headerRow.forEach((cell, idx) => {
@@ -152,10 +159,9 @@ export function normalizeCollections(rows) {
     const name = headerRow[titleIdx].trim();
     if (!name) return;
 
-    // Окно подборки: от колонки заголовка до +5 (следующий блок начинается
-    // на +4, но его игры — на +6, поэтому +5 не задевает чужие игры)
+    // Окно подборки: от колонки заголовка до +WINDOW_SIZE
     const minCol = titleIdx;
-    const maxCol = titleIdx + 5;
+    const maxCol = titleIdx + WINDOW_SIZE;
 
     // Описание: текст в первой строке данных в колонке заголовка
     let description = "";
@@ -177,9 +183,9 @@ export function normalizeCollections(rows) {
       }
       if (gameCol === -1) continue;
 
-      // Ранг: ближайшее число правее игры (в той же строке, до +4 колонок)
+      // Ранг: ближайшее число правее игры (в той же строке, до +RANK_RANGE колонок)
       let rank = "";
-      for (let c = gameCol + 1; c <= gameCol + 4; c++) {
+      for (let c = gameCol + 1; c <= gameCol + RANK_RANGE; c++) {
         const v = (row[c] || "").trim();
         if (v && isNumeric(v)) {
           rank = v;

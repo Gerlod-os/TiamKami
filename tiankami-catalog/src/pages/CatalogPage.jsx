@@ -4,7 +4,7 @@ import { slugify } from "../utils/slugify";
 import { parseRuDate } from "../utils/date";
 import GameCard from "../components/GameCard";
 import GameModal from "../components/GameModal";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaDice } from "react-icons/fa";
 
 const CatalogPage = () => {
   const [games, setGames] = useState([]);
@@ -64,7 +64,10 @@ const CatalogPage = () => {
       result = result.filter(
         (game) =>
           (game.title || "").toLowerCase().includes(q) ||
-          (game.notes || "").toLowerCase().includes(q),
+          (game.notes || "").toLowerCase().includes(q) ||
+          (game.genre || "").toLowerCase().includes(q) ||
+          (game.features || "").toLowerCase().includes(q) ||
+          (game.setting || "").toLowerCase().includes(q),
       );
     }
 
@@ -157,6 +160,16 @@ const CatalogPage = () => {
           return da - db;
         });
         break;
+      case "date-new":
+        result.sort((a, b) => {
+          const da = parseRuDate(b.releaseDate);
+          const db = parseRuDate(a.releaseDate);
+          if (!da && !db) return 0;
+          if (!da) return 1;
+          if (!db) return -1;
+          return da - db;
+        });
+        break;
       default:
         break;
     }
@@ -172,17 +185,32 @@ const CatalogPage = () => {
       <h1 className="text-3xl mb-6">Каталог рогаликов</h1>
 
       <div className="bg-white/5 rounded-2xl p-4 mb-6 space-y-4">
-        <div className="flex flex-wrap gap-4 items-center">
+        <div className="flex flex-wrap gap-2 items-center">
           <div className="relative flex-grow max-w-xs">
             <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-white/50" />
             <input
               type="text"
-              placeholder="Поиск по названию или примечаниям..."
+              placeholder="Поиск по названию, жанру, особенностям..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-black/20 border border-white/10 rounded-xl py-2 pl-9 pr-3 text-sm focus:outline-none focus:border-accent-purple"
             />
           </div>
+
+          <button
+            onClick={() => {
+              if (filteredGames.length === 0) return;
+              const randomIndex = Math.floor(
+                Math.random() * filteredGames.length,
+              );
+              setSelectedGame(filteredGames[randomIndex]);
+            }}
+            className="bg-accent-purple hover:bg-accent-pink text-white px-4 py-2 rounded-xl border border-white/10 transition-all flex items-center gap-2 whitespace-nowrap"
+            title="Выбрать случайную игру из отфильтрованных"
+          >
+            <FaDice />
+            <span>Случайная</span>
+          </button>
 
           <select
             value={sortBy}
@@ -193,6 +221,7 @@ const CatalogPage = () => {
             <option value="rating">Сортировка: по оценке</option>
             <option value="hours">Сортировка: по часам</option>
             <option value="releaseDate">Сортировка: по дате выхода</option>
+            <option value="date-new">Сортировка: сначала новые</option>
           </select>
         </div>
 

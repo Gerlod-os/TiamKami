@@ -2,10 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ═══════════════════════════════════════════════════
+   ТЕМА 1: TianKami Neon (как на старом проекте)
+   ═══════════════════════════════════════════════════ */
+:root,
+[data-theme="neon"] {
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #121018;
+  --accent-pink: #ec4899;
+  --accent-purple: #a855f7;
+  --accent-cyan: #06b6d4;
+  --gold: #fbbf24;
+  --drop-red: #7f1d1d;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border-color: rgba(168, 85, 247, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════
+   ТЕМА 2: Soft Pastel (новая, пастельная)
+   ═══════════════════════════════════════════════════ */
+[data-theme="pastel"] {
+  --bg-primary: #121212;
+  --bg-secondary: #1a1a2e;
+  --accent-pink: #ffb6c1;
+  --accent-purple: #c9a0dc;
+  --accent-cyan: #a0c4ff;
+  --gold: #ffd700;
+  --drop-red: #450a0a;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --border-color: rgba(201, 160, 220, 0.3);
+}
+
 body {
   @apply bg-bg-dark text-white font-body;
-  background: linear-gradient(145deg, #121212 0%, #1a1a2e 100%);
+  background: var(--bg-primary);
   min-height: 100vh;
+  transition: background 0.3s ease;
 }
 
 h1,

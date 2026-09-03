@@ -1,12 +1,17 @@
 import { useEffect, useState, useRef } from "react";
-import { FaCog, FaVolumeUp, FaMousePointer } from "react-icons/fa";
+import { FaCog, FaVolumeUp, FaMousePointer, FaPalette } from "react-icons/fa";
 
-// Секретная панелька: звуки и кастомный курсор. По умолчанию выключено.
+// Секретная панелька: звуки, кастомный курсор и переключатель тем. По умолчанию выключено.
 // Состояние хранится в localStorage. Звуки — короткие синтезированные
 // бипы через Web Audio API (ноль файлов, ноль запросов, ноль веса).
 
 const SOUND_KEY = "tk_fx_sound";
 const CURSOR_KEY = "tk_fx_cursor";
+const THEME_KEY = "tk_theme";
+const THEMES = [
+  { id: "neon", name: "Neon", desc: "Тёмный неон (как на старом)" },
+  { id: "pastel", name: "Pastel", desc: "Пастельный мягкий" },
+];
 
 // Глобальные хуки для звука: любой компонент может вызвать window.__tkBeep('hover'|'click')
 function ensureAudioHooks(onEnabledChange) {
@@ -58,7 +63,14 @@ export default function FxPanel() {
   const [open, setOpen] = useState(false);
   const [sound, setSound] = useState(() => safeGet(SOUND_KEY) === "on");
   const [cursor, setCursor] = useState(() => safeGet(CURSOR_KEY) === "on");
+  const [theme, setTheme] = useState(() => safeGet(THEME_KEY) || "neon");
   const panelRef = useRef(null);
+
+  // Применяем тему при изменении
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    safeSet(THEME_KEY, theme);
+  }, [theme]);
 
   useEffect(() => {
     ensureAudioHooks();
@@ -118,10 +130,16 @@ export default function FxPanel() {
       setSound(next);
       safeSet(SOUND_KEY, next ? "on" : "off");
       if (next) window.__tkBeep?.("click");
-    } else {
+    } else if (which === "cursor") {
       const next = !cursor;
       setCursor(next);
       safeSet(CURSOR_KEY, next ? "on" : "off");
+    } else if (which === "theme") {
+      // Переключаем на следующую тему
+      const currentIndex = THEMES.findIndex((t) => t.id === theme);
+      const nextIndex = (currentIndex + 1) % THEMES.length;
+      setTheme(THEMES[nextIndex].id);
+      window.__tkBeep?.("click");
     }
   };
 
@@ -147,6 +165,12 @@ export default function FxPanel() {
             className={`w-full flex items-center gap-2 px-2 py-1.5 rounded-lg transition-colors ${cursor ? "text-accent-purple bg-accent-purple/10" : "text-white/70 hover:bg-white/5"}`}
           >
             <FaMousePointer /> Курсор {cursor ? "вкл" : "выкл"}
+          </button>
+          <button
+            onClick={() => toggle("theme")}
+            className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg transition-colors text-white/70 hover:bg-white/5 hover:text-accent-pink"
+          >
+            <FaPalette /> Тема: {THEMES.find((t) => t.id === theme)?.name}
           </button>
           <button
             onClick={resetTwitchCache}

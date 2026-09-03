@@ -4,8 +4,10 @@ import {
   COLLECTIONS_URL,
   SHEETS_API_KEY,
   SHEETS_API_VALUES_URL,
+  COPY_SPREADSHEET_ID,
+  COPY_SHEETS_API_VALUES_URL,
+  SPREADSHEET_ID,
 } from "../config/dataSources.js";
-import { BRAND } from "../config/branding.js";
 import localGames from "../data/games.json";
 import localCollections from "../data/collections.json";
 import {
@@ -47,8 +49,6 @@ const CACHE_KEY = `tiankami_games_v4_${hashUrl(GAMES_URL)}`;
 const CACHE_TIME_KEY = `${CACHE_KEY}_time`;
 const COLLECTIONS_CACHE_KEY = `tiankami_collections_v4_${hashUrl(COLLECTIONS_URL)}`;
 const COLLECTIONS_CACHE_TIME_KEY = `${COLLECTIONS_CACHE_KEY}_time`;
-const LINKS_CACHE_KEY = `tiankami_links_v4_${hashUrl(GAMES_URL)}`;
-const NOEMBED_LIMIT = 20; // жёсткий лимит проверок авторства за сессию
 const CACHE_DURATION = 6 * 60 * 60 * 1000; // TTL кэша: 6 часов
 const REVALIDATE_INTERVAL = 15 * 60 * 1000; // сверка с таблицей не чаще раза в 15 минут
 
@@ -104,160 +104,64 @@ async function fetchRows(url, delimiter) {
     .data;
 }
 
-/* ─────────── Гиперссылки через Sheets API (опционально) ─────────── */
+/* ─────────── Парсинг гиперссылок из строк таблицы ─────────── */
 
 /**
- * Достаёт гиперссылки из таблицы (YouTube-плейлисты, выпуски МИ, Steam).
- * Работает только если задан SHEETS_API_KEY. Без ключа — тихо пропускаем.
- * Формулы =HYPERLINK("url";"текст") читаем через valueRenderOption=FORMULA.
+ * Парсит одну строку Google Sheets и собирает { youtube, miVideo, steam }.
+ * Название игры берётся из колонки C (индекс 2).
+ * В Оригинал это формула =HYPERLINK("url";"label"), в Копии — просто текст.
+ * В Копии YouTube и МИ находятся в отдельных колонках (V=21, W=22),
+ * поэтому используем индекс для различения.
  */
-async function fetchHyperlinks() {
-  if (!SHEETS_API_KEY) return null;
-
-  // Кэш ссылок на сутки — не дёргаем API на каждый чих
-  const cached = safeGet(LINKS_CACHE_KEY);
-  const cachedTime = safeGet(`${LINKS_CACHE_KEY}_time`);
-  if (
-    cached &&
-    cachedTime &&
-    Date.now() - parseInt(cachedTime) < CACHE_DURATION
-  ) {
-    try {
-      return JSON.parse(cached);
-    } catch {
-      /* перезагрузим */
-    }
+function parseLinksFromRow(row) {
+  // Название игры — колонка C (индекс 2).
+  let rawTitle = (row[2] || "").toString().trim();
+  let title = rawTitle;
+  if (rawTitle.startsWith("=HYPERLINK")) {
+    const m = rawTitle.match(/^=HYPERLINK\(\s*"([^"]+)"\s*[;,]\s*"([^"]*)"/i);
+    if (m) title = m[2] || m[1]; // label или url
   }
+  if (!title) return null;
 
-  try {
-    const response = await fetch(SHEETS_API_VALUES_URL("A:Z"));
-    if (!response.ok) throw new Error(`Sheets API: ${response.status}`);
-    const json = await response.json();
-    const rows = json.values || [];
+  const entry = {};
+  row.forEach((cell, colIdx) => {
+    const { url, label } = extractHyperlinkParts(String(cell ?? ""));
+    if (!isUrl(url)) return;
 
-    const links = {}; // title -> { youtube, miVideo, steam }
-    for (let i = 1; i < rows.length; i++) {
-      const row = rows[i] || [];
-      // Название игры — колонка C (индекс 2). Не используем row.find() —
-      // он может взять значение из другой колонки, если в начале строки есть пустые ячейки.
-      const title = (row[2] || "").toString().trim();
-      if (!title) continue;
+    // Определяем тип ссылки по позиции колонки (для Копии) или по label (для Оригинал)
+    let type = null; // "youtube" | "miVideo" | "steam"
 
-      const entry = {};
-      for (const cell of row) {
-        const { url, label } = extractHyperlinkParts(String(cell ?? ""));
-        if (!isUrl(url)) continue;
-        if (isYouTubeUrl(url)) {
-          // У игры бывает две YouTube-ссылки: плейлист прохождения и выпуск МИ.
-          // Различаем по подписи в таблице (колонки «гуляют», подпись надёжнее).
-          if (/ми|выпуск/i.test(label) ? !entry.miVideo : !entry.youtube) {
-            entry[/ми|выпуск/i.test(label) ? "miVideo" : "youtube"] = url;
-          }
-        }
-        if (/steampowered\.com/i.test(url)) {
-          if (!entry.steam) entry.steam = url;
-        }
+    if (/steampowered\.com/i.test(url)) {
+      type = "steam";
+    } else if (isYouTubeUrl(url)) {
+      // В Оригинал label = "Выпуск МИ" → miVideo, иначе → youtube
+      // В Копии колонка V(21)=youtube, W(22)=miVideo
+      const isMiLabel = /ми|выпуск/i.test(label);
+      const isMiCol = colIdx === 22; // колонка W
+      if (isMiLabel || isMiCol) {
+        type = !entry.miVideo ? "miVideo" : "youtube";
+      } else {
+        type = !entry.youtube ? "youtube" : "miVideo";
       }
-      if (Object.keys(entry).length > 0) links[title] = entry;
     }
 
-    safeSet(LINKS_CACHE_KEY, JSON.stringify(links));
-    safeSet(`${LINKS_CACHE_KEY}_time`, String(Date.now()));
-    return links;
-  } catch (error) {
-    console.warn("Не удалось получить гиперссылки из Sheets API.", error);
-    return null;
-  }
-}
-
-/**
- * Обогащает игры ссылками и обложками:
- *  - YouTube-плейлисты / МИ: только ссылки с канала стримера (по имени автора);
- *  - Steam: обложка с CDN по appid из ссылки в таблице.
- * Проверка автора канала делается через бесплатный noembed (без ключей),
- * результат кэшируется в localStorage.
- */
-export async function enrichGamesWithLinks(games) {
-  const links = await fetchHyperlinks();
-  if (!links) return games;
-
-  // Кэш проверок авторства YouTube-ссылок
-  let authorCache = {};
-  try {
-    authorCache = JSON.parse(safeGet("tiankami_yt_authors") || "{}");
-  } catch {}
-
-  const checkAuthor = async (url) => {
-    if (authorCache[url] !== undefined) return authorCache[url];
-    try {
-      const res = await fetch(
-        `https://noembed.com/embed?url=${encodeURIComponent(url)}`,
-      );
-      const json = await res.json();
-      const ok =
-        json.author_name &&
-        json.author_name
-          .toLowerCase()
-          .includes(BRAND.youtubeChannelName.toLowerCase());
-      authorCache[url] = ok;
-      return ok;
-    } catch {
-      return true; // при сбое проверки не отрезаем ссылку
-    }
-  };
-
-  // Собираем уникальные YouTube-ссылки (плейлисты + МИ), которых нет в кэше
-  const uniqueUrls = new Set();
-  games.forEach((g) => {
-    const l = links[g.title];
-    [l?.youtube, l?.miVideo].forEach((u) => {
-      if (u && isYouTubeUrl(u) && authorCache[u] === undefined) {
-        uniqueUrls.add(u);
-      }
-    });
-  });
-
-  // Жёсткий лимит проверок за сессию (правило PROJECT_BRIEF п.7):
-  // непроверенные ссылки в этот заход не показываем, попадут в следующий.
-  const urls = [...uniqueUrls].slice(0, NOEMBED_LIMIT);
-  let idx = 0;
-  const workers = Array.from({ length: Math.min(8, urls.length) }, async () => {
-    while (idx < urls.length) {
-      const u = urls[idx++];
-      await checkAuthor(u);
+    if (type && !entry[type]) {
+      entry[type] = url;
     }
   });
-  await Promise.all(workers);
-  safeSet("tiankami_yt_authors", JSON.stringify(authorCache));
 
-  // Применяем
-  return games.map((g) => {
-    const l = links[g.title];
-    const appId = l ? extractSteamAppId(l.steam || "") : null;
-    const steamAppId = g.steamAppId || appId; // из sync-JSON или из таблицы
-    const next = { ...g };
-    if (steamAppId) {
-      next.image = steamHeaderUrl(steamAppId); // обложка строится из appid
-      next.steamUrl = `https://store.steampowered.com/app/${steamAppId}/`;
-    }
-    if (l?.youtube && isYouTubeUrl(l.youtube) && authorCache[l.youtube]) {
-      next.youtube = l.youtube;
-    }
-    if (l?.miVideo && isYouTubeUrl(l.miVideo) && authorCache[l.miVideo]) {
-      next.miVideo = l.miVideo;
-    }
-    return next;
-  });
+  if (Object.keys(entry).length === 0) return null;
+  return { title, entry };
 }
 
 /* ─────────── Публичное API ─────────── */
 
 /**
  * Игры. Стратегия «сначала свои данные, потом сверка»:
- *  1. Мгновенно отдаёт данные из памяти / localStorage / локального JSON.
- *  2. В фоне сверяет с мастер-таблицей (не чаще раза в 15 минут).
- *  3. Если таблица отличается — обновляет кэш и вызывает onUpdate(свежие),
- *     интерфейс перерисовывается без перезагрузки.
+ *  1. Мгновенно отдаёт данные из памяти / localStorage / локального JSON (с обложками).
+ *  2. В фоне сверяет с Оригинал (TSV) и Копия (ссылки).
+ *  3. Если Оригинал отличается (добавили игру, изменили статус) — обновляет только изменения.
+ *  4. Если в Оригинал новой игры нет — оставляем как есть.
  */
 export async function fetchGames({ onUpdate } = {}) {
   if (!memoryGames) {
@@ -268,42 +172,140 @@ export async function fetchGames({ onUpdate } = {}) {
   return memoryGames;
 }
 
+/**
+ * Проверяет, изменились ли данные игры (кроме steamAppId/image/steamUrl).
+ */
+function isGameDataChanged(oldGame, newGame) {
+  const fields = [
+    "genre",
+    "features",
+    "setting",
+    "complexity",
+    "hours",
+    "status",
+    "progress",
+    "rating",
+    "releaseDate",
+    "playedDate",
+    "notes",
+    "youtube",
+    "hasMI",
+    "miVideo",
+  ];
+  return fields.some((f) => oldGame[f] !== newGame[f]);
+}
+
 async function revalidateGames(onUpdate) {
   if (gamesRevalidating) return;
   if (Date.now() - lastGamesCheck < REVALIDATE_INTERVAL) return;
   gamesRevalidating = true;
   lastGamesCheck = Date.now();
   try {
+    // 1. Загружаем Оригинал (TSV) — базовые данные (название, жанр, статус и т.д.)
     const rows = await fetchRows(GAMES_URL, "	");
-    let fresh = normalizeGames(rows);
-    if (fresh.length === 0) return;
-    fresh = await enrichGamesWithLinks(fresh);
+    let freshFromSheets = normalizeGames(rows);
+    if (freshFromSheets.length === 0) return;
 
-    // ★ Критично: enrichGamesWithLinks() может вернуть fresh без steamAppId,
-    // если Sheets API недоступен (Websites-ограничение ключа).
-    // Восстанавливаем steamAppId + обложки из старой версии.
-    if (memoryGames) {
-      const byTitle = {};
-      memoryGames.forEach((m) => (byTitle[m.title] = m));
-      fresh = fresh.map((g) => {
-        const old = byTitle[g.title];
-        if (old && old.steamAppId && !g.steamAppId) {
-          return {
-            ...g,
-            steamAppId: old.steamAppId,
-            image: old.image,
-            steamUrl: old.steamUrl,
-          };
+    // 2. Загружаем Копию — ссылки (steamAppId, youtube, miVideo)
+    let copyLinks = {};
+    if (SHEETS_API_KEY && COPY_SPREADSHEET_ID !== SPREADSHEET_ID) {
+      try {
+        const response = await fetch(COPY_SHEETS_API_VALUES_URL("A:Z"));
+        if (response.ok) {
+          const json = await response.json();
+          const copyRows = json.values || [];
+          for (let i = 1; i < copyRows.length; i++) {
+            const parsed = parseLinksFromRow(copyRows[i]);
+            if (parsed) copyLinks[parsed.title] = parsed.entry;
+          }
         }
-        return g;
-      });
+      } catch (e) {
+        console.warn(
+          "Не удалось загрузить Копию для ссылок, пробуем Оригинал (fallback)...",
+          e,
+        );
+      }
     }
 
-    if (JSON.stringify(fresh) !== JSON.stringify(memoryGames)) {
-      memoryGames = fresh;
-      safeSet(CACHE_KEY, JSON.stringify(fresh));
+    // 3. Fallback: если Копия не загрузилась — читаем ссылки из Оригинала (формулы =HYPERLINK)
+    if (Object.keys(copyLinks).length === 0 && SHEETS_API_KEY) {
+      try {
+        const response = await fetch(SHEETS_API_VALUES_URL("A:Z"));
+        if (response.ok) {
+          const json = await response.json();
+          const origRows = json.values || [];
+          for (let i = 1; i < origRows.length; i++) {
+            const parsed = parseLinksFromRow(origRows[i]);
+            if (parsed) copyLinks[parsed.title] = parsed.entry;
+          }
+        }
+      } catch (fallbackError) {
+        console.warn(
+          "Fallback из Оригинала тоже не удался, игры будут без ссылок.",
+          fallbackError,
+        );
+      }
+    }
+
+    // 4. Merge: данные из Оригинал + ссылки из Копия (или fallback)
+    freshFromSheets = freshFromSheets.map((g) => {
+      const links = copyLinks[g.title];
+      const next = { ...g };
+
+      if (links) {
+        const appId = links.steam ? extractSteamAppId(links.steam) : null;
+        if (appId) {
+          next.steamAppId = appId;
+          next.image = steamHeaderUrl(appId);
+          next.steamUrl = `https://store.steampowered.com/app/${appId}/`;
+        }
+        if (links.youtube) next.youtube = links.youtube;
+        if (links.miVideo) next.miVideo = links.miVideo;
+      }
+
+      return next;
+    });
+
+    // 4. Обновляем memoryGames: добавляем новые, обновляем изменённые, сохраняем обложки
+    const oldByTitle = {};
+    memoryGames.forEach((m) => (oldByTitle[m.title.toLowerCase()] = m));
+
+    const updatedGames = [];
+
+    freshFromSheets.forEach((newGame) => {
+      const oldGame = oldByTitle[newGame.title.toLowerCase()];
+      if (oldGame) {
+        // Игра уже есть — обновляем только если данные изменились
+        if (isGameDataChanged(oldGame, newGame)) {
+          // Сохраняем обложку из старой версии (она уже есть в oldGame.image)
+          updatedGames.push({
+            ...newGame,
+            image: oldGame.image || newGame.image,
+            steamUrl: oldGame.steamUrl || newGame.steamUrl,
+            steamAppId: oldGame.steamAppId || newGame.steamAppId,
+          });
+        } else {
+          updatedGames.push(oldGame);
+        }
+      } else {
+        // Новая игра — добавляем
+        updatedGames.push(newGame);
+      }
+    });
+
+    // 5. Удаляем игры, которых нет в Оригинал (опционально)
+    const freshTitles = new Set(
+      freshFromSheets.map((g) => g.title.toLowerCase()),
+    );
+    const keptGames = updatedGames.filter((g) =>
+      freshTitles.has(g.title.toLowerCase()),
+    );
+
+    if (JSON.stringify(keptGames) !== JSON.stringify(memoryGames)) {
+      memoryGames = keptGames;
+      safeSet(CACHE_KEY, JSON.stringify(keptGames));
       safeSet(CACHE_TIME_KEY, String(Date.now()));
-      onUpdate?.(fresh);
+      onUpdate?.(keptGames);
     }
   } catch (error) {
     console.warn(
@@ -375,8 +377,6 @@ export function clearCache() {
     localStorage.removeItem(CACHE_TIME_KEY);
     localStorage.removeItem(COLLECTIONS_CACHE_KEY);
     localStorage.removeItem(COLLECTIONS_CACHE_TIME_KEY);
-    localStorage.removeItem(LINKS_CACHE_KEY);
-    localStorage.removeItem(`${LINKS_CACHE_KEY}_time`);
   } catch {}
   memoryGames = null;
   memoryCollections = null;

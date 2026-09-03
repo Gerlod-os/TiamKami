@@ -50,7 +50,7 @@ const GamePage = () => {
     };
     setMeta("og:title", game.title);
     setMeta("og:description", game.notes || game.title);
-    setMeta("og:type", "article");
+    setMeta("og:type", "website");
 
     // Cleanup: восстанавливаем дефолтные мета-теги
     return () => {

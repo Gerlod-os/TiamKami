@@ -11,6 +11,12 @@
 // ID мастер-таблицы (оригинал, доступ только на чтение — этого достаточно)
 export const SPREADSHEET_ID = "16-b4LC_n2g1pq2fVGkUJyRsq9xklzlRpIwVH5Gv3C4U";
 
+// ID копия-таблицы (с заполненными ссылками steamAppId, youtube, miVideo)
+// Копия создается Apps Script'ом из оригинала, ссылки копируются в колонки U, V, W
+// ⚠️ Замени на ID копии таблицы (часть URL между /d/ и /edit)
+export const COPY_SPREADSHEET_ID =
+  "1NrxkJzDIC4S7Epv8wo8jDyqF6Vfvfok7Kf0EJL8tomA";
+
 // Название листа с играми (точно как в таблице). Указываем по имени,
 // а не по gid, чтобы Sheets API гарантированно читал нужный лист:
 // первым в таблице идёт «Статистика», а не игры.
@@ -41,6 +47,10 @@ export const SHEETS_API_KEY =
 // Прямые URL для обычной загрузки (работают без ключа)
 export const GAMES_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=tsv&gid=${GAMES_GID}`;
 export const COLLECTIONS_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(COLLECTIONS_SHEET_NAME)}`;
+
+// URL для Копии таблицы (через Sheets API для получения ссылок)
+export const COPY_SHEETS_API_VALUES_URL = (range) =>
+  `https://sheets.googleapis.com/v4/spreadsheets/${COPY_SPREADSHEET_ID}/values/${encodeURIComponent(`${GAMES_SHEET_NAME}!${range}`)}?key=${SHEETS_API_KEY}&valueRenderOption=FORMULA`;
 
 // URL для Sheets API (достаём формулы гиперссылок — строго с листа игр)
 export const SHEETS_API_VALUES_URL = (range) =>

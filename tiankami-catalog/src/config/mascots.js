@@ -12,7 +12,7 @@ import heroOriginal from '../assets/hero.png'
 import heroFallback from '../assets/mascot-hero.svg'
 import gamepadFallback from '../assets/mascot-gamepad.svg'
 
-const USE_ORIGINAL = false // ← переключатель разрешения (true = оригиналы Тиана)
+const USE_ORIGINAL = true // ← переключатель разрешения (true = оригиналы Тиана)
 
 export const MASCOTS = {
   // Герой: шапка сайта / пустые состояния
