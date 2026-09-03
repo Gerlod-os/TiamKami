@@ -62,15 +62,22 @@ export function buildColIndex(headerRow, firstDataRow) {
     if (key) idx[key] = i;
   });
 
-  // Название: колонка с пустым заголовком, в которой есть данные
+  // Название: сначала ищем явный заголовок "Название" (из колонки B/C),
+  // потом эвристика — пустой заголовок с данными.
   let titleIdx = -1;
-  for (let i = 0; i < headerRow.length; i++) {
-    const headerEmpty = !headerRow[i] || !headerRow[i].trim();
-    const dataExists =
-      firstDataRow && firstDataRow[i] && firstDataRow[i].trim() !== "";
-    if (headerEmpty && dataExists) {
-      titleIdx = i;
-      break;
+  // 1. Явный заголовок
+  if (idx["Название"] !== undefined) {
+    titleIdx = idx["Название"];
+  } else {
+    // 2. Эвристика: колонка с пустым заголовком, в которой есть данные
+    for (let i = 0; i < headerRow.length; i++) {
+      const headerEmpty = !headerRow[i] || !headerRow[i].trim();
+      const dataExists =
+        firstDataRow && firstDataRow[i] && firstDataRow[i].trim() !== "";
+      if (headerEmpty && dataExists) {
+        titleIdx = i;
+        break;
+      }
     }
   }
   if (titleIdx === -1) titleIdx = 2; // fallback

@@ -16,18 +16,27 @@ import { BRAND } from "../src/config/branding.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, "..", "dist");
 
-const games = JSON.parse(
-  fs.readFileSync(
-    path.join(__dirname, "..", "src", "data", "games.json"),
-    "utf-8",
-  ),
+// Проверка: данные должны быть скачаны через `npm run sync`
+const gamesPath = path.join(__dirname, "..", "src", "data", "games.json");
+const collectionsPath = path.join(
+  __dirname,
+  "..",
+  "src",
+  "data",
+  "collections.json",
 );
-const collections = JSON.parse(
-  fs.readFileSync(
-    path.join(__dirname, "..", "src", "data", "collections.json"),
-    "utf-8",
-  ),
-);
+if (!fs.existsSync(gamesPath) || !fs.existsSync(collectionsPath)) {
+  console.error(
+    "❌ ОШИБКА: Файлы src/data/games.json или collections.json не найдены.",
+  );
+  console.error(
+    "💡 Решение: запустите 'npm run sync' перед сборкой, чтобы скачать данные.",
+  );
+  process.exit(1);
+}
+
+const games = JSON.parse(fs.readFileSync(gamesPath, "utf-8"));
+const collections = JSON.parse(fs.readFileSync(collectionsPath, "utf-8"));
 
 // Базовый шаблон из собранного index.html
 const template = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
@@ -78,9 +87,9 @@ fs.writeFileSync(
   }),
 );
 
-// 4. Страницы игр
-const gamesDir = path.join(distDir, "games");
-fs.mkdirSync(gamesDir, { recursive: true });
+// 4. Страницы игр — в подпапки каталога для совместимости с роутером
+const catalogDir = path.join(distDir, "catalog");
+fs.mkdirSync(catalogDir, { recursive: true });
 
 const usedSlugs = new Set();
 const gamePages = []; // слаги для sitemap
@@ -92,8 +101,12 @@ for (const game of games) {
   gamePages.push(unique);
 
   const desc = (game.notes || game.title).slice(0, 160);
+  // Создаём папку для слага и кладём туда index.html
+  // Чтобы URL /catalog/<slug> отдавал именно этот статический файл
+  const gameDir = path.join(catalogDir, unique);
+  fs.mkdirSync(gameDir, { recursive: true });
   fs.writeFileSync(
-    path.join(gamesDir, `${unique}.html`),
+    path.join(gameDir, "index.html"),
     withMeta({
       title: `${game.title} — ${BRAND.name}`,
       description: `${game.genre || "Рогалик"}. Оценка ${game.rating || "—"}/10. ${desc}`,
@@ -113,7 +126,7 @@ const urls = [
   { loc: `${BRAND.siteUrl}/catalog`, priority: "0.9" },
   { loc: `${BRAND.siteUrl}/collections`, priority: "0.8" },
   ...gamePages.map((s) => ({
-    loc: `${BRAND.siteUrl}/games/${s}.html`,
+    loc: `${BRAND.siteUrl}/catalog/${s}`,
     priority: "0.6",
   })),
 ];

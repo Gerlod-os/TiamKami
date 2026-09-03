@@ -138,10 +138,9 @@ async function fetchHyperlinks() {
     const links = {}; // title -> { youtube, miVideo, steam }
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i] || [];
-      // Ячейки могут быть не строками (числа, bool) — приводим к строке
-      const title = (row.find((c) => String(c ?? "").trim()) || "")
-        .toString()
-        .trim();
+      // Название игры — колонка C (индекс 2). Не используем row.find() —
+      // он может взять значение из другой колонки, если в начале строки есть пустые ячейки.
+      const title = (row[2] || "").toString().trim();
       if (!title) continue;
 
       const entry = {};
@@ -279,6 +278,27 @@ async function revalidateGames(onUpdate) {
     let fresh = normalizeGames(rows);
     if (fresh.length === 0) return;
     fresh = await enrichGamesWithLinks(fresh);
+
+    // ★ Критично: enrichGamesWithLinks() может вернуть fresh без steamAppId,
+    // если Sheets API недоступен (Websites-ограничение ключа).
+    // Восстанавливаем steamAppId + обложки из старой версии.
+    if (memoryGames) {
+      const byTitle = {};
+      memoryGames.forEach((m) => (byTitle[m.title] = m));
+      fresh = fresh.map((g) => {
+        const old = byTitle[g.title];
+        if (old && old.steamAppId && !g.steamAppId) {
+          return {
+            ...g,
+            steamAppId: old.steamAppId,
+            image: old.image,
+            steamUrl: old.steamUrl,
+          };
+        }
+        return g;
+      });
+    }
+
     if (JSON.stringify(fresh) !== JSON.stringify(memoryGames)) {
       memoryGames = fresh;
       safeSet(CACHE_KEY, JSON.stringify(fresh));
