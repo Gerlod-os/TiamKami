@@ -24,6 +24,7 @@ const GameCard = ({ game, onClick }) => {
           onClick();
         }
       }}
+      aria-label={`${game.title}, ${game.genre || "жанр не указан"}, оценка ${game.rating || "неизвестно"} из 10`}
       className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-accent-purple/50 hover:shadow-glow-purple hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer"
     >
       <div className="h-40 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 flex items-center justify-center">
@@ -53,6 +54,8 @@ const GameCard = ({ game, onClick }) => {
           <div
             className="flex items-center gap-1"
             data-tip={`Оценка: ${game.rating || "—"}/10`}
+            aria-label={`Оценка: ${game.rating || "неизвестно"} из 10`}
+            role="img"
           >
             <FaStar className="text-yellow-400" />
             <span className="font-bold text-lg">{game.rating || "—"}</span>
@@ -60,11 +63,19 @@ const GameCard = ({ game, onClick }) => {
           <div
             className="flex items-center gap-1"
             data-tip={`Наиграно часов: ${game.hours || "—"}`}
+            aria-label={`Наиграно часов: ${game.hours || "неизвестно"}`}
+            role="img"
           >
             <FaClock className="text-white/50" />
             <span className="text-sm text-white/70">{game.hours || "—"} ч</span>
           </div>
-          <div data-tip={game.status || "Статус неизвестен"}>{statusIcon}</div>
+          <div 
+            data-tip={game.status || "Статус неизвестен"}
+            aria-label={`Статус: ${game.status || "неизвестен"}`}
+            role="img"
+          >
+            {statusIcon}
+          </div>
         </div>
       </div>
     </div>

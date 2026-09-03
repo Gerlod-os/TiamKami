@@ -9,6 +9,7 @@ import { FaSearch, FaDice } from "react-icons/fa";
 const CatalogPage = () => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [selectedGame, setSelectedGame] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("title");
@@ -33,6 +34,7 @@ const CatalogPage = () => {
       })
       .catch((err) => {
         console.error(err);
+        setError("Не удалось загрузить данные. Проверьте подключение к интернету.");
         setLoading(false);
       });
   }, []);
@@ -179,6 +181,21 @@ const CatalogPage = () => {
 
   if (loading)
     return <div className="text-center py-20">Загрузка данных...</div>;
+
+  if (error) {
+    return (
+      <div className="bg-red-900/20 border border-red-500/30 rounded-xl p-4 text-center">
+        <h2 className="text-lg font-heading text-red-400 mb-2">Ошибка загрузки</h2>
+        <p className="text-white/70 text-sm mb-3">{error}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-accent-pink text-black rounded-xl hover:bg-white transition-colors"
+        >
+          Обновить страницу
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>

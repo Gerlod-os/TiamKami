@@ -137,7 +137,7 @@ export default function TwitchWidget() {
           <p className="font-heading text-white/50">Проверяем канал…</p>
         ) : live ? (
           <>
-            <p className="font-heading text-white truncate" title={title}>
+            <p className="font-heading text-white truncate" title={title} role="text">
               {title || "В эфире!"}
             </p>
             <a
