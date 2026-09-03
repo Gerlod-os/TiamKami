@@ -8,7 +8,8 @@
     "build": "vite build && node scripts/prerender.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
-    "sync": "node scripts/sync-data.js"
+    "sync": "node scripts/sync-data.js",
+    "test": "vitest run"
   },
   "dependencies": {
     "papaparse": "^5.7.0",
@@ -21,10 +22,12 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.1.0",
+    "@vitest/browser": "^4.1.11",
     "autoprefixer": "^10.5.4",
     "oxlint": "^1.79.0",
     "postcss": "^8.5.26",
     "tailwindcss": "^3.4.19",
-    "vite": "^8.2.2"
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11"
   }
 }

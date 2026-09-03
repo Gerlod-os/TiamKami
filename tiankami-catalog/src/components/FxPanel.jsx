@@ -184,6 +184,7 @@ export default function FxPanel() {
         onClick={() => setOpen(!open)}
         aria-label="Секретные настройки"
         data-tip="✨ Секретка"
+        role="button"
         className="w-10 h-10 rounded-full bg-bg-dark/80 border border-white/10 text-white/30 hover:text-accent-pink hover:border-accent-pink/50 transition-all flex items-center justify-center"
       >
         <FaCog />

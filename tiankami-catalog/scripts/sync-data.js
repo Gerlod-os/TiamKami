@@ -21,13 +21,12 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-const { GAMES_SHEET_NAME, GAMES_URL, COLLECTIONS_URL } =
+const { GAMES_SHEET_NAME, GAMES_URL, COLLECTIONS_URL, COPY_SPREADSHEET_ID } =
   await import("../src/config/dataSources.js");
 
 const SERVER_SHEETS_API_KEY = process.env.SHEETS_API_KEY_SERVER || "";
 
 // КОПИЯ таблицы: там Apps Script заполнил Steam/YouTube/МИ ссылки
-const COPY_SPREADSHEET_ID = "1NrxkJzDIC4S7Epv8wo8jDyqF6Vfvfok7Kf0EJL8tomA";
 const COPY_SHEETS_URL = (range) =>
   `https://sheets.googleapis.com/v4/spreadsheets/${COPY_SPREADSHEET_ID}/values/${encodeURIComponent(`${GAMES_SHEET_NAME}!${range}`)}?key=${SERVER_SHEETS_API_KEY}&valueRenderOption=UNFORMATTED_VALUE`;
 
