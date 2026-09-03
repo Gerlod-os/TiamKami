@@ -8,7 +8,7 @@ const genreColors = [
   "bg-blue-300/30 text-blue-200",
 ];
 
-const GameCard = ({ game, onClick }) => {
+const GameCard = ({ game, onClick, onQuickView }) => {
   const [imageError, setImageError] = useState(false);
 
   const handleError = useCallback(() => {
@@ -50,6 +50,22 @@ const GameCard = ({ game, onClick }) => {
 
         {/* Затемнение снизу */}
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+
+        {/* Затемнение с кнопкой быстрого просмотра */}
+        <div
+          className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              if (onQuickView) onQuickView();
+            }}
+            className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-sm font-medium transition transform hover:scale-105"
+          >
+            👁️ Быстрый просмотр
+          </button>
+        </div>
 
         {/* Бейдж рейтинга */}
         <div

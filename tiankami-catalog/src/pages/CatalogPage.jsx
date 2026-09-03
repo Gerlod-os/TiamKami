@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { fetchGames } from "../utils/loadData";
 import { parseRuDate } from "../utils/date";
 import { getGameMetadata } from "../utils/normalize";
@@ -6,11 +7,15 @@ import GameCard from "../components/GameCard";
 import GameModal from "../components/GameModal";
 import { FaDice, FaFilter } from "react-icons/fa";
 
+const ITEMS_PER_PAGE = 24;
+
 const CatalogPage = () => {
+  const navigate = useNavigate();
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedGame, setSelectedGame] = useState(null);
+  const [quickViewGame, setQuickViewGame] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("title");
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
@@ -26,6 +31,35 @@ const CatalogPage = () => {
     years: [],
     hasMI: false,
   });
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const resetPage = () => setCurrentPage(1);
+
+  const setFilterAndResetPage = (updater) => {
+    setFilters((prev) => {
+      const next = typeof updater === "function" ? updater(prev) : updater;
+      resetPage();
+      return next;
+    });
+  };
+
+  const resetFilters = () => {
+    setSearchQuery("");
+    setFilters({
+      genres: [],
+      statuses: [],
+      minRating: "",
+      maxRating: "",
+      minComplexity: "",
+      maxComplexity: "",
+      minHours: "",
+      maxHours: "",
+      years: [],
+      hasMI: false,
+    });
+    setSortBy("title");
+    setCurrentPage(1);
+  };
 
   useEffect(() => {
     fetchGames()
@@ -182,8 +216,14 @@ const CatalogPage = () => {
         break;
     }
 
-    return result;
-  }, [games, searchQuery, filters, sortBy]);
+    const totalPages = Math.max(1, Math.ceil(result.length / ITEMS_PER_PAGE));
+    const paginated = result.slice(
+      (currentPage - 1) * ITEMS_PER_PAGE,
+      currentPage * ITEMS_PER_PAGE,
+    );
+
+    return { games: paginated, totalCount: result.length, totalPages };
+  }, [games, searchQuery, filters, sortBy, currentPage]);
 
   if (loading)
     return <div className="text-center py-20">Загрузка данных...</div>;
@@ -209,14 +249,17 @@ const CatalogPage = () => {
     <div>
       <h1 className="text-3xl mb-6">Каталог рогаликов</h1>
 
-      <div className="bg-white/5 rounded-2xl p-4 mb-6 space-y-4">
+      <div className="bg-white/5 rounded-2xl p-4 mb-6 space-y-3">
         {/* Верхняя строка: поиск + кнопки */}
         <div className="flex flex-wrap gap-2 items-center">
           <input
             type="text"
             placeholder="Поиск..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1);
+            }}
             className="flex-grow min-w-[200px] bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-3 px-4 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition"
           />
 
@@ -237,11 +280,11 @@ const CatalogPage = () => {
 
           <button
             onClick={() => {
-              if (filteredGames.length === 0) return;
+              if (filteredGames.games.length === 0) return;
               const randomIndex = Math.floor(
-                Math.random() * filteredGames.length,
+                Math.random() * filteredGames.games.length,
               );
-              setSelectedGame(filteredGames[randomIndex]);
+              setSelectedGame(filteredGames.games[randomIndex]);
             }}
             className="bg-purple-600 hover:bg-purple-500 text-white px-4 py-3 rounded-xl border border-purple-500 transition-all flex items-center gap-2 whitespace-nowrap text-sm font-medium"
             title="Выбрать случайную игру из отфильтрованных"
@@ -251,6 +294,14 @@ const CatalogPage = () => {
           </button>
         </div>
 
+        {/* Кнопка сброса */}
+        <button
+          onClick={resetFilters}
+          className="w-full mb-4 px-4 py-2 bg-red-900/30 hover:bg-red-900/50 text-red-400 rounded-xl border border-red-800/50 transition"
+        >
+          🗑️ Сбросить все фильтры
+        </button>
+
         {/* Блок фильтров */}
         <div
           id="filters-block"
@@ -258,16 +309,22 @@ const CatalogPage = () => {
             isFiltersVisible ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          {/* Статус */}
-          <div className="mb-4">
-            <p className="text-xs text-white/50 uppercase tracking-wide mb-2">
-              Статус
-            </p>
+          {/* Группа: Основные */}
+          <div className="mb-6">
+            <h3 className="text-sm font-semibold text-white/80 mb-3 flex items-center gap-2">
+              ⚙️ Основные
+            </h3>
+
+            {/* Статус */}
+            <div className="mb-4">
+              <p className="text-xs text-white/50 uppercase tracking-wide mb-2">
+                Статус
+              </p>
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={() =>
-                  setFilters((prev) => ({
+                  setFilterAndResetPage((prev) => ({
                     ...prev,
                     statuses:
                       prev.statuses.length === 4
@@ -288,7 +345,7 @@ const CatalogPage = () => {
                   key={status}
                   type="button"
                   onClick={() =>
-                    setFilters((prev) => ({
+                    setFilterAndResetPage((prev) => ({
                       ...prev,
                       statuses: prev.statuses.includes(status)
                         ? prev.statuses.filter((s) => s !== status)
@@ -305,18 +362,18 @@ const CatalogPage = () => {
                 </button>
               ))}
             </div>
-          </div>
+            </div>
 
-          {/* Жанры */}
-          <div className="mb-4">
-            <p className="text-xs text-white/50 uppercase tracking-wide mb-2">
-              Жанры
-            </p>
+            {/* Жанры */}
+            <div className="mb-4">
+              <p className="text-xs text-white/50 uppercase tracking-wide mb-2">
+                Жанры
+              </p>
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={() =>
-                  setFilters((prev) => ({
+                  setFilterAndResetPage((prev) => ({
                     ...prev,
                     genres:
                       prev.genres.length === allGenres.length
@@ -337,7 +394,7 @@ const CatalogPage = () => {
                   key={genre}
                   type="button"
                   onClick={() =>
-                    setFilters((prev) => ({
+                    setFilterAndResetPage((prev) => ({
                       ...prev,
                       genres: prev.genres.includes(genre)
                         ? prev.genres.filter((g) => g !== genre)
@@ -354,16 +411,26 @@ const CatalogPage = () => {
                 </button>
               ))}
             </div>
+            </div>
           </div>
 
-          {/* Сортировка */}
+          {/* Группа: Дополнительные */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/80 mb-3 flex items-center gap-2">
+              🔧 Дополнительные
+            </h3>
+
+            {/* Сортировка */}
           <div className="mb-4">
             <p className="text-xs text-white/50 uppercase tracking-wide mb-2">
               Сортировка
             </p>
             <select
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
+              onChange={(e) => {
+                setSortBy(e.target.value);
+                setCurrentPage(1);
+              }}
               className="bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2 px-3 focus:outline-none focus:border-purple-500"
             >
               <option value="title">По названию</option>
@@ -388,7 +455,7 @@ const CatalogPage = () => {
                   placeholder="мин"
                   value={filters.minRating}
                   onChange={(e) =>
-                    setFilters((prev) => ({
+                    setFilterAndResetPage((prev) => ({
                       ...prev,
                       minRating: e.target.value,
                     }))
@@ -402,7 +469,7 @@ const CatalogPage = () => {
                   placeholder="макс"
                   value={filters.maxRating}
                   onChange={(e) =>
-                    setFilters((prev) => ({
+                    setFilterAndResetPage((prev) => ({
                       ...prev,
                       maxRating: e.target.value,
                     }))
@@ -424,7 +491,7 @@ const CatalogPage = () => {
                   placeholder="мин"
                   value={filters.minComplexity}
                   onChange={(e) =>
-                    setFilters((prev) => ({
+                    setFilterAndResetPage((prev) => ({
                       ...prev,
                       minComplexity: e.target.value,
                     }))
@@ -438,7 +505,7 @@ const CatalogPage = () => {
                   placeholder="макс"
                   value={filters.maxComplexity}
                   onChange={(e) =>
-                    setFilters((prev) => ({
+                    setFilterAndResetPage((prev) => ({
                       ...prev,
                       maxComplexity: e.target.value,
                     }))
@@ -459,7 +526,7 @@ const CatalogPage = () => {
                   placeholder="мин"
                   value={filters.minHours}
                   onChange={(e) =>
-                    setFilters((prev) => ({
+                    setFilterAndResetPage((prev) => ({
                       ...prev,
                       minHours: e.target.value,
                     }))
@@ -472,7 +539,7 @@ const CatalogPage = () => {
                   placeholder="макс"
                   value={filters.maxHours}
                   onChange={(e) =>
-                    setFilters((prev) => ({
+                    setFilterAndResetPage((prev) => ({
                       ...prev,
                       maxHours: e.target.value,
                     }))
@@ -494,7 +561,7 @@ const CatalogPage = () => {
                     e.target.selectedOptions,
                     (option) => option.value,
                   );
-                  setFilters((prev) => ({ ...prev, years: selected }));
+                  setFilterAndResetPage((prev) => ({ ...prev, years: selected }));
                 }}
                 className="w-full bg-[#111827] border border-gray-700 rounded-lg py-2 px-2 text-xs h-16 focus:outline-none focus:border-purple-500"
               >
@@ -513,7 +580,10 @@ const CatalogPage = () => {
               id="hasMI"
               checked={filters.hasMI}
               onChange={(e) =>
-                setFilters((prev) => ({ ...prev, hasMI: e.target.checked }))
+                setFilterAndResetPage((prev) => ({
+                  ...prev,
+                  hasMI: e.target.checked,
+                }))
               }
               className="accent-purple-500"
             />
@@ -521,29 +591,72 @@ const CatalogPage = () => {
               Только с МИ
             </label>
           </div>
+          </div>
         </div>
       </div>
 
-      <p className="mb-4 text-white/70">Показано игр: {filteredGames.length}</p>
+      <p className="mb-4 text-white/70">Показано игр: {filteredGames.totalCount}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredGames.map((game) => (
+        {filteredGames.games.map((game) => (
           <GameCard
             key={game.slug}
             game={game}
-            onClick={() => setSelectedGame(game)}
+            onQuickView={() => setQuickViewGame(game)}
+            onClick={() => navigate(`/catalog/${game.slug}`)}
           />
         ))}
       </div>
 
-      {filteredGames.length === 0 && (
+      {filteredGames.games.length === 0 && (
         <div className="text-center py-10 text-white/50">
           Ничего не найдено. Попробуйте изменить фильтры.
         </div>
       )}
 
+      {filteredGames.totalPages > 1 && (
+        <div className="flex justify-center items-center gap-2 mt-8 flex-wrap">
+          <button
+            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50"
+          >
+            ← Назад
+          </button>
+          {Array.from(
+            { length: filteredGames.totalPages },
+            (_, i) => i + 1,
+          ).map((p) => (
+            <button
+              key={p}
+              onClick={() => setCurrentPage(p)}
+              className={`px-3 py-1 rounded-lg ${
+                p === currentPage ? "bg-purple-600" : "bg-gray-800"
+              }`}
+            >
+              {p}
+            </button>
+          ))}
+          <button
+            onClick={() =>
+              setCurrentPage((p) =>
+                Math.min(filteredGames.totalPages, p + 1),
+              )
+            }
+            disabled={currentPage === filteredGames.totalPages}
+            className="px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50"
+          >
+            Вперед →
+          </button>
+        </div>
+      )}
+
       {selectedGame && (
         <GameModal game={selectedGame} onClose={() => setSelectedGame(null)} />
+      )}
+
+      {quickViewGame && (
+        <GameModal game={quickViewGame} onClose={() => setQuickViewGame(null)} />
       )}
     </div>
   );
