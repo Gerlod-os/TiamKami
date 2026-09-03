@@ -1,18 +1,14 @@
 import { useState, useCallback } from "react";
-import { FaStar, FaClock } from "react-icons/fa";
+import { FaStar, FaClock, FaSteam } from "react-icons/fa";
 import { isUrl } from "../utils/normalize.js";
 
-// Тематические иконки статусов в духе рогаликов
-const statusIcons = {
-  Пройдено: <span aria-hidden="true">👑</span>,
-  Дропнуто: <span aria-hidden="true">💀</span>,
-  Обзор: <span aria-hidden="true">🔍</span>,
-  "Жду релиза": <span aria-hidden="true">⏳</span>,
-  "В процессе": <span aria-hidden="true">⚔️</span>,
-};
+const genreColors = [
+  "bg-pink-300/30 text-pink-200",
+  "bg-purple-300/30 text-purple-200",
+  "bg-blue-300/30 text-blue-200",
+];
 
 const GameCard = ({ game, onClick }) => {
-  const statusIcon = statusIcons[game.status] || null;
   const [imageError, setImageError] = useState(false);
 
   const handleError = useCallback(() => {
@@ -20,6 +16,8 @@ const GameCard = ({ game, onClick }) => {
   }, []);
 
   const hasValidImage = isUrl(game.image) && !imageError;
+  const genres = (game.genre || "").split(",").map((g) => g.trim()).filter(Boolean);
+  const isPerfectRating = game.rating === 10;
 
   return (
     <div
@@ -33,9 +31,10 @@ const GameCard = ({ game, onClick }) => {
         }
       }}
       aria-label={`${game.title}, ${game.genre || "жанр не указан"}, оценка ${game.rating || "неизвестно"} из 10`}
-      className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-accent-purple/50 hover:shadow-glow-purple hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer"
+      className="group bg-white/5 rounded-2xl overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-white/20"
     >
-      <div className="h-40 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 flex items-center justify-center overflow-hidden aspect-[2/1]">
+      {/* Обложка */}
+      <div className="relative h-52 overflow-hidden bg-gradient-to-br from-white/5 to-white/10">
         {hasValidImage ? (
           <img
             src={game.image}
@@ -44,46 +43,64 @@ const GameCard = ({ game, onClick }) => {
             onError={handleError}
           />
         ) : (
-          <span className="text-4xl" aria-hidden="true">
-            🎮
-          </span>
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-5xl" aria-hidden="true">🎮</span>
+          </div>
         )}
+
+        {/* Затемнение снизу */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+
+        {/* Бейдж рейтинга */}
+        <div
+          className={`absolute top-3 right-3 flex items-center justify-center w-12 h-12 rounded-xl font-heading font-bold text-lg shadow-lg ${
+            isPerfectRating
+              ? "bg-gradient-to-br from-yellow-300 to-amber-500 text-amber-950"
+              : "bg-black/50 backdrop-blur-sm text-white"
+          }`}
+          aria-label={`Рейтинг: ${game.rating || "—"}/10`}
+        >
+          {game.rating || "—"}
+        </div>
       </div>
-      <div className="p-4 flex flex-col flex-grow">
+
+      {/* Контент */}
+      <div className="p-4 flex flex-col gap-3">
+        {/* Название */}
         <h3
-          className="font-heading text-lg text-white truncate"
+          className="font-heading text-lg text-white font-bold truncate"
           title={game.title}
         >
           {game.title}
         </h3>
-        <p className="text-sm text-white/60 mt-1 truncate">
-          {game.genre || "—"}
-        </p>
-        <div className="mt-auto flex items-center justify-between pt-3">
-          <div
-            className="flex items-center gap-1"
-            data-tip={`Оценка: ${game.rating || "—"}/10`}
-            aria-label={`Оценка: ${game.rating || "неизвестно"} из 10`}
-            role="img"
-          >
-            <FaStar className="text-yellow-400" />
-            <span className="font-bold text-lg">{game.rating || "—"}</span>
+
+        {/* Жанры-чипсы */}
+        {genres.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {genres.slice(0, 3).map((genre, index) => (
+              <span
+                key={genre}
+                className={`px-3 py-1 rounded-full text-xs font-medium ${genreColors[index % genreColors.length]}`}
+              >
+                {genre}
+              </span>
+            ))}
           </div>
-          <div
-            className="flex items-center gap-1"
-            data-tip={`Наиграно часов: ${game.hours || "—"}`}
-            aria-label={`Наиграно часов: ${game.hours || "неизвестно"}`}
-            role="img"
-          >
-            <FaClock className="text-white/50" />
-            <span className="text-sm text-white/70">{game.hours || "—"} ч</span>
+        )}
+
+        {/* Steam + часы */}
+        <div className="mt-auto flex items-center gap-3 pt-2 border-t border-white/10">
+          <div className="flex items-center gap-1.5 text-white/60">
+            <FaSteam className="text-lg" />
+            <span className="text-sm">{game.hours || "—"} ч</span>
           </div>
-          <div 
-            data-tip={game.status || "Статус неизвестен"}
-            aria-label={`Статус: ${game.status || "неизвестен"}`}
-            role="img"
-          >
-            {statusIcon}
+          <div className="flex items-center gap-1 ml-auto">
+            <FaStar
+              className={`text-sm ${isPerfectRating ? "text-yellow-400" : "text-yellow-400/50"}`}
+            />
+            <span className="text-sm text-white/60">
+              {game.rating || "—"}
+            </span>
           </div>
         </div>
       </div>
