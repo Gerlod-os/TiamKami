@@ -38,6 +38,30 @@ if (!fs.existsSync(gamesPath) || !fs.existsSync(collectionsPath)) {
 const games = JSON.parse(fs.readFileSync(gamesPath, "utf-8"));
 const collections = JSON.parse(fs.readFileSync(collectionsPath, "utf-8"));
 
+// Генерируем слаги, если их нет (совпадает с ensureSlugs в loadData.js)
+const slugify = (title) =>
+  title
+    .toLowerCase()
+    .replace(/[^\wа-яёА-Я\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+const usedSlugs = new Set();
+const uniqueSlug = (slug, used) => {
+  if (!used.has(slug)) return slug;
+  let i = 2;
+  const base = slug;
+  while (used.has(`${base}-${i}`)) i++;
+  return `${base}-${i}`;
+};
+const gamesWithSlugs = games.map((game) => {
+  if (game.slug) return game;
+  const base = slugify(game.title);
+  const slug = uniqueSlug(base, usedSlugs);
+  usedSlugs.add(slug);
+  return { ...game, slug };
+});
+
 // Базовый шаблон из собранного index.html
 const template = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
 
@@ -94,8 +118,8 @@ const catalogDir = path.join(distDir, "catalog");
 fs.mkdirSync(catalogDir, { recursive: true });
 
 const gamePages = []; // слаги для sitemap
-for (const game of games) {
-  const slug = game.slug || `game-${gamePages.length}`;
+for (const game of gamesWithSlugs) {
+  const slug = game.slug;
   gamePages.push(slug);
 
   const desc = (game.notes || game.title).slice(0, 160);
@@ -114,7 +138,7 @@ for (const game of games) {
   );
 }
 
-console.log(`Пререндер: index + catalog + collections + ${games.length} страниц игр`);
+console.log(`Пререндер: index + catalog + collections + ${gamesWithSlugs.length} страниц игр`);
 
 // 5. sitemap.xml (пререндеренные страницы игр + основные разделы)
 const escXml = (s) =>

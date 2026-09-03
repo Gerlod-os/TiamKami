@@ -24,17 +24,49 @@ import { safeGet, safeSet } from "./storage.js";
 /* ─────────── Обогащение игр из локального JSON ─────────── */
 
 /**
+ * Генерирует уникальные слаги для игр, у которых их нет.
+ * Логика идентична normalizeGames — чтобы слаги совпадали.
+ */
+function ensureSlugs(games) {
+  const slugify = (title) =>
+    title
+      .toLowerCase()
+      .replace(/[^\wа-яёА-Я\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  const usedSlugs = new Set();
+  const uniqueSlug = (slug, used) => {
+    if (!used.has(slug)) return slug;
+    let i = 2;
+    const base = slug;
+    while (used.has(`${base}-${i}`)) i++;
+    return `${base}-${i}`;
+  };
+
+  return games.map((game) => {
+    if (game.slug) return game;
+    const base = slugify(game.title);
+    const slug = uniqueSlug(base, usedSlugs);
+    usedSlugs.add(slug);
+    return { ...game, slug };
+  });
+}
+
+/**
  * Добавляет обложки и Steam-ссылки из steamAppId, уже записанных в games.json.
  */
 function enrichFromLocalJson(games) {
-  return games.map((g) => {
-    if (!g.steamAppId) return g;
-    return {
-      ...g,
-      image: steamHeaderUrl(g.steamAppId),
-      steamUrl: `https://store.steampowered.com/app/${g.steamAppId}/`,
-    };
-  });
+  return ensureSlugs(
+    games.map((g) => {
+      if (!g.steamAppId) return g;
+      return {
+        ...g,
+        image: steamHeaderUrl(g.steamAppId),
+        steamUrl: `https://store.steampowered.com/app/${g.steamAppId}/`,
+      };
+    }),
+  );
 }
 
 /* ─────────── Кэш (ключ привязан к URL: смена таблицы сбрасывает кэш сама) ─────────── */

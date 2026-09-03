@@ -79,13 +79,16 @@ const GamePage = () => {
   const [cardImageError, setCardImageError] = useState(false);
 
   useEffect(() => {
+    console.log('[GamePage] Загрузка игр...');
     fetchGames()
       .then((data) => {
+        console.log('[GamePage] Загружено игр:', data.length);
+        console.log('[GamePage] Первые 3 слага:', data.slice(0, 3).map((g) => g.slug));
         setGames(data);
         setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        console.error('[GamePage] Ошибка загрузки:', err);
         setLoading(false);
       });
   }, []);
@@ -93,14 +96,11 @@ const GamePage = () => {
   // Находим игру по слагу (мемоизируем)
   // Слоги теперь хранятся в данных (normalizeGames), slugify не нужен
   const game = useMemo(() => {
-    console.log("[GamePage] slug из параметров:", slug);
-    const found = games.find((g) => g.slug === slug) || null;
-    if (found) {
-      console.log("[GamePage] найдена игра:", found.title);
-    } else {
-      console.log("[GamePage] игра не найдена для slug:", slug);
-    }
-    return found;
+    console.log('[GamePage] Поиск игры по slug:', slug);
+    console.log('[GamePage] Все доступные слаги:', games.map((g) => g.slug).slice(0, 5));
+    const found = games.find((g) => g.slug === slug);
+    console.log('[GamePage] Найдено:', found ? found.title : 'НЕ НАЙДЕНО');
+    return found || null;
   }, [games, slug]);
 
   // Мета-теги для соцсетей
@@ -153,6 +153,7 @@ const GamePage = () => {
     return (
       <div className="text-center py-20">
         <h1 className="text-2xl mb-4">Игра не найдена</h1>
+        <p className="text-white/60 mb-4">Проверьте слаг: {slug}</p>
         <Link to="/catalog" className="text-accent-pink hover:text-white">
           Вернуться в каталог
         </Link>
