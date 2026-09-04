@@ -50,7 +50,8 @@ export const SHEETS_API_KEY =
 // Прямые URL для обычной загрузки (работают без ключа)
 export const GAMES_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=tsv&gid=${GAMES_GID}`;
 export const COLLECTIONS_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(COLLECTIONS_SHEET_NAME)}`;
-export const SCHEDULE_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SCHEDULE_SHEET_NAME)}`;
+// Расписание в КОПИИ таблицы
+export const SCHEDULE_URL = `https://docs.google.com/spreadsheets/d/${COPY_SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SCHEDULE_SHEET_NAME)}`;
 
 // URL для Копии таблицы (через Sheets API для получения ссылок)
 export const COPY_SHEETS_API_VALUES_URL = (range) =>

@@ -401,12 +401,19 @@ async function revalidateSchedule(onUpdate) {
     const rows = parsed.data;
     const schedule = rows
       .filter((r) => r.date && r.game)
-      .map((r) => ({
-        date: r.date.trim(),
-        time: (r.time || "").trim(),
-        game: r.game.trim(),
-        streamLink: (r.streamLink || "").trim(),
-      }))
+      .map((r) => {
+        // Конвертируем YYYY-MM-DD → DD.MM.YYYY
+        const date = (r.date || "").trim();
+        const ruDate = date.match(/^\d{4}-\d{2}-\d{2}$/)
+          ? (() => { const [y, m, d] = date.split("-"); return `${d}.${m}.${y}`; })()
+          : date;
+        return {
+          date: ruDate,
+          time: (r.time || "").trim(),
+          game: r.game.trim(),
+          streamLink: (r.streamLink || "").trim(),
+        };
+      })
       .sort((a, b) => {
         const da = parseRuDate(a.date);
         const db = parseRuDate(b.date);

@@ -49,15 +49,32 @@ const SchedulePage = () => {
 
   const now = useMemo(() => new Date(), []);
 
+  /** Парсит время HH:MM в Date (сегодня + время) */
+  const parseTime = (timeStr, baseDate) => {
+    if (!timeStr) return baseDate;
+    const parts = timeStr.split(":");
+    if (parts.length !== 2) return baseDate;
+    return new Date(
+      baseDate.getFullYear(),
+      baseDate.getMonth(),
+      baseDate.getDate(),
+      parseInt(parts[0]),
+      parseInt(parts[1]),
+    );
+  };
+
   const { upcoming, past } = useMemo(() => {
     const upcoming = [];
     const past = [];
     schedule.forEach((item) => {
       const date = parseRuDate(item.date);
-      if (date && date >= now) {
-        upcoming.push({ ...item, parsedDate: date });
-      } else if (date) {
-        past.push({ ...item, parsedDate: date });
+      if (!date) return;
+      // Сравниваем дату + время
+      const dateTime = parseTime(item.time, date);
+      if (dateTime >= now) {
+        upcoming.push({ ...item, parsedDate: dateTime });
+      } else {
+        past.push({ ...item, parsedDate: dateTime });
       }
     });
     // Сортируем: ближайшие первыми

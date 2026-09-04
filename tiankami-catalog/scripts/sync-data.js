@@ -195,4 +195,4 @@ function parseDateRu(dateStr) {
   return new Date(9999, 0);
 }
 
-sync();
+sync().catch(console.error);
