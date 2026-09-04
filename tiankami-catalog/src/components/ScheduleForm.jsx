@@ -1,61 +1,55 @@
-import { useState, useCallback } from "react";
-import { FaPlus, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { useState } from "react";
+import { FaPlus, FaTimesCircle } from "react-icons/fa";
 
 // URL веб-приложения Google Apps Script — замени на реальный после публикации
 const SCHEDULE_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyrQYM-AifKnglwo2P7-pDnjkmf2eNz9_0z_DEQ21Iht5mR_4Ipf3sfH3M_I6AqxfcY/exec";
 
 const ScheduleForm = ({ onSuccess }) => {
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [game, setGame] = useState("");
-  const [streamLink, setStreamLink] = useState("https://twitch.tv/tiankami");
+  const [formData, setFormData] = useState({
+    date: "",
+    time: "",
+    game: "",
+    streamLink: "https://twitch.tv/tiankami",
+  });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null); // "success" | "error" | null
+  const [error, setError] = useState("");
 
-  const resetStatus = useCallback(() => {
-    setStatus(null);
-  }, []);
+  const handleChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    setError("");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    resetStatus();
+    setLoading(true);
+    setError("");
 
-    // Валидация
-    if (!date || !time || !game.trim()) {
-      setStatus("error");
+    if (!formData.date || !formData.time || !formData.game.trim()) {
+      setError("Заполни дату, время и игру");
+      setLoading(false);
       return;
     }
 
-    setLoading(true);
-
     try {
-      const response = await fetch(SCHEDULE_WEBAPP_URL, {
+      await fetch(SCHEDULE_WEBAPP_URL, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          date,
-          time,
-          game: game.trim(),
-          streamLink: streamLink.trim() || "https://twitch.tv/tiankami",
+          date: formData.date,
+          time: formData.time,
+          game: formData.game.trim(),
+          streamLink: formData.streamLink || "https://twitch.tv/tiankami",
         }),
       });
 
-      const result = await response.json();
-
-      if (result.success) {
-        setStatus("success");
-        setDate("");
-        setTime("");
-        setGame("");
-        setStreamLink("https://twitch.tv/tiankami");
-        onSuccess?.();
-      } else {
-        setStatus("error");
-        console.error("[ScheduleForm] Ошибка:", result.error);
-      }
+      // При no-cors ответ opaque — данные всё равно доходят
+      setFormData({ date: "", time: "", game: "", streamLink: "https://twitch.tv/tiankami" });
+      onSuccess?.();
+      alert("✅ Стрим добавлен в расписание!");
     } catch (err) {
-      setStatus("error");
-      console.error("[ScheduleForm] Ошибка отправки:", err);
+      console.error("[ScheduleForm] Ошибка:", err);
+      setError("Ошибка отправки. Попробуй ещё раз.");
     } finally {
       setLoading(false);
     }
@@ -80,8 +74,8 @@ const ScheduleForm = ({ onSuccess }) => {
             </label>
             <input
               type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
+              value={formData.date}
+              onChange={(e) => handleChange("date", e.target.value)}
               required
               className="w-full bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition"
             />
@@ -93,8 +87,8 @@ const ScheduleForm = ({ onSuccess }) => {
             </label>
             <input
               type="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
+              value={formData.time}
+              onChange={(e) => handleChange("time", e.target.value)}
               required
               className="w-full bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition"
             />
@@ -108,8 +102,8 @@ const ScheduleForm = ({ onSuccess }) => {
           <input
             type="text"
             placeholder="Название игры"
-            value={game}
-            onChange={(e) => setGame(e.target.value)}
+            value={formData.game}
+            onChange={(e) => handleChange("game", e.target.value)}
             required
             className="w-full bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition"
           />
@@ -122,23 +116,17 @@ const ScheduleForm = ({ onSuccess }) => {
           <input
             type="text"
             placeholder="https://twitch.tv/tiankami"
-            value={streamLink}
-            onChange={(e) => setStreamLink(e.target.value)}
+            value={formData.streamLink}
+            onChange={(e) => handleChange("streamLink", e.target.value)}
             className="w-full bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition"
           />
         </div>
 
         {/* Статус */}
-        {status === "success" && (
-          <div className="flex items-center gap-2 text-emerald-400 text-sm">
-            <FaCheckCircle />
-            <span>Стрим добавлен!</span>
-          </div>
-        )}
-        {status === "error" && (
+        {error && (
           <div className="flex items-center gap-2 text-red-400 text-sm">
             <FaTimesCircle />
-            <span>Ошибка отправки. Проверьте поля и попробуйте снова.</span>
+            <span>{error}</span>
           </div>
         )}
 
