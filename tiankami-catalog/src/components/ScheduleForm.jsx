@@ -2,7 +2,8 @@ import { useState } from "react";
 import { FaPlus, FaTimesCircle } from "react-icons/fa";
 
 // URL веб-приложения Google Apps Script — замени на реальный после публикации
-const SCHEDULE_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyrQYM-AifKnglwo2P7-pDnjkmf2eNz9_0z_DEQ21Iht5mR_4Ipf3sfH3M_I6AqxfcY/exec";
+// URL прокси-сервера на Vercel (пересылает запрос в Google Apps Script)
+const SCHEDULE_API_URL = "/api/schedule";
 
 const ScheduleForm = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
@@ -31,9 +32,8 @@ const ScheduleForm = ({ onSuccess }) => {
     }
 
     try {
-      await fetch(SCHEDULE_WEBAPP_URL, {
+      const response = await fetch(SCHEDULE_API_URL, {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           date: formData.date,
@@ -43,10 +43,15 @@ const ScheduleForm = ({ onSuccess }) => {
         }),
       });
 
-      // При no-cors ответ opaque — данные всё равно доходят
-      setFormData({ date: "", time: "", game: "", streamLink: "https://twitch.tv/tiankami" });
-      onSuccess?.();
-      alert("✅ Стрим добавлен в расписание!");
+      const result = await response.json();
+
+      if (result.success) {
+        setFormData({ date: "", time: "", game: "", streamLink: "https://twitch.tv/tiankami" });
+        onSuccess?.();
+        alert("✅ Стрим добавлен в расписание!");
+      } else {
+        setError(result.error || "Ошибка отправки. Попробуй ещё раз.");
+      }
     } catch (err) {
       console.error("[ScheduleForm] Ошибка:", err);
       setError("Ошибка отправки. Попробуй ещё раз.");
