@@ -5,6 +5,7 @@ import { parseRuDate } from "../utils/date";
 import { getGameMetadata, getAllSettings, getAllFeatures } from "../utils/normalize";
 import GameCard from "../components/GameCard";
 import GameModal from "../components/GameModal";
+import { trackEvent } from "../components/YandexMetrika";
 import { FaDice, FaFilter, FaTrash, FaCogs, FaWrench, FaGlobe, FaGem } from "react-icons/fa";
 
 const ITEMS_PER_PAGE = 24;
@@ -340,7 +341,9 @@ const CatalogPage = () => {
               const randomIndex = Math.floor(
                 Math.random() * filteredGames.games.length,
               );
-              setSelectedGame(filteredGames.games[randomIndex]);
+              const randomGame = filteredGames.games[randomIndex];
+              trackEvent("Случайная игра", { title: randomGame.title });
+              setSelectedGame(randomGame);
             }}
             className="flex-1 sm:flex-none bg-purple-600 hover:bg-purple-500 text-white px-4 py-3 rounded-xl border border-purple-500 transition-all flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium"
             title="Выбрать случайную игру из отфильтрованных"
@@ -802,7 +805,10 @@ const CatalogPage = () => {
       {filteredGames.totalPages > 1 && (
         <div className="flex justify-center items-center gap-1.5 sm:gap-2 mt-8 flex-wrap">
           <button
-            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+            onClick={() => {
+              trackEvent("Пагинация", { page: currentPage - 1, action: "prev" });
+              setCurrentPage((p) => Math.max(1, p - 1));
+            }}
             disabled={currentPage === 1}
             className="px-3 sm:px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50 text-xs sm:text-sm"
           >
@@ -815,7 +821,10 @@ const CatalogPage = () => {
           ).map((p) => (
             <button
               key={p}
-              onClick={() => setCurrentPage(p)}
+              onClick={() => {
+                trackEvent("Пагинация", { page: p, action: "click" });
+                setCurrentPage(p);
+              }}
               className={`px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm ${
                 p === currentPage ? "bg-purple-600" : "bg-gray-800"
               }`}
@@ -825,11 +834,12 @@ const CatalogPage = () => {
           ))}
           </div>
           <button
-            onClick={() =>
+            onClick={() => {
+              trackEvent("Пагинация", { page: currentPage + 1, action: "next" });
               setCurrentPage((p) =>
                 Math.min(filteredGames.totalPages, p + 1),
-              )
-            }
+              );
+            }}
             disabled={currentPage === filteredGames.totalPages}
             className="px-3 sm:px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50 text-xs sm:text-sm"
           >

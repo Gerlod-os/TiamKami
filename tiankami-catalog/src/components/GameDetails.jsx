@@ -1,5 +1,6 @@
 import { FaClock, FaCalendarAlt, FaYoutube, FaGamepad, FaSteam, FaVideo, FaInfoCircle, FaCommentDots, FaStar } from "react-icons/fa";
 import { isUrl } from "../utils/normalize.js";
+import { trackEvent } from "./YandexMetrika";
 
 // Тематические иконки статусов (единый справочник с GameCard)
 const statusIcons = {
@@ -150,6 +151,7 @@ const GameDetails = ({ game }) => {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2.5 bg-red-600/80 hover:bg-red-600 text-white rounded-xl font-medium text-sm transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/40 hover:-translate-y-0.5"
+            onClick={() => trackEvent("Клик YouTube", { title: game.title })}
           >
             <FaYoutube size={16} />
             YouTube прохождение
@@ -162,6 +164,7 @@ const GameDetails = ({ game }) => {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2.5 bg-[#1b2838]/80 hover:bg-[#1b2838] text-white rounded-xl font-medium text-sm transition-all shadow-lg shadow-black/30 hover:shadow-black/50 hover:-translate-y-0.5 border border-white/10"
+            onClick={() => trackEvent("Клик Steam", { title: game.title })}
           >
             <FaSteam size={16} />
             Steam
@@ -176,6 +179,7 @@ const GameDetails = ({ game }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 bg-purple-600/80 hover:bg-purple-600 text-white rounded-xl font-medium text-sm transition-all shadow-lg shadow-purple-600/20 hover:shadow-purple-600/40 hover:-translate-y-0.5"
+              onClick={() => trackEvent("Клик МИ", { title: game.title })}
             >
               <FaVideo size={16} />
               Смотреть выпуск МИ

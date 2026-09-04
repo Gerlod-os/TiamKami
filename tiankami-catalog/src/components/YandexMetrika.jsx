@@ -7,6 +7,22 @@ import { useLocation } from "react-router-dom";
  * ID метрики: 112105255
  */
 
+/**
+ * Отправляет событие в Яндекс.Метрику.
+ * @param {string} eventName — название события
+ * @param {object} [params={}] — параметры события
+ */
+export function trackEvent(eventName, params = {}) {
+  if (typeof window.yaCounter112105255 === "undefined") {
+    console.warn("[Metrika] Счётчик ещё не загружен:", eventName);
+    return;
+  }
+  window.yaCounter112105255.push(function () {
+    yaCounter112105255.hit(eventName, params);
+  });
+  console.log("[Metrika] Event:", eventName, params);
+}
+
 export default function YandexMetrika() {
   const location = useLocation();
 

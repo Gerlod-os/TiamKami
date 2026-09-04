@@ -1,6 +1,7 @@
 import { useState, useCallback, memo } from "react";
 import { FaStar, FaSteam } from "react-icons/fa";
 import { isUrl } from "../utils/normalize.js";
+import { trackEvent } from "./YandexMetrika";
 
 const genreColors = [
   "bg-pink-400/25 text-pink-200 border border-pink-400/20",
@@ -11,6 +12,16 @@ const genreColors = [
 
 function GameCardInner({ game, onClick, onQuickView }) {
   const [imageError, setImageError] = useState(false);
+
+  const handleClick = useCallback(() => {
+    trackEvent("Просмотр игры", { title: game.title });
+    onClick();
+  }, [game.title, onClick]);
+
+  const handleQuickView = useCallback(() => {
+    trackEvent("Быстрый просмотр", { title: game.title });
+    if (onQuickView) onQuickView();
+  }, [game.title, onQuickView]);
 
   const handleError = useCallback(() => {
     setImageError(true);
@@ -24,11 +35,11 @@ function GameCardInner({ game, onClick, onQuickView }) {
     <div
       role="button"
       tabIndex={0}
-      onClick={onClick}
+      onClick={handleClick}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          onClick();
+          handleClick();
         }
       }}
       aria-label={`${game.title}, ${game.genre || "жанр не указан"}, оценка ${game.rating || "неизвестно"} из 10`}
@@ -73,7 +84,7 @@ function GameCardInner({ game, onClick, onQuickView }) {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              if (onQuickView) onQuickView();
+              handleQuickView();
             }}
             className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-sm font-medium transition transform hover:scale-105 pointer-events-auto"
           >

@@ -1,11 +1,14 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { trackEvent } from "./YandexMetrika";
 import GameDetails from "./GameDetails";
 
 const GameModal = ({ game, onClose }) => {
   const modalRef = useRef(null);
 
   useEffect(() => {
+    trackEvent("Открытие модалки игры", { title: game.title });
+
     const handleEscape = (e) => {
       if (e.key === "Escape") onClose();
     };
@@ -15,7 +18,7 @@ const GameModal = ({ game, onClose }) => {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "";
     };
-  }, [onClose]);
+  }, [game.title, onClose]);
 
   return (
     <div
