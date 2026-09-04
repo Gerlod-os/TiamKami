@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/prerender.mjs",
+    "prebuild": "npm run sync",
     "lint": "oxlint",
     "preview": "vite preview",
     "sync": "node scripts/sync-data.js",

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { FaPlus, FaTimesCircle } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { FaPlus, FaTimesCircle, FaCheckCircle } from "react-icons/fa";
 
 // URL веб-приложения Google Apps Script — замени на реальный после публикации
 // URL прокси-сервера на Vercel (пересылает запрос в Google Apps Script)
@@ -14,6 +14,14 @@ const ScheduleForm = ({ onSuccess }) => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => setSuccess(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
 
   const handleChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -54,8 +62,8 @@ const ScheduleForm = ({ onSuccess }) => {
 
       if (result.success) {
         setFormData({ date: "", time: "", game: "", streamLink: "https://twitch.tv/tiankami" });
+        setSuccess(true);
         onSuccess?.();
-        alert("✅ Стрим добавлен в расписание!");
       } else {
         setError(result.error || "Ошибка отправки. Попробуй ещё раз.");
       }
@@ -135,6 +143,12 @@ const ScheduleForm = ({ onSuccess }) => {
         </div>
 
         {/* Статус */}
+        {success && (
+          <div className="flex items-center gap-2 text-emerald-400 text-sm animate-pulse">
+            <FaCheckCircle />
+            <span>Стрим добавлен!</span>
+          </div>
+        )}
         {error && (
           <div className="flex items-center gap-2 text-red-400 text-sm">
             <FaTimesCircle />
