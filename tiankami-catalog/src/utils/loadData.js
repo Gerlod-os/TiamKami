@@ -2,6 +2,7 @@ import Papa from "papaparse";
 import {
   GAMES_URL,
   COLLECTIONS_URL,
+  SCHEDULE_URL,
   SHEETS_API_KEY,
   SHEETS_API_VALUES_URL,
   COPY_SPREADSHEET_ID,
@@ -10,6 +11,7 @@ import {
 } from "../config/dataSources.js";
 import localGames from "../data/games.json";
 import localCollections from "../data/collections.json";
+import localSchedule from "../data/schedule.json";
 import {
   normalizeGames,
   normalizeCollections,
@@ -21,6 +23,7 @@ import {
 } from "./normalize.js";
 import { safeGet, safeSet } from "./storage.js";
 import { slugify, uniqueSlug } from "./slugify.js";
+import { parseRuDate } from "./date.js";
 
 /* ─────────── Обогащение игр из локального JSON ─────────── */
 
@@ -60,6 +63,8 @@ const CACHE_KEY = `tiankami_games_v4_${hashUrl(GAMES_URL)}`;
 const CACHE_TIME_KEY = `${CACHE_KEY}_time`;
 const COLLECTIONS_CACHE_KEY = `tiankami_collections_v4_${hashUrl(COLLECTIONS_URL)}`;
 const COLLECTIONS_CACHE_TIME_KEY = `${COLLECTIONS_CACHE_KEY}_time`;
+const SCHEDULE_CACHE_KEY = `tiankami_schedule_v4_${hashUrl(SCHEDULE_URL)}`;
+const SCHEDULE_CACHE_TIME_KEY = `${SCHEDULE_CACHE_KEY}_time`;
 const CACHE_DURATION = 6 * 60 * 60 * 1000; // TTL кэша: 6 часов
 const REVALIDATE_INTERVAL = 15 * 60 * 1000; // сверка с таблицей не чаще раза в 15 минут
 
@@ -69,10 +74,12 @@ const REVALIDATE_INTERVAL = 15 * 60 * 1000; // сверка с таблицей 
 
 let memoryGames = null;
 let memoryCollections = null;
+let memorySchedule = null;
 let lastGamesCheck = 0;
 let lastCollectionsCheck = 0;
 let gamesRevalidating = false;
 let collectionsRevalidating = false;
+let scheduleRevalidating = false;
 
 /* ─────────── Валидация кэша ─────────── */
 
@@ -86,6 +93,15 @@ function isValidGamesCache(jsonStr) {
 }
 
 function isValidCollectionsCache(jsonStr) {
+  try {
+    const parsed = JSON.parse(jsonStr);
+    return Array.isArray(parsed) && parsed.length > 0;
+  } catch {
+    return false;
+  }
+}
+
+function isValidScheduleCache(jsonStr) {
   try {
     const parsed = JSON.parse(jsonStr);
     return Array.isArray(parsed) && parsed.length > 0;
@@ -360,6 +376,59 @@ async function revalidateCollections(onUpdate) {
   }
 }
 
+/** Расписание стримов — CSV из Google Sheets. */
+export async function fetchSchedule({ onUpdate } = {}) {
+  if (!memorySchedule) {
+    memorySchedule =
+      tryLoadCache(
+        SCHEDULE_CACHE_KEY,
+        SCHEDULE_CACHE_TIME_KEY,
+        isValidScheduleCache,
+      ) || localSchedule;
+  }
+  revalidateSchedule(onUpdate);
+  return memorySchedule;
+}
+
+async function revalidateSchedule(onUpdate) {
+  if (scheduleRevalidating) return;
+  if (Date.now() - lastCollectionsCheck < REVALIDATE_INTERVAL) return;
+  scheduleRevalidating = true;
+  lastCollectionsCheck = Date.now();
+  try {
+    const text = await (await fetch(SCHEDULE_URL)).text();
+    const parsed = Papa.parse(text, { header: true, skipEmptyLines: true });
+    const rows = parsed.data;
+    const schedule = rows
+      .filter((r) => r.date && r.game)
+      .map((r) => ({
+        date: r.date.trim(),
+        time: (r.time || "").trim(),
+        game: r.game.trim(),
+        streamLink: (r.streamLink || "").trim(),
+      }))
+      .sort((a, b) => {
+        const da = parseRuDate(a.date);
+        const db = parseRuDate(b.date);
+        return (da || new Date(9999, 0)).getTime() - (db || new Date(9999, 0)).getTime();
+      });
+    if (schedule.length === 0) return;
+    if (JSON.stringify(schedule) !== JSON.stringify(memorySchedule)) {
+      memorySchedule = schedule;
+      safeSet(SCHEDULE_CACHE_KEY, JSON.stringify(schedule));
+      safeSet(SCHEDULE_CACHE_TIME_KEY, String(Date.now()));
+      onUpdate?.(schedule);
+    }
+  } catch (error) {
+    console.warn(
+      "Фоновая сверка расписания не удалась, показываю локальные данные.",
+      error,
+    );
+  } finally {
+    scheduleRevalidating = false;
+  }
+}
+
 function tryLoadCache(cacheKey, timeKey, validator) {
   const cached = safeGet(cacheKey);
   const cachedTime = safeGet(timeKey);
@@ -381,9 +450,12 @@ export function clearCache() {
     localStorage.removeItem(CACHE_TIME_KEY);
     localStorage.removeItem(COLLECTIONS_CACHE_KEY);
     localStorage.removeItem(COLLECTIONS_CACHE_TIME_KEY);
+    localStorage.removeItem(SCHEDULE_CACHE_KEY);
+    localStorage.removeItem(SCHEDULE_CACHE_TIME_KEY);
   } catch {}
   memoryGames = null;
   memoryCollections = null;
+  memorySchedule = null;
   lastGamesCheck = 0;
   lastCollectionsCheck = 0;
 }

@@ -28,6 +28,9 @@ export const GAMES_GID = "0";
 // Имя листа с подборками (точно как в таблице)
 export const COLLECTIONS_SHEET_NAME = "Подборки от Тиана";
 
+// Имя листа с расписанием (точно как в таблице)
+export const SCHEDULE_SHEET_NAME = "Расписание";
+
 /**
  * Google Sheets API ключ (опционально).
  * Нужен ТОЛЬКО для вытаскивания гиперссылок (YouTube-плейлисты, выпуски МИ,
@@ -47,6 +50,7 @@ export const SHEETS_API_KEY =
 // Прямые URL для обычной загрузки (работают без ключа)
 export const GAMES_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=tsv&gid=${GAMES_GID}`;
 export const COLLECTIONS_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(COLLECTIONS_SHEET_NAME)}`;
+export const SCHEDULE_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SCHEDULE_SHEET_NAME)}`;
 
 // URL для Копии таблицы (через Sheets API для получения ссылок)
 export const COPY_SHEETS_API_VALUES_URL = (range) =>

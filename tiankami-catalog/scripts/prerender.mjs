@@ -113,6 +113,16 @@ fs.writeFileSync(
   }),
 );
 
+// 4. Расписание
+fs.writeFileSync(
+  path.join(distDir, "schedule.html"),
+  withMeta({
+    title: `Расписание стримов — ${BRAND.name}`,
+    description: `Расписание стримов Tiankami — когда и во что стримит.`,
+    canonical: `${BRAND.siteUrl}/schedule`,
+  }),
+);
+
 // 4. Страницы игр — в подпапки каталога для совместимости с роутером
 const catalogDir = path.join(distDir, "catalog");
 fs.mkdirSync(catalogDir, { recursive: true });
@@ -175,6 +185,7 @@ const urls = [
   { loc: `${BRAND.siteUrl}/`, priority: "1.0" },
   { loc: `${BRAND.siteUrl}/catalog`, priority: "0.9" },
   { loc: `${BRAND.siteUrl}/collections`, priority: "0.8" },
+  { loc: `${BRAND.siteUrl}/schedule`, priority: "0.7" },
   ...gamePages.map((s) => ({
     loc: `${BRAND.siteUrl}/catalog/${s}`,
     priority: "0.6",

@@ -1,0 +1,286 @@
+/**
+ * Google Apps Script — автообновление расписания стримов из Twitch API.
+ *
+ * Установка:
+ *   1. Открой Google Таблицу tiankami-catalog
+ *   2. Меню → Расширения → Apps Script
+ *   3. Вставь этот код в файл Code.gs
+ *   4. Нажми ▶️ (выполнить) → дай разрешения
+ *   5. Вызови updateSchedule() вручную для проверки
+ *   6. Вызови installTrigger() для автозапуска раз в день
+ *
+ * Переменные задаются в Properties скрипта:
+ *   Меню → Параметры проекта → Свойства проекта → Свойства скрипта
+ *   Добавь: TWITCH_CLIENT_ID, TWITCH_ACCESS_TOKEN, TWITCH_BROADCASTER_ID
+ */
+
+// ═══════════════════════════════════════════════════════════
+// КОНФИГУРАЦИЯ (заполняется в Properties скрипта)
+// ═══════════════════════════════════════════════════════════
+
+const SCHEDULE_SHEET_NAME = "Расписание";
+const REFRESH_INTERVAL_HOURS = 6; // не чаще раза в 6 часов (лимит Twitch)
+
+// ═══════════════════════════════════════════════════════════
+// ОСНОВНАЯ ФУНКЦИЯ ОБНОВЛЕНИЯ
+// ═══════════════════════════════════════════════════════════
+
+/**
+ * Обновляет лист «Расписание» данными из Twitch API.
+ * Вызывается вручную или по триггеру.
+ */
+function updateSchedule() {
+  const props = PropertiesService.getScriptProperties();
+  const clientId = props.getProperty("TWITCH_CLIENT_ID");
+  const accessToken = props.getProperty("TWITCH_ACCESS_TOKEN");
+  const broadcasterId = props.getProperty("TWITCH_BROADCASTER_ID");
+
+  // Проверяем конфигурацию
+  if (!clientId || !accessToken || !broadcasterId) {
+    Logger.log("❌ ОШИБКА: Не все переменные настроены в Properties.");
+    Logger.log("Нужны: TWITCH_CLIENT_ID, TWITCH_ACCESS_TOKEN, TWITCH_BROADCASTER_ID");
+    return;
+  }
+
+  // Проверяем, не слишком ли давно было обновление
+  const lastUpdate = props.getProperty("LAST_UPDATE");
+  if (lastUpdate) {
+    const lastTime = parseInt(lastUpdate);
+    const now = Date.now();
+    const hoursSince = (now - lastTime) / (1000 * 60 * 60);
+    if (hoursSince < REFRESH_INTERVAL_HOURS) {
+      Logger.log(`⏸ Пропуск: последнее обновление ${hoursSince.toFixed(1)} ч назад (минимум ${REFRESH_INTERVAL_HOURS} ч)`);
+      return;
+    }
+  }
+
+  try {
+    Logger.log("📡 Запрос расписания из Twitch API...");
+
+    // Получаем расписание (на 7 дней вперёд)
+    const url = `https://api.twitch.tv/helix/schedule?broadcaster_id=${broadcasterId}&first=25`;
+    const response = UrlFetchApp.fetch(url, {
+      method: "GET",
+      headers: {
+        "Client-Id": clientId,
+        "Authorization": `Bearer ${accessToken}`,
+      },
+      muteHttpExceptions: true,
+    });
+
+    const statusCode = response.getResponseCode();
+    if (statusCode === 429) {
+      Logger.log("⏸ Лимит запросов Twitch исчерпан. Попробуйте позже.");
+      return;
+    }
+    if (statusCode !== 200) {
+      Logger.log(`❌ Ошибка Twitch API: ${statusCode} — ${response.getContentText()}`);
+      return;
+    }
+
+    const data = JSON.parse(response.getContentText());
+    const events = data.data || [];
+
+    if (events.length === 0) {
+      Logger.log("ℹ️ Расписание пусто.");
+      clearScheduleSheet();
+      return;
+    }
+
+    Logger.log(`✅ Получено ${events.length} стримов.`);
+
+    // Парсим и записываем данные
+    const rows = [];
+    events.forEach((event) => {
+      const startDate = new Date(event.start_time);
+      const dateRu = formatDateRu(startDate);
+      const timeRu = formatTimeRu(startDate);
+      const game = event.category?.name || "Не указано";
+      const streamLink = `https://twitch.tv/${broadcasterId.toLowerCase()}`;
+
+      rows.push([dateRu, timeRu, game, streamLink]);
+    });
+
+    // Сортируем по дате
+    rows.sort((a, b) => {
+      const da = parseDateRu(a[0]);
+      const db = parseDateRu(b[0]);
+      return da - db;
+    });
+
+    // Записываем в таблицу
+    writeSchedule(rows);
+
+    // Обновляем timestamp
+    props.setProperty("LAST_UPDATE", String(Date.now()));
+    Logger.log("✅ Расписание обновлено.");
+
+  } catch (error) {
+    Logger.log(`❌ Ошибка: ${error.message}`);
+    // Не меняем таблицу при ошибке — старые данные остаются
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+// ═══════════════════════════════════════════════════════════
+
+/**
+ * Форматирует дату в формат DD.MM.YYYY (например: 05.09.2026).
+ */
+function formatDateRu(date) {
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}.${month}.${year}`;
+}
+
+/**
+ * Форматирует время в формат HH:MM.
+ */
+function formatTimeRu(date) {
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  return `${hours}:${minutes}`;
+}
+
+/**
+ * Парсит дату DD.MM.YYYY обратно в Date (для сортировки).
+ */
+function parseDateRu(dateStr) {
+  if (!dateStr || typeof dateStr !== "string") return new Date(9999, 0);
+  const parts = dateStr.split(".");
+  if (parts.length !== 3) return new Date(9999, 0);
+  return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+}
+
+/**
+ * Записывает расписание в лист «Расписание».
+ * Создаёт лист, если не существует.
+ */
+function writeSchedule(rows) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(SCHEDULE_SHEET_NAME);
+
+  if (!sheet) {
+    sheet = ss.insertSheet(SCHEDULE_SHEET_NAME);
+    Logger.log(`📄 Создан лист «${SCHEDULE_SHEET_NAME}».`);
+  }
+
+  // Очищаем старые данные (кроме заголовка)
+  sheet.clear();
+
+  // Заголовок
+  sheet.appendRow(["date", "time", "game", "streamLink"]);
+
+  // Данные
+  if (rows.length > 0) {
+    sheet.getRange(2, 1, rows.length, 4).setValues(rows);
+  }
+
+  // Автоширина колонок
+  sheet.autoResizeColumns(1, 4);
+}
+
+/**
+ * Очищает лист расписания (удаляет данные, сохраняет заголовок).
+ */
+function clearScheduleSheet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName(SCHEDULE_SHEET_NAME);
+  if (sheet) {
+    sheet.clear();
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// ТРИГГЕРЫ
+// ═══════════════════════════════════════════════════════════
+
+/**
+ * Устанавливает триггер для автообновления расписания раз в 6 часов.
+ * Вызывается ОДНОЖДЫ при первой настройке.
+ */
+function installTrigger() {
+  // Удаляем старые триггеры (чтобы не дублировались)
+  const triggers = ScriptApp.getProjectTriggers();
+  triggers.forEach((trigger) => {
+    if (trigger.getHandlerFunction() === "updateSchedule") {
+      ScriptApp.deleteTrigger(trigger);
+    }
+  });
+
+  // Создаём новый триггер: раз в 6 часов
+  ScriptApp.newTrigger("updateSchedule")
+    .timeBased()
+    .everyHours(REFRESH_INTERVAL_HOURS)
+    .create();
+
+  Logger.log(`✅ Триггер установлен: автообновление каждые ${REFRESH_INTERVAL_HOURS} ч.`);
+}
+
+/**
+ * Показывает текущие триггеры.
+ */
+function listTriggers() {
+  const triggers = ScriptApp.getProjectTriggers();
+  Logger.log("📋 Текущие триггеры:");
+  triggers.forEach((t) => {
+    Logger.log(`  - ${t.getHandlerFunction()}: ${t.getDescription() || "без описания"}`);
+  });
+}
+
+/**
+ * Проверяет конфигурацию (выводит настройки без запроса к API).
+ */
+function checkConfig() {
+  const props = PropertiesService.getScriptProperties();
+  Logger.log("🔍 Проверка конфигурации:");
+  Logger.log(`  TWITCH_CLIENT_ID: ${props.getProperty("TWITCH_CLIENT_ID") ? "✅ задан" : "❌ не задан"}`);
+  Logger.log(`  TWITCH_ACCESS_TOKEN: ${props.getProperty("TWITCH_ACCESS_TOKEN") ? "✅ задан" : "❌ не задан"}`);
+  Logger.log(`  TWITCH_BROADCASTER_ID: ${props.getProperty("TWITCH_BROADCASTER_ID") ? "✅ задан" : "❌ не задан"}`);
+  Logger.log(`  LAST_UPDATE: ${props.getProperty("LAST_UPDATE") || "никогда"}`);
+}
+
+// ═══════════════════════════════════════════════════════════
+// ПРИЁМ ДАННЫХ ИЗ ФОРМЫ (POST)
+// ═══════════════════════════════════════════════════════════
+
+/**
+ * Принимает данные из формы ScheduleForm и записывает в лист «Расписание».
+ * Вызывается автоматически при POST-запросе с сайта.
+ */
+function doPost(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+    const { date, time, game, streamLink = "https://twitch.tv/tiankami" } = data;
+
+    if (!date || !time || !game) {
+      throw new Error("Не все поля заполнены");
+    }
+
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sheet = ss.getSheetByName(SCHEDULE_SHEET_NAME);
+    if (!sheet) {
+      sheet = ss.insertSheet(SCHEDULE_SHEET_NAME);
+      sheet.appendRow(["date", "time", "game", "streamLink"]);
+    }
+
+    sheet.appendRow([date, time, game, streamLink]);
+
+    // Сортировка по дате
+    const lastRow = sheet.getLastRow();
+    if (lastRow > 1) {
+      const range = sheet.getRange(2, 1, lastRow - 1, 4);
+      range.sort({ column: 1, ascending: true });
+    }
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: true }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: false, error: err.message }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
