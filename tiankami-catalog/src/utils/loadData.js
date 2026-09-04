@@ -59,11 +59,11 @@ function hashUrl(url) {
   return h.toString(36);
 }
 
-const CACHE_KEY = `tiankami_games_v4_${hashUrl(GAMES_URL)}`;
+const CACHE_KEY = `tiankami_games_v5_${hashUrl(GAMES_URL)}`;
 const CACHE_TIME_KEY = `${CACHE_KEY}_time`;
-const COLLECTIONS_CACHE_KEY = `tiankami_collections_v4_${hashUrl(COLLECTIONS_URL)}`;
+const COLLECTIONS_CACHE_KEY = `tiankami_collections_v5_${hashUrl(COLLECTIONS_URL)}`;
 const COLLECTIONS_CACHE_TIME_KEY = `${COLLECTIONS_CACHE_KEY}_time`;
-const SCHEDULE_CACHE_KEY = `tiankami_schedule_v4_${hashUrl(SCHEDULE_URL)}`;
+const SCHEDULE_CACHE_KEY = `tiankami_schedule_v5_${hashUrl(SCHEDULE_URL)}`;
 const SCHEDULE_CACHE_TIME_KEY = `${SCHEDULE_CACHE_KEY}_time`;
 const CACHE_DURATION = 6 * 60 * 60 * 1000; // TTL кэша: 6 часов
 const REVALIDATE_INTERVAL = 15 * 60 * 1000; // сверка с таблицей не чаще раза в 15 минут
@@ -327,11 +327,15 @@ async function revalidateGames(onUpdate) {
       freshTitles.has(g.title.toLowerCase()),
     );
 
-    if (JSON.stringify(keptGames) !== JSON.stringify(memoryGames)) {
-      memoryGames = keptGames;
-      safeSet(CACHE_KEY, JSON.stringify(keptGames));
+    // Обогащаем обложками из localGames (steamAppId может отсутствовать,
+    // если копия таблицы не загрузилась — подтягиваем из games.json)
+    const enrichedGames = enrichFromLocalJson(keptGames);
+
+    if (JSON.stringify(enrichedGames) !== JSON.stringify(memoryGames)) {
+      memoryGames = enrichedGames;
+      safeSet(CACHE_KEY, JSON.stringify(enrichedGames));
       safeSet(CACHE_TIME_KEY, String(Date.now()));
-      onUpdate?.(keptGames);
+      onUpdate?.(enrichedGames);
     }
   } catch (error) {
     console.warn(
