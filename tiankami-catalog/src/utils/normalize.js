@@ -74,9 +74,21 @@ export function buildColIndex(headerRow, firstDataRow) {
   // Название: сначала ищем явный заголовок "Название" (из колонки B/C),
   // потом эвристика — пустой заголовок с данными.
   let titleIdx = -1;
+  let titleWasShifted = false;
   // 1. Явный заголовок
   if (idx["Название"] !== undefined) {
     titleIdx = idx["Название"];
+    // В Google Sheets заголовок "Название" объединён с ячейкой картинки
+    // (merged cells). Заголовок в колонке B, данные — в колонке C.
+    // Проверяем: если в колонке заголовка данные пустые — сдвигаем на +1.
+    if (
+      firstDataRow &&
+      firstDataRow[titleIdx] !== undefined &&
+      !firstDataRow[titleIdx].trim()
+    ) {
+      titleIdx++;
+      titleWasShifted = true;
+    }
   } else {
     // 2. Эвристика: колонка с пустым заголовком, в которой есть данные.
     // Пропускаем колонку с картинкой — там URL или =IMAGE, а не название.
@@ -95,12 +107,18 @@ export function buildColIndex(headerRow, firstDataRow) {
   }
   if (titleIdx === -1) titleIdx = 2; // fallback
 
+  // Картинка: если заголовок "Название" найден явно и сдвинут на +1
+  // (merged cells), то картинка за 2 колонки до названия.
+  // Иначе — за 1 колонку.
+  const imageIdx = titleWasShifted && titleIdx > 1
+    ? titleIdx - 2
+    : titleIdx > 0
+      ? titleIdx - 1
+      : -1;
+
   return {
     title: titleIdx,
-    // Картинка — колонка ПЕРЕД названием (заголовок «Название» объединён
-    // на две ячейки: картинка + название). URL достаётся из формулы
-    // =IMAGE(...) через Sheets API или из Steam appid (enrich/sync).
-    image: titleIdx > 0 ? titleIdx - 1 : -1,
+    image: imageIdx,
     genre: idx["Жанр"] ?? -1,
     features: idx["Особенности"] ?? -1,
     setting: idx["Сеттинг"] ?? -1,

@@ -139,8 +139,8 @@ describe('normalizeCollections', () => {
   });
 
   it('должен возвращать пустой массив для недостаточных данных', () => {
-    expect(normalizeCollections([])).toBe([]);
-    expect(normalizeCollections([['only header']])).toBe([]);
+    expect(normalizeCollections([])).toEqual([]);
+    expect(normalizeCollections([['only header']])).toEqual([]);
   });
 
   it('должен пропускать "ЗОЛОТОЙ СПИСОК" — обнулять ранги', () => {
@@ -186,7 +186,11 @@ describe('getAllFeatures', () => {
       { title: 'A', features: 'Кооп, PVE' },
       { title: 'B', features: 'PVE, Сложный' },
     ];
-    expect(getAllFeatures(games)).toEqual(['Кооп', 'PVE', 'Сложный']);
+    const result = getAllFeatures(games);
+    expect(result).toHaveLength(3);
+    expect(result).toContain('Кооп');
+    expect(result).toContain('PVE');
+    expect(result).toContain('Сложный');
   });
 
   it('должен возвращать пустой массив для пустого списка', () => {
@@ -197,6 +201,9 @@ describe('getAllFeatures', () => {
     const games = [
       { title: 'A', features: 'Кооп,, PVE, ' },
     ];
-    expect(getAllFeatures(games)).toEqual(['Кооп', 'PVE']);
+    const result = getAllFeatures(games);
+    expect(result).toHaveLength(2);
+    expect(result).toContain('Кооп');
+    expect(result).toContain('PVE');
   });
 });

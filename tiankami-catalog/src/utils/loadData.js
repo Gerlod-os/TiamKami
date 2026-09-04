@@ -77,6 +77,7 @@ let memoryCollections = null;
 let memorySchedule = null;
 let lastGamesCheck = 0;
 let lastCollectionsCheck = 0;
+let lastScheduleCheck = 0;
 let gamesRevalidating = false;
 let collectionsRevalidating = false;
 let scheduleRevalidating = false;
@@ -104,7 +105,12 @@ function isValidCollectionsCache(jsonStr) {
 function isValidScheduleCache(jsonStr) {
   try {
     const parsed = JSON.parse(jsonStr);
-    return Array.isArray(parsed) && parsed.length > 0;
+    return (
+      Array.isArray(parsed) &&
+      parsed.length > 0 &&
+      typeof parsed[0].date === "string" &&
+      typeof parsed[0].game === "string"
+    );
   } catch {
     return false;
   }
@@ -392,9 +398,9 @@ export async function fetchSchedule({ onUpdate } = {}) {
 
 async function revalidateSchedule(onUpdate) {
   if (scheduleRevalidating) return;
-  if (Date.now() - lastCollectionsCheck < REVALIDATE_INTERVAL) return;
+  if (Date.now() - lastScheduleCheck < REVALIDATE_INTERVAL) return;
   scheduleRevalidating = true;
-  lastCollectionsCheck = Date.now();
+  lastScheduleCheck = Date.now();
   try {
     const text = await (await fetch(SCHEDULE_URL)).text();
     const parsed = Papa.parse(text, { header: true, skipEmptyLines: true });
@@ -465,4 +471,5 @@ export function clearCache() {
   memorySchedule = null;
   lastGamesCheck = 0;
   lastCollectionsCheck = 0;
+  lastScheduleCheck = 0;
 }

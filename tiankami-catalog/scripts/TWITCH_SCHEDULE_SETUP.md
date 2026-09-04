@@ -176,14 +176,16 @@ curl -H "Client-Id: YOUR_CLIENT_ID" "https://api.twitch.tv/helix/users?login=tia
 Форма на сайте `/schedule` отправляет POST-запросы в Google Apps Script. Добавь эту функцию в тот же скрипт:
 
 ```javascript
-/**
- * Принимает данные из формы ScheduleForm и записывает в лист «Расписание».
- * Вызывается автоматически при POST-запросе с сайта.
- */
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
-    const { date, time, game, streamLink = "https://twitch.tv/tiankami" } = data;
+    let { date, time, game, streamLink = "https://twitch.tv/tiankami" } = data;
+
+    // Конвертируем YYYY-MM-DD → DD.MM.YYYY (форма отправляет HTML date format)
+    if (date.match(/^\d{4}-\d{2}-\d{2}$/)) {
+      const [y, m, d] = date.split("-");
+      date = `${d}.${m}.${y}`;
+    }
 
     if (!date || !time || !game) {
       throw new Error("Не все поля заполнены");

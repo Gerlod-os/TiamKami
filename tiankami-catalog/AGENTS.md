@@ -59,10 +59,12 @@
 
 ```bash
 npm run dev    # разработка (localhost:5173)
-npm run build  # сборка + SEO-пререндер (440 страниц + sitemap.xml + robots.txt)
+npm run build  # предсборка: npm run sync → vite build → prerender (автообновление данных)
 npm run sync   # скачать таблицу в src/data/*.json
 npx oxlint     # линтер (НЕ ESLint)
 ```
+
+**Сборка:** `npm run build` автоматически запускает `npm run sync` перед сборкой (prebuild hook).
 
 **После изменений логики:** `npm run build` + `npx oxlint` + проверка `src/data/*.json`.
 **После изменений данных:** `npm run sync` + проверка `src/data/*.json`.
@@ -76,11 +78,13 @@ npx oxlint     # линтер (НЕ ESLint)
 
 ```
 src/
-  components/    FxPanel, GameCard, GameDetails, GameModal, Layout, TwitchWidget, YandexMetrika, ErrorBoundary
+  components/    FxPanel, GameCard, GameDetails, GameModal, Layout, TwitchWidget, YandexMetrika, ScheduleForm, ErrorBoundary
   config/        branding.js, dataSources.js, mascots.js
-  data/          games.json (440 игр), collections.json
+  data/          games.json (440 игр), collections.json, schedule.json
   pages/         HomePage, CatalogPage, CollectionsPage, GamePage, AboutPage, SchedulePage
-  utils/         loadData.js, normalize.js, date.js, slugify.js, storage.js, swr.js
+  utils/         loadData.js, normalize.js, date.js, slugify.js, storage.js
+api/
+  schedule.js    Vercel serverless — прокси в Google Apps Script
 scripts/
   sync-data.js   скачивание таблицы в JSON
   prerender.mjs  SEO-пререндер

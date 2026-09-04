@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { fetchGames } from "../utils/loadData";
 import { BRAND } from "../config/branding.js";
 import GameDetails from "../components/GameDetails";
@@ -54,6 +54,7 @@ const MiniCard = ({ game, onClick }) => {
 };
 
 const GamePage = () => {
+  const navigate = useNavigate();
   const { slug } = useParams();
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -247,7 +248,7 @@ const GamePage = () => {
               <div key={g.slug} className="snap-start">
                 <MiniCard
                   game={g}
-                  onClick={() => window.location.href = `/catalog/${g.slug}`}
+                  onClick={() => navigate(`/catalog/${g.slug}`)}
                 />
               </div>
             ))}

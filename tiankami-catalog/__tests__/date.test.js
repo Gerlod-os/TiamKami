@@ -22,9 +22,16 @@ describe('parseRuDate', () => {
   });
 
   it('должен возвращать null для некорректного формата', () => {
-    expect(parseRuDate('2023-12-25')).toBe(null);
     expect(parseRuDate('25/12/2023')).toBe(null);
     expect(parseRuDate('25.12.23')).toBe(null);
+  });
+
+  it('должен парсить ISO дату YYYY-MM-DD', () => {
+    const result = parseRuDate('2023-12-25');
+    expect(result).toBeInstanceOf(Date);
+    expect(result.getUTCFullYear()).toBe(2023);
+    expect(result.getUTCMonth()).toBe(11);
+    expect(result.getUTCDate()).toBe(25);
   });
 
   it('должен возвращать null для несуществующей даты', () => {

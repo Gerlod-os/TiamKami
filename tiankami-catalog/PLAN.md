@@ -8,11 +8,14 @@
 | **Роутер** | React Router v7 |
 | **Данные** | Google Sheets (TSV + Sheets API) |
 | **Страниц** | 440 игр + 6 страниц приложения |
-| **Компонентов** | 8 компонентов |
+| **Компонентов** | 9 компонентов (FxPanel, GameCard, GameDetails, GameModal, Layout, TwitchWidget, YandexMetrika, ErrorBoundary, ScheduleForm) |
 | **Утилит** | 6 утилит (slugify, date, storage, swr, normalize, loadData) |
+| **Данные** | Google Sheets (TSV + Sheets API) + `schedule.json` |
+| **API** | Vercel serverless: `api/schedule.js` (прокси в Google Apps Script) |
+| **Сборка** | SEO-пререндер (440 статических страниц) + `prebuild: npm run sync` |
 | **Сборка** | SEO-пререндер (440 статических страниц) |
 | **Деплой** | Vercel (SPA-rewrite) |
-| **Последнее обновление** | 04.09.2026 — редизайн: карточки, каталог, страница игры, подборки, главная, SEO, мобильная адаптация |
+| **Последнее обновление** | 04.09.2026 — редизайн + расписание стримов + Yandex Metrika events + prebuild |
 
 ---
 
@@ -53,7 +56,8 @@
 | `AGENTS.md` | Инструкции для агентов и разработчиков |
 | `PLAN.md` | Дорожная карта и архитектурные заметки (этот файл) |
 | `GOOGLE_SHEETS_SCRIPT.txt` | Скрипт для Google Apps Script — автоматически копирует гиперссылки из оригинала в копию |
-| `vercel.json` | Конфигурация деплоя (SPA-rewrite) |
+| `vercel.json` | Конфигурация деплоя (SPA-rewrite + API rewrites) |
+| `api/schedule.js` | Vercel serverless function — прокси в Google Apps Script |
 
 ### `src/`
 
@@ -68,13 +72,15 @@
 | `components/GameModal.jsx` | Модальное окно игры |
 | `components/Layout.jsx` | Шапка, навигация, футер |
 | `components/TwitchWidget.jsx` | Виджет Twitch |
-| `components/YandexMetrika.jsx` | Яндекс.Метрика |
+| `components/YandexMetrika.jsx` | Яндекс.Метрика + trackEvent |
+| `components/ScheduleForm.jsx` | Форма добавления стрима |
 | `components/ErrorBoundary.jsx` | Fallback при ошибках |
 | `config/branding.js` | Бренд, ник, ссылки |
 | `config/dataSources.js` | ID таблиц, API-ключи |
 | `config/mascots.js` | Маскоты для тем |
 | `data/games.json` | 440 игр + ссылки (сгенерировано) |
 | `data/collections.json` | Подборки от Тиана |
+| `data/schedule.json` | Расписание стримов (сгенерировано) |
 | `pages/HomePage.jsx` | Главная + статистика |
 | `pages/CatalogPage.jsx` | Каталог игр |
 | `pages/CollectionsPage.jsx` | Подборки |
@@ -92,8 +98,10 @@
 
 | Файл | Назначение |
 |---|---|
-| `sync-data.js` | Скачивание таблицы в JSON |
+| `sync-data.js` | Скачивание таблицы в JSON (игры + подборки + расписание) |
 | `prerender.mjs` | SEO-пререндер (440 страниц) |
+| `twitch-schedule-script.txt` | Google Apps Script (Twitch API + doPost + триггеры) |
+| `TWITCH_SCHEDULE_SETUP.md` | Инструкция по настройке Twitch Schedule |
 
 ---
 
@@ -127,6 +135,30 @@
 | 9 | prerender.mjs: удаление старых meta перед вставкой новых (regex), `twitter:*` на всех страницах, `og:image` с fallback на hero, canonical URL, JSON-LD (schema.org VideoGame) | `prerender.mjs` | 🟡 |
 | 10 | Мобильная адаптация: GameCard `h-36 sm:h-52`, CatalogPage поиск на всю ширину, кнопки под поиском, уменьшенная пагинация, статистика `grid-cols-2 md:grid-cols-5`, гамбургер-меню | Все страницы | 🔴 |
 | 11 | Оптимизация: `loading="lazy"` на всех `<img>`, `memo(GameCardInner)`, пагинация 24 карточки (без виртуализации) | Все компоненты | 🟢 |
+
+---
+
+### 04.09.2026 — Расписание стримов + Yandex Metrika events
+
+| # | Что сделано | Файлы | Приоритет |
+|---|---|---|---|
+| 1 | SchedulePage: полная реализация — ближайший стрим крупно, остальные списком, прошедшие (5 шт), сообщение «нет стримов», SEO meta | `SchedulePage.jsx` | 🔴 |
+| 2 | ScheduleForm: форма добавления стрима с валидацией, конвертацией дат YYYY-MM-DD→DD.MM.YYYY, success-уведомление без alert | `ScheduleForm.jsx` | 🔴 |
+| 3 | api/schedule.js: Vercel serverless function — прокси POST в Google Apps Script | `api/schedule.js` | 🔴 |
+| 4 | loadData.js: `fetchSchedule()` — загрузка расписания из Google Sheets, кэширование, конвертация дат | `loadData.js` | 🔴 |
+| 5 | loadData.js: `revalidateSchedule` — фоновая ревалидация каждые 15 мин | `loadData.js` | 🟡 |
+| 6 | dataSources.js: `SCHEDULE_SHEET_NAME`, `SCHEDULE_URL` (из копии таблицы) | `dataSources.js` | 🟡 |
+| 7 | sync-data.js: скачивание расписания из Google Sheets, конвертация дат YYYY-MM-DD→DD.MM.YYYY | `sync-data.js` | 🟡 |
+| 8 | date.js: `parseRuDate` принимает DD.MM.YYYY и YYYY-MM-DD | `date.js` | 🟡 |
+| 9 | SchedulePage: сравнение с учётом времени (дата+время), а не только даты | `SchedulePage.jsx` | 🟡 |
+| 10 | YandexMetrika: `trackEvent()` — отправка событий в Метрику | `YandexMetrika.jsx` | 🟢 |
+| 11 | YandexMetrika events: просмотр игры, быстрый просмотр, модалка, клик YouTube/Steam/МИ, случайная игра, пагинация | `GameCard.jsx`, `GameModal.jsx`, `GameDetails.jsx`, `CatalogPage.jsx` | 🟢 |
+| 12 | package.json: `prebuild: npm run sync` — автообновление данных при деплое | `package.json` | 🟢 |
+| 13 | vercel.json: rewrite rule `/api/*` → serverless functions | `vercel.json` | 🟢 |
+| 14 | catalog: фильтрация по подборке (`?collection=Название`) | `CatalogPage.jsx` | 🟢 |
+| 15 | scripts/twitch-schedule-script.txt: Google Apps Script (Twitch API + doPost + триггеры) | `twitch-schedule-script.txt` | 🟢 |
+| 16 | scripts/TWITCH_SCHEDULE_SETUP.md: полная инструкция по настройке | `TWITCH_SCHEDULE_SETUP.md` | 🟢 |
+| 17 | data/schedule.json: пустой массив как fallback | `schedule.json` | 🟢 |
 
 ---
 
