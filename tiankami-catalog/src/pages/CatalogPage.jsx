@@ -273,23 +273,24 @@ const CatalogPage = () => {
       <h1 className="text-3xl mb-6">Каталог рогаликов</h1>
 
       <div className="bg-white/5 rounded-2xl p-4 mb-6 space-y-3">
-        {/* Верхняя строка: поиск + кнопки */}
-        <div className="flex flex-wrap gap-2 items-center">
-          <input
-            type="text"
-            placeholder="Поиск..."
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setCurrentPage(1);
-            }}
-            className="flex-grow min-w-[200px] bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-3 px-4 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition"
-          />
+        {/* Поиск — на всю ширину на мобильных */}
+        <input
+          type="text"
+          placeholder="Поиск..."
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            setCurrentPage(1);
+          }}
+          className="w-full bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-3 px-4 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition"
+        />
 
+        {/* Кнопки — под поиском на мобильных */}
+        <div className="flex flex-wrap gap-2 items-center">
           <button
             type="button"
             onClick={() => setIsFiltersVisible((v) => !v)}
-            className={`px-4 py-3 rounded-xl border text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap ${
+            className={`flex-1 sm:flex-none px-4 py-3 rounded-xl border text-sm font-medium transition-all flex items-center justify-center gap-2 whitespace-nowrap ${
               isFiltersVisible
                 ? "bg-purple-600 border-purple-500 text-white"
                 : "bg-[#111827] border-gray-700 text-white/80 hover:border-gray-500"
@@ -309,11 +310,12 @@ const CatalogPage = () => {
               );
               setSelectedGame(filteredGames.games[randomIndex]);
             }}
-            className="bg-purple-600 hover:bg-purple-500 text-white px-4 py-3 rounded-xl border border-purple-500 transition-all flex items-center gap-2 whitespace-nowrap text-sm font-medium"
+            className="flex-1 sm:flex-none bg-purple-600 hover:bg-purple-500 text-white px-4 py-3 rounded-xl border border-purple-500 transition-all flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium"
             title="Выбрать случайную игру из отфильтрованных"
           >
             <FaDice size={14} />
-            Случайная игра
+            <span className="hidden sm:inline">Случайная игра</span>
+            <span className="sm:hidden">🎲</span>
           </button>
         </div>
 
@@ -727,13 +729,18 @@ const CatalogPage = () => {
       <p className="mb-4 text-white/70">Показано игр: {filteredGames.totalCount}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredGames.games.map((game) => (
-          <GameCard
+        {filteredGames.games.map((game, index) => (
+          <div
             key={game.slug}
-            game={game}
-            onQuickView={() => setQuickViewGame(game)}
-            onClick={() => navigate(`/catalog/${game.slug}`)}
-          />
+            className="animate-fade-in"
+            style={{ animationDelay: `${index * 30}ms` }}
+          >
+            <GameCard
+              game={game}
+              onQuickView={() => setQuickViewGame(game)}
+              onClick={() => navigate(`/catalog/${game.slug}`)}
+            />
+          </div>
         ))}
       </div>
 
@@ -744,14 +751,15 @@ const CatalogPage = () => {
       )}
 
       {filteredGames.totalPages > 1 && (
-        <div className="flex justify-center items-center gap-2 mt-8 flex-wrap">
+        <div className="flex justify-center items-center gap-1.5 sm:gap-2 mt-8 flex-wrap">
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50"
+            className="px-3 sm:px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50 text-xs sm:text-sm"
           >
             ← Назад
           </button>
+          <div className="flex gap-1 sm:gap-2 flex-wrap justify-center">
           {Array.from(
             { length: filteredGames.totalPages },
             (_, i) => i + 1,
@@ -759,13 +767,14 @@ const CatalogPage = () => {
             <button
               key={p}
               onClick={() => setCurrentPage(p)}
-              className={`px-3 py-1 rounded-lg ${
+              className={`px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm ${
                 p === currentPage ? "bg-purple-600" : "bg-gray-800"
               }`}
             >
               {p}
             </button>
           ))}
+          </div>
           <button
             onClick={() =>
               setCurrentPage((p) =>
@@ -773,7 +782,7 @@ const CatalogPage = () => {
               )
             }
             disabled={currentPage === filteredGames.totalPages}
-            className="px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50"
+            className="px-3 sm:px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50 text-xs sm:text-sm"
           >
             Вперед →
           </button>

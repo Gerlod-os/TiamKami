@@ -6,16 +6,7 @@ import GameDetails from "../components/GameDetails";
 import { isUrl } from "../utils/normalize.js";
 import { FaChevronRight, FaGamepad } from "react-icons/fa";
 
-const genreColors = [
-  "bg-pink-400/25 text-pink-200 border border-pink-400/20",
-  "bg-purple-400/25 text-purple-200 border border-purple-400/20",
-  "bg-blue-400/25 text-blue-200 border border-blue-400/20",
-  "bg-green-400/25 text-green-200 border border-green-400/20",
-];
-
 const MiniCard = ({ game, onClick }) => {
-  const genres = (game.genre || "").split(",").map((g) => g.trim()).filter(Boolean);
-  const isPerfectRating = game.rating === 10;
   const hasValidImage = isUrl(game.image);
 
   return (
@@ -29,24 +20,24 @@ const MiniCard = ({ game, onClick }) => {
           onClick();
         }
       }}
-      className="group relative rounded-xl overflow-hidden border border-white/10 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/10 hover:border-white/20"
+      className="group relative flex-shrink-0 w-36 sm:w-44 cursor-pointer transition-all duration-200 hover:-translate-y-1"
     >
-      <div className="relative h-28 overflow-hidden bg-gradient-to-br from-white/5 to-white/10">
+      <div className="relative h-20 sm:h-28 overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/10">
         {hasValidImage ? (
           <img
             src={game.image}
             alt={game.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <span className="text-3xl" aria-hidden="true">🎮</span>
+            <span className="text-2xl sm:text-3xl" aria-hidden="true">🎮</span>
           </div>
         )}
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-12 sm:h-16 bg-gradient-to-t from-black/70 to-transparent" />
         <div
-          className={`absolute top-2 right-2 flex items-center justify-center w-8 h-8 rounded-lg font-bold text-sm ${
-            isPerfectRating
+          className={`absolute top-1.5 right-1.5 flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-lg font-bold text-xs ${
+            game.rating === 10
               ? "bg-gradient-to-br from-yellow-300 to-amber-500 text-amber-950"
               : "bg-black/60 backdrop-blur-sm text-white"
           }`}
@@ -54,21 +45,9 @@ const MiniCard = ({ game, onClick }) => {
           {game.rating || "—"}
         </div>
       </div>
-      <div className="p-2.5">
-        <p className="text-sm text-white font-bold truncate">{game.title}</p>
-        {genres.length > 0 && (
-          <div className="flex flex-wrap gap-1 mt-1">
-            {genres.slice(0, 2).map((genre, index) => (
-              <span
-                key={genre}
-                className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${genreColors[index % genreColors.length]}`}
-              >
-                {genre}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
+      <p className="mt-1.5 text-xs sm:text-sm text-white font-bold truncate text-center">
+        {game.title}
+      </p>
     </div>
   );
 };
@@ -131,8 +110,17 @@ const GamePage = () => {
     setMeta("og:title", game.title);
     setMeta("og:description", game.notes || game.title);
     setMeta("og:type", "website");
+    setMeta("og:url", `${BRAND.siteUrl}/catalog/${slug}`);
     if (game.image && isUrl(game.image)) {
       setMeta("og:image", game.image);
+    }
+
+    // Twitter
+    setMeta("twitter:card", "summary_large_image");
+    setMeta("twitter:title", game.title);
+    setMeta("twitter:description", game.notes || game.title);
+    if (game.image && isUrl(game.image)) {
+      setMeta("twitter:image", game.image);
     }
 
     // JSON-LD разметка для Google
@@ -175,8 +163,12 @@ const GamePage = () => {
           `Каталог рогаликов ${BRAND.name}`,
         );
       }
-      ["og:title", "og:description", "og:type", "og:image"].forEach((prop) => {
+      ["og:title", "og:description", "og:type", "og:image", "og:url"].forEach((prop) => {
         const meta = document.querySelector(`meta[property="${prop}"]`);
+        if (meta) meta.remove();
+      });
+      ["twitter:card", "twitter:title", "twitter:description", "twitter:image"].forEach((prop) => {
+        const meta = document.querySelector(`meta[name="${prop}"]`);
         if (meta) meta.remove();
       });
       const removed = document.getElementById('json-ld-game');
@@ -242,20 +234,21 @@ const GamePage = () => {
         <GameDetails game={game} />
       </div>
 
-      {/* Похожие игры */}
+      {/* Похожие игры — горизонтальный скролл */}
       {similarGames.length > 0 && (
         <div className="max-w-4xl mx-auto mt-12">
           <h2 className="font-heading text-2xl mb-5 text-white flex items-center gap-2">
             <FaGamepad className="text-purple-400" />
             Похожие игры
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-thin">
             {similarGames.map((g) => (
-              <MiniCard
-                key={g.slug}
-                game={g}
-                onClick={() => window.location.href = `/catalog/${g.slug}`}
-              />
+              <div key={g.slug} className="snap-start">
+                <MiniCard
+                  game={g}
+                  onClick={() => window.location.href = `/catalog/${g.slug}`}
+                />
+              </div>
             ))}
           </div>
         </div>

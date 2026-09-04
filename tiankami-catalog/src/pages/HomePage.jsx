@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchGames, fetchCollections } from "../utils/loadData";
 import { parseRuDate } from "../utils/date";
 import { isUrl } from "../utils/normalize.js";
+import { BRAND } from "../config/branding.js";
 import GameCard from "../components/GameCard";
 import GameModal from "../components/GameModal";
 import TwitchWidget from "../components/TwitchWidget";
@@ -145,6 +146,32 @@ const HomePage = () => {
       });
   }, []);
 
+  // Мета-теги для главной страницы
+  useEffect(() => {
+    document.title = BRAND.siteTitle;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        `Каталог рогаликов ${BRAND.name}: ${games.length} игр с оценками, прогрессом и заметками стримера.`,
+      );
+    }
+
+    const setMeta = (property, content) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute("property", property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute("content", content);
+    };
+    setMeta("og:title", BRAND.siteTitle);
+    setMeta("og:description", `Каталог рогаликов ${BRAND.name}: ${games.length} игр с оценками, прогрессом и заметками стримера.`);
+    setMeta("og:type", "website");
+    setMeta("og:url", BRAND.siteUrl);
+  }, []);
+
   const homeData = useMemo(() => {
     const topRated = [...games]
       .filter((g) => g.rating)
@@ -203,74 +230,58 @@ const HomePage = () => {
 
       {/* Статистика */}
       <section className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <StatCard
-          icon={<FaGamepad className="text-3xl text-purple-400" />}
-          value={totalGames}
-          label="Архив игр"
-          color="text-white"
-          bgColor="bg-white/5 rounded-2xl border border-purple-500/20 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-        />
-        <StatCard
-          icon={<FaCheckCircle className="text-3xl text-emerald-400" />}
-          value={completedGames}
-          label="Пройдено"
-          color="text-emerald-400"
-          bgColor="bg-white/5 rounded-2xl border border-emerald-500/20 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-        />
-        <StatCard
-          icon={<FaSkull className="text-3xl text-red-400" />}
-          value={droppedGames}
-          label="Дропнутые"
-          color="text-red-400"
-          bgColor="bg-white/5 rounded-2xl border border-red-500/20 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-        />
-        <StatCard
-          icon={<FaEye className="text-3xl text-blue-400" />}
-          value={reviewGames}
-          label="Обзор"
-          color="text-blue-400"
-          bgColor="bg-white/5 rounded-2xl border border-blue-500/20 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-        />
-        <StatCard
-          icon={<FaClock className="text-3xl text-amber-400" />}
-          value={Math.round(totalHours)}
-          label="Часов в играх"
-          color="text-amber-400"
-          bgColor="bg-white/5 rounded-2xl border border-amber-500/20 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-        />
+        {[
+          { icon: <FaGamepad className="text-3xl text-purple-400" />, value: totalGames, label: "Архив игр", color: "text-white", border: "border-purple-500/20" },
+          { icon: <FaCheckCircle className="text-3xl text-emerald-400" />, value: completedGames, label: "Пройдено", color: "text-emerald-400", border: "border-emerald-500/20" },
+          { icon: <FaSkull className="text-3xl text-red-400" />, value: droppedGames, label: "Дропнутые", color: "text-red-400", border: "border-red-500/20" },
+          { icon: <FaEye className="text-3xl text-blue-400" />, value: reviewGames, label: "Обзор", color: "text-blue-400", border: "border-blue-500/20" },
+          { icon: <FaClock className="text-3xl text-amber-400" />, value: Math.round(totalHours), label: "Часов в играх", color: "text-amber-400", border: "border-amber-500/20" },
+        ].map((stat, i) => (
+          <div key={i} className="animate-fade-in" style={{ animationDelay: `${i * 80}ms` }}>
+            <StatCard
+              icon={stat.icon}
+              value={stat.value}
+              label={stat.label}
+              color={stat.color}
+              bgColor="bg-white/5 rounded-2xl border border-white/10 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+            />
+          </div>
+        ))}
       </section>
 
       {/* Подборки от Тиана */}
       {collections.length > 0 && (
-        <section>
+        <section className="animate-fade-in-delay" style={{ animationDelay: "0.4s" }}>
           <SectionTitle icon={<FaList className="text-pink-400" />} color="text-pink-400">
             Подборки от Тиана
           </SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {collections.map((col, idx) => (
-              <CollectionCard
-                key={idx}
-                collection={col}
-                games={games}
-              />
+              <div key={idx} className="animate-fade-in" style={{ animationDelay: `${0.4 + idx * 100}ms` }}>
+                <CollectionCard
+                  collection={col}
+                  games={games}
+                />
+              </div>
             ))}
           </div>
         </section>
       )}
 
       {/* Топ-5 по оценкам */}
-      <section>
+      <section className="animate-fade-in" style={{ animationDelay: "0.8s" }}>
         <SectionTitle icon={<FaStar className="text-yellow-400" />} color="text-yellow-400">
           Топ по оценкам
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {(showAllTopRated ? topRated : topRated.slice(0, 5)).map((game) => (
-            <GameCard
-              key={game.slug}
-              game={game}
-              onQuickView={() => setQuickViewGame(game)}
-              onClick={() => navigate(`/catalog/${game.slug}`)}
-            />
+          {(showAllTopRated ? topRated : topRated.slice(0, 5)).map((game, i) => (
+            <div key={game.slug} className="animate-fade-in" style={{ animationDelay: `${0.8 + i * 50}ms` }}>
+              <GameCard
+                game={game}
+                onQuickView={() => setQuickViewGame(game)}
+                onClick={() => navigate(`/catalog/${game.slug}`)}
+              />
+            </div>
           ))}
         </div>
         {topRated.length > 5 && (
@@ -282,7 +293,7 @@ const HomePage = () => {
       </section>
 
       {/* Свежие релизы */}
-      <section>
+      <section className="animate-fade-in" style={{ animationDelay: "1s" }}>
         <SectionTitle icon={<FaCalendarAlt className="text-blue-400" />} color="text-blue-400">
           Свежие релизы
         </SectionTitle>
@@ -290,13 +301,14 @@ const HomePage = () => {
           {(showAllFreshReleases
             ? freshReleases
             : freshReleases.slice(0, 5)
-          ).map((game) => (
-            <GameCard
-              key={game.slug}
-              game={game}
-              onQuickView={() => setQuickViewGame(game)}
-              onClick={() => navigate(`/catalog/${game.slug}`)}
-            />
+          ).map((game, i) => (
+            <div key={game.slug} className="animate-fade-in" style={{ animationDelay: `${1 + i * 50}ms` }}>
+              <GameCard
+                game={game}
+                onQuickView={() => setQuickViewGame(game)}
+                onClick={() => navigate(`/catalog/${game.slug}`)}
+              />
+            </div>
           ))}
         </div>
         {freshReleases.length > 5 && (
@@ -308,19 +320,20 @@ const HomePage = () => {
       </section>
 
       {/* Последние сыгранные */}
-      <section>
+      <section className="animate-fade-in" style={{ animationDelay: "1.2s" }}>
         <SectionTitle icon={<FaGamepad className="text-purple-400" />} color="text-purple-400">
           Последние сыгранные
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {(showAllLastPlayed ? lastPlayed : lastPlayed.slice(0, 5)).map(
-            (game) => (
-              <GameCard
-                key={game.slug}
-                game={game}
-                onQuickView={() => setQuickViewGame(game)}
-                onClick={() => navigate(`/catalog/${game.slug}`)}
-              />
+            (game, i) => (
+              <div key={game.slug} className="animate-fade-in" style={{ animationDelay: `${1.2 + i * 50}ms` }}>
+                <GameCard
+                  game={game}
+                  onQuickView={() => setQuickViewGame(game)}
+                  onClick={() => navigate(`/catalog/${game.slug}`)}
+                />
+              </div>
             ),
           )}
         </div>
@@ -333,19 +346,20 @@ const HomePage = () => {
       </section>
 
       {/* Топ по часам */}
-      <section>
+      <section className="animate-fade-in" style={{ animationDelay: "1.4s" }}>
         <SectionTitle icon={<FaClock className="text-amber-400" />} color="text-amber-400">
           Топ по часам
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {(showAllTopByHours ? topByHours : topByHours.slice(0, 5)).map(
-            (game) => (
-              <GameCard
-                key={game.slug}
-                game={game}
-                onQuickView={() => setQuickViewGame(game)}
-                onClick={() => navigate(`/catalog/${game.slug}`)}
-              />
+            (game, i) => (
+              <div key={game.slug} className="animate-fade-in" style={{ animationDelay: `${1.4 + i * 50}ms` }}>
+                <GameCard
+                  game={game}
+                  onQuickView={() => setQuickViewGame(game)}
+                  onClick={() => navigate(`/catalog/${game.slug}`)}
+                />
+              </div>
             ),
           )}
         </div>

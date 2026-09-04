@@ -52,6 +52,9 @@ const gamesWithSlugs = games.map((game) => {
 // Базовый шаблон из собранного index.html
 const template = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
 
+// Fallback-изображение для превью (hero-картинка из сборки)
+const fallbackImage = BRAND.siteUrl + "/assets/hero-CLDdwZDr.png";
+
 /** Вставляет/заменяет мета-теги в шаблоне. */
 function withMeta({ title, description, ogType = "website", ogImage, jsonLd, canonical }) {
   const esc = (s) =>
@@ -67,12 +70,16 @@ function withMeta({ title, description, ogType = "website", ogImage, jsonLd, can
     <meta property="og:description" content="${esc(description)}" />
     <meta property="og:type" content="${ogType}" />${
       ogImage && isUrl(ogImage) ? `\n    <meta property="og:image" content="${esc(ogImage)}" />` : ""
-    }${jsonLd ? `\n    <script type="application/ld+json">\n${jsonLd}\n    </script>` : ""}${
+    }${
       canonical ? `\n    <link rel="canonical" href="${esc(canonical)}" />` : ""
-    }`;
-  return template
-    .replace(/<title>.*?<\/title>/s, meta)
-    .replace(/<meta name="description"[^>]*>/gi, "");
+    }\n    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${esc(title)}" />
+    <meta name="twitter:description" content="${esc(description)}" />${
+      ogImage && isUrl(ogImage) ? `\n    <meta name="twitter:image" content="${esc(ogImage)}" />` : ""
+    }${jsonLd ? `\n    <script type="application/ld+json">\n${jsonLd}\n    </script>` : ""}`;
+  // Сначала удаляем все старые meta-теги, потом заменяем title на новый блок
+  const cleaned = template.replace(/<meta[\s\S]*?\/>/gi, "");
+  return cleaned.replace(/<title>[\s\S]*?<\/title>/, meta);
 }
 
 // 1. Главная
@@ -81,6 +88,7 @@ fs.writeFileSync(
   withMeta({
     title: BRAND.siteTitle,
     description: `Каталог рогаликов ${BRAND.name}: ${games.length} игр с оценками, прогрессом и заметками стримера.`,
+    ogImage: fallbackImage,
     canonical: `${BRAND.siteUrl}/`,
   }),
 );
@@ -151,7 +159,7 @@ for (const game of gamesWithSlugs) {
       title: `${game.title} — ${BRAND.name}`,
       description: `${game.genre || "Рогалик"}. Оценка ${game.rating || "—"}/10. ${desc}`,
       ogType: "article",
-      ogImage: game.image || "",
+      ogImage: isUrl(game.image) ? game.image : fallbackImage,
       canonical: `${BRAND.siteUrl}/catalog/${slug}`,
       jsonLd,
     }),

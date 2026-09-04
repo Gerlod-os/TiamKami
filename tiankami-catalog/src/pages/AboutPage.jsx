@@ -1,7 +1,33 @@
+import { useEffect } from "react";
 import { FaTwitch, FaYoutube, FaDiscord } from "react-icons/fa";
 import { BRAND } from "../config/branding.js";
 
 const AboutPage = () => {
+  useEffect(() => {
+    document.title = `О канале — ${BRAND.name}`;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        `О стримере Tiankami — рогалики, оценки, прогресс и заметки по всем пройденным играм.`,
+      );
+    }
+
+    const setMeta = (property, content) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute("property", property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute("content", content);
+    };
+    setMeta("og:title", `О канале — ${BRAND.name}`);
+    setMeta("og:description", `О стримере Tiankami — рогалики, оценки, прогресс и заметки по всем пройденным играм.`);
+    setMeta("og:type", "website");
+    setMeta("og:url", `${BRAND.siteUrl}/about`);
+  }, []);
+
   return (
     <div>
       <h1 className="text-3xl mb-6">О канале</h1>

@@ -1,10 +1,6 @@
 {
   "worktrees": {},
   "sessions": {
-    "ses_f96699254ffeheViOP3FaHoAA4": {
-      "worktreeId": null,
-      "createdAt": "2026-09-03T23:24:21.310Z"
-    },
     "ses_f96503979ffeYLpLRMjBS3HyMz": {
       "worktreeId": null,
       "createdAt": "2026-09-03T23:52:02.454Z"
@@ -20,7 +16,6 @@
       "pending:3",
       "pending:4",
       "ses_f966a0b4fffeXJC1ks3AT5NzSL",
-      "ses_f96699254ffeheViOP3FaHoAA4",
       "ses_f96503979ffeYLpLRMjBS3HyMz"
     ]
   }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchCollections } from "../utils/loadData";
 import { slugify } from "../utils/slugify";
 import { Link } from "react-router-dom";
+import { BRAND } from "../config/branding.js";
 
 const CollectionsPage = () => {
   const [collections, setCollections] = useState([]);
@@ -18,6 +19,32 @@ const CollectionsPage = () => {
         setLoading(false);
       });
   }, []);
+
+  // Мета-теги для страницы подборок
+  useEffect(() => {
+    document.title = `Подборки от ${BRAND.name}`;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        `Тематические подборки рогаликов: ${collections.map((c) => c.name).join(", ")}.`,
+      );
+    }
+
+    const setMeta = (property, content) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute("property", property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute("content", content);
+    };
+    setMeta("og:title", `Подборки от ${BRAND.name}`);
+    setMeta("og:description", `Тематические подборки рогаликов: ${collections.map((c) => c.name).join(", ")}.`);
+    setMeta("og:type", "website");
+    setMeta("og:url", `${BRAND.siteUrl}/collections`);
+  }, [collections]);
 
   if (loading)
     return <div className="text-center py-20">Загрузка подборок...</div>;

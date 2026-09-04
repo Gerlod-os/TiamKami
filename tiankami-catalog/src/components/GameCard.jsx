@@ -35,7 +35,7 @@ const GameCard = ({ game, onClick, onQuickView }) => {
       className="group bg-white/5 rounded-2xl overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-white/20 w-full min-w-0"
     >
       {/* Обложка */}
-      <div className="relative h-52 overflow-hidden bg-gradient-to-br from-white/5 to-white/10">
+      <div className="relative h-36 sm:h-52 overflow-hidden bg-gradient-to-br from-white/5 to-white/10">
         {hasValidImage ? (
           <img
             src={game.image}

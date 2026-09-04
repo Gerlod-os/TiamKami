@@ -1,4 +1,4 @@
-import { FaClock, FaCalendarAlt, FaYoutube, FaGamepad, FaSteam, FaVideo, FaInfoCircle, FaCog, FaCommentDots } from "react-icons/fa";
+import { FaClock, FaCalendarAlt, FaYoutube, FaGamepad, FaSteam, FaVideo, FaInfoCircle, FaCommentDots, FaStar } from "react-icons/fa";
 import { isUrl } from "../utils/normalize.js";
 
 // Тематические иконки статусов (единый справочник с GameCard)
@@ -9,6 +9,16 @@ const statusIcons = {
   "Жду релиза": <span aria-hidden="true">⏳</span>,
   "В процессе": <span aria-hidden="true">⚔️</span>,
 };
+
+const InfoRow = ({ icon, label, value }) => (
+  <div className="flex items-center gap-2">
+    {icon && <span className="shrink-0">{icon}</span>}
+    <span>
+      <span className="text-white/50">{label}:</span>{" "}
+      <span className="text-white/80">{value}</span>
+    </span>
+  </div>
+);
 
 const GameDetails = ({ game }) => {
   const genre = game.genre || "—";
@@ -32,89 +42,92 @@ const GameDetails = ({ game }) => {
         </h3>
 
         <div className="grid sm:grid-cols-2 gap-4 text-sm">
-          <div className="flex items-center gap-2">
-            <FaGamepad className="text-accent-purple shrink-0" />
-            <span>
-              <span className="text-white/50">Жанр:</span>{" "}
-              <span className="text-white/80">{genre}</span>
-            </span>
-          </div>
-          <div>
-            <span className="text-white/50">Оценка:</span>{" "}
-            <span className="text-white/80">
-              {rating !== "—" ? `${rating}/10` : "—"}
-            </span>
-          </div>
-          <div>
-            <span className="text-white/50">Сложность:</span>{" "}
-            <span className="text-white/80">
-              {complexity !== "—" ? `${complexity}/10` : "—"}
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <FaClock className="text-white/60 shrink-0" />
-            <span>
-              <span className="text-white/50">Наиграно:</span>{" "}
-              <span className="text-white/80">{hours} ч</span>
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <FaCalendarAlt className="text-accent-blue shrink-0" />
-            <span>
-              <span className="text-white/50">Дата выхода:</span>{" "}
-              <span className="text-white/80">{releaseDate}</span>
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-white/50">Когда играл:</span>{" "}
-            <span className="text-white/80">{playedDate}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-white/50">Статус:</span>{" "}
-            <span className="text-white/80">
-              {statusIcons[status]} {status}
-            </span>
-          </div>
-          <div>
-            <span className="text-white/50">Прогресс:</span>{" "}
-            <span className="text-white/80">{progress}%</span>
-          </div>
+          <InfoRow
+            icon={<FaGamepad className="text-accent-purple shrink-0" />}
+            label="Жанр"
+            value={genre}
+          />
+          <InfoRow
+            icon={<FaGamepad className="text-purple-400 shrink-0" />}
+            label="Сложность"
+            value={complexity !== "—" ? `${complexity}/10` : "—"}
+          />
+          <InfoRow
+            icon={<FaCalendarAlt className="text-accent-blue shrink-0" />}
+            label="Дата выхода"
+            value={releaseDate}
+          />
+          <InfoRow
+            label="Статус"
+            value={
+              <span>
+                {statusIcons[status]} {status}
+              </span>
+            }
+          />
         </div>
       </div>
 
       {/* Детали */}
-      <div className="space-y-4">
-        {/* Сеттинг */}
-        {setting !== "—" && (
-          <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-            <h3 className="font-heading text-lg mb-3 text-white flex items-center gap-2">
-              <FaCog className="text-purple-400" />
-              Сеттинг
-            </h3>
-            <div className="text-white/80 text-sm">{setting}</div>
-          </div>
-        )}
+      <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+        <h3 className="font-heading text-xl mb-4 text-white flex items-center gap-2">
+          <FaGamepad className="text-purple-400" />
+          Детали
+        </h3>
 
-        {/* Особенности */}
-        {features && (
-          <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-            <h3 className="font-heading text-lg mb-3 text-white flex items-center gap-2">
-              <FaCog className="text-purple-400" />
-              Особенности
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {features.split(",").map((f, i) => (
-                <span
-                  key={i}
-                  className="text-xs bg-green-400/20 text-green-200 px-3 py-1.5 rounded-full border border-green-400/20"
-                >
-                  {f.trim()}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
+        <div className="grid sm:grid-cols-2 gap-4 text-sm">
+          <InfoRow
+            icon={<FaStar className="text-yellow-400 shrink-0" />}
+            label="Оценка"
+            value={rating !== "—" ? `${rating}/10` : "—"}
+          />
+          <InfoRow
+            icon={<FaClock className="text-white/60 shrink-0" />}
+            label="Наиграно"
+            value={`${hours} ч`}
+          />
+          <InfoRow
+            icon={<FaCalendarAlt className="text-accent-blue shrink-0" />}
+            label="Когда играл"
+            value={playedDate}
+          />
+          <InfoRow
+            label="Прогресс"
+            value={`${progress}%`}
+          />
+        </div>
       </div>
+
+      {/* Сеттинг */}
+      {setting !== "—" && (
+        <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+          <h3 className="font-heading text-lg mb-3 text-white flex items-center gap-2">
+            <FaGamepad className="text-purple-400" />
+            Сеттинг
+          </h3>
+          <div className="text-white/80 text-sm">{setting}</div>
+        </div>
+      )}
+
+      {/* Особенности */}
+      {features && (
+        <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+          <h3 className="font-heading text-lg mb-3 text-white flex items-center gap-2">
+            <FaGamepad className="text-purple-400" />
+            Особенности
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {features.split(",").map((f, i) => (
+              <span
+                key={i}
+                className="text-xs bg-green-400/20 text-green-200 px-3 py-1.5 rounded-full border border-green-400/20"
+              >
+                {f.trim()}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Примечания */}
       {game.notes && (
