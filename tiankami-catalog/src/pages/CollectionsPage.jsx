@@ -1,17 +1,99 @@
 import { useEffect, useState } from "react";
-import { fetchCollections } from "../utils/loadData";
-import { slugify } from "../utils/slugify";
-import { Link } from "react-router-dom";
+import { fetchGames, fetchCollections } from "../utils/loadData";
+import { isUrl } from "../utils/normalize.js";
+import { Link, useNavigate } from "react-router-dom";
 import { BRAND } from "../config/branding.js";
+import { FaList } from "react-icons/fa";
+
+const CollectionCard = ({ collection, games }) => {
+  const navigate = useNavigate();
+
+  // Находим первую игру подборки в основном списке, чтобы получить обложку
+  const firstGame = collection.games.length > 0
+    ? games.find((g) => g.title && g.title.toLowerCase().includes(collection.games[0].name.toLowerCase()))
+    : null;
+  const hasValidImage = firstGame && isUrl(firstGame.image);
+
+  const handleClick = () => {
+    // Переход в каталог с фильтром по подборке
+    navigate(`/catalog?collection=${encodeURIComponent(collection.name)}`);
+  };
+
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+      aria-label={`Подборка: ${collection.name}`}
+      className="group bg-white/5 rounded-2xl overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-white/20"
+    >
+      {/* Превью — обложка первой игры */}
+      <div className="relative h-40 overflow-hidden bg-gradient-to-br from-white/5 to-white/10">
+        {hasValidImage ? (
+          <img
+            src={firstGame.image}
+            alt={collection.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900/30 to-pink-900/30">
+            <FaList className="text-4xl text-purple-400/50" />
+          </div>
+        )}
+        {/* Затемнение снизу + оверлей при наведении */}
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-purple-600/0 group-hover:bg-purple-600/20 transition-colors duration-300" />
+        {/* Бейдж с количеством */}
+        <div className="absolute bottom-2 left-3 px-2.5 py-1 bg-purple-600/80 backdrop-blur-sm rounded-lg text-xs font-bold text-white">
+          {collection.games.length} игр
+        </div>
+      </div>
+
+      {/* Контент */}
+      <div className="p-4">
+        <h3 className="font-heading text-lg text-white font-bold mb-1 truncate">
+          {collection.name}
+        </h3>
+        {collection.description && (
+          <p className="text-xs text-white/50 mb-3 line-clamp-2">
+            {collection.description}
+          </p>
+        )}
+        <ul className="text-xs text-white/70 space-y-1">
+          {collection.games.slice(0, 4).map((g, i) => (
+            <li key={i} className="flex items-center gap-1.5">
+              <span className="text-purple-400/60">•</span>
+              <span className="truncate">{g.name}</span>
+            </li>
+          ))}
+        </ul>
+        {collection.games.length > 4 && (
+          <p className="text-[10px] text-white/30 mt-2">
+            + ещё {collection.games.length - 4}...
+          </p>
+        )}
+      </div>
+    </div>
+  );
+};
 
 const CollectionsPage = () => {
   const [collections, setCollections] = useState([]);
+  const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchCollections()
-      .then((data) => {
-        setCollections(data);
+    Promise.all([fetchGames(), fetchCollections()])
+      .then(([gamesData, collectionsData]) => {
+        setGames(gamesData);
+        setCollections(collectionsData);
         setLoading(false);
       })
       .catch((err) => {
@@ -58,40 +140,12 @@ const CollectionsPage = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {collections.map((collection, idx) => (
-            <div
+          {collections.map((col, idx) => (
+            <CollectionCard
               key={idx}
-              className="bg-white/5 rounded-2xl p-5 border border-white/10 hover:border-accent-purple/50 transition-colors"
-            >
-              <h2 className="font-heading text-xl text-accent-pink mb-1">
-                {collection.name}
-              </h2>
-              {collection.description && (
-                <p className="text-sm text-white/60 mb-3">
-                  {collection.description}
-                </p>
-              )}
-              <ul className="space-y-2">
-                {collection.games.map((game, gameIdx) => (
-                  <li
-                    key={gameIdx}
-                    className="flex items-start gap-2 text-white/80"
-                  >
-                    {game.rank && (
-                      <span className="text-accent-purple font-mono text-sm mt-0.5">
-                        {game.rank}.
-                      </span>
-                    )}
-                    <Link
-                      to={`/catalog/${slugify(game.name)}`}
-                      className="hover:text-accent-pink transition-colors"
-                    >
-                      {game.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              collection={col}
+              games={games}
+            />
           ))}
         </div>
       )}

@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, memo } from "react";
 import { FaStar, FaSteam } from "react-icons/fa";
 import { isUrl } from "../utils/normalize.js";
 
@@ -9,7 +9,7 @@ const genreColors = [
   "bg-green-400/25 text-green-200 border border-green-400/20",
 ];
 
-const GameCard = ({ game, onClick, onQuickView }) => {
+function GameCardInner({ game, onClick, onQuickView }) {
   const [imageError, setImageError] = useState(false);
 
   const handleError = useCallback(() => {
@@ -41,6 +41,7 @@ const GameCard = ({ game, onClick, onQuickView }) => {
             src={game.image}
             alt={game.title}
             className="w-full h-full object-cover"
+            loading="lazy"
             onError={handleError}
           />
         ) : (
@@ -146,6 +147,8 @@ const GameCard = ({ game, onClick, onQuickView }) => {
       </div>
     </div>
   );
-};
+}
 
+const GameCard = memo(GameCardInner);
+GameCard.displayName = "GameCard";
 export default GameCard;

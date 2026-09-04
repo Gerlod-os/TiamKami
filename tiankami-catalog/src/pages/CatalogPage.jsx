@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchGames } from "../utils/loadData";
+import { fetchGames, fetchCollections } from "../utils/loadData";
 import { parseRuDate } from "../utils/date";
 import { getGameMetadata, getAllSettings, getAllFeatures } from "../utils/normalize";
 import GameCard from "../components/GameCard";
@@ -12,6 +12,7 @@ const ITEMS_PER_PAGE = 24;
 const CatalogPage = () => {
   const navigate = useNavigate();
   const [games, setGames] = useState([]);
+  const [collections, setCollections] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedGame, setSelectedGame] = useState(null);
@@ -19,6 +20,7 @@ const CatalogPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("title");
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
+  const [selectedCollection, setSelectedCollection] = useState(null);
   const [filters, setFilters] = useState({
     genres: [],
     status: "",
@@ -35,6 +37,24 @@ const CatalogPage = () => {
   });
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Инициализация searchQuery и collection из URL-параметров
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("search");
+    const col = params.get("collection");
+    if (q) {
+      setSearchQuery(q);
+      window.history.replaceState({}, "", "/catalog");
+    }
+    if (col) {
+      const found = collections.find((c) => c.name === decodeURIComponent(col));
+      if (found) {
+        setSelectedCollection(found);
+        window.history.replaceState({}, "", "/catalog");
+      }
+    }
+  }, [collections]);
+
   const resetPage = () => setCurrentPage(1);
 
   const setFilterAndResetPage = (updater) => {
@@ -47,6 +67,7 @@ const CatalogPage = () => {
 
   const resetFilters = () => {
     setSearchQuery("");
+    setSelectedCollection(null);
     setFilters({
       genres: [],
       status: "",
@@ -66,9 +87,10 @@ const CatalogPage = () => {
   };
 
   useEffect(() => {
-    fetchGames()
-      .then((data) => {
-        setGames(data);
+    Promise.all([fetchGames(), fetchCollections()])
+      .then(([gamesData, collectionsData]) => {
+        setGames(gamesData);
+        setCollections(collectionsData);
         setLoading(false);
       })
       .catch((err) => {
@@ -201,6 +223,16 @@ const CatalogPage = () => {
       );
     }
 
+    // Фильтр по подборке — показываем только игры из выбранной подборки
+    if (selectedCollection) {
+      const collectionNames = new Set(
+        selectedCollection.games.map((g) => g.name.toLowerCase()),
+      );
+      result = result.filter(
+        (game) => collectionNames.has((game.title || "").toLowerCase()),
+      );
+    }
+
     switch (sortBy) {
       case "title":
         result.sort((a, b) => a.title.localeCompare(b.title, "ru"));
@@ -246,7 +278,7 @@ const CatalogPage = () => {
     );
 
     return { games: paginated, totalCount: result.length, totalPages };
-  }, [games, searchQuery, filters, sortBy, currentPage]);
+  }, [games, searchQuery, filters, sortBy, currentPage, selectedCollection]);
 
   if (loading)
     return <div className="text-center py-20">Загрузка данных...</div>;
@@ -727,6 +759,23 @@ const CatalogPage = () => {
       </div>
 
       <p className="mb-4 text-white/70">Показано игр: {filteredGames.totalCount}</p>
+
+      {/* Индикатор активной подборки */}
+      {selectedCollection && (
+        <div className="mb-4 flex items-center gap-2">
+          <span className="text-sm text-purple-300">Подборка:</span>
+          <span className="text-sm font-medium text-white">{selectedCollection.name}</span>
+          <button
+            onClick={() => {
+              setSelectedCollection(null);
+              resetPage();
+            }}
+            className="text-xs text-white/50 hover:text-white underline"
+          >
+            × Сбросить
+          </button>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredGames.games.map((game, index) => (
