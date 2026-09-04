@@ -26,6 +26,7 @@ const AboutPage = () => {
     setMeta("og:description", `О стримере Tiankami — рогалики, оценки, прогресс и заметки по всем пройденным играм.`);
     setMeta("og:type", "website");
     setMeta("og:url", `${BRAND.siteUrl}/about`);
+    setMeta("og:image", `${BRAND.siteUrl}/assets/hero-CLDdwZDr.png`);
   }, []);
 
   return (

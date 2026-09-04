@@ -171,6 +171,7 @@ const HomePage = () => {
     setMeta("og:description", `Каталог рогаликов ${BRAND.name}: ${games.length} игр с оценками, прогрессом и заметками стримера.`);
     setMeta("og:type", "website");
     setMeta("og:url", BRAND.siteUrl);
+    setMeta("og:image", `${BRAND.siteUrl}/assets/hero-CLDdwZDr.png`);
   }, []);
 
   const homeData = useMemo(() => {

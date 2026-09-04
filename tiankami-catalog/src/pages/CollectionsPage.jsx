@@ -126,6 +126,7 @@ const CollectionsPage = () => {
     setMeta("og:description", `Тематические подборки рогаликов: ${collections.map((c) => c.name).join(", ")}.`);
     setMeta("og:type", "website");
     setMeta("og:url", `${BRAND.siteUrl}/collections`);
+    setMeta("og:image", `${BRAND.siteUrl}/assets/hero-CLDdwZDr.png`);
   }, [collections]);
 
   if (loading)
