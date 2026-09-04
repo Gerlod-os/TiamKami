@@ -56,6 +56,38 @@ const CatalogPage = () => {
     setSearchParams(params);
   }, [searchQuery, selectedCollection, setSearchParams]);
 
+  const resetPage = () => setCurrentPage(1);
+
+  const setFilterAndResetPage = (updater) => {
+    setFilters((prev) => {
+      const next = typeof updater === "function" ? updater(prev) : updater;
+      resetPage();
+      return next;
+    });
+  };
+
+  const resetFilters = () => {
+    setSearchQuery("");
+    setSelectedCollection(null);
+    setFilters({
+      genres: [],
+      status: "",
+      minRating: "",
+      maxRating: "",
+      minComplexity: "",
+      maxComplexity: "",
+      minHours: "",
+      maxHours: "",
+      years: [],
+      hasMI: false,
+      settings: [],
+      features: [],
+    });
+    setSortBy("title");
+    setCurrentPage(1);
+    setSearchParams(new URLSearchParams());
+  };
+
   useEffect(() => {
     Promise.all([fetchGames(), fetchCollections()])
       .then(([gamesData, collectionsData]) => {
