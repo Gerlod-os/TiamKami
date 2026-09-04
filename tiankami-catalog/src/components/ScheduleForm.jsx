@@ -20,6 +20,13 @@ const ScheduleForm = ({ onSuccess }) => {
     setError("");
   };
 
+  /** Конвертирует YYYY-MM-DD → DD.MM.YYYY */
+  const toRuDate = (isoDate) => {
+    if (!isoDate) return "";
+    const [y, m, d] = isoDate.split("-");
+    return `${d}.${m}.${y}`;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -36,7 +43,7 @@ const ScheduleForm = ({ onSuccess }) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          date: formData.date,
+          date: toRuDate(formData.date),
           time: formData.time,
           game: formData.game.trim(),
           streamLink: formData.streamLink || "https://twitch.tv/tiankami",

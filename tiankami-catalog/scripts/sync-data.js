@@ -22,7 +22,7 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-const { GAMES_SHEET_NAME, GAMES_URL, COLLECTIONS_URL, COPY_SPREADSHEET_ID } =
+const { GAMES_SHEET_NAME, GAMES_URL, COLLECTIONS_URL, SCHEDULE_URL, COPY_SPREADSHEET_ID } =
   await import("../src/config/dataSources.js");
 
 const SERVER_SHEETS_API_KEY = process.env.SHEETS_API_KEY_SERVER || "";
@@ -134,6 +134,65 @@ async function sync() {
     console.error("Ошибка загрузки подборок:", err.message);
     process.exitCode = 1;
   }
+
+  // Расписание — CSV с заголовками
+  try {
+    const response = await fetch(SCHEDULE_URL);
+    if (!response.ok) throw new Error(`HTTP ${response.status} for ${SCHEDULE_URL}`);
+    const text = await response.text();
+    const parsed = Papa.parse(text, { header: true, skipEmptyLines: true });
+    const schedule = parsed.data
+      .filter((r) => r.date && r.game)
+      .map((r) => {
+        // Конвертируем YYYY-MM-DD → DD.MM.YYYY
+        const date = r.date.trim();
+        const ruDate = date.match(/^\d{4}-\d{2}-\d{2}$/)
+          ? (() => { const [y, m, d] = date.split("-"); return `${d}.${m}.${y}`; })()
+          : date;
+        return {
+          date: ruDate,
+          time: (r.time || "").trim(),
+          game: r.game.trim(),
+          streamLink: (r.streamLink || "").trim(),
+        };
+      })
+      .sort((a, b) => {
+        const da = parseDateRu(a.date);
+        const db = parseDateRu(b.date);
+        return da - db;
+      });
+    fs.writeFileSync(
+      path.join(dataDir, "schedule.json"),
+      JSON.stringify(schedule, null, 2),
+      "utf-8",
+    );
+    console.log(`Сохранено ${schedule.length} стримов в schedule.json`);
+  } catch (err) {
+    console.error("Ошибка загрузки расписания:", err.message);
+    process.exitCode = 1;
+  }
+}
+
+/** Парсит дату DD.MM.YYYY или YYYY-MM-DD в Date для сортировки. */
+function parseDateRu(dateStr) {
+  if (!dateStr || typeof dateStr !== "string") return new Date(9999, 0);
+  const s = dateStr.trim();
+
+  // DD.MM.YYYY
+  const ruMatch = s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+  if (ruMatch) {
+    const [_, day, month, year] = ruMatch;
+    return new Date(Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day)));
+  }
+
+  // YYYY-MM-DD
+  const isoMatch = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (isoMatch) {
+    const [_, year, month, day] = isoMatch;
+    return new Date(Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day)));
+  }
+
+  return new Date(9999, 0);
 }
 
 sync();
