@@ -15,37 +15,35 @@ import localSchedule from "../data/schedule.json";
 import {
   normalizeGames,
   normalizeCollections,
-  extractHyperlinkParts,
-  isUrl,
-  isYouTubeUrl,
-  extractSteamAppId,
+  extractLinksFromCopyRow,
   steamHeaderUrl,
 } from "./normalize.js";
 import { safeGet, safeSet } from "./storage.js";
-import { slugify, uniqueSlug } from "./slugify.js";
 import { parseRuDate } from "./date.js";
 
 /* ─────────── Обогащение игр из локального JSON ─────────── */
 
 /**
  * Добавляет обложки и Steam-ссылки из steamAppId, уже записанных в games.json.
+ * Если steamAppId нет в игре — берёт из localGames по slug.
  */
 function enrichFromLocalJson(games) {
-  const usedSlugs = new Set();
-  const withSlugs = games.map((game) => {
-    if (game.slug) return game;
-    const base = slugify(game.title);
-    const slug = uniqueSlug(base, usedSlugs);
-    usedSlugs.add(slug);
-    return { ...game, slug };
+  // Словарь: slug → steamAppId из games.json
+  const appIdBySlug = {};
+  localGames.forEach((lg) => {
+    if (lg.slug && lg.steamAppId) {
+      appIdBySlug[lg.slug] = lg.steamAppId;
+    }
   });
 
-  return withSlugs.map((g) => {
-    if (!g.steamAppId) return g;
+  return games.map((g) => {
+    const appId = g.steamAppId || appIdBySlug[g.slug];
+    if (!appId) return g;
     return {
       ...g,
-      image: steamHeaderUrl(g.steamAppId),
-      steamUrl: `https://store.steampowered.com/app/${g.steamAppId}/`,
+      steamAppId: appId,
+      image: steamHeaderUrl(appId),
+      steamUrl: `https://store.steampowered.com/app/${appId}/`,
     };
   });
 }
@@ -129,50 +127,12 @@ async function fetchRows(url, delimiter) {
 /* ─────────── Парсинг гиперссылок из строк таблицы ─────────── */
 
 /**
- * Парсит одну строку Google Sheets и собирает { youtube, miVideo, steam }.
- * Название игры берётся из колонки C (индекс 2).
- * В Оригинал это формула =HYPERLINK("url";"label"), в Копии — просто текст.
- * В Копии YouTube и МИ находятся в отдельных колонках (V=21, W=22),
- * используем индекс колонки как первичный маркер, label — как fallback.
+ * Извлекает ссылки из полной строки (A:Z), нарезая на диапазон C:W
+ * и передавая в extractLinksFromCopyRow.
  */
-function parseLinksFromRow(row) {
-  // Название игры — колонка C (индекс 2).
-  let rawTitle = (row[2] || "").toString().trim();
-  let title = rawTitle;
-  if (rawTitle.startsWith("=HYPERLINK")) {
-    const m = rawTitle.match(/^=HYPERLINK\(\s*"([^"]+)"\s*[;,]\s*"([^"]*)"/i);
-    if (m) title = m[2] || m[1]; // label или url
-  }
-  if (!title) return null;
-
-  const entry = {};
-  row.forEach((cell, colIdx) => {
-    const { url, label } = extractHyperlinkParts(String(cell ?? ""));
-    if (!isUrl(url)) return;
-
-    if (/steampowered\.com/i.test(url)) {
-      entry.steam = url;
-    } else if (isYouTubeUrl(url)) {
-      // Определяем тип по label гиперссылки (приоритет)
-      const labelLower = (label || "").toLowerCase();
-      const isMiLabel = /ми|игропрактик|session|multiplayer/i.test(labelLower);
-
-      if (isMiLabel) {
-        entry.miVideo = url;
-      } else if (colIdx === 22) {
-        entry.miVideo = url;       // колонка W — МИ (fallback)
-      } else if (colIdx === 21) {
-        entry.youtube = url;       // колонка V — YouTube (fallback)
-      } else if (!entry.miVideo) {
-        entry.miVideo = url;       // fallback — первая YouTube-ссылка
-      } else if (!entry.youtube) {
-        entry.youtube = url;       // fallback — вторая
-      }
-    }
-  });
-
-  if (Object.keys(entry).length === 0) return null;
-  return { title, entry };
+function extractLinksFromFullRow(fullRow) {
+  // C:W = индексы 2..22 → slice(2, 23)
+  return extractLinksFromCopyRow(fullRow.slice(2, 23));
 }
 
 /* ─────────── Публичное API ─────────── */
@@ -228,7 +188,7 @@ async function revalidateGames(onUpdate) {
   lastGamesCheck = Date.now();
   try {
     // 1. Загружаем Оригинал (TSV) — базовые данные (название, жанр, статус и т.д.)
-    const rows = await fetchRows(GAMES_URL, "	");
+    const rows = await fetchRows(GAMES_URL, "\t");
     let freshFromSheets = normalizeGames(rows);
     if (freshFromSheets.length === 0) return;
 
@@ -241,7 +201,7 @@ async function revalidateGames(onUpdate) {
           const json = await response.json();
           const copyRows = json.values || [];
           for (let i = 1; i < copyRows.length; i++) {
-            const parsed = parseLinksFromRow(copyRows[i]);
+            const parsed = extractLinksFromFullRow(copyRows[i]);
             if (parsed) copyLinks[parsed.title] = parsed.entry;
           }
         }
@@ -261,7 +221,7 @@ async function revalidateGames(onUpdate) {
           const json = await response.json();
           const origRows = json.values || [];
           for (let i = 1; i < origRows.length; i++) {
-            const parsed = parseLinksFromRow(origRows[i]);
+            const parsed = extractLinksFromFullRow(origRows[i]);
             if (parsed) copyLinks[parsed.title] = parsed.entry;
           }
         }
@@ -279,14 +239,14 @@ async function revalidateGames(onUpdate) {
       const next = { ...g };
 
       if (links) {
-        const appId = links.steam ? extractSteamAppId(links.steam) : null;
+        const appId = links.entry.steamAppId;
         if (appId) {
           next.steamAppId = appId;
           next.image = steamHeaderUrl(appId);
           next.steamUrl = `https://store.steampowered.com/app/${appId}/`;
         }
-        if (links.youtube) next.youtube = links.youtube;
-        if (links.miVideo) next.miVideo = links.miVideo;
+        if (links.entry.youtube) next.youtube = links.entry.youtube;
+        if (links.entry.miVideo) next.miVideo = links.entry.miVideo;
       }
 
       return next;

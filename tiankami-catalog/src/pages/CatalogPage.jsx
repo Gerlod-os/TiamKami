@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { fetchGames, fetchCollections } from "../utils/loadData";
 import { parseRuDate } from "../utils/date";
 import { getGameMetadata, getAllSettings, getAllFeatures } from "../utils/normalize";
@@ -12,13 +12,14 @@ const ITEMS_PER_PAGE = 24;
 
 const CatalogPage = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [games, setGames] = useState([]);
   const [collections, setCollections] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedGame, setSelectedGame] = useState(null);
   const [quickViewGame, setQuickViewGame] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(() => searchParams.get("search") || "");
   const [sortBy, setSortBy] = useState("title");
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(null);
@@ -38,54 +39,22 @@ const CatalogPage = () => {
   });
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Инициализация searchQuery и collection из URL-параметров
+  // Синхронизация URL-параметров с состоянием
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const q = params.get("search");
-    const col = params.get("collection");
-    if (q) {
-      setSearchQuery(q);
-      window.history.replaceState({}, "", "/catalog");
-    }
+    const col = searchParams.get("collection");
     if (col) {
       const found = collections.find((c) => c.name === decodeURIComponent(col));
-      if (found) {
-        setSelectedCollection(found);
-        window.history.replaceState({}, "", "/catalog");
-      }
+      if (found) setSelectedCollection(found);
     }
-  }, [collections]);
+  }, [collections, searchParams]);
 
-  const resetPage = () => setCurrentPage(1);
-
-  const setFilterAndResetPage = (updater) => {
-    setFilters((prev) => {
-      const next = typeof updater === "function" ? updater(prev) : updater;
-      resetPage();
-      return next;
-    });
-  };
-
-  const resetFilters = () => {
-    setSearchQuery("");
-    setSelectedCollection(null);
-    setFilters({
-      genres: [],
-      status: "",
-      minRating: "",
-      maxRating: "",
-      minComplexity: "",
-      maxComplexity: "",
-      minHours: "",
-      maxHours: "",
-      years: [],
-      hasMI: false,
-      settings: [],
-      features: [],
-    });
-    setSortBy("title");
-    setCurrentPage(1);
-  };
+  // Синхронизация searchQuery и selectedCollection с URL
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (searchQuery) params.set("search", searchQuery);
+    if (selectedCollection) params.set("collection", selectedCollection.name);
+    setSearchParams(params);
+  }, [searchQuery, selectedCollection, setSearchParams]);
 
   useEffect(() => {
     Promise.all([fetchGames(), fetchCollections()])
@@ -802,51 +771,65 @@ const CatalogPage = () => {
         </div>
       )}
 
-      {filteredGames.totalPages > 1 && (
-        <div className="flex justify-center items-center gap-1.5 sm:gap-2 mt-8 flex-wrap">
-          <button
-            onClick={() => {
-              trackEvent("Пагинация", { page: currentPage - 1, action: "prev" });
-              setCurrentPage((p) => Math.max(1, p - 1));
-            }}
-            disabled={currentPage === 1}
-            className="px-3 sm:px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50 text-xs sm:text-sm"
-          >
-            ← Назад
-          </button>
-          <div className="flex gap-1 sm:gap-2 flex-wrap justify-center">
-          {Array.from(
-            { length: filteredGames.totalPages },
-            (_, i) => i + 1,
-          ).map((p) => (
+      {filteredGames.totalPages > 1 && (() => {
+        const WINDOW = 3;
+        const pages = [];
+        for (let i = 1; i <= filteredGames.totalPages; i++) {
+          if (i === 1 || i === filteredGames.totalPages || Math.abs(i - currentPage) <= WINDOW) {
+            if (pages.length > 0 && pages[pages.length - 1] !== "...") {
+              const prev = pages[pages.length - 1];
+              if (typeof prev === "number" && i - prev > 1) pages.push("...");
+            }
+            pages.push(i);
+          }
+        }
+        return (
+          <div className="flex justify-center items-center gap-1.5 sm:gap-2 mt-8 flex-wrap">
             <button
-              key={p}
               onClick={() => {
-                trackEvent("Пагинация", { page: p, action: "click" });
-                setCurrentPage(p);
+                trackEvent("Пагинация", { page: currentPage - 1, action: "prev" });
+                setCurrentPage((p) => Math.max(1, p - 1));
               }}
-              className={`px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm ${
-                p === currentPage ? "bg-purple-600" : "bg-gray-800"
-              }`}
+              disabled={currentPage === 1}
+              className="px-3 sm:px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50 text-xs sm:text-sm"
             >
-              {p}
+              ← Назад
             </button>
-          ))}
+            <div className="flex gap-1 sm:gap-2 flex-wrap justify-center">
+            {pages.map((p) =>
+              p === "..." ? (
+                <span key="..." className="px-2 py-1 text-xs sm:text-sm text-white/30">…</span>
+              ) : (
+                <button
+                  key={p}
+                  onClick={() => {
+                    trackEvent("Пагинация", { page: p, action: "click" });
+                    setCurrentPage(p);
+                  }}
+                  className={`px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm ${
+                    p === currentPage ? "bg-purple-600" : "bg-gray-800"
+                  }`}
+                >
+                  {p}
+                </button>
+              )
+            )}
+            </div>
+            <button
+              onClick={() => {
+                trackEvent("Пагинация", { page: currentPage + 1, action: "next" });
+                setCurrentPage((p) =>
+                  Math.min(filteredGames.totalPages, p + 1),
+                );
+              }}
+              disabled={currentPage === filteredGames.totalPages}
+              className="px-3 sm:px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50 text-xs sm:text-sm"
+            >
+              Вперед →
+            </button>
           </div>
-          <button
-            onClick={() => {
-              trackEvent("Пагинация", { page: currentPage + 1, action: "next" });
-              setCurrentPage((p) =>
-                Math.min(filteredGames.totalPages, p + 1),
-              );
-            }}
-            disabled={currentPage === filteredGames.totalPages}
-            className="px-3 sm:px-4 py-2 bg-gray-800 rounded-lg disabled:opacity-50 text-xs sm:text-sm"
-          >
-            Вперед →
-          </button>
-        </div>
-      )}
+        );
+      })()}
 
       {selectedGame && (
         <GameModal game={selectedGame} onClose={() => setSelectedGame(null)} />

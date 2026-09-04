@@ -126,7 +126,7 @@ function GameCardInner({ game, onClick, onQuickView }) {
               </span>
             )}
             {game.features &&
-              game.features.split(",").slice(0, 2).map((feature, i) => (
+              game.features.split(",").filter((f) => f.trim()).slice(0, 2).map((feature, i) => (
                 <span
                   key={i}
                   className="text-[10px] bg-blue-400/20 text-blue-200 px-2 py-1 rounded-full border border-blue-400/20"

@@ -118,7 +118,7 @@ const GameDetails = ({ game }) => {
             Особенности
           </h3>
           <div className="flex flex-wrap gap-2">
-            {features.split(",").map((f, i) => (
+            {features.split(",").filter((f) => f.trim()).map((f, i) => (
               <span
                 key={i}
                 className="text-xs bg-green-400/20 text-green-200 px-3 py-1.5 rounded-full border border-green-400/20"

@@ -286,9 +286,23 @@ export function extractSteamAppId(url) {
 }
 
 /**
+ * Извлекает URL из ячейки: plain URL или =HYPERLINK("url","label").
+ */
+function extractUrlFromCell(cell) {
+  const s = (cell || "").toString().trim();
+  if (!s) return null;
+  // HYPERLINK-формула
+  const m = s.match(/^=HYPERLINK\(\s*"([^"]+)"\s*[;,]/i);
+  if (m) return m[1];
+  // Plain URL
+  if (s.startsWith("http")) return s;
+  return null;
+}
+
+/**
  * Извлекает Steam-ссылки из строки таблицы (колонки C:W в Копии).
  * C=0 (название), U=18 (Steam), V=19 (YouTube), W=20 (МИ).
- * Возвращает объект { steamAppId, youtube, miVideo } или null.
+ * Возвращает объект { title, entry } где entry = { steamAppId, youtube, miVideo }.
  */
 export function extractLinksFromCopyRow(row) {
   const title = (row[0] || "").toString().trim();
@@ -297,23 +311,19 @@ export function extractLinksFromCopyRow(row) {
   const entry = {};
 
   // Steam — колонка U (индекс 18 в C:W)
-  const steamRaw = (row[18] || "").toString().trim();
-  if (steamRaw) {
-    const appId = extractSteamAppId(steamRaw);
+  const steamUrl = extractUrlFromCell(row[18]);
+  if (steamUrl) {
+    const appId = extractSteamAppId(steamUrl);
     if (appId) entry.steamAppId = appId;
   }
 
   // YouTube — колонка V (индекс 19 в C:W)
-  const ytRaw = (row[19] || "").toString().trim();
-  if (ytRaw && ytRaw.startsWith("http")) {
-    entry.youtube = ytRaw;
-  }
+  const ytUrl = extractUrlFromCell(row[19]);
+  if (ytUrl) entry.youtube = ytUrl;
 
   // МИ — колонка W (индекс 20 в C:W)
-  const miRaw = (row[20] || "").toString().trim();
-  if (miRaw && miRaw.startsWith("http")) {
-    entry.miVideo = miRaw;
-  }
+  const miUrl = extractUrlFromCell(row[20]);
+  if (miUrl) entry.miVideo = miUrl;
 
   return entry.steamAppId || entry.youtube || entry.miVideo
     ? { title, entry }

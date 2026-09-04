@@ -46,7 +46,7 @@ const ShowAllButton = ({ visible, onToggle }) => (
 const CollectionCard = ({ collection, games }) => {
   // Находим первую игру подборки в основном списке, чтобы получить обложку
   const firstGame = collection.games.length > 0
-    ? games.find((g) => g.title && g.title.toLowerCase().includes(collection.games[0].name.toLowerCase()))
+    ? games.find((g) => g.title && g.title.toLowerCase().trim() === collection.games[0].name.toLowerCase().trim())
     : null;
   const hasValidImage = firstGame && isUrl(firstGame.image);
 
@@ -172,7 +172,7 @@ const HomePage = () => {
     setMeta("og:type", "website");
     setMeta("og:url", BRAND.siteUrl);
     setMeta("og:image", `${BRAND.siteUrl}/assets/hero-CLDdwZDr.png`);
-  }, []);
+  }, [games.length]);
 
   const homeData = useMemo(() => {
     const topRated = [...games]
