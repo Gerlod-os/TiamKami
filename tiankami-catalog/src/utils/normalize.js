@@ -3,6 +3,8 @@
  * и в scripts/sync-data.js (build-time), чтобы исключить рассинхрон.
  */
 
+import { slugify, uniqueSlug } from "./slugify.js";
+
 // Единый справочник статусов. Владелец таблицы пишет «Жду релиз»,
 // сайт приводит к «Жду релиза» — сверка посимвольно не ломается.
 const STATUS_ALIASES = {
@@ -138,20 +140,6 @@ export function normalizeGames(rows) {
 
   // Генерируем уникальные слаги
   const usedSlugs = new Set();
-  const slugify = (title) =>
-    title
-      .toLowerCase()
-      .replace(/[^\wа-яёА-Я\s-]/g, "")
-      .replace(/\s+/g, "-")
-      .replace(/-+/g, "-")
-      .replace(/^-+|-+$/g, "");
-  const uniqueSlug = (slug, used) => {
-    if (!used.has(slug)) return slug;
-    let i = 2;
-    const base = slug;
-    while (used.has(`${base}-${i}`)) i++;
-    return `${base}-${i}`;
-  };
 
   const finalGames = games.map((game) => {
     const baseSlug = slugify(game.title);
@@ -319,6 +307,34 @@ export function extractLinksFromCopyRow(row) {
  */
 export function steamHeaderUrl(appId) {
   return `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/header.jpg`;
+}
+
+/**
+ * Извлекает все уникальные сеттинги из списка игр.
+ */
+export function getAllSettings(games) {
+  const settings = new Set();
+  games.forEach((game) => {
+    if (game.setting) settings.add(game.setting.trim());
+  });
+  return [...settings].sort();
+}
+
+/**
+ * Извлекает все уникальные особенности из списка игр.
+ * Особенности в поле features разделены запятыми.
+ */
+export function getAllFeatures(games) {
+  const features = new Set();
+  games.forEach((game) => {
+    if (game.features) {
+      game.features.split(",").forEach((f) => {
+        const trimmed = f.trim();
+        if (trimmed) features.add(trimmed);
+      });
+    }
+  });
+  return [...features].sort();
 }
 
 /**

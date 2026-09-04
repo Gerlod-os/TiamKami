@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchGames, fetchCollections } from "../utils/loadData";
 import { parseRuDate } from "../utils/date";
+import { isUrl } from "../utils/normalize.js";
 import GameCard from "../components/GameCard";
 import GameModal from "../components/GameModal";
 import TwitchWidget from "../components/TwitchWidget";
@@ -11,22 +12,117 @@ import {
   FaCalendarAlt,
   FaGamepad,
   FaList,
+  FaSkull,
+  FaCheckCircle,
+  FaEye,
+  FaSearchPlus,
 } from "react-icons/fa";
 
-const SectionTitle = ({ icon, children }) => (
-  <h2 className="text-2xl font-heading flex items-center gap-2 mb-4">
-    {icon}
+const SectionTitle = ({ icon, color, children }) => (
+  <h2 className="text-2xl font-heading flex items-center gap-2 mb-5 pb-3 border-b border-white/10">
+    <span className={color}>{icon}</span>
     {children}
   </h2>
 );
 
-const ToggleList = ({ visible, onToggle }) => (
+const ShowAllButton = ({ visible, onToggle }) => (
   <button
     onClick={onToggle}
-    className="mt-4 text-accent-pink hover:text-white transition-colors text-sm font-medium"
+    className="mt-5 px-5 py-2.5 bg-purple-600/80 hover:bg-purple-600 text-white rounded-xl font-medium text-sm transition-all shadow-lg shadow-purple-600/20 hover:shadow-purple-600/40 hover:-translate-y-0.5 flex items-center gap-2 mx-auto w-fit"
   >
-    {visible ? "Свернуть" : "Показать все"}
+    {visible ? (
+      <>
+        <FaSearchPlus size={14} /> Свернуть
+      </>
+    ) : (
+      <>
+        <FaSearchPlus size={14} /> Показать все
+      </>
+    )}
   </button>
+);
+
+const CollectionCard = ({ collection, games }) => {
+  // Находим первую игру подборки в основном списке, чтобы получить обложку
+  const firstGame = collection.games.length > 0
+    ? games.find((g) => g.title && g.title.toLowerCase().includes(collection.games[0].name.toLowerCase()))
+    : null;
+  const hasValidImage = firstGame && isUrl(firstGame.image);
+
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => window.location.href = "/collections"}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          window.location.href = "/collections";
+        }
+      }}
+      aria-label={`Подборка: ${collection.name}`}
+      className="group bg-white/5 rounded-2xl overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-white/20"
+    >
+      {/* Превью — обложка первой игры */}
+      <div className="relative h-36 overflow-hidden bg-gradient-to-br from-white/5 to-white/10">
+        {hasValidImage ? (
+          <img
+            src={firstGame.image}
+            alt={collection.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900/30 to-pink-900/30">
+            <FaList className="text-4xl text-purple-400/50" />
+          </div>
+        )}
+        {/* Затемнение снизу + оверлей при наведении */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-purple-600/0 group-hover:bg-purple-600/20 transition-colors duration-300" />
+        {/* Бейдж с количеством */}
+        <div className="absolute bottom-2 left-3 px-2.5 py-1 bg-purple-600/80 backdrop-blur-sm rounded-lg text-xs font-bold text-white">
+          {collection.games.length} игр
+        </div>
+      </div>
+
+      {/* Контент */}
+      <div className="p-4">
+        <h3 className="font-heading text-lg text-white font-bold mb-1 truncate">
+          {collection.name}
+        </h3>
+        {collection.description && (
+          <p className="text-xs text-white/50 mb-3 line-clamp-2">
+            {collection.description}
+          </p>
+        )}
+        <ul className="text-xs text-white/70 space-y-1">
+          {collection.games.slice(0, 4).map((g, i) => (
+            <li key={i} className="flex items-center gap-1.5">
+              <span className="text-purple-400/60">•</span>
+              <span className="truncate">{g.name}</span>
+            </li>
+          ))}
+        </ul>
+        {collection.games.length > 4 && (
+          <p className="text-[10px] text-white/30 mt-2">
+            + ещё {collection.games.length - 4}...
+          </p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const StatCard = ({ icon, value, label, color, bgColor }) => (
+  <div className={`${bgColor} rounded-2xl border p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg`}>
+    <div className="flex justify-center mb-2">{icon}</div>
+    <div className={`text-3xl font-bold font-mono ${color}`}>
+      {value}
+    </div>
+    <div className="text-xs text-white/50 uppercase tracking-wide mt-1">
+      {label}
+    </div>
+  </div>
 );
 
 const HomePage = () => {
@@ -49,7 +145,6 @@ const HomePage = () => {
       });
   }, []);
 
-  // Один useMemo — один проход по массиву, вместо 4 отдельных копий
   const homeData = useMemo(() => {
     const topRated = [...games]
       .filter((g) => g.rating)
@@ -108,77 +203,56 @@ const HomePage = () => {
 
       {/* Статистика */}
       <section className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <div className="bg-white/5 rounded-xl border border-accent-purple/30 p-4 text-center">
-          <div className="text-3xl font-bold text-white font-mono">
-            {totalGames}
-          </div>
-          <div className="text-xs text-white/50 uppercase tracking-wide mt-1">
-            Архив игр
-          </div>
-        </div>
-        <div className="bg-white/5 rounded-xl border border-emerald-900/30 p-4 text-center">
-          <div className="text-3xl font-bold text-emerald-400 font-mono">
-            {completedGames}
-          </div>
-          <div className="text-xs text-white/50 uppercase tracking-wide mt-1">
-            Пройдено
-          </div>
-        </div>
-        <div className="bg-white/5 rounded-xl border border-red-900/30 p-4 text-center">
-          <div className="text-3xl font-bold text-red-400 font-mono">
-            {droppedGames}
-          </div>
-          <div className="text-xs text-white/50 uppercase tracking-wide mt-1">
-            Дропнутые
-          </div>
-        </div>
-        <div className="bg-white/5 rounded-xl border border-blue-900/30 p-4 text-center">
-          <div className="text-3xl font-bold text-blue-400 font-mono">
-            {reviewGames}
-          </div>
-          <div className="text-xs text-white/50 uppercase tracking-wide mt-1">
-            Обзор
-          </div>
-        </div>
-        <div className="bg-white/5 rounded-xl border border-purple-900/30 p-4 text-center">
-          <div className="text-3xl font-bold text-purple-400 font-mono">
-            {Math.round(totalHours)}
-          </div>
-          <div className="text-xs text-white/50 uppercase tracking-wide mt-1">
-            Часов в играх
-          </div>
-        </div>
+        <StatCard
+          icon={<FaGamepad className="text-3xl text-purple-400" />}
+          value={totalGames}
+          label="Архив игр"
+          color="text-white"
+          bgColor="bg-white/5 rounded-2xl border border-purple-500/20 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        />
+        <StatCard
+          icon={<FaCheckCircle className="text-3xl text-emerald-400" />}
+          value={completedGames}
+          label="Пройдено"
+          color="text-emerald-400"
+          bgColor="bg-white/5 rounded-2xl border border-emerald-500/20 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        />
+        <StatCard
+          icon={<FaSkull className="text-3xl text-red-400" />}
+          value={droppedGames}
+          label="Дропнутые"
+          color="text-red-400"
+          bgColor="bg-white/5 rounded-2xl border border-red-500/20 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        />
+        <StatCard
+          icon={<FaEye className="text-3xl text-blue-400" />}
+          value={reviewGames}
+          label="Обзор"
+          color="text-blue-400"
+          bgColor="bg-white/5 rounded-2xl border border-blue-500/20 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        />
+        <StatCard
+          icon={<FaClock className="text-3xl text-amber-400" />}
+          value={Math.round(totalHours)}
+          label="Часов в играх"
+          color="text-amber-400"
+          bgColor="bg-white/5 rounded-2xl border border-amber-500/20 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+        />
       </section>
 
       {/* Подборки от Тиана */}
       {collections.length > 0 && (
-        <section className="bg-white/5 rounded-2xl p-6 border border-accent-purple/30">
-          <h2 className="text-2xl font-heading mb-4 flex items-center gap-2">
-            <FaList className="text-accent-pink" />
+        <section>
+          <SectionTitle icon={<FaList className="text-pink-400" />} color="text-pink-400">
             Подборки от Тиана
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {collections.slice(0, 3).map((col, idx) => (
-              <div key={idx} className="bg-black/20 rounded-xl p-4">
-                <h3 className="font-heading text-lg text-accent-pink mb-2">
-                  {col.name}
-                </h3>
-                {col.description && (
-                  <p className="text-sm text-white/60 mb-2">
-                    {col.description}
-                  </p>
-                )}
-                <ul className="text-sm text-white/80 space-y-1">
-                  {col.games.slice(0, 5).map((g, i) => (
-                    <li key={i}>{g.name}</li>
-                  ))}
-                </ul>
-                {col.games.length > 5 && (
-                  <p className="text-xs text-white/40 mt-2">
-                    и ещё {col.games.length - 5}...
-                  </p>
-                )}
-              </div>
+          </SectionTitle>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {collections.map((col, idx) => (
+              <CollectionCard
+                key={idx}
+                collection={col}
+                games={games}
+              />
             ))}
           </div>
         </section>
@@ -186,7 +260,7 @@ const HomePage = () => {
 
       {/* Топ-5 по оценкам */}
       <section>
-        <SectionTitle icon={<FaStar className="text-yellow-400" />}>
+        <SectionTitle icon={<FaStar className="text-yellow-400" />} color="text-yellow-400">
           Топ по оценкам
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -200,7 +274,7 @@ const HomePage = () => {
           ))}
         </div>
         {topRated.length > 5 && (
-          <ToggleList
+          <ShowAllButton
             visible={showAllTopRated}
             onToggle={() => setShowAllTopRated(!showAllTopRated)}
           />
@@ -209,7 +283,7 @@ const HomePage = () => {
 
       {/* Свежие релизы */}
       <section>
-        <SectionTitle icon={<FaCalendarAlt className="text-accent-blue" />}>
+        <SectionTitle icon={<FaCalendarAlt className="text-blue-400" />} color="text-blue-400">
           Свежие релизы
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -226,7 +300,7 @@ const HomePage = () => {
           ))}
         </div>
         {freshReleases.length > 5 && (
-          <ToggleList
+          <ShowAllButton
             visible={showAllFreshReleases}
             onToggle={() => setShowAllFreshReleases(!showAllFreshReleases)}
           />
@@ -235,7 +309,7 @@ const HomePage = () => {
 
       {/* Последние сыгранные */}
       <section>
-        <SectionTitle icon={<FaGamepad className="text-accent-purple" />}>
+        <SectionTitle icon={<FaGamepad className="text-purple-400" />} color="text-purple-400">
           Последние сыгранные
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -251,7 +325,7 @@ const HomePage = () => {
           )}
         </div>
         {lastPlayed.length > 5 && (
-          <ToggleList
+          <ShowAllButton
             visible={showAllLastPlayed}
             onToggle={() => setShowAllLastPlayed(!showAllLastPlayed)}
           />
@@ -260,7 +334,7 @@ const HomePage = () => {
 
       {/* Топ по часам */}
       <section>
-        <SectionTitle icon={<FaClock className="text-white/70" />}>
+        <SectionTitle icon={<FaClock className="text-amber-400" />} color="text-amber-400">
           Топ по часам
         </SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -276,7 +350,7 @@ const HomePage = () => {
           )}
         </div>
         {topByHours.length > 5 && (
-          <ToggleList
+          <ShowAllButton
             visible={showAllTopByHours}
             onToggle={() => setShowAllTopByHours(!showAllTopByHours)}
           />

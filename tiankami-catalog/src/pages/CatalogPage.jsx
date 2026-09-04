@@ -2,10 +2,10 @@ import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchGames } from "../utils/loadData";
 import { parseRuDate } from "../utils/date";
-import { getGameMetadata } from "../utils/normalize";
+import { getGameMetadata, getAllSettings, getAllFeatures } from "../utils/normalize";
 import GameCard from "../components/GameCard";
 import GameModal from "../components/GameModal";
-import { FaDice, FaFilter } from "react-icons/fa";
+import { FaDice, FaFilter, FaTrash, FaCogs, FaWrench, FaGlobe, FaGem } from "react-icons/fa";
 
 const ITEMS_PER_PAGE = 24;
 
@@ -30,6 +30,8 @@ const CatalogPage = () => {
     maxHours: "",
     years: [],
     hasMI: false,
+    settings: [],
+    features: [],
   });
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -56,6 +58,8 @@ const CatalogPage = () => {
       maxHours: "",
       years: [],
       hasMI: false,
+      settings: [],
+      features: [],
     });
     setSortBy("title");
     setCurrentPage(1);
@@ -80,6 +84,8 @@ const CatalogPage = () => {
   const metadata = useMemo(() => getGameMetadata(games), [games]);
   const allGenres = metadata.genres;
   const allYears = metadata.years;
+  const allSettings = useMemo(() => getAllSettings(games), [games]);
+  const allFeatures = useMemo(() => getAllFeatures(games), [games]);
 
   const filteredGames = useMemo(() => {
     let result = [...games];
@@ -175,6 +181,23 @@ const CatalogPage = () => {
     if (filters.hasMI) {
       result = result.filter(
         (game) => (game.hasMI || "").toLowerCase() === "true",
+      );
+    }
+
+    // Фильтр по сеттингу (И) — до 1 выбора
+    if (filters.settings.length > 0) {
+      result = result.filter((game) =>
+        filters.settings.every((s) => (game.setting || "").includes(s)),
+      );
+    }
+
+    // Фильтр по особенностям (И) — до 2 выборов
+    if (filters.features.length > 0) {
+      result = result.filter((game) =>
+        filters.features.every((f) => {
+          const gameFeatures = (game.features || "").split(",").map((x) => x.trim());
+          return gameFeatures.includes(f);
+        }),
       );
     }
 
@@ -297,9 +320,10 @@ const CatalogPage = () => {
         {/* Кнопка сброса */}
         <button
           onClick={resetFilters}
-          className="w-full mb-4 px-4 py-2 bg-red-900/30 hover:bg-red-900/50 text-red-400 rounded-xl border border-red-800/50 transition"
+          className="w-full mb-4 px-4 py-2.5 bg-red-600/80 hover:bg-red-600 text-white rounded-xl border border-red-500 transition-all flex items-center justify-center gap-2 font-medium text-sm shadow-lg shadow-red-600/20 hover:shadow-red-600/40"
         >
-          🗑️ Сбросить все фильтры
+          <FaTrash size={14} />
+          Сбросить все фильтры
         </button>
 
         {/* Блок фильтров */}
@@ -311,8 +335,9 @@ const CatalogPage = () => {
         >
           {/* Группа: Основные */}
           <div className="mb-6">
-            <h3 className="text-sm font-semibold text-white/80 mb-3 flex items-center gap-2">
-              ⚙️ Основные
+            <h3 className="text-base font-bold text-white mb-3 flex items-center gap-2 pb-2 border-b border-white/10">
+              <FaCogs className="text-purple-400" />
+              Основные фильтры
             </h3>
 
             {/* Статус */}
@@ -397,140 +422,143 @@ const CatalogPage = () => {
 
           {/* Группа: Дополнительные */}
           <div>
-            <h3 className="text-sm font-semibold text-white/80 mb-3 flex items-center gap-2">
-              🔧 Дополнительные
+            <h3 className="text-base font-bold text-white mb-3 flex items-center gap-2 pb-2 border-b border-white/10">
+              <FaWrench className="text-purple-400" />
+              Дополнительные фильтры
             </h3>
 
-            {/* Сортировка */}
-          <div className="mb-4">
-            <p className="text-xs text-white/50 uppercase tracking-wide mb-2">
-              Сортировка
-            </p>
-            <select
-              value={sortBy}
-              onChange={(e) => {
-                setSortBy(e.target.value);
-                setCurrentPage(1);
-              }}
-              className="bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2 px-3 focus:outline-none focus:border-purple-500"
-            >
-              <option value="title">По названию</option>
-              <option value="rating">По оценке</option>
-              <option value="hours">По часам</option>
-              <option value="releaseDate">По дате выхода</option>
-              <option value="date-new">Сначала новые</option>
-            </select>
-          </div>
+            {/* Сортировка — отдельная строка */}
+            <div className="mb-4">
+              <p className="text-xs text-white/50 uppercase tracking-wide mb-2">
+                Сортировка
+              </p>
+              <select
+                value={sortBy}
+                onChange={(e) => {
+                  setSortBy(e.target.value);
+                  setCurrentPage(1);
+                }}
+                className="bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2 px-3 focus:outline-none focus:border-purple-500 w-full sm:w-auto"
+              >
+                <option value="title">По названию</option>
+                <option value="rating">По оценке</option>
+                <option value="hours">По часам</option>
+                <option value="releaseDate">По дате выхода</option>
+                <option value="date-new">Сначала новые</option>
+              </select>
+            </div>
 
-          {/* Расширенные фильтры */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4 border-t border-white/10">
-            <div>
-              <label className="block text-xs mb-1 text-white/50">
-                Оценка (мин–макс)
-              </label>
-              <div className="flex gap-2">
-                <input
-                  type="number"
-                  min="1"
-                  max="10"
-                  placeholder="мин"
-                  value={filters.minRating}
-                  onChange={(e) =>
-                    setFilterAndResetPage((prev) => ({
-                      ...prev,
-                      minRating: e.target.value,
-                    }))
-                  }
-                  className="w-full bg-[#111827] border border-gray-700 rounded-lg py-2 px-2 text-xs focus:outline-none focus:border-purple-500"
-                />
-                <input
-                  type="number"
-                  min="1"
-                  max="10"
-                  placeholder="макс"
-                  value={filters.maxRating}
-                  onChange={(e) =>
-                    setFilterAndResetPage((prev) => ({
-                      ...prev,
-                      maxRating: e.target.value,
-                    }))
-                  }
-                  className="w-full bg-[#111827] border border-gray-700 rounded-lg py-2 px-2 text-xs focus:outline-none focus:border-purple-500"
-                />
+            {/* Расширенные фильтры — компактная строка */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+              <div>
+                <label className="block text-xs mb-1 text-white/50">
+                  Оценка
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="1"
+                    max="10"
+                    placeholder="от"
+                    value={filters.minRating}
+                    onChange={(e) =>
+                      setFilterAndResetPage((prev) => ({
+                        ...prev,
+                        minRating: e.target.value,
+                      }))
+                    }
+                    className="flex-1 bg-[#111827] border border-gray-700 rounded-lg py-1.5 px-2 text-xs focus:outline-none focus:border-purple-500"
+                  />
+                  <input
+                    type="number"
+                    min="1"
+                    max="10"
+                    placeholder="до"
+                    value={filters.maxRating}
+                    onChange={(e) =>
+                      setFilterAndResetPage((prev) => ({
+                        ...prev,
+                        maxRating: e.target.value,
+                      }))
+                    }
+                    className="flex-1 bg-[#111827] border border-gray-700 rounded-lg py-1.5 px-2 text-xs focus:outline-none focus:border-purple-500"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs mb-1 text-white/50">
+                  Сложность
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="1"
+                    max="10"
+                    placeholder="от"
+                    value={filters.minComplexity}
+                    onChange={(e) =>
+                      setFilterAndResetPage((prev) => ({
+                        ...prev,
+                        minComplexity: e.target.value,
+                      }))
+                    }
+                    className="flex-1 bg-[#111827] border border-gray-700 rounded-lg py-1.5 px-2 text-xs focus:outline-none focus:border-purple-500"
+                  />
+                  <input
+                    type="number"
+                    min="1"
+                    max="10"
+                    placeholder="до"
+                    value={filters.maxComplexity}
+                    onChange={(e) =>
+                      setFilterAndResetPage((prev) => ({
+                        ...prev,
+                        maxComplexity: e.target.value,
+                      }))
+                    }
+                    className="flex-1 bg-[#111827] border border-gray-700 rounded-lg py-1.5 px-2 text-xs focus:outline-none focus:border-purple-500"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs mb-1 text-white/50">
+                  Часы
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="от"
+                    value={filters.minHours}
+                    onChange={(e) =>
+                      setFilterAndResetPage((prev) => ({
+                        ...prev,
+                        minHours: e.target.value,
+                      }))
+                    }
+                    className="flex-1 bg-[#111827] border border-gray-700 rounded-lg py-1.5 px-2 text-xs focus:outline-none focus:border-purple-500"
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="до"
+                    value={filters.maxHours}
+                    onChange={(e) =>
+                      setFilterAndResetPage((prev) => ({
+                        ...prev,
+                        maxHours: e.target.value,
+                      }))
+                    }
+                    className="flex-1 bg-[#111827] border border-gray-700 rounded-lg py-1.5 px-2 text-xs focus:outline-none focus:border-purple-500"
+                  />
+                </div>
               </div>
             </div>
 
-            <div>
-              <label className="block text-xs mb-1 text-white/50">
-                Сложность (мин–макс)
-              </label>
-              <div className="flex gap-2">
-                <input
-                  type="number"
-                  min="1"
-                  max="10"
-                  placeholder="мин"
-                  value={filters.minComplexity}
-                  onChange={(e) =>
-                    setFilterAndResetPage((prev) => ({
-                      ...prev,
-                      minComplexity: e.target.value,
-                    }))
-                  }
-                  className="w-full bg-[#111827] border border-gray-700 rounded-lg py-2 px-2 text-xs focus:outline-none focus:border-purple-500"
-                />
-                <input
-                  type="number"
-                  min="1"
-                  max="10"
-                  placeholder="макс"
-                  value={filters.maxComplexity}
-                  onChange={(e) =>
-                    setFilterAndResetPage((prev) => ({
-                      ...prev,
-                      maxComplexity: e.target.value,
-                    }))
-                  }
-                  className="w-full bg-[#111827] border border-gray-700 rounded-lg py-2 px-2 text-xs focus:outline-none focus:border-purple-500"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs mb-1 text-white/50">
-                Часы (мин–макс)
-              </label>
-              <div className="flex gap-2">
-                <input
-                  type="number"
-                  min="0"
-                  placeholder="мин"
-                  value={filters.minHours}
-                  onChange={(e) =>
-                    setFilterAndResetPage((prev) => ({
-                      ...prev,
-                      minHours: e.target.value,
-                    }))
-                  }
-                  className="w-full bg-[#111827] border border-gray-700 rounded-lg py-2 px-2 text-xs focus:outline-none focus:border-purple-500"
-                />
-                <input
-                  type="number"
-                  min="0"
-                  placeholder="макс"
-                  value={filters.maxHours}
-                  onChange={(e) =>
-                    setFilterAndResetPage((prev) => ({
-                      ...prev,
-                      maxHours: e.target.value,
-                    }))
-                  }
-                  className="w-full bg-[#111827] border border-gray-700 rounded-lg py-2 px-2 text-xs focus:outline-none focus:border-purple-500"
-                />
-              </div>
-            </div>
-
-            <div>
+            {/* Год выхода — отдельная строка */}
+            <div className="mb-4">
               <label className="block text-xs mb-1 text-white/50">
                 Год выхода
               </label>
@@ -553,24 +581,144 @@ const CatalogPage = () => {
                 ))}
               </select>
             </div>
+
+            {/* Кастомный чекбокс "Только с МИ" */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="relative flex items-center">
+                <input
+                  type="checkbox"
+                  id="hasMI"
+                  checked={filters.hasMI}
+                  onChange={(e) =>
+                    setFilterAndResetPage((prev) => ({
+                      ...prev,
+                      hasMI: e.target.checked,
+                    }))
+                  }
+                  className="peer sr-only"
+                />
+                <label
+                  htmlFor="hasMI"
+                  className="w-10 h-6 bg-gray-700 rounded-full cursor-pointer transition-all duration-200 peer-checked:bg-purple-600 flex items-center px-0.5"
+                >
+                  <span
+                    className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-200 ${
+                      filters.hasMI ? "translate-x-4" : "translate-x-0"
+                    }`}
+                  />
+                </label>
+              </div>
+              <span className="text-sm text-white/80 font-medium">
+                Только с МИ
+              </span>
+            </div>
+
+          {/* Сеттинг */}
+          <div className="mt-6">
+            <h3 className="text-base font-bold text-white mb-3 flex items-center gap-2 pb-2 border-b border-white/10">
+              <FaGlobe className="text-purple-400" />
+              Сеттинг
+            </h3>
+            <p className="text-xs text-white/30 mb-2">Выберите до 1 сеттинга</p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() =>
+                  setFilterAndResetPage((prev) => ({
+                    ...prev,
+                    settings: prev.settings.length === allSettings.length ? [] : [...allSettings],
+                  }))
+                }
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                  filters.settings.length === allSettings.length
+                    ? "bg-purple-600 text-white"
+                    : "bg-white/10 text-white/70 hover:bg-white/20"
+                }`}
+              >
+                Все
+              </button>
+              {allSettings.map((setting) => (
+                <button
+                  key={setting}
+                  type="button"
+                  onClick={() =>
+                    setFilterAndResetPage((prev) => {
+                      if (prev.settings.includes(setting)) {
+                        return {
+                          ...prev,
+                          settings: prev.settings.filter((s) => s !== setting),
+                        };
+                      }
+                      if (prev.settings.length >= 1) return prev;
+                      return { ...prev, settings: [...prev.settings, setting] };
+                    })
+                  }
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                    filters.settings.includes(setting)
+                      ? "bg-purple-600 text-white"
+                      : filters.settings.length >= 1
+                        ? "bg-white/5 text-white/20 cursor-not-allowed"
+                        : "bg-white/10 text-white/70 hover:bg-white/20"
+                  }`}
+                >
+                  {setting}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="flex items-center gap-2 mt-4">
-            <input
-              type="checkbox"
-              id="hasMI"
-              checked={filters.hasMI}
-              onChange={(e) =>
-                setFilterAndResetPage((prev) => ({
-                  ...prev,
-                  hasMI: e.target.checked,
-                }))
-              }
-              className="accent-purple-500"
-            />
-            <label htmlFor="hasMI" className="text-xs text-white/70">
-              Только с МИ
-            </label>
+          {/* Особенности */}
+          <div className="mt-6">
+            <h3 className="text-base font-bold text-white mb-3 flex items-center gap-2 pb-2 border-b border-white/10">
+              <FaGem className="text-purple-400" />
+              Особенности
+            </h3>
+            <p className="text-xs text-white/30 mb-2">Выберите до 2 особенностей</p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() =>
+                  setFilterAndResetPage((prev) => ({
+                    ...prev,
+                    features: prev.features.length === allFeatures.length ? [] : [...allFeatures],
+                  }))
+                }
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                  filters.features.length === allFeatures.length
+                    ? "bg-purple-600 text-white"
+                    : "bg-white/10 text-white/70 hover:bg-white/20"
+                }`}
+              >
+                Все
+              </button>
+              {allFeatures.map((feature) => (
+                <button
+                  key={feature}
+                  type="button"
+                  onClick={() =>
+                    setFilterAndResetPage((prev) => {
+                      if (prev.features.includes(feature)) {
+                        return {
+                          ...prev,
+                          features: prev.features.filter((f) => f !== feature),
+                        };
+                      }
+                      if (prev.features.length >= 2) return prev;
+                      return { ...prev, features: [...prev.features, feature] };
+                    })
+                  }
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                    filters.features.includes(feature)
+                      ? "bg-purple-600 text-white"
+                      : filters.features.length >= 2
+                        ? "bg-white/5 text-white/20 cursor-not-allowed"
+                        : "bg-white/10 text-white/70 hover:bg-white/20"
+                  }`}
+                >
+                  {feature}
+                </button>
+              ))}
+            </div>
           </div>
           </div>
         </div>

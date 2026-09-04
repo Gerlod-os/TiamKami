@@ -12,7 +12,10 @@ import {
   extractHyperlinkParts,
   isYouTubeUrl,
   extractSteamAppId,
-  steamHeaderUrl
+  steamHeaderUrl,
+  normalizeCollections,
+  getAllSettings,
+  getAllFeatures,
 } from '../src/utils/normalize.js';
 
 describe('normalizeStatus', () => {
@@ -121,5 +124,79 @@ describe('normalizeGameRow', () => {
     const row = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
     const colIndex = { title: 0 };
     expect(normalizeGameRow(row, colIndex)).toBe(null);
+  });
+});
+
+describe('normalizeCollections', () => {
+  it('должен парсить подборку с играми и рангами', () => {
+    const rows = [
+      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
+      ['', '', '', '', '', 'Risk of Rain 2', '1', 'Deep Rock Galactic', '2', ''],
+      ['', '', '', '', '', '', '', 'Hades', '1', ''],
+    ];
+    const result = normalizeCollections(rows);
+    expect(result.length).toBeGreaterThan(0);
+  });
+
+  it('должен возвращать пустой массив для недостаточных данных', () => {
+    expect(normalizeCollections([])).toBe([]);
+    expect(normalizeCollections([['only header']])).toBe([]);
+  });
+
+  it('должен пропускать "ЗОЛОТОЙ СПИСОК" — обнулять ранги', () => {
+    const rows = [
+      ['A', 'B', 'C', 'D', 'E'],
+      ['', 'ЗОЛОТОЙ СПИСОК', 'Игра 1', '1', ''],
+    ];
+    const result = normalizeCollections(rows);
+    const golden = result.find((c) => /золотой список/i.test(c.name));
+    if (golden) {
+      expect(golden.games[0].rank).toBe('');
+    }
+  });
+});
+
+describe('getAllSettings', () => {
+  it('должен собирать уникальные сеттинги', () => {
+    const games = [
+      { title: 'A', setting: 'Фэнтези' },
+      { title: 'B', setting: 'Sci-Fi' },
+      { title: 'C', setting: 'Фэнтези' },
+      { title: 'D', setting: '' },
+    ];
+    expect(getAllSettings(games)).toEqual(['Sci-Fi', 'Фэнтези']);
+  });
+
+  it('должен возвращать пустой массив для пустого списка', () => {
+    expect(getAllSettings([])).toEqual([]);
+  });
+
+  it('должен trim и сортировать', () => {
+    const games = [
+      { title: 'A', setting: '  Sci-Fi  ' },
+      { title: 'B', setting: 'Фэнтези' },
+    ];
+    expect(getAllSettings(games)).toEqual(['Sci-Fi', 'Фэнтези']);
+  });
+});
+
+describe('getAllFeatures', () => {
+  it('должен разбивать особенности по запятой', () => {
+    const games = [
+      { title: 'A', features: 'Кооп, PVE' },
+      { title: 'B', features: 'PVE, Сложный' },
+    ];
+    expect(getAllFeatures(games)).toEqual(['Кооп', 'PVE', 'Сложный']);
+  });
+
+  it('должен возвращать пустой массив для пустого списка', () => {
+    expect(getAllFeatures([])).toEqual([]);
+  });
+
+  it('должен игнорировать пустые строки после split', () => {
+    const games = [
+      { title: 'A', features: 'Кооп,, PVE, ' },
+    ];
+    expect(getAllFeatures(games)).toEqual(['Кооп', 'PVE']);
   });
 });

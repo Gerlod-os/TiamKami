@@ -20,53 +20,31 @@ import {
   steamHeaderUrl,
 } from "./normalize.js";
 import { safeGet, safeSet } from "./storage.js";
+import { slugify, uniqueSlug } from "./slugify.js";
 
 /* ─────────── Обогащение игр из локального JSON ─────────── */
 
 /**
- * Генерирует уникальные слаги для игр, у которых их нет.
- * Логика идентична normalizeGames — чтобы слаги совпадали.
+ * Добавляет обложки и Steam-ссылки из steamAppId, уже записанных в games.json.
  */
-function ensureSlugs(games) {
-  const slugify = (title) =>
-    title
-      .toLowerCase()
-      .replace(/[^\wа-яёА-Я\s-]/g, "")
-      .replace(/\s+/g, "-")
-      .replace(/-+/g, "-")
-      .replace(/^-+|-+$/g, "");
+function enrichFromLocalJson(games) {
   const usedSlugs = new Set();
-  const uniqueSlug = (slug, used) => {
-    if (!used.has(slug)) return slug;
-    let i = 2;
-    const base = slug;
-    while (used.has(`${base}-${i}`)) i++;
-    return `${base}-${i}`;
-  };
-
-  return games.map((game) => {
+  const withSlugs = games.map((game) => {
     if (game.slug) return game;
     const base = slugify(game.title);
     const slug = uniqueSlug(base, usedSlugs);
     usedSlugs.add(slug);
     return { ...game, slug };
   });
-}
 
-/**
- * Добавляет обложки и Steam-ссылки из steamAppId, уже записанных в games.json.
- */
-function enrichFromLocalJson(games) {
-  return ensureSlugs(
-    games.map((g) => {
-      if (!g.steamAppId) return g;
-      return {
-        ...g,
-        image: steamHeaderUrl(g.steamAppId),
-        steamUrl: `https://store.steampowered.com/app/${g.steamAppId}/`,
-      };
-    }),
-  );
+  return withSlugs.map((g) => {
+    if (!g.steamAppId) return g;
+    return {
+      ...g,
+      image: steamHeaderUrl(g.steamAppId),
+      steamUrl: `https://store.steampowered.com/app/${g.steamAppId}/`,
+    };
+  });
 }
 
 /* ─────────── Кэш (ключ привязан к URL: смена таблицы сбрасывает кэш сама) ─────────── */
@@ -147,17 +125,22 @@ function parseLinksFromRow(row) {
 
   const entry = {};
   row.forEach((cell, colIdx) => {
-    const { url } = extractHyperlinkParts(String(cell ?? ""));
+    const { url, label } = extractHyperlinkParts(String(cell ?? ""));
     if (!isUrl(url)) return;
 
     if (/steampowered\.com/i.test(url)) {
       entry.steam = url;
     } else if (isYouTubeUrl(url)) {
-      // Индекс колонки — приоритетнее label
-      if (colIdx === 22) {
-        entry.miVideo = url;       // колонка W — МИ
+      // Определяем тип по label гиперссылки (приоритет)
+      const labelLower = (label || "").toLowerCase();
+      const isMiLabel = /ми|игропрактик|session|multiplayer/i.test(labelLower);
+
+      if (isMiLabel) {
+        entry.miVideo = url;
+      } else if (colIdx === 22) {
+        entry.miVideo = url;       // колонка W — МИ (fallback)
       } else if (colIdx === 21) {
-        entry.youtube = url;       // колонка V — YouTube
+        entry.youtube = url;       // колонка V — YouTube (fallback)
       } else if (!entry.miVideo) {
         entry.miVideo = url;       // fallback — первая YouTube-ссылка
       } else if (!entry.youtube) {

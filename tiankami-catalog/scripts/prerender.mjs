@@ -12,6 +12,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { BRAND } from "../src/config/branding.js";
 import { isUrl } from "../src/utils/normalize.js";
+import { slugify, uniqueSlug } from "../src/utils/slugify.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, "..", "dist");
@@ -38,22 +39,8 @@ if (!fs.existsSync(gamesPath) || !fs.existsSync(collectionsPath)) {
 const games = JSON.parse(fs.readFileSync(gamesPath, "utf-8"));
 const collections = JSON.parse(fs.readFileSync(collectionsPath, "utf-8"));
 
-// Генерируем слаги, если их нет (совпадает с ensureSlugs в loadData.js)
-const slugify = (title) =>
-  title
-    .toLowerCase()
-    .replace(/[^\wа-яёА-Я\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-+|-+$/g, "");
+// Генерируем слаги, если их нет (используем единую утилиту)
 const usedSlugs = new Set();
-const uniqueSlug = (slug, used) => {
-  if (!used.has(slug)) return slug;
-  let i = 2;
-  const base = slug;
-  while (used.has(`${base}-${i}`)) i++;
-  return `${base}-${i}`;
-};
 const gamesWithSlugs = games.map((game) => {
   if (game.slug) return game;
   const base = slugify(game.title);
@@ -66,7 +53,7 @@ const gamesWithSlugs = games.map((game) => {
 const template = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
 
 /** Вставляет/заменяет мета-теги в шаблоне. */
-function withMeta({ title, description, ogType = "website", ogImage }) {
+function withMeta({ title, description, ogType = "website", ogImage, jsonLd, canonical }) {
   const esc = (s) =>
     String(s || "")
       .replace(/&/g, "&amp;")
@@ -80,6 +67,8 @@ function withMeta({ title, description, ogType = "website", ogImage }) {
     <meta property="og:description" content="${esc(description)}" />
     <meta property="og:type" content="${ogType}" />${
       ogImage && isUrl(ogImage) ? `\n    <meta property="og:image" content="${esc(ogImage)}" />` : ""
+    }${jsonLd ? `\n    <script type="application/ld+json">\n${jsonLd}\n    </script>` : ""}${
+      canonical ? `\n    <link rel="canonical" href="${esc(canonical)}" />` : ""
     }`;
   return template
     .replace(/<title>.*?<\/title>/s, meta)
@@ -92,6 +81,7 @@ fs.writeFileSync(
   withMeta({
     title: BRAND.siteTitle,
     description: `Каталог рогаликов ${BRAND.name}: ${games.length} игр с оценками, прогрессом и заметками стримера.`,
+    canonical: `${BRAND.siteUrl}/`,
   }),
 );
 
@@ -101,6 +91,7 @@ fs.writeFileSync(
   withMeta({
     title: `Каталог рогаликов — ${BRAND.name}`,
     description: `Все ${games.length} рогаликов: фильтры по жанру, статусу, оценке, сложности. Честные отзывы стримера.`,
+    canonical: `${BRAND.siteUrl}/catalog`,
   }),
 );
 
@@ -110,6 +101,7 @@ fs.writeFileSync(
   withMeta({
     title: `Подборки от ${BRAND.name}`,
     description: `Тематические подборки рогаликов: ${collections.map((c) => c.name).join(", ")}.`,
+    canonical: `${BRAND.siteUrl}/collections`,
   }),
 );
 
@@ -123,6 +115,32 @@ for (const game of gamesWithSlugs) {
   gamePages.push(slug);
 
   const desc = (game.notes || game.title).slice(0, 160);
+
+  // JSON-LD разметка для Google
+  let jsonLd = null;
+  if (game.rating) {
+    jsonLd = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'VideoGame',
+      name: game.title,
+      description: desc,
+      genre: game.genre,
+      gameItem: { '@type': 'GameServer', 'maxPlayers': 1 },
+      applicationCategory: 'Game',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: game.rating,
+        bestRating: 10,
+      },
+      image: isUrl(game.image) ? game.image : undefined,
+    }, null, 2);
+  }
+
   // Создаём папку для слага и кладём туда index.html
   // Чтобы URL /catalog/<slug> отдавал именно этот статический файл
   const gameDir = path.join(catalogDir, slug);
@@ -134,6 +152,8 @@ for (const game of gamesWithSlugs) {
       description: `${game.genre || "Рогалик"}. Оценка ${game.rating || "—"}/10. ${desc}`,
       ogType: "article",
       ogImage: game.image || "",
+      canonical: `${BRAND.siteUrl}/catalog/${slug}`,
+      jsonLd,
     }),
   );
 }
