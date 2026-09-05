@@ -112,9 +112,9 @@ const SchedulePage = () => {
       {/* Ближайший стрим — крупно */}
       {nearest && (
         <section className="mb-8">
-          <div className="bg-gradient-to-br from-purple-900/40 to-pink-900/40 rounded-2xl border border-purple-500/30 p-6 sm:p-8">
+          <div className="bg-gradient-to-br from-[var(--accent-purple)]/40 to-[var(--accent-pink)]/40 rounded-2xl border-[var(--accent-purple)]/30 p-6 sm:p-8">
             <div className="flex items-center gap-2 mb-3">
-              <span className="px-3 py-1 bg-purple-600 text-white text-xs font-bold uppercase tracking-wider rounded-full">
+              <span className="px-3 py-1 bg-[var(--accent-purple)] text-white text-xs font-bold uppercase tracking-wider rounded-full">
                 Ближайший стрим
               </span>
               {isToday(nearest.parsedDate) && (
@@ -126,7 +126,7 @@ const SchedulePage = () => {
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
               <div className="flex items-center gap-3">
-                <FaCalendarAlt className="text-purple-400 text-xl" />
+                <FaCalendarAlt className="text-[var(--accent-purple)] text-xl" />
                 <span className="text-xl sm:text-2xl font-heading font-bold text-white">
                   {formatDate(nearest.parsedDate)}
                 </span>
@@ -153,7 +153,7 @@ const SchedulePage = () => {
                 href={nearest.streamLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white rounded-xl font-medium transition-all shadow-lg shadow-purple-600/20 hover:shadow-purple-600/40 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--accent-purple)] hover:brightness-110 text-white rounded-xl font-medium transition-all shadow-lg shadow-[var(--accent-purple)]/20 hover:shadow-[var(--accent-purple)]/40 hover:-translate-y-0.5"
               >
                 <FaTwitch size={16} />
                 Перейти на Twitch
@@ -168,7 +168,7 @@ const SchedulePage = () => {
       {upcoming.length > 1 && (
         <section className="mb-8">
           <h2 className="font-heading text-xl mb-4 text-white flex items-center gap-2">
-            <FaCalendarAlt className="text-purple-400" />
+            <FaCalendarAlt className="text-[var(--accent-purple)]" />
             Остальные стримы
           </h2>
           <div className="space-y-2">
@@ -179,7 +179,7 @@ const SchedulePage = () => {
               >
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 text-white/70 text-sm mb-1">
-                    <FaCalendarAlt className="text-purple-400 shrink-0" />
+                    <FaCalendarAlt className="text-[var(--accent-purple)] shrink-0" />
                     <span>{formatDate(item.parsedDate)}</span>
                     {isToday(item.parsedDate) && (
                       <span className="text-red-400 text-xs font-bold">Сегодня</span>
@@ -201,7 +201,7 @@ const SchedulePage = () => {
                     href={item.streamLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="shrink-0 text-purple-400 hover:text-white transition-colors"
+                    className="shrink-0 text-[var(--accent-purple)] hover:text-white transition-colors"
                     title="Перейти на Twitch"
                   >
                     <FaTwitch size={18} />
@@ -261,7 +261,7 @@ const SchedulePage = () => {
               href={BRAND.links.twitch}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-purple-400 hover:text-white underline"
+              className="text-[var(--accent-purple)] hover:text-white underline"
             >
               Twitch
             </a>

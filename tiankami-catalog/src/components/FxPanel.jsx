@@ -162,7 +162,7 @@ export default function FxPanel() {
           </button>
           <button
             onClick={resetTwitchCache}
-            className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg transition-colors text-white/70 hover:bg-white/5 hover:text-accent-blue"
+            className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg transition-colors text-white/70 hover:bg-white/5 hover:text-[var(--accent-cyan)]"
           >
             🔄 Сброс Twitch кэша
           </button>

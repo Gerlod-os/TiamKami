@@ -1,6 +1,4 @@
-import { FaClock, FaCalendarAlt, FaYoutube, FaGamepad, FaSteam, FaVideo, FaInfoCircle, FaCommentDots, FaStar } from "react-icons/fa";
-import { isUrl } from "../utils/normalize.js";
-import { trackEvent } from "./YandexMetrika";
+import { FaClock, FaCalendarAlt, FaGamepad, FaInfoCircle, FaCommentDots, FaStar } from "react-icons/fa";
 
 // Тематические иконки статусов (единый справочник с GameCard)
 const statusIcons = {
@@ -38,7 +36,7 @@ const GameDetails = ({ game }) => {
       {/* Основная информация */}
       <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
         <h3 className="font-heading text-xl mb-4 text-white flex items-center gap-2">
-          <FaInfoCircle className="text-purple-400" />
+          <FaInfoCircle className="text-[var(--accent-purple)]" />
           Основная информация
         </h3>
 
@@ -49,12 +47,12 @@ const GameDetails = ({ game }) => {
             value={genre}
           />
           <InfoRow
-            icon={<FaGamepad className="text-purple-400 shrink-0" />}
+            icon={<FaGamepad className="text-[var(--accent-purple)] shrink-0" />}
             label="Сложность"
             value={complexity !== "—" ? `${complexity}/10` : "—"}
           />
           <InfoRow
-            icon={<FaCalendarAlt className="text-accent-blue shrink-0" />}
+            icon={<FaCalendarAlt className="text-[var(--accent-cyan)] shrink-0" />}
             label="Дата выхода"
             value={releaseDate}
           />
@@ -72,7 +70,7 @@ const GameDetails = ({ game }) => {
       {/* Детали */}
       <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
         <h3 className="font-heading text-xl mb-4 text-white flex items-center gap-2">
-          <FaGamepad className="text-purple-400" />
+          <FaGamepad className="text-[var(--accent-purple)]" />
           Детали
         </h3>
 
@@ -88,7 +86,7 @@ const GameDetails = ({ game }) => {
             value={`${hours} ч`}
           />
           <InfoRow
-            icon={<FaCalendarAlt className="text-accent-blue shrink-0" />}
+            icon={<FaCalendarAlt className="text-[var(--accent-cyan)] shrink-0" />}
             label="Когда играл"
             value={playedDate}
           />
@@ -103,7 +101,7 @@ const GameDetails = ({ game }) => {
       {setting !== "—" && (
         <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
           <h3 className="font-heading text-lg mb-3 text-white flex items-center gap-2">
-            <FaGamepad className="text-purple-400" />
+            <FaGamepad className="text-[var(--accent-purple)]" />
             Сеттинг
           </h3>
           <div className="text-white/80 text-sm">{setting}</div>
@@ -114,7 +112,7 @@ const GameDetails = ({ game }) => {
       {features && (
         <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
           <h3 className="font-heading text-lg mb-3 text-white flex items-center gap-2">
-            <FaGamepad className="text-purple-400" />
+            <FaGamepad className="text-[var(--accent-purple)]" />
             Особенности
           </h3>
           <div className="flex flex-wrap gap-2">
@@ -134,7 +132,7 @@ const GameDetails = ({ game }) => {
       {game.notes && (
         <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
           <h3 className="font-heading text-lg mb-3 text-white flex items-center gap-2">
-            <FaCommentDots className="text-purple-400" />
+            <FaCommentDots className="text-[var(--accent-purple)]" />
             Примечания
           </h3>
           <p className="text-white/80 whitespace-pre-wrap text-sm leading-relaxed">
@@ -143,58 +141,6 @@ const GameDetails = ({ game }) => {
         </div>
       )}
 
-      {/* Ссылки — стильные кнопки */}
-      <div className="flex flex-wrap gap-3">
-        {isUrl(game.youtube) && (
-          <a
-            href={game.youtube}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 bg-red-600/80 hover:bg-red-600 text-white rounded-xl font-medium text-sm transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/40 hover:-translate-y-0.5"
-            onClick={() => trackEvent("Клик YouTube", { title: game.title })}
-          >
-            <FaYoutube size={16} />
-            YouTube прохождение
-          </a>
-        )}
-
-        {isUrl(game.steamUrl) && (
-          <a
-            href={game.steamUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 bg-[#1b2838]/80 hover:bg-[#1b2838] text-white rounded-xl font-medium text-sm transition-all shadow-lg shadow-black/30 hover:shadow-black/50 hover:-translate-y-0.5 border border-white/10"
-            onClick={() => trackEvent("Клик Steam", { title: game.title })}
-          >
-            <FaSteam size={16} />
-            Steam
-          </a>
-        )}
-
-        {game.hasMI && game.hasMI.toLowerCase() === "true" && (
-          isUrl(game.miVideo) ? (
-            <a
-              key="mi"
-              href={game.miVideo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 bg-purple-600/80 hover:bg-purple-600 text-white rounded-xl font-medium text-sm transition-all shadow-lg shadow-purple-600/20 hover:shadow-purple-600/40 hover:-translate-y-0.5"
-              onClick={() => trackEvent("Клик МИ", { title: game.title })}
-            >
-              <FaVideo size={16} />
-              Смотреть выпуск МИ
-            </a>
-          ) : (
-            <span
-              key="mi"
-              className="flex items-center gap-2 px-5 py-2.5 bg-purple-600/30 text-purple-300 rounded-xl font-medium text-sm border border-purple-500/30"
-            >
-              <FaVideo size={16} />
-              Был проведён МИ
-            </span>
-          )
-        )}
-      </div>
     </div>
   );
 };

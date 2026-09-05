@@ -78,7 +78,7 @@ const ScheduleForm = ({ onSuccess }) => {
   return (
     <section className="mt-10">
       <h2 className="font-heading text-xl mb-4 text-white flex items-center gap-2">
-        <FaPlus className="text-purple-400" />
+        <FaPlus className="text-[var(--accent-purple)]" />
         Добавить стрим в расписание
       </h2>
 
@@ -97,7 +97,7 @@ const ScheduleForm = ({ onSuccess }) => {
               value={formData.date}
               onChange={(e) => handleChange("date", e.target.value)}
               required
-              className="w-full bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition"
+              className="w-full bg-[var(--bg-primary)] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-[var(--accent-purple)] focus:ring-1 focus:ring-[var(--accent-purple)] placeholder-gray-500 transition"
             />
           </div>
 
@@ -110,7 +110,7 @@ const ScheduleForm = ({ onSuccess }) => {
               value={formData.time}
               onChange={(e) => handleChange("time", e.target.value)}
               required
-              className="w-full bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition"
+              className="w-full bg-[var(--bg-primary)] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-[var(--accent-purple)] focus:ring-1 focus:ring-[var(--accent-purple)] placeholder-gray-500 transition"
             />
           </div>
         </div>
@@ -125,7 +125,7 @@ const ScheduleForm = ({ onSuccess }) => {
             value={formData.game}
             onChange={(e) => handleChange("game", e.target.value)}
             required
-            className="w-full bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition"
+            className="w-full bg-[var(--bg-primary)] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-[var(--accent-purple)] focus:ring-1 focus:ring-[var(--accent-purple)] placeholder-gray-500 transition"
           />
         </div>
 
@@ -138,7 +138,7 @@ const ScheduleForm = ({ onSuccess }) => {
             placeholder="https://twitch.tv/tiankami"
             value={formData.streamLink}
             onChange={(e) => handleChange("streamLink", e.target.value)}
-            className="w-full bg-[#111827] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition"
+            className="w-full bg-[var(--bg-primary)] border border-gray-700 text-white text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:border-[var(--accent-purple)] focus:ring-1 focus:ring-[var(--accent-purple)] placeholder-gray-500 transition"
           />
         </div>
 
@@ -160,7 +160,7 @@ const ScheduleForm = ({ onSuccess }) => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full px-4 py-3 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl font-medium text-sm transition-all shadow-lg shadow-purple-600/20 hover:shadow-purple-600/40 flex items-center justify-center gap-2"
+          className="w-full px-4 py-3 bg-[var(--accent-purple)] hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl font-medium text-sm transition-all shadow-lg shadow-[var(--accent-purple)]/20 hover:shadow-[var(--accent-purple)]/40 flex items-center justify-center gap-2"
         >
           {loading ? (
             "Отправка..."

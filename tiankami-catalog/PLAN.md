@@ -8,14 +8,14 @@
 | **Роутер** | React Router v7 |
 | **Данные** | Google Sheets (TSV + Sheets API) |
 | **Страниц** | 440 игр + 6 страниц приложения |
-| **Компонентов** | 9 компонентов (FxPanel, GameCard, GameDetails, GameModal, Layout, TwitchWidget, YandexMetrika, ErrorBoundary, ScheduleForm) |
-| **Утилит** | 6 утилит (slugify, date, storage, swr, normalize, loadData) |
+| **Компонентов** | 10 компонентов (FxPanel, GameCard, GameDetails, GameModal, Layout, TwitchWidgetInHero, TwitchHeaderWidget, YandexMetrika, ErrorBoundary, ScheduleForm) |
+| **Утилит** | 7 утилит (slugify, date, storage, normalize, loadData, useCounter) |
 | **Данные** | Google Sheets (TSV + Sheets API) + `schedule.json` |
 | **API** | Vercel serverless: `api/schedule.js` (прокси в Google Apps Script) |
 | **Сборка** | SEO-пререндер (440 статических страниц) + `prebuild: npm run sync` |
 | **Сборка** | SEO-пререндер (440 статических страниц) |
 | **Деплой** | Vercel (SPA-rewrite) |
-| **Последнее обновление** | 04.09.2026 — редизайн + расписание стримов + Yandex Metrika events + prebuild |
+| **Последнее обновление** | 05.09.2026 — редизайн главной страницы (hero-секция, анимированная статистика, горизонтальные топы) |
 
 ---
 
@@ -71,7 +71,8 @@
 | `components/GameDetails.jsx` | Детали игры |
 | `components/GameModal.jsx` | Модальное окно игры |
 | `components/Layout.jsx` | Шапка, навигация, футер |
-| `components/TwitchWidget.jsx` | Виджет Twitch |
+| `components/TwitchHeaderWidget.jsx` | Виджет Twitch в шапке (компактный) |
+| `components/TwitchWidgetInHero.jsx` | Виджет Twitch в hero-секции главной |
 | `components/YandexMetrika.jsx` | Яндекс.Метрика + trackEvent |
 | `components/ScheduleForm.jsx` | Форма добавления стрима |
 | `components/ErrorBoundary.jsx` | Fallback при ошибках |
@@ -92,7 +93,7 @@
 | `utils/date.js` | parseRuDate |
 | `utils/slugify.js` | URL-слаг (оставлен для совместимости) |
 | `utils/storage.js` | safeGet, safeSet — единая обёртка localStorage |
-| `utils/swr.js` | stale-while-revalidate утилита |
+| `utils/useCounter.js` | Анимированный счётчик |
 
 ### `scripts/`
 
@@ -120,6 +121,21 @@
 
 ## 📝 История изменений
 
+### 05.09.2026 — Редизайн главной страницы (Этап 10)
+
+| # | Что сделано | Файлы | Приоритет |
+|---|---|---|---|
+| 1 | Hero-секция: баннер с обложкой последней сыгранной игры, двойной градиент (сбоку + снизу), заголовок «Каталог рогаликов», описание, быстрые цифры (пройдено, часы) | `HomePage.jsx` | 🔴 |
+| 2 | Анимированная статистика: хук `useCounter` — плавный счётчик от 0 до значения за 1 сек при загрузке | `src/utils/useCounter.js`, `HomePage.jsx` | 🔴 |
+| 3 | Подборки: вместо текстового списка — горизонтальный скролл мини-карточек (4 превью на подборку, `w-20 h-28`, `snap-x`) | `HomePage.jsx` | 🟡 |
+| 4 | Топы: все 4 секции (оценки, релизы, сыгранные, часы) — горизонтальный скролл (`snap-x`, `w-64`), кнопка «Все →» вместо `ShowAllButton` | `HomePage.jsx` | 🔴 |
+| 5 | TwitchWidgetInHero: компактный виджет (аватар 40px, статус, кнопка «Смотреть»), общий кэш с TwitchHeaderWidget (`tk_status`, `tk_avatar`) | `src/components/TwitchWidgetInHero.jsx` | 🔴 |
+| 6 | TwitchHeaderWidget: обновлён — общий кэш с TwitchWidgetInHero, слушает событие `tk-twitch-cache-reset` из FxPanel | `src/components/TwitchHeaderWidget.jsx` | 🟡 |
+| 7 | Удалён мёртвый код: `TwitchWidget.jsx` (заменён на два виджета с общим кэшем) | `rm src/components/TwitchWidget.jsx` | 🟢 |
+| 8 | Удалён ShowAllButton — заменён на «Все →» в TopSection | `HomePage.jsx` | 🟢 |
+
+---
+
 ### 04.09.2026 — Полный редизайн (11 задач)
 
 | # | Что сделано | Файлы | Приоритет |
@@ -135,6 +151,18 @@
 | 9 | prerender.mjs: удаление старых meta перед вставкой новых (regex), `twitter:*` на всех страницах, `og:image` с fallback на hero, canonical URL, JSON-LD (schema.org VideoGame) | `prerender.mjs` | 🟡 |
 | 10 | Мобильная адаптация: GameCard `h-36 sm:h-52`, CatalogPage поиск на всю ширину, кнопки под поиском, уменьшенная пагинация, статистика `grid-cols-2 md:grid-cols-5`, гамбургер-меню | Все страницы | 🔴 |
 | 11 | Оптимизация: `loading="lazy"` на всех `<img>`, `memo(GameCardInner)`, пагинация 24 карточки (без виртуализации) | Все компоненты | 🟢 |
+
+---
+
+### 04.09.2026 — Редизайн страницы игры (5 задач)
+
+| # | Что сделано | Файлы | Приоритет |
+|---|---|---|---|
+| 1 | GamePage: баннер full-width (убран `rounded-3xl`), двойной градиент затемнения (сбоку + снизу), responsive height `h-[400px] md:h-[450px]`, название перемещён вниз с `pb-8 md:pb-12` | `GamePage.jsx` | 🔴 |
+| 2 | GamePage: breadcrumbs улучшен стиль — `text-white/40` для неактивных, `text-white/90` для текущего, `hover:text-[var(--accent-purple)]` с `transition-colors`, уменьшен `FaChevronRight` до `size={10}` | `GamePage.jsx` | 🔴 |
+| 3 | MiniCard: увеличена высота `h-24`, ширина `w-44`, hover `-translate-y-2` + `scale-110`, бордер `group-hover:border-[var(--accent-purple)]/30`, `animate-pulse` для rating === 10, `group-hover:text-[var(--accent-purple)]` для названия | `GamePage.jsx` | 🔴 |
+| 4 | GameDetails: проверен, изменений не требуется — блоки `bg-white/5` корректно выглядят на новой странице | `GameDetails.jsx` | 🟢 |
+| 5 | Сборка: `npm run build` + `npx oxlint` прошли успешно, 440 страниц пререндерены | — | 🔴 |
 
 ---
 

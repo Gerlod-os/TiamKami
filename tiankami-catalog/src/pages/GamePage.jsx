@@ -4,10 +4,11 @@ import { fetchGames } from "../utils/loadData";
 import { BRAND } from "../config/branding.js";
 import GameDetails from "../components/GameDetails";
 import { isUrl } from "../utils/normalize.js";
-import { FaChevronRight, FaGamepad } from "react-icons/fa";
+import { FaChevronRight, FaGamepad, FaStar } from "react-icons/fa";
 
 const MiniCard = ({ game, onClick }) => {
   const hasValidImage = isUrl(game.image);
+  const isPerfectRating = game.rating === 10;
 
   return (
     <div
@@ -20,33 +21,32 @@ const MiniCard = ({ game, onClick }) => {
           onClick();
         }
       }}
-      className="group relative flex-shrink-0 w-36 sm:w-44 cursor-pointer transition-all duration-200 hover:-translate-y-1"
+      className="group relative flex-shrink-0 w-44 cursor-pointer transition-all duration-300 hover:-translate-y-2"
     >
-      <div className="relative h-20 sm:h-28 overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/10">
+      <div className="relative h-24 overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/10 group-hover:border-[var(--accent-purple)]/30 transition-colors">
         {hasValidImage ? (
           <img
             src={game.image}
             alt={game.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             loading="lazy"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <span className="text-2xl sm:text-3xl" aria-hidden="true">🎮</span>
+            <span className="text-2xl" aria-hidden="true">🎮</span>
           </div>
         )}
-        <div className="absolute inset-x-0 bottom-0 h-12 sm:h-16 bg-gradient-to-t from-black/70 to-transparent" />
-        <div
-          className={`absolute top-1.5 right-1.5 flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-lg font-bold text-xs ${
-            game.rating === 10
-              ? "bg-gradient-to-br from-yellow-300 to-amber-500 text-amber-950"
-              : "bg-black/60 backdrop-blur-sm text-white"
-          }`}
-        >
-          {game.rating || "—"}
-        </div>
+        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/80 to-transparent" />
+        {game.rating && (
+          <div className={`absolute top-1.5 right-1.5 flex items-center gap-1 ${isPerfectRating ? 'animate-pulse' : ''}`}>
+            <div className="bg-[var(--accent-purple)] text-[var(--bg-primary)] text-[10px] font-bold rounded-full px-1.5 py-0.5 shadow-lg">
+              <FaStar className="text-[8px]" />
+              {game.rating}
+            </div>
+          </div>
+        )}
       </div>
-      <p className="mt-1.5 text-xs sm:text-sm text-white font-bold truncate text-center">
+      <p className="mt-2 text-xs text-white/80 font-bold truncate text-center group-hover:text-[var(--accent-purple)] transition-colors">
         {game.title}
       </p>
     </div>
@@ -66,18 +66,15 @@ const GamePage = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error('[GamePage] Ошибка загрузки:', err);
+        console.error("[GamePage] Ошибка загрузки:", err);
         setLoading(false);
       });
   }, []);
 
-  // Находим игру по слагу
   const game = useMemo(() => {
-    const found = games.find((g) => g.slug === slug);
-    return found || null;
+    return games.find((g) => g.slug === slug) || null;
   }, [games, slug]);
 
-  // Похожие игры — из того же жанра (максимум 4, без текущей)
   const similarGames = useMemo(() => {
     if (!game || !game.genre) return [];
     const gameGenres = game.genre.split(",").map((g) => g.trim());
@@ -87,10 +84,9 @@ const GamePage = () => {
         const gGenres = (g.genre || "").split(",").map((x) => x.trim());
         return gGenres.some((genre) => gameGenres.includes(genre));
       })
-      .slice(0, 4);
+      .slice(0, 6);
   }, [games, game, slug]);
 
-  // Мета-теги для соцсетей
   useEffect(() => {
     if (!game) return;
 
@@ -116,8 +112,6 @@ const GamePage = () => {
     if (game.image && isUrl(game.image)) {
       setMeta("og:image", game.image);
     }
-
-    // Twitter
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", game.title);
     setMeta("twitter:description", game.notes || game.title);
@@ -125,45 +119,36 @@ const GamePage = () => {
       setMeta("twitter:image", game.image);
     }
 
-    // JSON-LD разметка для Google
-    const oldScript = document.getElementById('json-ld-game');
+    const oldScript = document.getElementById("json-ld-game");
     if (oldScript) oldScript.remove();
 
     const jsonLd = {
-      '@context': 'https://schema.org',
-      '@type': 'VideoGame',
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
       name: game.title,
       description: game.notes || game.title,
       genre: game.genre,
-      gameItem: { '@type': 'GameServer', 'maxPlayers': 1 },
-      applicationCategory: 'Game',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD',
-      },
-      aggregateRating: game.rating ? {
-        '@type': 'AggregateRating',
-        ratingValue: game.rating,
-        bestRating: 10,
-      } : undefined,
+      applicationCategory: "Game",
+      aggregateRating: game.rating
+        ? {
+            "@type": "AggregateRating",
+            ratingValue: game.rating,
+            bestRating: 10,
+          }
+        : undefined,
       image: isUrl(game.image) ? game.image : undefined,
     };
 
-    const script = document.createElement('script');
-    script.id = 'json-ld-game';
-    script.type = 'application/ld+json';
+    const script = document.createElement("script");
+    script.id = "json-ld-game";
+    script.type = "application/ld+json";
     script.text = JSON.stringify(jsonLd);
     document.head.appendChild(script);
 
-    // Cleanup
     return () => {
       document.title = BRAND.siteTitle;
       if (metaDescription) {
-        metaDescription.setAttribute(
-          "content",
-          `Каталог рогаликов ${BRAND.name}`,
-        );
+        metaDescription.setAttribute("content", `Каталог рогаликов ${BRAND.name}`);
       }
       ["og:title", "og:description", "og:type", "og:image", "og:url"].forEach((prop) => {
         const meta = document.querySelector(`meta[property="${prop}"]`);
@@ -173,7 +158,7 @@ const GamePage = () => {
         const meta = document.querySelector(`meta[name="${prop}"]`);
         if (meta) meta.remove();
       });
-      const removed = document.getElementById('json-ld-game');
+      const removed = document.getElementById("json-ld-game");
       if (removed) removed.remove();
     };
   }, [game]);
@@ -194,8 +179,21 @@ const GamePage = () => {
 
   return (
     <div>
-      {/* Hero-баннер: обложка-фон + название поверх */}
-      <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden mb-8 bg-gradient-to-br from-accent-purple/20 to-accent-pink/20">
+      {/* Хлебные крошки */}
+      <div className="flex items-center gap-2 text-sm text-white/40 mb-6 px-1">
+        <Link to="/" className="text-white/60 hover:text-[var(--accent-purple)] transition-colors">
+          Главная
+        </Link>
+        <FaChevronRight size={10} className="text-white/30" />
+        <Link to="/catalog" className="text-white/60 hover:text-[var(--accent-purple)] transition-colors">
+          Каталог
+        </Link>
+        <FaChevronRight size={10} className="text-white/30" />
+        <span className="text-white/90 font-medium">{game.title}</span>
+      </div>
+
+      {/* Баннер — на всю ширину */}
+      <div className="relative w-full h-[400px] md:h-[450px] overflow-hidden mb-12">
         {game.image && isUrl(game.image) ? (
           <img
             src={game.image}
@@ -203,29 +201,14 @@ const GamePage = () => {
             className="absolute inset-0 w-full h-full object-cover"
           />
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-accent-purple/30 to-accent-pink/30" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-purple)]/20 to-[var(--accent-pink)]/20" />
         )}
-
-        {/* Затемнение — градиент по двум осям */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30" />
-
-        {/* Хлебные крошки */}
-        <div className="relative z-10 px-4 py-3 flex items-center gap-2 text-sm text-white/60">
-          <Link to="/" className="hover:text-accent-pink">
-            Главная
-          </Link>
-          <FaChevronRight size={12} />
-          <Link to="/catalog" className="hover:text-accent-pink">
-            Каталог
-          </Link>
-          <FaChevronRight size={12} />
-          <span className="text-white">{game.title}</span>
-        </div>
-
-        {/* Название игры поверх обложки */}
-        <div className="relative z-10 px-4 pb-8 md:px-8 md:pb-10">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-white drop-shadow-2xl">
+        {/* Затемнение */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)] via-[var(--bg-primary)]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent" />
+        {/* Название */}
+        <div className="absolute inset-0 flex items-end">
+          <h1 className="text-4xl md:text-6xl font-heading font-bold text-white ml-6 md:ml-12 pb-8 md:pb-12 drop-shadow-2xl">
             {game.title}
           </h1>
         </div>
@@ -236,20 +219,17 @@ const GamePage = () => {
         <GameDetails game={game} />
       </div>
 
-      {/* Похожие игры — горизонтальный скролл */}
+      {/* Похожие игры */}
       {similarGames.length > 0 && (
-        <div className="max-w-4xl mx-auto mt-12">
-          <h2 className="font-heading text-2xl mb-5 text-white flex items-center gap-2">
-            <FaGamepad className="text-purple-400" />
+        <div className="mt-16">
+          <h2 className="font-heading text-2xl md:text-3xl mb-6 text-white flex items-center gap-3">
+            <FaGamepad className="text-[var(--accent-purple)]" />
             Похожие игры
           </h2>
           <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-thin">
             {similarGames.map((g) => (
-              <div key={g.slug} className="snap-start">
-                <MiniCard
-                  game={g}
-                  onClick={() => navigate(`/catalog/${g.slug}`)}
-                />
+              <div key={g.slug} className="snap-start flex-shrink-0 w-44">
+                <MiniCard game={g} onClick={() => navigate(`/catalog/${g.slug}`)} />
               </div>
             ))}
           </div>

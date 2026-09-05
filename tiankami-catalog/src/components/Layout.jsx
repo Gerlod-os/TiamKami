@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import FxPanel from "./FxPanel";
+import TwitchHeaderWidget from "./TwitchHeaderWidget";
 import { MASCOTS } from "../config/mascots.js";
 import {
   FaTwitch,
@@ -49,10 +50,10 @@ const Layout = () => {
             <img
               src={MASCOTS.gamepad.src}
               alt={MASCOTS.gamepad.alt}
-              className="w-9 h-9"
+              className="w-12 h-12"
               aria-hidden="true"
             />
-            <span className="font-heading text-xl text-accent-pink">
+            <span className="font-heading text-xl font-bold bg-gradient-to-r from-[var(--accent-purple)] to-[var(--accent-pink)] bg-clip-text text-transparent">
               Tiankami
             </span>
           </Link>
@@ -64,7 +65,7 @@ const Layout = () => {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `transition-colors hover:text-accent-pink ${isActive ? "text-accent-pink" : "text-white/80"}`
+                  `nav-link relative transition-colors group ${isActive ? "text-[var(--accent-purple)] active" : "text-white/80 hover:text-white"}`
                 }
               >
                 {item.label}
@@ -72,7 +73,7 @@ const Layout = () => {
             ))}
           </nav>
 
-          {/* Соцсети + мобильное меню */}
+          {/* Соцсети + Twitch-виджет + мобильное меню */}
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex gap-3 text-white/70">
               {socialLinks.map((s) => (
@@ -88,6 +89,10 @@ const Layout = () => {
                 </a>
               ))}
             </div>
+            {/* Twitch-виджет в шапке (скрыт на мобильных) */}
+            <div className="hidden sm:block">
+              <TwitchHeaderWidget />
+            </div>
             <button
               className="md:hidden text-white text-2xl"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -101,7 +106,7 @@ const Layout = () => {
         {/* Мобильное меню */}
         {mobileMenuOpen && (
           <div
-            className="md:hidden border-t border-white/10 bg-bg-dark/95"
+            className="md:hidden border-t border-white/10 bg-bg-dark/95 animate-slide-down"
             onClick={(e) => {
               // Закрываем при клике на фон (не на ссылки)
               if (e.target === e.currentTarget) {
@@ -116,7 +121,7 @@ const Layout = () => {
                   to={item.to}
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
-                    `px-3 py-2 rounded-lg transition-colors ${isActive ? "bg-accent-pink/20 text-accent-pink" : "text-white/80 hover:bg-white/5"}`
+                    `nav-link px-3 py-2 rounded-lg transition-colors ${isActive ? "bg-[var(--accent-pink)]/20 text-[var(--accent-pink)] active" : "text-white/80 hover:bg-white/5"}`
                   }
                 >
                   {item.label}

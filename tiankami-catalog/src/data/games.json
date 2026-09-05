@@ -3357,6 +3357,25 @@
     "steamAppId": "981430"
   },
   {
+    "title": "Grail",
+    "image": "",
+    "genre": "Автобатлер",
+    "features": "Декблилдер",
+    "setting": "Фэнтези",
+    "complexity": "7",
+    "hours": "1",
+    "status": "Обзор",
+    "progress": "33",
+    "rating": "6",
+    "releaseDate": "01.09.2026",
+    "playedDate": "04.09.2026",
+    "notes": "Карточная копия базаара. Только вместо ограниченного стола у нас есть безграничгая колода, на которую вешаются усиления, пассивки и т.д.",
+    "youtube": "Ссылка на плейлист",
+    "hasMI": "FALSE",
+    "miVideo": "",
+    "slug": "grail"
+  },
+  {
     "title": "Graveyard Gunslingers",
     "image": "",
     "genre": "Вампирлайк, Выживач",

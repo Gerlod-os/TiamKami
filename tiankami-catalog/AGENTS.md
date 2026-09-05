@@ -1,7 +1,7 @@
 # AGENTS.md — Правила для GigaCode
 
 > Источник правды: `PROJECT_BRIEF.md` > `README.md` > этот файл.
-> Обновлён: 04.09.2026
+> Обновлён: 05.09.2026
 
 ---
 
@@ -78,11 +78,11 @@ npx oxlint     # линтер (НЕ ESLint)
 
 ```
 src/
-  components/    FxPanel, GameCard, GameDetails, GameModal, Layout, TwitchWidget, YandexMetrika, ScheduleForm, ErrorBoundary
+  components/    FxPanel, GameCard, GameDetails, GameModal, Layout, TwitchHeaderWidget, TwitchWidgetInHero, YandexMetrika, ScheduleForm, ErrorBoundary
   config/        branding.js, dataSources.js, mascots.js
   data/          games.json (440 игр), collections.json, schedule.json
   pages/         HomePage, CatalogPage, CollectionsPage, GamePage, AboutPage, SchedulePage
-  utils/         loadData.js, normalize.js, date.js, slugify.js, storage.js
+  utils/         loadData.js, normalize.js, date.js, slugify.js, storage.js, useCounter
 api/
   schedule.js    Vercel serverless — прокси в Google Apps Script
 scripts/

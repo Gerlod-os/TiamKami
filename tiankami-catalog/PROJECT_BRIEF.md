@@ -81,6 +81,7 @@
 - **Редизайн:** SEO — `index.html` мета-теги `og:*` и `twitter:*`, prerender удаляет старые meta (regex), `og:image` с fallback на hero, canonical URL, JSON-LD (schema.org VideoGame)
 - **Редизайн:** Мобильная адаптация — GameCard, CatalogPage (поиск на всю ширину, кнопки под поиском, уменьшенная пагинация), статистика `grid-cols-2 md:grid-cols-5`
 - **Редизайн:** Оптимизация — `loading="lazy"` на всех `<img>`, `memo(GameCardInner)` для предотвращения лишних перерендеров, пагинация 24 карточки
+- **Редизайн главной (05.09.2026):** Hero-секция — баннер с обложкой последней сыгранной игры, двойной градиент, заголовок, быстрые цифры. Анимированная статистика — хук `useCounter` (счётчик от 0 за 1 сек). Подборки — горизонтальный скролл мини-карточек (4 превью). Топы — горизонтальный скролл (`snap-x`, `w-64`), кнопка «Все →». TwitchWidgetInHero — компактный виджет в hero, общий кэш с TwitchHeaderWidget (`tk_status`, `tk_avatar`). Удалён мёртвый `TwitchWidget.jsx`.
 - **Расписание стримов:** полная реализация — ближайший стрим крупно, остальные списком, прошедшие (5 шт), форма добавления, SEO meta, `parseRuDate` принимает DD.MM.YYYY и YYYY-MM-DD
 - **Расписание:** форма `ScheduleForm` с валидацией, конвертацией дат, success-уведомлением без alert
 - **Расписание:** Vercel serverless `api/schedule.js` — прокси POST в Google Apps Script

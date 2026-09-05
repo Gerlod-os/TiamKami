@@ -6,7 +6,8 @@ import { isUrl } from "../utils/normalize.js";
 import { BRAND } from "../config/branding.js";
 import GameCard from "../components/GameCard";
 import GameModal from "../components/GameModal";
-import TwitchWidget from "../components/TwitchWidget";
+import TwitchWidgetInHero from "../components/TwitchWidgetInHero";
+import { useCounter } from "../utils/useCounter.js";
 import {
   FaStar,
   FaClock,
@@ -16,7 +17,6 @@ import {
   FaSkull,
   FaCheckCircle,
   FaEye,
-  FaSearchPlus,
 } from "react-icons/fa";
 
 const SectionTitle = ({ icon, color, children }) => (
@@ -26,35 +26,70 @@ const SectionTitle = ({ icon, color, children }) => (
   </h2>
 );
 
-const ShowAllButton = ({ visible, onToggle }) => (
-  <button
-    onClick={onToggle}
-    className="mt-5 px-5 py-2.5 bg-purple-600/80 hover:bg-purple-600 text-white rounded-xl font-medium text-sm transition-all shadow-lg shadow-purple-600/20 hover:shadow-purple-600/40 hover:-translate-y-0.5 flex items-center gap-2 mx-auto w-fit"
-  >
-    {visible ? (
-      <>
-        <FaSearchPlus size={14} /> Свернуть
-      </>
-    ) : (
-      <>
-        <FaSearchPlus size={14} /> Показать все
-      </>
-    )}
-  </button>
+// ─── Анимированная карточка статистики ───
+const StatCard = ({ icon, value, label, color, bgColor }) => {
+  const animatedValue = useCounter(value);
+  return (
+    <div className="bg-[var(--bg-secondary)] rounded-2xl p-5 border border-white/5 flex items-center gap-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--accent-purple)]/10">
+      <div className={`p-3 rounded-full ${bgColor}`}>{icon}</div>
+      <div>
+        <div className={`text-2xl font-bold font-mono ${color}`}>{animatedValue}</div>
+        <div className="text-white/60 text-sm">{label}</div>
+      </div>
+    </div>
+  );
+};
+
+// ─── Горизонтальный скролл для топов ───
+const TopSection = ({ title, icon, iconColor, games, navigate }) => (
+  <section className="animate-fade-in">
+    <div className="flex items-center justify-between mb-5 pb-3 border-b border-white/10">
+      <h2 className={`text-2xl font-heading flex items-center gap-2 ${iconColor}`}>
+        <span>{icon}</span>
+        {title}
+      </h2>
+      <button
+        onClick={() => navigate("/catalog")}
+        className="text-sm text-[var(--accent-purple)] hover:text-white transition-colors"
+      >
+        Все →
+      </button>
+    </div>
+    <div className="flex gap-4 overflow-x-auto snap-x pb-4">
+      {games.map((game) => (
+        <div key={game.slug} className="snap-start flex-shrink-0 w-64">
+          <GameCard
+            game={game}
+            onClick={() => navigate(`/catalog/${game.slug}`)}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
 );
 
+// ─── Карточка подборки с мини-превью ───
 const CollectionCard = ({ collection, games }) => {
-  // Находим первую игру подборки в основном списке, чтобы получить обложку
-  const firstGame = collection.games.length > 0
-    ? games.find((g) => g.title && g.title.toLowerCase().trim() === collection.games[0].name.toLowerCase().trim())
-    : null;
+  const firstGame =
+    collection.games.length > 0
+      ? games.find(
+          (g) =>
+            g.title &&
+            g.title.toLowerCase() === collection.games[0].name.toLowerCase(),
+        )
+      : null;
   const hasValidImage = firstGame && isUrl(firstGame.image);
+
+  const collectionGames = collection.games
+    .slice(0, 4)
+    .map((cg) => games.find((g) => g.title?.toLowerCase() === cg.name?.toLowerCase()))
+    .filter(Boolean);
 
   return (
     <div
       role="button"
       tabIndex={0}
-      onClick={() => window.location.href = "/collections"}
+      onClick={() => (window.location.href = "/collections")}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -62,71 +97,64 @@ const CollectionCard = ({ collection, games }) => {
         }
       }}
       aria-label={`Подборка: ${collection.name}`}
-      className="group bg-white/5 rounded-2xl overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-white/20"
+      className="group relative bg-white/5 rounded-2xl overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--accent-purple)]/20 hover:border-white/20"
     >
-      {/* Превью — обложка первой игры */}
-      <div className="relative h-36 overflow-hidden bg-gradient-to-br from-white/5 to-white/10">
+      {/* Обложка */}
+      <div className="relative h-40 overflow-hidden">
         {hasValidImage ? (
           <img
             src={firstGame.image}
             alt={collection.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900/30 to-pink-900/30">
-            <FaList className="text-4xl text-purple-400/50" />
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--accent-purple)]/20 to-[var(--accent-pink)]/20">
+            <FaList className="text-4xl text-[var(--accent-purple)]/50" />
           </div>
         )}
-        {/* Затемнение снизу + оверлей при наведении */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent" />
-        <div className="absolute inset-0 bg-purple-600/0 group-hover:bg-purple-600/20 transition-colors duration-300" />
-        {/* Бейдж с количеством */}
-        <div className="absolute bottom-2 left-3 px-2.5 py-1 bg-purple-600/80 backdrop-blur-sm rounded-lg text-xs font-bold text-white">
-          {collection.games.length} игр
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-4">
+          <h3 className="font-heading text-xl text-white font-bold truncate drop-shadow-lg">
+            {collection.name}
+          </h3>
+          <p className="text-xs text-white/70 mt-1">
+            {collection.games.length} игр
+          </p>
         </div>
       </div>
 
-      {/* Контент */}
-      <div className="p-4">
-        <h3 className="font-heading text-lg text-white font-bold mb-1 truncate">
-          {collection.name}
-        </h3>
-        {collection.description && (
-          <p className="text-xs text-white/50 mb-3 line-clamp-2">
+      {/* Описание */}
+      {collection.description && (
+        <div className="p-4 pt-3">
+          <p className="text-xs text-white/50 line-clamp-2">
             {collection.description}
           </p>
-        )}
-        <ul className="text-xs text-white/70 space-y-1">
-          {collection.games.slice(0, 4).map((g, i) => (
-            <li key={i} className="flex items-center gap-1.5">
-              <span className="text-purple-400/60">•</span>
-              <span className="truncate">{g.name}</span>
-            </li>
-          ))}
-        </ul>
-        {collection.games.length > 4 && (
-          <p className="text-[10px] text-white/30 mt-2">
-            + ещё {collection.games.length - 4}...
-          </p>
-        )}
-      </div>
+        </div>
+      )}
+
+      {/* Мини-карточки игр */}
+      {collectionGames.length > 0 && (
+        <div className="px-4 pb-4">
+          <div className="flex gap-3 overflow-x-auto snap-x pb-2">
+            {collectionGames.map((game, i) => (
+              <div key={i} className="snap-start flex-shrink-0 w-20">
+                <img
+                  src={game.image}
+                  alt={game.title}
+                  className="w-20 h-28 object-cover rounded-lg"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-const StatCard = ({ icon, value, label, color, bgColor }) => (
-  <div className={`${bgColor} rounded-2xl border p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg`}>
-    <div className="flex justify-center mb-2">{icon}</div>
-    <div className={`text-3xl font-bold font-mono ${color}`}>
-      {value}
-    </div>
-    <div className="text-xs text-white/50 uppercase tracking-wide mt-1">
-      {label}
-    </div>
-  </div>
-);
-
+// ─── Главная страница ───
 const HomePage = () => {
   const navigate = useNavigate();
   const [games, setGames] = useState([]);
@@ -147,7 +175,7 @@ const HomePage = () => {
       });
   }, []);
 
-  // Мета-теги для главной страницы
+  // Мета-теги
   useEffect(() => {
     document.title = BRAND.siteTitle;
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -168,7 +196,10 @@ const HomePage = () => {
       meta.setAttribute("content", content);
     };
     setMeta("og:title", BRAND.siteTitle);
-    setMeta("og:description", `Каталог рогаликов ${BRAND.name}: ${games.length} игр с оценками, прогрессом и заметками стримера.`);
+    setMeta(
+      "og:description",
+      `Каталог рогаликов ${BRAND.name}: ${games.length} игр с оценками, прогрессом и заметками стримера.`,
+    );
     setMeta("og:type", "website");
     setMeta("og:url", BRAND.siteUrl);
     setMeta("og:image", `${BRAND.siteUrl}/assets/hero-CLDdwZDr.png`);
@@ -211,167 +242,139 @@ const HomePage = () => {
   const completedGames = games.filter((g) => g.status === "Пройдено").length;
   const droppedGames = games.filter((g) => g.status === "Дропнуто").length;
   const reviewGames = games.filter((g) => g.status === "Обзор").length;
-  const totalHours = games.reduce(
-    (sum, g) => sum + (parseFloat(g.hours) || 0),
-    0,
+  const totalHours = Math.round(
+    games.reduce((sum, g) => sum + (parseFloat(g.hours) || 0), 0),
   );
 
-  // Состояние для раскрытия списка
-  const [showAllTopRated, setShowAllTopRated] = useState(false);
-  const [showAllFreshReleases, setShowAllFreshReleases] = useState(false);
-  const [showAllLastPlayed, setShowAllLastPlayed] = useState(false);
-  const [showAllTopByHours, setShowAllTopByHours] = useState(false);
+  // Hero-изображение — последняя сыгранная или случайная из топа
+  const heroImageUrl =
+    lastPlayed[0]?.image ||
+    topRated[0]?.image ||
+    `${BRAND.siteUrl}/assets/hero-CLDdwZDr.png`;
 
   if (loading)
     return <div className="text-center py-20">Загрузка данных...</div>;
 
   return (
     <div className="space-y-12">
-      {/* Twitch: статус и аватарка */}
-      <TwitchWidget />
+      {/* ═══════ HERO-СЕКЦИЯ ═══════ */}
+      <section className="relative rounded-3xl overflow-hidden mb-12">
+        <div className="absolute inset-0">
+          <img
+            src={heroImageUrl}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          {/* Двойной градиент */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)] via-[var(--bg-primary)]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent" />
+        </div>
 
-      {/* Статистика */}
-      <section className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        {[
-          { icon: <FaGamepad className="text-3xl text-purple-400" />, value: totalGames, label: "Архив игр", color: "text-white", border: "border-purple-500/20" },
-          { icon: <FaCheckCircle className="text-3xl text-emerald-400" />, value: completedGames, label: "Пройдено", color: "text-emerald-400", border: "border-emerald-500/20" },
-          { icon: <FaSkull className="text-3xl text-red-400" />, value: droppedGames, label: "Дропнутые", color: "text-red-400", border: "border-red-500/20" },
-          { icon: <FaEye className="text-3xl text-blue-400" />, value: reviewGames, label: "Обзор", color: "text-blue-400", border: "border-blue-500/20" },
-          { icon: <FaClock className="text-3xl text-amber-400" />, value: Math.round(totalHours), label: "Часов в играх", color: "text-amber-400", border: "border-amber-500/20" },
-        ].map((stat, i) => (
-          <div key={i} className="animate-fade-in" style={{ animationDelay: `${i * 80}ms` }}>
-            <StatCard
-              icon={stat.icon}
-              value={stat.value}
-              label={stat.label}
-              color={stat.color}
-              bgColor="bg-white/5 rounded-2xl border border-white/10 p-5 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-            />
+        <div className="relative z-10 px-8 py-16 md:py-24">
+          <h1 className="text-4xl md:text-6xl font-bold font-heading text-white mb-4">
+            Каталог рогаликов
+          </h1>
+          <p className="text-white/70 text-lg mb-8 max-w-xl">
+            {totalGames} игр с оценками, прогрессом и заметками стримера.
+          </p>
+
+          <div className="flex flex-wrap gap-6 items-center">
+            <TwitchWidgetInHero />
+            <div className="flex gap-4 text-sm text-white/60">
+              <span>⚔️ {completedGames} пройдено</span>
+              <span>🕐 {totalHours} часов</span>
+            </div>
           </div>
-        ))}
+        </div>
       </section>
 
-      {/* Подборки от Тиана */}
+      {/* ═══════ СТАТИСТИКА ═══════ */}
+      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
+        <StatCard
+          icon={<FaGamepad className="text-2xl text-[var(--accent-purple)]" />}
+          value={totalGames}
+          label="Архив игр"
+          color="text-white"
+          bgColor="bg-[var(--accent-purple)]/20"
+        />
+        <StatCard
+          icon={<FaCheckCircle className="text-2xl text-emerald-400" />}
+          value={completedGames}
+          label="Пройдено"
+          color="text-emerald-400"
+          bgColor="bg-emerald-400/20"
+        />
+        <StatCard
+          icon={<FaSkull className="text-2xl text-red-400" />}
+          value={droppedGames}
+          label="Дропнутые"
+          color="text-red-400"
+          bgColor="bg-red-400/20"
+        />
+        <StatCard
+          icon={<FaEye className="text-2xl text-blue-400" />}
+          value={reviewGames}
+          label="Обзор"
+          color="text-blue-400"
+          bgColor="bg-blue-400/20"
+        />
+        <StatCard
+          icon={<FaClock className="text-2xl text-amber-400" />}
+          value={totalHours}
+          label="Часов в играх"
+          color="text-amber-400"
+          bgColor="bg-amber-400/20"
+        />
+      </section>
+
+      {/* ═══════ ПОДБОРКИ ═══════ */}
       {collections.length > 0 && (
         <section className="animate-fade-in-delay" style={{ animationDelay: "0.4s" }}>
-          <SectionTitle icon={<FaList className="text-pink-400" />} color="text-pink-400">
+          <SectionTitle icon={<FaList className="text-[var(--accent-pink)]" />} color="text-[var(--accent-pink)]">
             Подборки от Тиана
           </SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {collections.map((col, idx) => (
               <div key={idx} className="animate-fade-in" style={{ animationDelay: `${0.4 + idx * 100}ms` }}>
-                <CollectionCard
-                  collection={col}
-                  games={games}
-                />
+                <CollectionCard collection={col} games={games} />
               </div>
             ))}
           </div>
         </section>
       )}
 
-      {/* Топ-5 по оценкам */}
-      <section className="animate-fade-in" style={{ animationDelay: "0.8s" }}>
-        <SectionTitle icon={<FaStar className="text-yellow-400" />} color="text-yellow-400">
-          Топ по оценкам
-        </SectionTitle>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {(showAllTopRated ? topRated : topRated.slice(0, 5)).map((game, i) => (
-            <div key={game.slug} className="animate-fade-in" style={{ animationDelay: `${0.8 + i * 50}ms` }}>
-              <GameCard
-                game={game}
-                onQuickView={() => setQuickViewGame(game)}
-                onClick={() => navigate(`/catalog/${game.slug}`)}
-              />
-            </div>
-          ))}
-        </div>
-        {topRated.length > 5 && (
-          <ShowAllButton
-            visible={showAllTopRated}
-            onToggle={() => setShowAllTopRated(!showAllTopRated)}
-          />
-        )}
-      </section>
+      {/* ═══════ ТОПЫ — ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ ═══════ */}
+      <TopSection
+        title="Топ по оценкам"
+        icon={<FaStar className="text-yellow-400" />}
+        iconColor="text-yellow-400"
+        games={topRated}
+        navigate={navigate}
+      />
 
-      {/* Свежие релизы */}
-      <section className="animate-fade-in" style={{ animationDelay: "1s" }}>
-        <SectionTitle icon={<FaCalendarAlt className="text-blue-400" />} color="text-blue-400">
-          Свежие релизы
-        </SectionTitle>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {(showAllFreshReleases
-            ? freshReleases
-            : freshReleases.slice(0, 5)
-          ).map((game, i) => (
-            <div key={game.slug} className="animate-fade-in" style={{ animationDelay: `${1 + i * 50}ms` }}>
-              <GameCard
-                game={game}
-                onQuickView={() => setQuickViewGame(game)}
-                onClick={() => navigate(`/catalog/${game.slug}`)}
-              />
-            </div>
-          ))}
-        </div>
-        {freshReleases.length > 5 && (
-          <ShowAllButton
-            visible={showAllFreshReleases}
-            onToggle={() => setShowAllFreshReleases(!showAllFreshReleases)}
-          />
-        )}
-      </section>
+      <TopSection
+        title="Свежие релизы"
+        icon={<FaCalendarAlt className="text-blue-400" />}
+        iconColor="text-blue-400"
+        games={freshReleases}
+        navigate={navigate}
+      />
 
-      {/* Последние сыгранные */}
-      <section className="animate-fade-in" style={{ animationDelay: "1.2s" }}>
-        <SectionTitle icon={<FaGamepad className="text-purple-400" />} color="text-purple-400">
-          Последние сыгранные
-        </SectionTitle>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {(showAllLastPlayed ? lastPlayed : lastPlayed.slice(0, 5)).map(
-            (game, i) => (
-              <div key={game.slug} className="animate-fade-in" style={{ animationDelay: `${1.2 + i * 50}ms` }}>
-                <GameCard
-                  game={game}
-                  onQuickView={() => setQuickViewGame(game)}
-                  onClick={() => navigate(`/catalog/${game.slug}`)}
-                />
-              </div>
-            ),
-          )}
-        </div>
-        {lastPlayed.length > 5 && (
-          <ShowAllButton
-            visible={showAllLastPlayed}
-            onToggle={() => setShowAllLastPlayed(!showAllLastPlayed)}
-          />
-        )}
-      </section>
+      <TopSection
+        title="Последние сыгранные"
+        icon={<FaGamepad className="text-[var(--accent-purple)]" />}
+        iconColor="text-[var(--accent-purple)]"
+        games={lastPlayed}
+        navigate={navigate}
+      />
 
-      {/* Топ по часам */}
-      <section className="animate-fade-in" style={{ animationDelay: "1.4s" }}>
-        <SectionTitle icon={<FaClock className="text-amber-400" />} color="text-amber-400">
-          Топ по часам
-        </SectionTitle>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {(showAllTopByHours ? topByHours : topByHours.slice(0, 5)).map(
-            (game, i) => (
-              <div key={game.slug} className="animate-fade-in" style={{ animationDelay: `${1.4 + i * 50}ms` }}>
-                <GameCard
-                  game={game}
-                  onQuickView={() => setQuickViewGame(game)}
-                  onClick={() => navigate(`/catalog/${game.slug}`)}
-                />
-              </div>
-            ),
-          )}
-        </div>
-        {topByHours.length > 5 && (
-          <ShowAllButton
-            visible={showAllTopByHours}
-            onToggle={() => setShowAllTopByHours(!showAllTopByHours)}
-          />
-        )}
-      </section>
+      <TopSection
+        title="Топ по часам"
+        icon={<FaClock className="text-amber-400" />}
+        iconColor="text-amber-400"
+        games={topByHours}
+        navigate={navigate}
+      />
 
       {quickViewGame && (
         <GameModal game={quickViewGame} onClose={() => setQuickViewGame(null)} />

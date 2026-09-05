@@ -196,6 +196,9 @@ export function normalizeCollections(rows) {
   });
 
   const collections = [];
+  // Генерируем уникальные слаги для подборок
+  const usedSlugs = new Set();
+
   titleIndices.forEach((titleIdx) => {
     const name = headerRow[titleIdx].trim();
     if (!name) return;
@@ -243,7 +246,13 @@ export function normalizeCollections(rows) {
     if (/золотой список/i.test(name)) {
       games.forEach((g) => (g.rank = ""));
     }
-    collections.push({ name, description, games });
+
+    // Генерируем уникальный slug
+    const baseSlug = slugify(name);
+    const slug = uniqueSlug(baseSlug, usedSlugs);
+    usedSlugs.add(slug);
+
+    collections.push({ name, slug, description, games });
   });
 
   return collections;

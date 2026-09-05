@@ -1,9 +1,13 @@
 {
   "worktrees": {},
   "sessions": {
-    "ses_f94f33f40ffeCiJG1dbPgin2UC": {
+    "ses_f948dc79cffeUKdhIytGMKNtdl": {
       "worktreeId": null,
-      "createdAt": "2026-09-04T06:13:13.065Z"
+      "createdAt": "2026-09-04T08:04:02.804Z"
+    },
+    "ses_f9117092dffecHY9YVhoxT6wUh": {
+      "worktreeId": null,
+      "createdAt": "2026-09-05T00:12:36.452Z"
     }
   },
   "tabOrder": {
@@ -20,7 +24,16 @@
       "ses_f96503979ffeYLpLRMjBS3HyMz",
       "ses_f962afc75ffe80alWvCI81h6nO",
       "ses_f958b5410ffeUVMHONCId1jy2L",
-      "ses_f94f33f40ffeCiJG1dbPgin2UC"
+      "ses_f94f33f40ffeCiJG1dbPgin2UC",
+      "ses_f948dc79cffeUKdhIytGMKNtdl",
+      "ses_f948684a0ffeZEfLNgmpRvHHOp",
+      "ses_f947fda94ffep7Jwx7RJ4d9jPr",
+      "ses_f9477770fffeohtZTTX5vJtl62",
+      "ses_f9470b40fffeQxWFJX48CrJSBr",
+      "ses_f945c07acffet0SS6P160Ileby",
+      "ses_f9458a190ffertwtCGHuNgYhWG",
+      "ses_f9455d0b5ffebOumi0g5VFCUX8",
+      "ses_f9117092dffecHY9YVhoxT6wUh"
     ]
   },
   "reviewDiffStyle": "split"

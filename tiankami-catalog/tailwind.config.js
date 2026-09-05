@@ -9,21 +9,23 @@ export default {
         "accent-pink": "var(--accent-pink)",
         "accent-purple": "var(--accent-purple)",
         "accent-cyan": "var(--accent-cyan)",
+        "accent-blue": "var(--accent-blue)",
         gold: "var(--gold)",
         "drop-red": "var(--drop-red)",
+        mint: "var(--accent-mint)",
       },
       fontFamily: {
         heading: ["Nunito", "sans-serif"],
         body: ["Inter", "sans-serif"],
       },
       boxShadow: {
-        "glow-pink": "0 0 15px rgba(255,182,193,0.5)",
-        "glow-purple": "0 0 15px rgba(201,160,220,0.5)",
+        "glow-pink": "0 0 15px var(--accent-pink-alpha)",
+        "glow-purple": "0 0 15px var(--accent-purple-alpha)",
         "neon-pink":
-          "0 0 20px rgba(236,72,153,0.5), 0 0 40px rgba(168,85,247,0.3)",
+          "0 0 20px var(--accent-pink-alpha), 0 0 40px var(--accent-purple-soft)",
         "neon-purple":
-          "0 0 20px rgba(168,85,247,0.5), 0 0 40px rgba(236,72,153,0.3)",
-        "gold-glow": "0 0 20px rgba(251,191,36,0.2)",
+          "0 0 20px var(--accent-purple-alpha), 0 0 40px var(--accent-pink-soft)",
+        "gold-glow": "0 0 20px var(--gold-alpha)",
       },
       borderRadius: {
         xl: "12px",

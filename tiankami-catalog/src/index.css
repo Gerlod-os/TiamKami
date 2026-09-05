@@ -3,20 +3,28 @@
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════════
-   ТЕМА 1: TianKami Neon (как на старом проекте)
+   ТЕМА 1: TianKami Neon (пастельная палитра)
    ═══════════════════════════════════════════════════ */
 :root,
 [data-theme="neon"] {
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #121018;
-  --accent-pink: #ec4899;
-  --accent-purple: #a855f7;
-  --accent-cyan: #06b6d4;
-  --gold: #fbbf24;
-  --drop-red: #7f1d1d;
-  --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
-  --border-color: rgba(168, 85, 247, 0.3);
+  --bg-primary: #121212;
+  --bg-secondary: #1a1a2e;
+  --accent-pink: #ffb6c1;
+  --accent-purple: #c9a0dc;
+  --accent-cyan: #a0c4ff;
+  --accent-blue: #a0c4ff;
+  --accent-mint: #b5ead7;
+  --gold: #ffd700;
+  --drop-red: #450a0a;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --border-color: rgba(201, 160, 220, 0.3);
+  /* Alpha-переменные для теней */
+  --accent-pink-alpha: rgba(255, 182, 193, 0.5);
+  --accent-purple-alpha: rgba(201, 160, 220, 0.5);
+  --accent-purple-soft: rgba(201, 160, 220, 0.3);
+  --accent-pink-soft: rgba(255, 182, 193, 0.3);
+  --gold-alpha: rgba(255, 215, 0, 0.2);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -28,11 +36,19 @@
   --accent-pink: #ffb6c1;
   --accent-purple: #c9a0dc;
   --accent-cyan: #a0c4ff;
+  --accent-blue: #a0c4ff;
+  --accent-mint: #b5ead7;
   --gold: #ffd700;
   --drop-red: #450a0a;
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.6);
   --border-color: rgba(201, 160, 220, 0.3);
+  /* Alpha-переменные для теней */
+  --accent-pink-alpha: rgba(255, 182, 193, 0.5);
+  --accent-purple-alpha: rgba(201, 160, 220, 0.5);
+  --accent-purple-soft: rgba(201, 160, 220, 0.3);
+  --accent-pink-soft: rgba(255, 182, 193, 0.3);
+  --gold-alpha: rgba(255, 215, 0, 0.2);
 }
 
 body {
@@ -135,4 +151,41 @@ h6 {
 .animate-fade-in-delay {
   animation: fadeIn 0.6s ease-out forwards;
   opacity: 0;
+}
+
+/* ─────────── Анимации для мобильного меню ─────────── */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+/* ─────────── Подчёркивание для навигации ─────────── */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-purple);
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
 }
