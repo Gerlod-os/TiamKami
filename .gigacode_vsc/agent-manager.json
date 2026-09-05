@@ -8,12 +8,22 @@
     "ses_f90b8315affetrq2nEH07zJjZA": {
       "worktreeId": null,
       "createdAt": "2026-09-05T01:56:12.087Z"
+    },
+    "ses_f909b5f25ffe1c8I50pkdOHQ5W": {
+      "worktreeId": null,
+      "createdAt": "2026-09-05T02:27:40.917Z"
+    },
+    "ses_f90989796ffe1cA0dnrhGUaxzM": {
+      "worktreeId": null,
+      "createdAt": "2026-09-05T02:30:43.068Z"
     }
   },
   "tabOrder": {
     "local": [
       "ses_f90ba1fbeffeDMnfdYI28SNnTX",
-      "ses_f90b8315affetrq2nEH07zJjZA"
+      "ses_f90b8315affetrq2nEH07zJjZA",
+      "ses_f909b5f25ffe1c8I50pkdOHQ5W",
+      "ses_f90989796ffe1cA0dnrhGUaxzM"
     ]
   }
 }

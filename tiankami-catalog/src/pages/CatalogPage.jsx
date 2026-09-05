@@ -17,7 +17,7 @@ import {
   FaChevronDown,
   FaChevronUp,
 } from "react-icons/fa";
-import SearchBar from "./SearchBar";
+import SearchBar from "../components/SearchBar";
 
 const ITEMS_PER_PAGE = 24;
 

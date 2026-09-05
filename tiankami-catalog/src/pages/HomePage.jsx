@@ -7,7 +7,7 @@ import { BRAND } from "../config/branding.js";
 import GameCard from "../components/GameCard";
 import GameModal from "../components/GameModal";
 import TwitchWidgetInHero from "../components/TwitchWidgetInHero";
-import { useCounter } from "../utils/useCounter.js";
+import { useCounter } from "../hooks/useCounter.js";
 import {
   FaStar,
   FaClock,
