@@ -1,6 +1,6 @@
 import useTwitchStatus from "../hooks/useTwitchStatus.js";
 import { BRAND } from "../config/branding.js";
-import { safeGet, safeSet } from "../utils/storage.js";
+import { safeSet } from "../utils/storage.js";
 
 // Глобальный сброс кэша Twitch (вызывается из FxPanel)
 window.__tkResetTwitchCache = () => {
@@ -42,7 +42,10 @@ export default function TwitchWidgetInHero() {
           <p className="text-white/50 text-xs">Проверяем…</p>
         ) : live ? (
           <>
-            <p className="text-white text-sm font-heading truncate max-w-[200px]" title={title}>
+            <p
+              className="text-white text-sm font-heading truncate max-w-[200px]"
+              title={title}
+            >
               {title || "В эфире!"}
             </p>
             <a

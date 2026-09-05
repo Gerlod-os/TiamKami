@@ -46,15 +46,58 @@ const Layout = () => {
     <div className="min-h-screen flex flex-col">
       <header className="bg-bg-dark/80 backdrop-blur-md sticky top-0 z-50 border-b border-accent-purple/30">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <img
-              src={MASCOTS.gamepad.src}
-              alt={MASCOTS.gamepad.alt}
-              className="w-12 h-12"
-              aria-hidden="true"
-            />
+          <Link to="/" className="flex items-center gap-3">
+            {/* Рогалик-геймпад — фирменный маскот в стиле канала */}
+            <svg
+              viewBox="0 0 64 64"
+              className="w-12 h-12 drop-shadow-lg flex-shrink-0"
+              role="img"
+              aria-label="Маскот канала — геймпад-рогалик"
+            >
+              <defs>
+                <linearGradient
+                  id="gamepadGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stopColor="#FFB6C1" />
+                  <stop offset="100%" stopColor="#C9A0DC" />
+                </linearGradient>
+              </defs>
+              {/* Корпус геймпада */}
+              <rect
+                x="8"
+                y="20"
+                width="48"
+                height="28"
+                rx="8"
+                fill="url(#gamepadGrad)"
+              />
+              {/* D-pad */}
+              <rect x="16" y="26" width="8" height="16" fill="#1a1a2e" rx="2" />
+              <rect x="12" y="30" width="16" height="8" fill="#1a1a2e" rx="2" />
+              {/* Кнопки */}
+              <circle cx="44" cy="30" r="4" fill="#FF6B6B" />
+              <circle cx="50" cy="34" r="4" fill="#4ECDC4" />
+              <circle cx="40" cy="34" r="4" fill="#4ECDC4" />
+              <circle cx="46" cy="38" r="4" fill="#FF6B6B" />
+              {/* Глаза-рогалика */}
+              <circle cx="26" cy="28" r="3" fill="#1a1a2e" />
+              <circle cx="38" cy="28" r="3" fill="#1a1a2e" />
+              <circle cx="27" cy="27" r="1" fill="#fff" />
+              <circle cx="39" cy="27" r="1" fill="#fff" />
+              {/* Улыбка */}
+              <path
+                d="M 28 34 Q 32 38 36 34"
+                stroke="#1a1a2e"
+                strokeWidth="2"
+                fill="none"
+              />
+            </svg>
             <span className="font-heading text-xl font-bold bg-gradient-to-r from-[var(--accent-purple)] to-[var(--accent-pink)] bg-clip-text text-transparent">
-              Tiankami
+              {BRAND.name}
             </span>
           </Link>
 
@@ -146,7 +189,10 @@ const Layout = () => {
         )}
       </header>
 
-      <main id="main-content" className="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
+      <main
+        id="main-content"
+        className="flex-grow max-w-7xl mx-auto px-4 py-8 w-full"
+      >
         <Outlet />
       </main>
 

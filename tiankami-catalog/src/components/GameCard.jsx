@@ -1,7 +1,16 @@
 import { useState, useCallback, memo } from "react";
-import { FaStar, FaSteam, FaCheckCircle, FaSkull, FaSearch, FaClock, FaPlay, FaTrophy } from "react-icons/fa";
-import { isUrl } from "../utils/normalize.js";
-import { trackEvent } from "./YandexMetrika";
+import {
+  FaStar,
+  FaSteam,
+  FaCheckCircle,
+  FaSkull,
+  FaSearch,
+  FaClock,
+  FaPlay,
+  FaTrophy,
+} from "react-icons/fa";
+import { isUrl, steamCoverUrl } from "../utils/normalize.js";
+import { trackEvent } from "../utils/metrika.js";
 
 // Пастельные цвета для чипсов жанров
 const genreColors = [
@@ -13,11 +22,23 @@ const genreColors = [
 
 // Иконки статусов (единый справочник с GameDetails)
 const statusIcons = {
-  "Пройдено": { icon: <FaCheckCircle />, color: "text-green-400", bg: "bg-green-400/20" },
-  "Дропнуто": { icon: <FaSkull />, color: "text-red-400", bg: "bg-red-400/20" },
-  "Обзор": { icon: <FaSearch />, color: "text-blue-400", bg: "bg-blue-400/20" },
-  "Жду релиза": { icon: <FaClock />, color: "text-yellow-400", bg: "bg-yellow-400/20" },
-  "В процессе": { icon: <FaPlay />, color: "text-purple-400", bg: "bg-purple-400/20" },
+  Пройдено: {
+    icon: <FaCheckCircle />,
+    color: "text-green-400",
+    bg: "bg-green-400/20",
+  },
+  Дропнуто: { icon: <FaSkull />, color: "text-red-400", bg: "bg-red-400/20" },
+  Обзор: { icon: <FaSearch />, color: "text-blue-400", bg: "bg-blue-400/20" },
+  "Жду релиза": {
+    icon: <FaClock />,
+    color: "text-yellow-400",
+    bg: "bg-yellow-400/20",
+  },
+  "В процессе": {
+    icon: <FaPlay />,
+    color: "text-purple-400",
+    bg: "bg-purple-400/20",
+  },
 };
 
 function GameCardInner({ game, onClick, onQuickView }) {
@@ -37,8 +58,17 @@ function GameCardInner({ game, onClick, onQuickView }) {
     setImageError(true);
   }, []);
 
-  const hasValidImage = isUrl(game.image) && !imageError;
-  const genres = (game.genre || "").split(",").map((g) => g.trim()).filter(Boolean);
+  // Портретная обложка высокого качества; если steamAppId нет — берём image.
+  const coverSrc = game.steamAppId
+    ? steamCoverUrl(game.steamAppId)
+    : isUrl(game.image)
+      ? game.image
+      : null;
+  const hasValidImage = coverSrc && !imageError;
+  const genres = (game.genre || "")
+    .split(",")
+    .map((g) => g.trim())
+    .filter(Boolean);
   const isPerfectRating = game.rating === 10;
   const status = game.status || "";
 
@@ -54,21 +84,23 @@ function GameCardInner({ game, onClick, onQuickView }) {
         }
       }}
       aria-label={`${game.title}, ${game.genre || "жанр не указан"}, оценка ${game.rating || "неизвестно"} из 10`}
-      className="group bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-primary)] rounded-2xl overflow-hidden border border-white/5 hover:border-[var(--accent-purple)]/30 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_var(--accent-purple-alpha)], hover:shadow-[0_0_30px_var(--accent-purple)/0.3] w-full min-w-0"
+      className="group relative flex flex-col bg-[var(--bg-secondary)] rounded-xl overflow-hidden border border-white/5 hover:border-[var(--accent-purple)]/30 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(255,182,193,0.3)] w-full min-w-0"
     >
-      {/* Обложка */}
-      <div className="relative h-52 sm:h-64 overflow-hidden bg-gradient-to-br from-white/5 to-white/10">
+      {/* Обложка — портрет 3:4 */}
+      <div className="relative w-full aspect-[2/3] overflow-hidden rounded-t-xl bg-[var(--bg-primary)]">
         {hasValidImage ? (
           <img
-            src={game.image}
+            src={coverSrc}
             alt={game.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
             onError={handleError}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <span className="text-5xl" aria-hidden="true">🎮</span>
+            <span className="text-5xl" aria-hidden="true">
+              🎮
+            </span>
           </div>
         )}
 
@@ -85,7 +117,11 @@ function GameCardInner({ game, onClick, onQuickView }) {
             }`}
             aria-label={`Рейтинг: ${game.rating}/10`}
           >
-            <FaStar className={isPerfectRating ? "text-amber-950" : "text-[var(--bg-primary)]"} />
+            <FaStar
+              className={
+                isPerfectRating ? "text-amber-950" : "text-[var(--bg-primary)]"
+              }
+            />
             {game.rating}
           </div>
         )}
@@ -127,7 +163,7 @@ function GameCardInner({ game, onClick, onQuickView }) {
 
         {/* Жанры-чипсы */}
         {genres.length > 0 && (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 overflow-hidden max-h-8">
             {genres.slice(0, 3).map((genre, index) => (
               <span
                 key={genre}
@@ -141,21 +177,25 @@ function GameCardInner({ game, onClick, onQuickView }) {
 
         {/* Сеттинг и особенности */}
         {(game.setting || game.features) && (
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5 overflow-hidden max-h-5">
             {game.setting && (
               <span className="text-[10px] bg-[var(--accent-purple)]/20 text-[var(--accent-purple)] px-2 py-1 rounded-full">
                 🌍 {game.setting}
               </span>
             )}
             {game.features &&
-              game.features.split(",").filter((f) => f.trim()).slice(0, 2).map((feature, i) => (
-                <span
-                  key={i}
-                  className="text-[10px] bg-[var(--accent-cyan)]/20 text-[var(--accent-cyan)] px-2 py-1 rounded-full"
-                >
-                  ⚡ {feature.trim()}
-                </span>
-              ))}
+              game.features
+                .split(",")
+                .filter((f) => f.trim())
+                .slice(0, 2)
+                .map((feature, i) => (
+                  <span
+                    key={i}
+                    className="text-[10px] bg-[var(--accent-cyan)]/20 text-[var(--accent-cyan)] px-2 py-1 rounded-full"
+                  >
+                    ⚡ {feature.trim()}
+                  </span>
+                ))}
           </div>
         )}
 
@@ -169,8 +209,12 @@ function GameCardInner({ game, onClick, onQuickView }) {
             <span className="text-sm">{game.hours || "—"} ч</span>
           </div>
           {status && statusIcons[status] && (
-            <div className={`flex items-center gap-2 ml-auto text-sm ${statusIcons[status].color}`}>
-              <span className={`w-6 h-6 rounded-full ${statusIcons[status].bg} flex items-center justify-center`}>
+            <div
+              className={`flex items-center gap-2 ml-auto text-sm ${statusIcons[status].color}`}
+            >
+              <span
+                className={`w-6 h-6 rounded-full ${statusIcons[status].bg} flex items-center justify-center`}
+              >
                 {statusIcons[status].icon}
               </span>
               <span className="font-medium">{status}</span>

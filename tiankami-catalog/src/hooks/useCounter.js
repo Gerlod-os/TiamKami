@@ -6,10 +6,9 @@ import { useState, useEffect } from "react";
 export function useCounter(target, duration = 1000) {
   const [count, setCount] = useState(0);
 
-  // oxlint-ignore-next-line react(set-state-in-effect)
   useEffect(() => {
     if (target === 0) {
-      setCount(0);
+      // count уже равен 0 из useState(0) — ничего не сбрасываем
       return;
     }
 

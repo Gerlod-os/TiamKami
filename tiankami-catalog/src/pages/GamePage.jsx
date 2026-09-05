@@ -33,12 +33,16 @@ const MiniCard = ({ game, onClick }) => {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <span className="text-2xl" aria-hidden="true">🎮</span>
+            <span className="text-2xl" aria-hidden="true">
+              🎮
+            </span>
           </div>
         )}
         <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/80 to-transparent" />
         {game.rating && (
-          <div className={`absolute top-1.5 right-1.5 flex items-center gap-1 ${isPerfectRating ? 'animate-pulse' : ''}`}>
+          <div
+            className={`absolute top-1.5 right-1.5 flex items-center gap-1 ${isPerfectRating ? "animate-pulse" : ""}`}
+          >
             <div className="bg-[var(--accent-purple)] text-[var(--bg-primary)] text-[10px] font-bold rounded-full px-1.5 py-0.5 shadow-lg">
               <FaStar className="text-[8px]" />
               {game.rating}
@@ -148,20 +152,30 @@ const GamePage = () => {
     return () => {
       document.title = BRAND.siteTitle;
       if (metaDescription) {
-        metaDescription.setAttribute("content", `Каталог рогаликов ${BRAND.name}`);
+        metaDescription.setAttribute(
+          "content",
+          `Каталог рогаликов ${BRAND.name}`,
+        );
       }
-      ["og:title", "og:description", "og:type", "og:image", "og:url"].forEach((prop) => {
-        const meta = document.querySelector(`meta[property="${prop}"]`);
-        if (meta) meta.remove();
-      });
-      ["twitter:card", "twitter:title", "twitter:description", "twitter:image"].forEach((prop) => {
+      ["og:title", "og:description", "og:type", "og:image", "og:url"].forEach(
+        (prop) => {
+          const meta = document.querySelector(`meta[property="${prop}"]`);
+          if (meta) meta.remove();
+        },
+      );
+      [
+        "twitter:card",
+        "twitter:title",
+        "twitter:description",
+        "twitter:image",
+      ].forEach((prop) => {
         const meta = document.querySelector(`meta[name="${prop}"]`);
         if (meta) meta.remove();
       });
       const removed = document.getElementById("json-ld-game");
       if (removed) removed.remove();
     };
-  }, [game]);
+  }, [game, slug]);
 
   if (loading) return <div className="text-center py-20">Загрузка...</div>;
 
@@ -178,14 +192,20 @@ const GamePage = () => {
   }
 
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-b from-[var(--bg-secondary)] via-[var(--bg-secondary)] to-[var(--bg-primary)]">
       {/* Хлебные крошки */}
       <div className="flex items-center gap-2 text-sm text-white/40 mb-6 px-1">
-        <Link to="/" className="text-white/60 hover:text-[var(--accent-purple)] transition-colors">
+        <Link
+          to="/"
+          className="text-white/60 hover:text-[var(--accent-purple)] transition-colors"
+        >
           Главная
         </Link>
         <FaChevronRight size={10} className="text-white/30" />
-        <Link to="/catalog" className="text-white/60 hover:text-[var(--accent-purple)] transition-colors">
+        <Link
+          to="/catalog"
+          className="text-white/60 hover:text-[var(--accent-purple)] transition-colors"
+        >
           Каталог
         </Link>
         <FaChevronRight size={10} className="text-white/30" />
@@ -204,8 +224,8 @@ const GamePage = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-purple)]/20 to-[var(--accent-pink)]/20" />
         )}
         {/* Затемнение */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)] via-[var(--bg-primary)]/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-secondary)] via-[var(--bg-secondary)]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-secondary)] via-transparent to-transparent" />
         {/* Название */}
         <div className="absolute inset-0 flex items-end">
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white ml-6 md:ml-12 pb-8 md:pb-12 drop-shadow-2xl">
@@ -229,7 +249,10 @@ const GamePage = () => {
           <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-thin">
             {similarGames.map((g) => (
               <div key={g.slug} className="snap-start flex-shrink-0 w-44">
-                <MiniCard game={g} onClick={() => navigate(`/catalog/${g.slug}`)} />
+                <MiniCard
+                  game={g}
+                  onClick={() => navigate(`/catalog/${g.slug}`)}
+                />
               </div>
             ))}
           </div>

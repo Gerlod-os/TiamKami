@@ -33,7 +33,9 @@ const StatCard = ({ icon, value, label, color, bgColor }) => {
     <div className="bg-[var(--bg-secondary)] rounded-2xl p-5 border border-white/5 flex items-center gap-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--accent-purple)]/10">
       <div className={`p-3 rounded-full ${bgColor}`}>{icon}</div>
       <div>
-        <div className={`text-2xl font-bold font-mono ${color}`}>{animatedValue}</div>
+        <div className={`text-2xl font-bold font-mono ${color}`}>
+          {animatedValue}
+        </div>
         <div className="text-white/60 text-sm">{label}</div>
       </div>
     </div>
@@ -44,7 +46,9 @@ const StatCard = ({ icon, value, label, color, bgColor }) => {
 const TopSection = ({ title, icon, iconColor, games, navigate }) => (
   <section className="animate-fade-in">
     <div className="flex items-center justify-between mb-5 pb-3 border-b border-white/10">
-      <h2 className={`text-2xl font-heading flex items-center gap-2 ${iconColor}`}>
+      <h2
+        className={`text-2xl font-heading flex items-center gap-2 ${iconColor}`}
+      >
         <span>{icon}</span>
         {title}
       </h2>
@@ -82,7 +86,9 @@ const CollectionCard = ({ collection, games }) => {
 
   const collectionGames = collection.games
     .slice(0, 4)
-    .map((cg) => games.find((g) => g.title?.toLowerCase() === cg.name?.toLowerCase()))
+    .map((cg) =>
+      games.find((g) => g.title?.toLowerCase() === cg.name?.toLowerCase()),
+    )
     .filter(Boolean);
 
   return (
@@ -153,6 +159,35 @@ const CollectionCard = ({ collection, games }) => {
     </div>
   );
 };
+
+// ─── Чибі-сайтама — декоративный маскот в стиле канала ───
+const ChibiSaitama = () => (
+  <div
+    className="absolute -right-16 bottom-0 w-56 h-56 md:w-72 md:h-72 opacity-20 pointer-events-none"
+    aria-hidden="true"
+  >
+    <svg viewBox="0 0 200 200" className="w-full h-full">
+      {/* Голова */}
+      <circle cx="100" cy="78" r="48" fill="#FFD93D" />
+      {/* Тело (костюм) */}
+      <rect x="62" y="128" width="76" height="62" rx="10" fill="#FF6B6B" />
+      {/* Плащ */}
+      <path d="M 62 140 Q 22 158 32 198 L 70 190 Z" fill="#FF6B6B" />
+      <path d="M 138 140 Q 178 158 168 198 L 130 190 Z" fill="#FF6B6B" />
+      {/* Лицо */}
+      <circle cx="85" cy="68" r="5" fill="#1a1a2e" />
+      <circle cx="115" cy="68" r="5" fill="#1a1a2e" />
+      <path
+        d="M 88 94 Q 100 100 112 94"
+        stroke="#1a1a2e"
+        strokeWidth="3"
+        fill="none"
+      />
+      {/* Кулак */}
+      <circle cx="150" cy="118" r="20" fill="#FFD93D" />
+    </svg>
+  </div>
+);
 
 // ─── Главная страница ───
 const HomePage = () => {
@@ -286,6 +321,9 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+
+        {/* Чибі-сайтама на фоне */}
+        <ChibiSaitama />
       </section>
 
       {/* ═══════ СТАТИСТИКА ═══════ */}
@@ -329,13 +367,23 @@ const HomePage = () => {
 
       {/* ═══════ ПОДБОРКИ ═══════ */}
       {collections.length > 0 && (
-        <section className="animate-fade-in-delay" style={{ animationDelay: "0.4s" }}>
-          <SectionTitle icon={<FaList className="text-[var(--accent-pink)]" />} color="text-[var(--accent-pink)]">
+        <section
+          className="animate-fade-in-delay"
+          style={{ animationDelay: "0.4s" }}
+        >
+          <SectionTitle
+            icon={<FaList className="text-[var(--accent-pink)]" />}
+            color="text-[var(--accent-pink)]"
+          >
             Подборки от Тиана
           </SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {collections.map((col, idx) => (
-              <div key={idx} className="animate-fade-in" style={{ animationDelay: `${0.4 + idx * 100}ms` }}>
+              <div
+                key={idx}
+                className="animate-fade-in"
+                style={{ animationDelay: `${0.4 + idx * 100}ms` }}
+              >
                 <CollectionCard collection={col} games={games} />
               </div>
             ))}
@@ -377,7 +425,10 @@ const HomePage = () => {
       />
 
       {quickViewGame && (
-        <GameModal game={quickViewGame} onClose={() => setQuickViewGame(null)} />
+        <GameModal
+          game={quickViewGame}
+          onClose={() => setQuickViewGame(null)}
+        />
       )}
     </div>
   );

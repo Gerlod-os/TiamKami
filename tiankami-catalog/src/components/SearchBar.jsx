@@ -1,10 +1,18 @@
 import { useState, useMemo, useEffect, useRef } from "react";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaStar } from "react-icons/fa";
+import { steamCoverUrl } from "../utils/normalize.js";
 
 const SearchBar = ({ games, searchQuery, setSearchQuery }) => {
   const [inputValue, setInputValue] = useState(searchQuery);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const containerRef = useRef(null);
+
+  // Debounced-поиск: результаты обновляются через 200 мс после остановки ввода
+  const [debouncedQuery, setDebouncedQuery] = useState("");
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedQuery(inputValue), 200);
+    return () => clearTimeout(t);
+  }, [inputValue]);
 
   // Популярные жанры (топ-8 по частоте)
   const popularGenres = useMemo(() => {
@@ -21,24 +29,27 @@ const SearchBar = ({ games, searchQuery, setSearchQuery }) => {
       .map(([genre]) => genre);
   }, [games]);
 
-  // Подсказки (до 5 совпадений)
-  const suggestions = useMemo(() => {
-    if (!inputValue.trim()) return [];
-    const query = inputValue.toLowerCase().trim();
+  // Результаты поиска (до 8) — по названию, жанру, сеттингу
+  const results = useMemo(() => {
+    if (!debouncedQuery.trim()) return [];
+    const q = debouncedQuery.toLowerCase().trim();
     return games
-      .filter((game) =>
-        game.title.toLowerCase().includes(query) ||
-        game.genre.toLowerCase().includes(query) ||
-        (game.setting || "").toLowerCase().includes(query)
+      .filter(
+        (game) =>
+          game.title.toLowerCase().includes(q) ||
+          game.genre.toLowerCase().includes(q) ||
+          (game.setting || "").toLowerCase().includes(q),
       )
-      .slice(0, 5)
-      .map((game) => game.title);
-  }, [inputValue, games]);
+      .slice(0, 8);
+  }, [debouncedQuery, games]);
 
-  // Синхронизация с внешним searchQuery
-  useEffect(() => {
+  // Синхронизация inputValue с внешним searchQuery через обновление при рендере
+  // (официальный React-паттерн вместо setState в useEffect)
+  const [prevSearchQuery, setPrevSearchQuery] = useState(searchQuery);
+  if (prevSearchQuery !== searchQuery) {
+    setPrevSearchQuery(searchQuery);
     setInputValue(searchQuery);
-  }, [searchQuery]);
+  }
 
   // Закрытие подсказок при клике вне
   useEffect(() => {
@@ -61,10 +72,10 @@ const SearchBar = ({ games, searchQuery, setSearchQuery }) => {
     setTimeout(() => setShowSuggestions(false), 200);
   };
 
-  const handleSuggestionClick = (title) => {
-    setInputValue(title);
+  const handleSuggestionClick = (game) => {
+    setInputValue(game.title);
     setShowSuggestions(false);
-    setSearchQuery(title);
+    setSearchQuery(game.title);
   };
 
   const handleGenreClick = (genre) => {
@@ -96,19 +107,53 @@ const SearchBar = ({ games, searchQuery, setSearchQuery }) => {
         />
       </div>
 
-      {/* Подсказки */}
-      {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-[var(--bg-secondary)] border border-white/10 rounded-xl shadow-xl overflow-hidden z-50">
-          {suggestions.map((title, index) => (
-            <button
-              key={index}
-              onClick={() => handleSuggestionClick(title)}
-              className="w-full px-4 py-2.5 text-left text-white/80 hover:bg-[var(--accent-purple)]/20 hover:text-white transition-colors text-sm flex items-center gap-2"
-            >
-              <FaSearch className="text-white/30 text-xs" />
-              {title}
-            </button>
-          ))}
+      {/* Результаты — мгновенные подсказки с обложками и рейтингом */}
+      {showSuggestions && results.length > 0 && (
+        <div className="absolute top-full left-0 right-0 mt-2 bg-[var(--bg-secondary)] border-2 border-[var(--accent-purple)]/30 rounded-2xl shadow-2xl z-50 max-h-96 overflow-y-auto">
+          {results.map((game) => {
+            const cover = game.steamAppId
+              ? steamCoverUrl(game.steamAppId)
+              : null;
+            return (
+              <button
+                key={game.slug || game.title}
+                onClick={() => handleSuggestionClick(game)}
+                className="w-full px-4 py-3 text-left hover:bg-[var(--accent-purple)]/20 transition-colors flex items-center gap-4 border-b border-white/5 last:border-0"
+              >
+                <div className="w-12 h-16 flex-shrink-0 overflow-hidden rounded-lg bg-[var(--bg-primary)]">
+                  {cover ? (
+                    <img
+                      src={cover}
+                      alt={game.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <span
+                      className="w-full h-full flex items-center justify-center text-2xl"
+                      aria-hidden="true"
+                    >
+                      🎮
+                    </span>
+                  )}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-white font-medium truncate">
+                    {game.title}
+                  </div>
+                  <div className="text-gray-400 text-sm truncate">
+                    {game.genre}
+                  </div>
+                </div>
+                {game.rating && (
+                  <div className="flex items-center gap-1 text-yellow-400 shrink-0">
+                    <FaStar size={14} />
+                    <span className="font-bold">{game.rating}</span>
+                  </div>
+                )}
+              </button>
+            );
+          })}
         </div>
       )}
 

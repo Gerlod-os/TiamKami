@@ -9,7 +9,7 @@ import {
 } from "../utils/normalize";
 import GameCard from "../components/GameCard";
 import GameModal from "../components/GameModal";
-import { trackEvent } from "../components/YandexMetrika";
+import { trackEvent } from "../utils/metrika.js";
 import {
   FaDice,
   FaFilter,
@@ -88,9 +88,9 @@ const CatalogPage = () => {
   useEffect(() => {
     const col = searchParams.get("collection");
     if (col) {
-      const found = collections.find(
-        (c) => c.name === decodeURIComponent(col),
-      );
+      const found = collections.find((c) => c.name === decodeURIComponent(col));
+      // Синхронизация внешнего источника (URL) с состоянием — не каскад рендеров
+      // oxlint-disable-next-line react/set-state-in-effect
       if (found) setSelectedCollection(found);
     }
   }, [collections, searchParams]);
@@ -161,7 +161,10 @@ const CatalogPage = () => {
       result = result.filter((game) => {
         const genre = game.genre || "";
         return filters.genres.every((g) =>
-          genre.split(",").map((x) => x.trim()).includes(g),
+          genre
+            .split(",")
+            .map((x) => x.trim())
+            .includes(g),
         );
       });
     }
@@ -353,7 +356,7 @@ const CatalogPage = () => {
       </div>
 
       {/* Фильтры */}
-        <div className="bg-[var(--bg-secondary)] rounded-2xl p-6 border border-white/5 mb-8">
+      <div className="bg-[var(--bg-secondary)] rounded-2xl p-6 border border-white/5 mb-8">
         {/* Верхняя строка: кнопка показать/скрыть и сброс */}
         <div className="flex flex-wrap justify-between items-center mb-4">
           <button
@@ -362,7 +365,11 @@ const CatalogPage = () => {
           >
             <FaFilter size={14} />
             Фильтры
-            {isFiltersVisible ? <FaChevronUp size={12} /> : <FaChevronDown size={12} />}
+            {isFiltersVisible ? (
+              <FaChevronUp size={12} />
+            ) : (
+              <FaChevronDown size={12} />
+            )}
           </button>
           <button
             onClick={resetFilters}
@@ -460,7 +467,9 @@ const CatalogPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Оценка */}
               <div>
-                <label className="block text-xs text-white/50 mb-1">Оценка</label>
+                <label className="block text-xs text-white/50 mb-1">
+                  Оценка
+                </label>
                 <div className="flex gap-2">
                   <input
                     type="number"
@@ -495,7 +504,9 @@ const CatalogPage = () => {
 
               {/* Сложность */}
               <div>
-                <label className="block text-xs text-white/50 mb-1">Сложность</label>
+                <label className="block text-xs text-white/50 mb-1">
+                  Сложность
+                </label>
                 <div className="flex gap-2">
                   <input
                     type="number"
@@ -564,7 +575,9 @@ const CatalogPage = () => {
 
             {/* Год выхода */}
             <div>
-              <label className="block text-xs text-white/50 mb-1">Год выхода</label>
+              <label className="block text-xs text-white/50 mb-1">
+                Год выхода
+              </label>
               <select
                 multiple
                 value={filters.years}
@@ -573,7 +586,10 @@ const CatalogPage = () => {
                     e.target.selectedOptions,
                     (option) => option.value,
                   );
-                  setFilterAndResetPage((prev) => ({ ...prev, years: selected }));
+                  setFilterAndResetPage((prev) => ({
+                    ...prev,
+                    years: selected,
+                  }));
                 }}
                 className="w-full bg-[var(--bg-primary)] border border-white/10 rounded-lg py-2 px-3 text-sm text-white h-24 focus:outline-none focus:border-[var(--accent-purple)]"
               >
@@ -614,7 +630,9 @@ const CatalogPage = () => {
 
             {/* Сеттинг */}
             <div>
-              <label className="block text-xs text-white/50 mb-1">Сеттинг (до 1)</label>
+              <label className="block text-xs text-white/50 mb-1">
+                Сеттинг (до 1)
+              </label>
               <div className="flex flex-wrap gap-2">
                 {allSettings.map((setting) => (
                   <button
@@ -625,11 +643,16 @@ const CatalogPage = () => {
                         if (prev.settings.includes(setting)) {
                           return {
                             ...prev,
-                            settings: prev.settings.filter((s) => s !== setting),
+                            settings: prev.settings.filter(
+                              (s) => s !== setting,
+                            ),
                           };
                         }
                         if (prev.settings.length >= 1) return prev;
-                        return { ...prev, settings: [...prev.settings, setting] };
+                        return {
+                          ...prev,
+                          settings: [...prev.settings, setting],
+                        };
                       })
                     }
                     className={`px-3 py-1 rounded-full text-xs font-medium transition ${
@@ -646,7 +669,9 @@ const CatalogPage = () => {
 
             {/* Особенности */}
             <div>
-              <label className="block text-xs text-white/50 mb-1">Особенности (до 2)</label>
+              <label className="block text-xs text-white/50 mb-1">
+                Особенности (до 2)
+              </label>
               <div className="flex flex-wrap gap-2">
                 {allFeatures.map((feature) => (
                   <button
@@ -657,11 +682,16 @@ const CatalogPage = () => {
                         if (prev.features.includes(feature)) {
                           return {
                             ...prev,
-                            features: prev.features.filter((f) => f !== feature),
+                            features: prev.features.filter(
+                              (f) => f !== feature,
+                            ),
                           };
                         }
                         if (prev.features.length >= 2) return prev;
-                        return { ...prev, features: [...prev.features, feature] };
+                        return {
+                          ...prev,
+                          features: [...prev.features, feature],
+                        };
                       })
                     }
                     className={`px-3 py-1 rounded-full text-xs font-medium transition ${
@@ -681,11 +711,17 @@ const CatalogPage = () => {
 
       {/* Счётчик и активная подборка */}
       <div className="flex items-center justify-between mb-6">
-        <p className="text-white/70">Показано игр: {filteredGames.totalCount}</p>
+        <p className="text-white/70">
+          Показано игр: {filteredGames.totalCount}
+        </p>
         {selectedCollection && (
           <div className="flex items-center gap-2">
-            <span className="text-sm text-[var(--accent-purple)]">Подборка:</span>
-            <span className="text-sm font-medium text-white">{selectedCollection.name}</span>
+            <span className="text-sm text-[var(--accent-purple)]">
+              Подборка:
+            </span>
+            <span className="text-sm font-medium text-white">
+              {selectedCollection.name}
+            </span>
             <button
               onClick={() => {
                 setSelectedCollection(null);
@@ -727,7 +763,10 @@ const CatalogPage = () => {
         <div className="flex justify-center mt-12 gap-2">
           <button
             onClick={() => {
-              trackEvent("Пагинация", { page: currentPage - 1, action: "prev" });
+              trackEvent("Пагинация", {
+                page: currentPage - 1,
+                action: "prev",
+              });
               setCurrentPage((p) => Math.max(1, p - 1));
             }}
             disabled={currentPage === 1}
@@ -735,27 +774,31 @@ const CatalogPage = () => {
           >
             ← Назад
           </button>
-          {Array.from({ length: filteredGames.totalPages }, (_, i) => i + 1).map(
-            (page) => (
-              <button
-                key={page}
-                onClick={() => {
-                  trackEvent("Пагинация", { page, action: "click" });
-                  setCurrentPage(page);
-                }}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-                  page === currentPage
-                    ? "bg-[var(--accent-purple)] text-[var(--bg-primary)]"
-                    : "bg-[var(--bg-secondary)] border border-white/10 text-white/70 hover:bg-white/10"
-                }`}
-              >
-                {page}
-              </button>
-            ),
-          )}
+          {Array.from(
+            { length: filteredGames.totalPages },
+            (_, i) => i + 1,
+          ).map((page) => (
+            <button
+              key={page}
+              onClick={() => {
+                trackEvent("Пагинация", { page, action: "click" });
+                setCurrentPage(page);
+              }}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+                page === currentPage
+                  ? "bg-[var(--accent-purple)] text-[var(--bg-primary)]"
+                  : "bg-[var(--bg-secondary)] border border-white/10 text-white/70 hover:bg-white/10"
+              }`}
+            >
+              {page}
+            </button>
+          ))}
           <button
             onClick={() => {
-              trackEvent("Пагинация", { page: currentPage + 1, action: "next" });
+              trackEvent("Пагинация", {
+                page: currentPage + 1,
+                action: "next",
+              });
               setCurrentPage((p) => Math.min(filteredGames.totalPages, p + 1));
             }}
             disabled={currentPage === filteredGames.totalPages}
@@ -771,7 +814,10 @@ const CatalogPage = () => {
         <GameModal game={selectedGame} onClose={() => setSelectedGame(null)} />
       )}
       {quickViewGame && (
-        <GameModal game={quickViewGame} onClose={() => setQuickViewGame(null)} />
+        <GameModal
+          game={quickViewGame}
+          onClose={() => setQuickViewGame(null)}
+        />
       )}
     </div>
   );

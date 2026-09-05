@@ -347,6 +347,14 @@ export function steamHeaderUrl(appId) {
 }
 
 /**
+ * Портретная обложка Steam высокого разрешения (600×900).
+ * Используется в карточках, модалке и подсказках поиска — где нужен вертикальный кадр.
+ */
+export function steamCoverUrl(appId) {
+  return `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/library_600x900.jpg`;
+}
+
+/**
  * Извлекает все уникальные сеттинги из списка игр.
  */
 export function getAllSettings(games) {
